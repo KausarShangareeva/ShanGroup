@@ -1,0 +1,197 @@
+/* ── Base (одинаковый стиль везде) ── */
+.btn {
+  display: flex;
+  align-items: center;
+  min-width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 10rem;
+  border: 1.3px solid transparent;
+  padding: 0 0.9rem;
+  background: rgba(255, 255, 255, 0.88) padding-box;
+  backdrop-filter: blur(6px);
+  color: #aaa;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+
+.btn:hover {
+  color: #d4737a;
+  background: rgba(255, 255, 255, 1);
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.92);
+  color: transparent;
+}
+
+.active:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* ── Активная карточка: переливающийся градиентный бордер ── */
+.active.card {
+  border: 1.3px solid transparent;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92))
+      padding-box,
+    linear-gradient(135deg, #e8a87c, #d4737a, #8b5cf6, #678bf0, #e8a87c)
+      border-box;
+  background-size:
+    100% 100%,
+    250% 250%;
+  animation: borderShimmer 2.8s linear infinite;
+}
+
+.active.card:hover {
+  background:
+    linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) padding-box,
+    linear-gradient(135deg, #e8a87c, #d4737a, #8b5cf6, #678bf0, #e8a87c)
+      border-box;
+  background-size:
+    100% 100%,
+    250% 250%;
+}
+
+@keyframes borderShimmer {
+  0% {
+    background-position:
+      0 0,
+      0% 50%;
+  }
+  50% {
+    background-position:
+      0 0,
+      100% 50%;
+  }
+  100% {
+    background-position:
+      0 0,
+      0% 50%;
+  }
+}
+
+/* ── Card: позиционирование — right: fixed, растёт влево ── */
+.card {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 10;
+}
+
+/* ── Nav: круглая кнопка как в ContactButton ── */
+.nav {
+  min-width: 5rem;
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+  justify-content: center;
+  background: #c1c1c1;
+  color: #fff;
+}
+
+.nav:hover {
+  background: #e8a87c;
+  color: #fff;
+}
+
+.active.nav {
+  background: linear-gradient(
+    135deg,
+    #e8256e,
+    #f06449,
+    #f5a623,
+    #f06449,
+    #e8256e
+  );
+  background-size: 250% 250%;
+  animation: navShimmer 2.8s linear infinite;
+  color: #fff;
+  border: none;
+}
+
+.active.nav:hover {
+  background: linear-gradient(
+    135deg,
+    #e8256e,
+    #f06449,
+    #f5a623,
+    #f06449,
+    #e8256e
+  );
+  background-size: 250% 250%;
+  color: #fff;
+}
+
+@keyframes navShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ── Лейбл: вырастает влево при hover ── */
+.label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444; /* явный цвет — не наследует transparent от .active */
+  white-space: nowrap;
+  max-width: 0;
+  overflow: hidden;
+  transition:
+    max-width 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+    padding-right 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-right: 0;
+  font-family: "Montserrat";
+}
+
+.btn:hover .label {
+  max-width: 16rem;
+  padding-right: 0.7rem;
+}
+
+/* ── Gradient shimmer heart (card liked state) ── */
+.heartGradient {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  flex-shrink: 0;
+  background: linear-gradient(
+    135deg,
+    #e8a87c,
+    #d4737a,
+    #8b5cf6,
+    #678bf0,
+    #e8a87c
+  );
+  background-size: 250% 250%;
+  animation: heartShimmer 2.8s linear infinite;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+@keyframes heartShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

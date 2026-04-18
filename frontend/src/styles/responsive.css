@@ -1,0 +1,45 @@
+/*
+  Breakpoints:
+  --xs:  < 480px   (маленькие телефоны)
+  --sm:  < 640px   (телефоны)
+  --md:  < 768px   (планшеты портрет)
+  --lg:  < 1024px  (планшеты альбом / маленькие ноутбуки)
+  --xl:  < 1280px  (ноутбуки)
+  --2xl: < 1536px  (большие экраны)
+*/
+
+/* Mobile first — стили пишем для мобильных,
+   затем расширяем через min-width */
+
+/* xs — от 480px */
+@custom-media --xs (min-width: 480px);
+
+/* sm — от 640px */
+@custom-media --sm (min-width: 640px);
+
+/* md — от 768px */
+@custom-media --md (min-width: 768px);
+
+/* lg — от 1024px */
+@custom-media --lg (min-width: 1024px);
+
+/* xl — от 1280px */
+@custom-media --xl (min-width: 1280px);
+
+/* 2xl — от 1536px */
+@custom-media --2xl (min-width: 1536px);
+
+
+/* Утилиты для скрытия по размеру экрана */
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: revert;
+  }
+  .hide-on-desktop {
+    display: none;
+  }
+}

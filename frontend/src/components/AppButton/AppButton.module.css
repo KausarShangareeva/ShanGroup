@@ -1,0 +1,20 @@
+.appBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  background: linear-gradient(135deg, #d97a7a, #a07840);
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
+.md { padding: 0.875rem 1.75rem; font-size: 1rem; }
+.lg { padding: 1.125rem 2.25rem; font-size: 1.125rem; }
+
+.full { width: 100%; }

@@ -1,0 +1,189 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+  align-self: flex-start;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #fff;
+  background: #111;
+  border-radius: 10rem;
+  padding: 0.4rem 0.5rem 0.4rem 0.4rem;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.tag:hover {
+  background: #2a2a2a;
+}
+
+.name {
+  margin-left: 1rem;
+}
+
+/* Если прямо перед именем стоит плашка «Топ-застройщик» —
+   убираем лишний отступ слева: между ними и так есть gap от .tag,
+   а margin-left: 1rem нужен только когда .name — первый ребёнок. */
+.topBadge + .name {
+  margin-left: 0;
+}
+
+.topBadge {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  padding: 0.28rem 0.75rem 0.28rem 0.6rem;
+  border-radius: 10rem;
+  color: #3b2800;
+  background:
+    radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+  box-shadow:
+    0 2px 8px rgba(160, 100, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 220, 0.5);
+  text-shadow: 0 1px 2px rgba(255, 220, 100, 0.4);
+}
+
+.topBadge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.8;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.wrap:hover .tag {
+  background: #2a2a2a;
+}
+
+.tagLogo {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #fff;
+  flex-shrink: 0;
+  border: 1px solid white;
+}
+
+.infoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.wrap:hover .infoIcon {
+  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.9rem);
+  left: 0;
+  width: 24rem;
+  background: #fff;
+  border-radius: 1.4rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0ede8;
+  padding: 1.2rem 1.4rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+  z-index: 50;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 1.6rem;
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+}
+
+.wrap:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tooltipHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.tooltipLogo {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #e8e3dc;
+  background: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.tooltipTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+}
+
+.tooltipText {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.5;
+}

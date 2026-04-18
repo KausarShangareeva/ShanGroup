@@ -1,0 +1,19 @@
+.gallery {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.image {
+  object-fit: cover;
+}

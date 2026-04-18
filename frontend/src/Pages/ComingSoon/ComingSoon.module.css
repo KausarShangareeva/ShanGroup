@@ -1,0 +1,61 @@
+.page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8rem 2rem;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c4b5fd;
+  font-family: var(--font-montserrat);
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 700;
+  color: #1a1a2e;
+  font-family: var(--font-montserrat);
+  margin: 0 0 2rem;
+  line-height: 1.15;
+}
+
+.desc {
+  font-size: 1.65rem;
+  line-height: 1.7;
+  color: #777;
+  font-family: var(--font-montserrat);
+  margin: 0 0 3.6rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 10rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: var(--font-montserrat);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #2d2d4e;
+}

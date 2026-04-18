@@ -1,0 +1,197 @@
+/* ══════════════════════════════════════════
+   CountryCodeSelect — селектор кода страны
+   ══════════════════════════════════════════ */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  /* Чтобы триггер целиком заполнял родителя (например,
+     ячейку в .phoneRow, которая задаёт паддинги). */
+  align-self: stretch;
+  align-items: center;
+}
+
+/* ── Триггер (кликабельная кнопка) ── */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.trigger:hover {
+  color: #555;
+}
+
+.flagWrap {
+  display: inline-flex;
+  width: 2.2rem;
+  height: 1.5rem;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f0f0f0;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.flagWrap :global(svg),
+.flagWrap :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.code {
+  font-variant-numeric: tabular-nums;
+}
+
+.chevron {
+  color: #999;
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ── Поп-ап со списком ── */
+.popup {
+  position: absolute;
+  top: calc(100% + 1.2rem);
+  left: -1.8rem;
+  z-index: 100;
+  width: 32rem;
+  max-width: 90vw;
+  background: #fff;
+  border: 1px solid #e8eaed;
+  border-radius: 1.4rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Строка поиска ── */
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid #eef0f3;
+  flex-shrink: 0;
+}
+
+.searchIcon {
+  color: #999;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #111;
+  min-width: 0;
+}
+
+.searchInput::placeholder {
+  color: #bbb;
+}
+
+/* ── Список стран ── */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem 0;
+  max-height: 32rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Тонкий скроллбар */
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.list::-webkit-scrollbar-thumb {
+  background: #d6d8dc;
+  border-radius: 3px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 1rem 1.6rem;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #111;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+
+.item:hover {
+  background: #f7f8fa;
+}
+
+.itemActive {
+  background: #f0f2f5;
+  font-weight: 600;
+}
+
+.itemName {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemCode {
+  color: #888;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.empty {
+  padding: 2rem 1.6rem;
+  text-align: center;
+  color: #999;
+  font-size: 1.3rem;
+}

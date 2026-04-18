@@ -1,0 +1,122 @@
+.section {
+  padding: 8rem 0;
+  background: #ffffff;
+}
+
+.dark {
+  background: #111;
+}
+
+/* ── Шапка ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  flex-shrink: 0;
+}
+
+/* ── Стрелки карусели ── */
+.arrows {
+  display: flex;
+  gap: 1rem;
+}
+
+.arrowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.arrowBtn:hover {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.dark .arrowBtn {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.dark .arrowBtn:hover {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+
+/* ── Сетка (если карточек ≤ 3) ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+}
+
+/* ── Карусель (если карточек > 3) ──
+   Даём padding по вертикали — чтобы hover-lift и drop-shadow у
+   карточек не обрезались сверху/снизу. Padding по горизонтали
+   оставляет место бейджу «Топ предложение», который у первой
+   карточки торчит за левый край. */
+.viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  margin: -2rem -1.5rem;
+}
+
+.strip {
+  display: flex;
+  gap: 2.4rem;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.cardWrap {
+  flex: 0 0 calc((100% - 4.8rem) / 3);
+  min-width: 0;
+}
+
+/* ── Адаптив ── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cardWrap {
+    flex: 0 0 calc((100% - 2.4rem) / 2);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .cardWrap {
+    flex: 0 0 100%;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .section {
+    padding: 5rem 0;
+  }
+}

@@ -1,0 +1,33 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 100px;
+  padding: 0.3rem 1.2rem 0.3rem 0.3rem;
+  width: fit-content;
+}
+
+.img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.arrow {
+  color: rgba(255, 255, 255, 1);
+  flex-shrink: 0;
+}

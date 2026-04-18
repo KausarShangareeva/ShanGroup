@@ -1,0 +1,323 @@
+/* ══════════════════════════════════════════
+   AuthorDetailPage — профиль агента
+   ══════════════════════════════════════════ */
+
+.page {
+  background: #f7f8fa;
+  padding: 10rem 0;
+  min-height: 100vh;
+}
+
+/* ── Back button ── */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2.4rem;
+  font-size: 1.4rem;
+  color: #666;
+  text-decoration: none;
+  padding: 0.8rem 1.4rem 0.8rem 1rem;
+  border-radius: 10rem;
+  background: #fff;
+  border: 1px solid #e8eaed;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    transform 0.15s;
+}
+
+.back:hover {
+  color: #111;
+  border-color: #111;
+  transform: translateX(-2px);
+}
+
+/* ══════════════════════════════════════════
+   Hero: фото + инфо о агенте
+   ══════════════════════════════════════════ */
+
+.hero {
+  display: grid;
+  grid-template-columns: 28rem 1fr;
+  gap: 3.6rem;
+  background: #fff;
+  border-radius: 2.4rem;
+  padding: 3.6rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: 4rem;
+}
+
+.heroPhotoWrap {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 2rem;
+  overflow: hidden;
+  background: #fbe7e7;
+  flex-shrink: 0;
+}
+
+.heroPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.heroInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  min-width: 0;
+}
+
+.heroTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.heroName {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 0.6rem;
+  font-family: var(--font-montserrat, inherit);
+  letter-spacing: -0.01em;
+}
+
+.heroRole {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  color: #666;
+  margin: 0;
+}
+
+.heroSocials {
+  display: inline-flex;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.socialBtn {
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition:
+    transform 0.15s,
+    background 0.15s;
+  border: none;
+  cursor: pointer;
+}
+
+.socialBtn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.heroRating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+}
+
+.heroRatingValue {
+  font-weight: 700;
+  color: #111;
+}
+
+.heroRatingReviews {
+  color: #999;
+}
+
+/* Sections inside hero */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sectionHeading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+  font-family: var(--font-montserrat, inherit);
+}
+
+.bio {
+  font-size: 1.4rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Personal info list */
+.infoList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2.4rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.infoIcon {
+  color: #b0a090;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  color: #999;
+  flex-shrink: 0;
+}
+
+.infoValue {
+  color: #222;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.langItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.langFlag {
+  width: 1.8rem;
+  height: 1.2rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════
+   Секция: Объекты агента
+   ══════════════════════════════════════════ */
+
+.listingsSection {
+  margin-bottom: 4rem;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.4rem;
+}
+
+.sectionTitle {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #111;
+  margin: 0;
+  font-family: var(--font-montserrat, inherit);
+  letter-spacing: -0.01em;
+}
+
+.sectionCount {
+  font-size: 1.4rem;
+  color: #999;
+}
+
+.listingsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+}
+
+/* ══════════════════════════════════════════
+   Секция: Другие агенты
+   ══════════════════════════════════════════ */
+
+.othersSection {
+  margin-bottom: 2rem;
+}
+
+.othersGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2.4rem;
+}
+
+/* ══════════════════════════════════════════
+   Адаптив
+   ══════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 22rem 1fr;
+    padding: 2.8rem;
+    gap: 2.8rem;
+  }
+
+  .heroName {
+    font-size: 2.6rem;
+  }
+
+  .listingsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .othersGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 6rem 0;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+
+  .heroPhotoWrap {
+    aspect-ratio: 1;
+    max-width: 24rem;
+    margin: 0 auto;
+  }
+
+  .heroTopRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.6rem;
+  }
+
+  .infoList {
+    grid-template-columns: 1fr;
+  }
+
+  .listingsGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,322 @@
+.section {
+  background: linear-gradient(135deg, #fdf8f2 0%, #eef3f8 100%);
+  padding: 4rem 0 3rem;
+  min-height: 100vh;
+}
+
+/* Заголовок */
+.title {
+  font-size: clamp(3.6rem, 5vw, 6.4rem);
+  font-weight: 600;
+  color: #111;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 100rem;
+  margin-bottom: 3rem;
+}
+
+.titleOval {
+  display: inline-block;
+  width: 14rem;
+  height: 5.6rem;
+  border-radius: 100px;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
+  margin: 0 0.4rem;
+  position: relative;
+  top: -0.2rem;
+}
+
+.titleAccent {
+  font-style: italic;
+  font-weight: 400;
+  color: #d97a7a;
+  letter-spacing: -0.01em;
+}
+
+/* Основной блок */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 38rem;
+  gap: 2.4rem;
+  align-items: stretch;
+  margin-bottom: 3rem;
+  height: 54rem;
+}
+
+/* Фото */
+.imageWrap {
+  border-radius: 2rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Карточка агента */
+.card {
+  border-radius: 2rem;
+  position: relative;
+  height: 100%;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
+  clip-path: inset(0 round 2rem);
+  isolation: isolate;
+}
+
+.cardWrap {
+  position: relative;
+  height: 100%;
+}
+
+.badge {
+  position: absolute;
+  top: -5.2rem;
+  right: -5.2rem;
+  z-index: 10;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  animation: badgeSpin 12s linear infinite;
+  background-size: contain;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.badgeCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: badgeSpin 12s linear infinite reverse;
+}
+
+.badgeSG {
+  font-size: 3rem;
+  font-family: var(--font-abril), serif;
+  font-weight: 400;
+  color: #d97a7a;
+  line-height: 1;
+}
+
+.badgeSub {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(50, 50, 50, 0.7);
+  letter-spacing: 0.15em;
+}
+
+@keyframes badgeSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.agentVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.agentOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.agentBlur {
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.75) 40%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  padding: 3.2rem 2.4rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.agentNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.agentName {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.agentBadge {
+  color: #2da44e;
+  flex-shrink: 0;
+}
+
+.agentBio {
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.agentStats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* CTA */
+.tourBtn {
+  background: linear-gradient(to right, #e8a06a, #d97a7a);
+  border: none;
+  color: #fff;
+  border-radius: 1.4rem;
+  padding: 1.4rem 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: 100%;
+  transition: filter 0.2s;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(217, 122, 122, 0.35);
+}
+
+.tourBtn:hover {
+  filter: brightness(1.08);
+}
+
+.tourMain {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tourSub {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Строка поиска */
+.searchBar {
+  background: #fff;
+  border-radius: 10rem;
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+.searchField {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2.4rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.searchIcon {
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 1.1rem;
+  color: #aaa;
+  font-weight: 400;
+}
+
+.fieldValue {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #111;
+}
+
+.divider {
+  width: 1px;
+  height: 3.5rem;
+  background: #eee;
+  flex-shrink: 0;
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 10rem;
+  padding: 1.2rem 2.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  font-family: inherit;
+  margin-left: 0.8rem;
+}
+
+.searchBtn:hover {
+  background: #333;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .imageWrap {
+    height: 40rem;
+  }
+  .searchBar {
+    flex-wrap: wrap;
+    border-radius: 2rem;
+    gap: 1rem;
+  }
+  .divider {
+    display: none;
+  }
+  .searchField {
+    padding: 0.8rem 1rem;
+  }
+}

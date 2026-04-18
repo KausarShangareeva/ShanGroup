@@ -1,0 +1,167 @@
+.footer {
+  background: #111;
+  color: #ccc;
+  padding: 4rem 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #222;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.col:nth-child(2) {
+  justify-self: center;
+}
+
+.col:nth-child(3) {
+  justify-self: end;
+}
+
+.colTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.colTitle a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.colTitle a:hover {
+  color: #c4b5fd;
+}
+
+.colLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-weight: 300;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.colLinks li a {
+  color: #999;
+  text-decoration: none;
+  font-size: 1.8rem;
+  transition: color 0.2s;
+}
+
+.colLinks li a:hover {
+  color: #fff;
+}
+
+.areaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Bottom bar */
+.bottom {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 6rem 0;
+}
+
+.bottomLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.socials {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.socials a {
+  color: #666;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.socials a:hover {
+  color: #fff;
+}
+
+.bottomCenter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+  align-items: center;
+  border-left: 1px solid #222;
+  padding-left: 3rem;
+  margin-bottom: 8rem;
+}
+
+.bottomCenter a {
+  color: #aaa;
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bottomCenter a:hover {
+  color: #fff;
+}
+
+.bottomCenter p {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #666;
+  font-size: 1.8rem;
+  font-weight: 300;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bottom {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .bottomCenter {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid #222;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

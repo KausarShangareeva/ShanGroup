@@ -1,0 +1,638 @@
+/* ── Page ── */
+.page {
+  background: #f7f8fa;
+  padding: 10rem 0 10rem;
+  min-height: 100vh;
+}
+
+/* ── Layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3.2rem;
+  align-items: start;
+}
+
+/* ══ КОЛОНКА 1 ══ */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+/* ── Image ── */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tag {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 1.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1.3rem;
+  border-radius: 10rem;
+  pointer-events: none;
+}
+
+/* ── Content ── */
+.content {
+  background: #fff;
+  border-radius: 2rem;
+  padding: 3.6rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.date {
+  font-size: 1.3rem;
+  color: #aaa;
+}
+
+.readTime {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  color: #aaa;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.3;
+  margin: 0;
+  font-family: var(--font-montserrat);
+}
+
+.lead {
+  font-size: 1.6rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.body > p {
+  font-size: 1.5rem;
+  color: #444;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ── Inline CTA ── */
+/* ── Inline CTA ──
+   Тёмный блок-вставка внутри статьи: заголовок, описание и пара
+   пилюль-кнопок (primary solid + secondary outlined). */
+.inlineCta {
+  background: #0f0f10;
+  border-radius: 2rem;
+  padding: 3rem 3.2rem;
+  margin: 2.4rem 0;
+  color: #fff;
+}
+
+.inlineCtaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin: 0 0 1rem;
+  font-family: var(--font-montserrat, inherit);
+  letter-spacing: -0.01em;
+}
+
+.inlineCtaText {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+  max-width: 56rem;
+}
+
+.inlineCtaBtns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inlineCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* Primary — белая пилюля с тёмным текстом */
+  background: #fff;
+  color: #0f0f10;
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 1.1rem 2.2rem;
+  border-radius: 10rem;
+  border: 1.5px solid #fff;
+  text-decoration: none;
+  font-family: inherit;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
+}
+
+.inlineCtaBtn:hover {
+  transform: translateY(-1px);
+}
+
+.inlineCtaBtn:not(.inlineCtaBtnOutline):hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+/* Secondary — прозрачная пилюля с полупрозрачной белой рамкой */
+.inlineCtaBtnOutline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.inlineCtaBtnOutline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── End CTA ── */
+.endCta {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+  background: #fff;
+  border: 1.5px solid #e8eaed;
+  border-radius: 2rem;
+  padding: 3.2rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.endCtaLeft {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.endCtaSuper {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+}
+
+.endCtaTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111;
+  margin: 0;
+  line-height: 1.3;
+  font-family: var(--font-montserrat);
+}
+
+.endCtaText {
+  font-size: 1.4rem;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.endCtaBtns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.endCtaEmail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #111;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 1.1rem 2.2rem;
+  border-radius: 10rem;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  font-family: inherit;
+}
+
+.endCtaEmail:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.endCtaPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #fff;
+  color: #111;
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 1.1rem 2.2rem;
+  border-radius: 10rem;
+  border: 1.5px solid #e5e7eb;
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    transform 0.15s;
+  font-family: inherit;
+}
+
+.endCtaPhone:hover {
+  border-color: #aaa;
+  transform: translateY(-1px);
+}
+
+.endCtaRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 2.4rem 2.8rem;
+  background: #f7f8fa;
+  border-radius: 1.6rem;
+  min-width: 16rem;
+}
+
+.endCtaAvatar {
+  width: 7.2rem;
+  height: 7.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.endCtaAuthorName {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0.4rem 0 0;
+}
+
+.endCtaAuthorRole {
+  font-size: 1.2rem;
+  color: #888;
+  margin: 0;
+}
+
+.endCtaRating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.endCtaReviews {
+  font-weight: 400;
+  color: #aaa;
+}
+
+.endCtaResponse {
+  font-size: 1.15rem;
+  color: #22c55e;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ══ КОЛОНКА 2 ══ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  position: sticky;
+  top: 10rem;
+}
+
+/* ── Author card ── */
+.authorCard {
+  background: #fff;
+  border-radius: 2rem;
+  padding: 2.8rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.authorTop {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.authorAvatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.authorName {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 0.3rem;
+}
+
+.authorJoined {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: #aaa;
+  margin: 0;
+}
+
+.authorActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profileLink {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.profileLink:hover {
+  text-decoration: underline;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.reviews {
+  font-weight: 400;
+  color: #aaa;
+}
+
+.authorBio {
+  font-size: 1.35rem;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+  padding: 1.6rem 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.authorStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.statIcon {
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.statLabel {
+  font-size: 1.3rem;
+  color: #999;
+  min-width: 11rem;
+}
+
+.statValue {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.statValue2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Строка языка автора: флаг + название, расположены инлайново,
+   чтобы запятые между языками красиво ложились в одну строку. */
+.langItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  white-space: nowrap;
+}
+
+.langFlag {
+  width: 1.8rem;
+  height: 1.2rem;
+  border-radius: 0.2rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.contacts {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.contactBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 1.1rem 1.6rem;
+  border-radius: 10rem;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  font-family: inherit;
+}
+
+.contactBtn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.contactBtnOutline {
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #e5e7eb;
+}
+
+.contactBtnOutline:hover {
+  background: #f9fafb;
+}
+
+/* ── Top articles ── */
+/* Левая колонка, ряд 2: обёртка для .content и <EndCta>.
+   Делаем flex-колонку, чтобы CTA вставал сразу под body
+   с фиксированным отступом, не зависящим от высоты .topArticles. */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  min-width: 0;
+}
+
+.topArticles {
+  background: #fff;
+  border-radius: 2rem;
+  padding: 2.8rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.topTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 2rem;
+  font-family: var(--font-montserrat);
+}
+
+.topList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.topCard {
+  display: flex;
+  gap: 1.4rem;
+  text-decoration: none;
+  align-items: center;
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+  transition: background 0.2s;
+}
+
+.topCard:hover {
+  background: #f7f8fa;
+}
+
+.topImgWrap {
+  width: 7.2rem;
+  height: 7.2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.topImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.topCard:hover .topImg {
+  transform: scale(1.06);
+}
+
+.topBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.topTag {
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.25rem 0.9rem;
+  border-radius: 10rem;
+  align-self: flex-start;
+}
+
+.topCardTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.topDate {
+  font-size: 1.15rem;
+  color: #bbb;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+}

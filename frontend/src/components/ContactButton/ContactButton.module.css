@@ -1,0 +1,58 @@
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: linear-gradient(
+    135deg,
+    #e8a87c,
+    #d4737a,
+    #8b5cf6,
+    #678bf0,
+    #e8a87c
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.btn:hover {
+  animation-play-state: paused;
+  filter: brightness(1.1);
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #d97a7a;
+  flex-shrink: 0;
+}

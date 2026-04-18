@@ -1,0 +1,88 @@
+.player {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  background: #f7f8fa;
+  border: 1.5px solid #e8eaed;
+  border-radius: 1.4rem;
+  padding: 1.4rem 2rem;
+}
+
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.playBtn:hover {
+  background: #333;
+  transform: scale(1.07);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.trackWrap {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #111;
+  border-radius: 10rem;
+  pointer-events: none;
+  transition: width 0.1s linear;
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #111;
+  pointer-events: none;
+  transition: left 0.1s linear;
+}
+
+.time {
+  font-size: 1.15rem;
+  color: #aaa;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}

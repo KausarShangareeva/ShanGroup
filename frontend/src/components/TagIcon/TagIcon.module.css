@@ -1,0 +1,10 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+  font-family: "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", sans-serif;
+  /* Принудительно рендерим как эмодзи, а не текст */
+  font-variant-emoji: emoji;
+}

@@ -1,0 +1,293 @@
+{
+  "Emaar": {
+    "logo": "/developer_logo/emaar.png",
+    "top": true,
+    "category": "giant",
+    "info": "Создатель Burj Khalifa и Downtown Dubai. Крупнейший госзастройщик ОАЭ с высокой ликвидностью.",
+    "communities": [
+      { "label": "Emaar South", "href": "/communities/emaar-south" },
+      { "label": "The Oasis", "href": "/communities/the-oasis" },
+      { "label": "The Valley", "href": "/communities/the-valley" },
+      { "label": "Dubai Hills Estate", "href": "/communities/dubai-hills" },
+      { "label": "Rashid Yachts & Marina", "href": "/communities/rashid-yachts" },
+      { "label": "Emaar Beachfront", "href": "/communities/emaar-beachfront" },
+      { "label": "Dubai Creek Harbour", "href": "/communities/creek-harbour" },
+      { "label": "Arabian Ranches III", "href": "/communities/arabian-ranches-3" },
+      { "label": "Downtown Dubai", "href": "/communities/downtown" },
+      { "label": "The Heights", "href": "/communities/the-heights" },
+      { "label": "Grand Polo Club & Resort", "href": "/communities/grand-polo-club" }
+    ]
+  },
+  "Meraas": {
+    "logo": "/developer_logo/Meraas.jpeg",
+    "top": true,
+    "category": "giant",
+    "info": "Создатель Bluewaters, City Walk и Port de La Mer. Лидер премиальной прибрежной застройки.",
+    "communities": [
+      { "label": "The Acres", "href": "/communities/the-acres" },
+      { "label": "Bluewaters Island", "href": "/communities/bluewaters" },
+      { "label": "Port de la Mer", "href": "/communities/port-de-la-mer" },
+      { "label": "City Walk", "href": "/communities/city-walk" },
+      { "label": "Cherrywoods", "href": "/communities/cherrywoods" }
+    ]
+  },
+  "DAMAC": {
+    "logo": "/developer_logo/damac.jpeg",
+    "top": true,
+    "category": "premium",
+    "info": "Брендированная роскошь: коллаборации с Cavalli и de GRISOGONO. Курортные комьюнити с гибкими рассрочками.",
+    "communities": [
+      { "label": "DAMAC Islands 2", "href": "/communities/damac-islands-2" },
+      { "label": "DAMAC Riverside", "href": "/communities/damac-riverside" },
+      { "label": "DAMAC Hills 2", "href": "/communities/damac-hills-2" },
+      { "label": "DAMAC Lagoons", "href": "/communities/damac-lagoons" },
+      { "label": "DAMAC Hills", "href": "/communities/damac-hills" },
+      { "label": "Sun City", "href": "/communities/sun-city" }
+    ]
+  },
+  "Aldar": {
+    "logo": "/developer_logo/Aldar.jpeg",
+    "top": true,
+    "category": "giant",
+    "info": "Главный застройщик Абу-Даби. Проекты на островах Yas и Saadiyat с государственной надёжностью."
+  },
+  "Arada": {
+    "logo": "/developer_logo/Arada.jpeg",
+    "top": true,
+    "category": "boutique",
+    "info": "Быстрорастущий застройщик Шарджи. Экологичные «умные» города для семейного проживания.",
+    "communities": [
+      { "label": "Masaar", "href": "/communities/masaar" },
+      { "label": "Aljada", "href": "/communities/aljada" },
+      { "label": "Jouri Hills", "href": "/communities/jouri-hills" }
+    ]
+  },
+  "Ellington": {
+    "logo": "/developer_logo/Ellington.jpeg",
+    "top": true,
+    "category": "premium",
+    "info": "Бутиковый девелопер с авторским дизайном. Эталон качества отделки, ROI до 9% годовых."
+  },
+  "Eagle Hills": {
+    "logo": "/developer_logo/Eagle_Hills.jpeg",
+    "info": "Международный застройщик с проектами по всему Ближнему Востоку."
+  },
+  "Nakheel": {
+    "logo": "/developer_logo/Nakheel.jpeg",
+    "top": true,
+    "category": "giant",
+    "info": "Создатель Palm Jumeirah. Государственный масштаб и эксклюзивность прибрежных локаций.",
+    "communities": [
+      { "label": "Dubai Islands", "href": "/communities/dubai-islands" },
+      { "label": "Palm Jebel Ali", "href": "/communities/palm-jebel-ali" },
+      { "label": "Deira Islands", "href": "/communities/deira-islands" },
+      { "label": "Palm Jumeirah", "href": "/communities/palm-jumeirah" },
+      { "label": "Jumeirah Village Circle", "href": "/communities/jumeirah-village-circle" }
+    ]
+  },
+  "NSHAMA": {
+    "logo": "/developer_logo/NSHAMA.jpeg",
+    "info": "Застройщик доступного жилья, создатель комьюнити Town Square Dubai."
+  },
+  "Sobha": {
+    "logo": "/developer_logo/sobha.jpeg",
+    "top": true,
+    "category": "premium",
+    "info": "Полный контроль качества на всех этапах. Лидер по материалам и отделке в Дубае.",
+    "communities": [
+      { "label": "Sobha Siniya Island", "href": "/communities/sobha-siniya" },
+      { "label": "Sobha Elwood", "href": "/communities/sobha-elwood" },
+      { "label": "Sobha Reserve", "href": "/communities/sobha-reserve" },
+      { "label": "Sobha Hartland II", "href": "/communities/sobha-hartland-2" },
+      { "label": "Sobha Hartland", "href": "/communities/sobha-hartland" }
+    ]
+  },
+  "Samana": {
+    "logo": "/developer_logo/Samana.jpeg",
+    "category": "growth",
+    "info": "Доступный люкс с частными бассейнами на балконах. Высокая доходность от аренды."
+  },
+  "Binghatti": {
+    "logo": "/developer_logo/Binghatti.png",
+    "category": "growth",
+    "info": "Архитектурный авангард. Коллаборации с Mercedes-Benz и Jacob & Co, быстрая сдача объектов."
+  },
+  "Danube": {
+    "logo": "/developer_logo/Danube.jpeg",
+    "category": "growth",
+    "info": "Рассрочка 1% в месяц. Идеален для стратегии Buy-to-Let с низким порогом входа."
+  },
+  "Deyaar": {
+    "logo": "/developer_logo/Deyaar.png",
+    "info": "Застройщик с более чем 30 завершёнными проектами в Дубае."
+  },
+  "Omniyat": {
+    "logo": "/developer_logo/Omniyat.png",
+    "top": true,
+    "category": "premium",
+    "info": "Ultra-Luxury девелопер. Сотрудничество с Zaha Hadid. Выбор коллекционеров недвижимости."
+  },
+  "Object 1": {
+    "logo": "/developer_logo/Object 1.jpeg",
+    "category": "boutique",
+    "info": "Европейский подход к строительству в Дубае. Умный дом и стильная архитектура в JVC."
+  },
+  "Ohana": {
+    "logo": "/developer_logo/ohana.png",
+    "info": "Бутиковый застройщик вилл и таунхаусов в премиальных районах Дубая."
+  },
+  "Iman Developers": {
+    "logo": "/developer_logo/Iman_Developers.jpeg",
+    "category": "boutique",
+    "info": "Безупречная репутация в JVC. Современный минимализм и высокая заполняемость арендаторами."
+  },
+  "Imtiaz": {
+    "logo": "/developer_logo/imtiaz.png",
+    "category": "growth",
+    "info": "Проекты с максимальным ROI и полной готовностью «под ключ» для премиальных арендаторов."
+  },
+  "IMKAN": {
+    "logo": "/developer_logo/IMKAN.jpeg",
+    "info": "Застройщик Абу-Даби с проектами на острове Saadiyat и набережных локациях."
+  },
+  "BEYOND": {
+    "logo": "/developer_logo/BEYOND.jpeg",
+    "category": "boutique",
+    "info": "Инновационный застройщик с технологиями умного дома в каждом проекте."
+  },
+  "Reportage Properties": {
+    "logo": "/developer_logo/Reportage_Properties.jpeg",
+    "category": "growth",
+    "info": "Активный застройщик ОАЭ с доступными рассрочками и широким портфолио проектов."
+  },
+  "H&H Development": {
+    "logo": "/developer_logo/H&H.png",
+    "info": "Бутиковый застройщик эксклюзивных резиденций в центральных районах Дубая."
+  },
+  "RAK Properties": {
+    "logo": "/developer_logo/RAK_Properties.jpeg",
+    "category": "boutique",
+    "info": "Крупнейший застройщик Рас-эль-Хаймы. Прибрежная застройка на Al Marjan Island."
+  },
+  "Wasl": {
+    "logo": "/developer_logo/wasl.png",
+    "category": "giant",
+    "info": "Государственный застройщик Дубая с диверсифицированным портфолио недвижимости."
+  },
+  "Majid Al Futtaim": {
+    "logo": "/developer_logo/Majid_Al_Futtaim.jpg",
+    "top": true,
+    "category": "giant",
+    "info": "Создатель Mall of the Emirates и премиального комьюнити Tilal Al Ghaf.",
+    "communities": [
+      { "label": "Tilal Al Ghaf", "href": "/communities/tilal-al-ghaf" },
+      { "label": "Ghaf Woods", "href": "/communities/ghaf-woods" },
+      { "label": "Al Zahia", "href": "/communities/al-zahia" }
+    ]
+  },
+  "Tarrad": {
+    "logo": "/developer_logo/Tarrad.jpeg",
+    "info": "Застройщик с проектами в Dubailand, фокус на доступное качественное жильё."
+  },
+  "Select Group": {
+    "logo": "/developer_logo/SELECT_GROUP.png",
+    "top": true,
+    "category": "premium",
+    "info": "Эксперт премиальной недвижимости Dubai Marina. Партнёрство с брендом Six Senses."
+  },
+  "Azizi Developments": {
+    "logo": "/developer_logo/AZIZI_DEVELOPMENTS.webp",
+    "top": true,
+    "category": "growth",
+    "info": "Крупнейший частный застройщик ОАЭ. От студий до небоскрёбов, самый широкий охват локаций."
+  },
+  "Dubai Properties": {
+    "logo": "/developer_logo/DUBAI_HOLDING.png",
+    "top": true,
+    "category": "giant",
+    "info": "Государственный гигант, создавший JBR и Business Bay. Масштабные семейные комьюнити.",
+    "communities": [
+      { "label": "Maritime City", "href": "/communities/maritime-city" }
+    ]
+  },
+  "Tiger Properties": {
+    "logo": "/developer_logo/TIGER_PROPERTIES.png",
+    "category": "growth",
+    "info": "Опытный застройщик жилых и коммерческих небоскрёбов по всему ОАЭ."
+  },
+  "London Gate": {
+    "logo": "/developer_logo/LONDON_GATE.jpeg",
+    "category": "premium",
+    "info": "Коллаборация с Franck Muller. Английские стандарты качества в дубайском масштабе."
+  },
+  "MAG Property": {
+    "logo": "/developer_logo/MAG_PROPERTY.jpeg",
+    "category": "growth",
+    "info": "Девелопер с фокусом на инновации и качественное жильё в ключевых районах Дубая."
+  },
+  "Taraf": {
+    "logo": "/developer_logo/taraf.png",
+    "category": "premium",
+    "info": "Элитное подразделение Yas Holding. Брендовые резиденции Karl Lagerfeld."
+  },
+  "LIV Developers": {
+    "logo": "/developer_logo/LIV_DEVELOPERS.png",
+    "category": "premium",
+    "info": "Бутиковый застройщик люксовых апартаментов в Dubai Marina."
+  },
+  "Prestige One": {
+    "logo": "/developer_logo/PRESTIGE_ONE.png",
+    "category": "boutique",
+    "info": "Дизайнерские решения и премиальный сервис в каждом проекте."
+  },
+  "DEVMARK GROUP": {
+    "logo": "/developer_logo/DEVMARK_GROUP.jpeg",
+    "info": "Консалтинговая и девелоперская компания с эксклюзивными проектами в ОАЭ."
+  },
+  "SAAS Properties": {
+    "logo": "/developer_logo/SAAS_PROPERTIES.jpeg",
+    "info": "Семейный застройщик из Абу-Даби, создающий качественные жилые пространства."
+  },
+  "TownX Development": {
+    "logo": "/developer_logo/TOWNX_DEVELOPMENT.jpg",
+    "category": "boutique",
+    "info": "Современные и функциональные жилые комплексы в востребованных районах."
+  },
+  "SRG Properties": {
+    "logo": "/developer_logo/SRG_PROPERTIES.jpg",
+    "info": "Семейный застройщик с многолетней историей и качественным управлением."
+  },
+  "Alef Group": {
+    "logo": "/developer_logo/ALEF_GROUP.jpeg",
+    "category": "boutique",
+    "info": "Ведущий застройщик Шарджи. Создатель премиальных пространств, включая Al Mamsha."
+  },
+  "B.N.H Developers": {
+    "logo": "/developer_logo/B.N.H_DEVELOPERS.png",
+    "info": "Бутиковый застройщик современных жилых проектов с акцентом на детали."
+  },
+  "Gulf Land Developer": {
+    "logo": "/developer_logo/GULF_LAND_DEVELOPER.jpeg",
+    "info": "Качественные жилые комьюнити в развивающихся районах Дубая."
+  },
+  "Hijazi Real Estate": {
+    "logo": "/developer_logo/HIJAZI_REAL_ESTATE.webp",
+    "info": "Инвестиционно-строительная компания с портфолио в развивающихся районах."
+  },
+  "Orra Development": {
+    "logo": "/developer_logo/ORRA_DEVELOPMENT.png",
+    "info": "Премиальное жильё в Jumeirah Lakes Towers и центральных районах."
+  },
+  "Condor Developers": {
+    "logo": "/developer_logo/CONDOR_DEVELOPERS.jpeg",
+    "info": "Международная группа, строящая жилые комплексы с высоким качеством отделки."
+  },
+  "Deca Properties": {
+    "logo": "/developer_logo/DECA_PROPERTIES.png",
+    "info": "Прогрессивный застройщик с инновационными решениями на рынке ОАЭ."
+  },
+  "Expo Dubai Group": {
+    "logo": "/developer_logo/expo_dubai_group.png",
+    "info": "Официальный девелопер территории Expo 2020, управляющий Expo City Dubai."
+  }
+}

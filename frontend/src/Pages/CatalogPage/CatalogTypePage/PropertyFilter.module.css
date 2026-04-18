@@ -1,0 +1,368 @@
+/* ── Filter panel ── */
+.filter {
+  padding: 3.2rem 2rem 2.8rem;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+}
+
+/* ── Dropdowns row ── */
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Label row — label + currency toggle side by side */
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #bbb;
+  font-family: var(--font-montserrat);
+  white-space: nowrap;
+}
+
+/* ── Currency toggle ── */
+.currencyRow {
+  display: flex;
+  gap: 6px;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.currBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: var(--font-montserrat);
+  border: 1px solid #e0e0e0;
+  border-radius: 7px;
+  cursor: pointer;
+  background: transparent;
+  color: #777;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
+  line-height: 1;
+}
+
+.currBtn:hover {
+  border-color: #aaa;
+  color: #1a1a2e;
+}
+
+.currBtnActive {
+  border-color: #1a1a2e;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.currBtnActive:hover {
+  background: #2d2d4e;
+  border-color: #2d2d4e;
+  color: #fff;
+}
+
+.currFlag {
+  border-radius: 3px;
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ── Status pill buttons ── */
+.statusRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2.4rem;
+}
+
+.statusBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #777;
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 10rem;
+  cursor: pointer;
+  font-family: var(--font-montserrat);
+  transition:
+    border-color 0.18s,
+    color 0.18s,
+    background 0.18s;
+  letter-spacing: 0.01em;
+}
+
+.statusBtn:hover {
+  border-color: #aaa;
+  color: #1a1a2e;
+  background: #f5f5f5;
+}
+
+.statusBtnActive {
+  background: #1a1a2e;
+  color: #fff;
+  border-color: #1a1a2e;
+}
+
+.statusBtnActive:hover {
+  background: #2d2d4e;
+  border-color: #2d2d4e;
+  color: #fff;
+}
+
+/* ── Bottom: tags + actions ── */
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  min-height: 4.4rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem 0.5rem 1rem;
+  border-radius: 10rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+  font-family: var(--font-montserrat);
+  background: #1a1a2e;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+
+.tag:hover {
+  background: #2d2d4e;
+}
+
+.tagIcon {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.tagLabel {
+  white-space: nowrap;
+}
+
+.tagX {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: background 0.18s;
+  flex-shrink: 0;
+  margin-left: 0.1rem;
+}
+
+.tagX:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.applyBtn {
+  padding: 1rem 2.6rem;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 10rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-montserrat);
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+}
+
+.applyBtn:hover {
+  background: #2d2d4e;
+}
+
+.applyBtnDirty {
+  background: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.applyBtnDirty:hover {
+  background: #4338ca;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.1);
+  }
+}
+
+.resetBtn {
+  padding: 1rem 2rem;
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #e4e4e4;
+  border-radius: 10rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-montserrat);
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.resetBtn:hover {
+  border-color: #999;
+  color: #333;
+}
+
+/* ── Load more ── */
+.loadMore {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2rem 2rem;
+}
+
+/* ── Card appear animation ── */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardWrap {
+  animation: cardIn 0.45s ease both;
+}
+
+/* ── Count ── */
+.count {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  margin: 3rem 2rem 2rem;
+  padding-bottom: 1.6rem;
+}
+
+.countText {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #c4b5fd;
+  font-family: var(--font-montserrat);
+  margin: 0;
+}
+
+.countBadge {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #888;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10rem;
+  border: 1px solid #e8e8e8;
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+  padding: 0 2rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .filter {
+    padding: 2.4rem 1.6rem;
+  }
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0 1.6rem;
+  }
+  .count {
+    margin: 2.4rem 1.6rem 1.2rem;
+  }
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actions {
+    width: 100%;
+  }
+  .applyBtn {
+    flex: 1;
+  }
+}

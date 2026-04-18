@@ -1,0 +1,538 @@
+.section {
+  padding: 6rem 0;
+  background: #fff;
+}
+
+/* ── 3-колоночный грид ── */
+.layout {
+  display: grid;
+  grid-template-columns: 25% 40% 25%;
+  gap: 3rem;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+/* ── Левая колонка ── */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.25rem;
+  color: #aaa;
+  flex-wrap: wrap;
+}
+
+.breadcrumbActive {
+  color: #222;
+  font-weight: 600;
+}
+
+.title {
+  font-size: clamp(4rem, 5vw, 6.4rem);
+  font-weight: 300;
+  color: #0d0d0d;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+  width: fit-content;
+}
+
+.contactBtn:hover {
+  background: #333;
+}
+
+.agent {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #f8f8f8;
+  border-radius: 1.6rem;
+  padding: 1.2rem 1.4rem;
+  margin-top: auto;
+}
+
+.agentAvatar {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.agentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.agentName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.agentRole {
+  font-size: 1.2rem;
+  color: #999;
+  font-weight: 400;
+}
+
+.agentContactBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 100px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+
+.agentContactBtn:hover {
+  border-color: #aaa;
+}
+
+/* ── Центр — фото ── */
+.center {
+  position: relative;
+}
+
+.mainImgWrap {
+  position: relative;
+  border-radius: 2.4rem;
+  overflow: hidden;
+  height: 100%;
+  min-height: 42rem;
+}
+
+.mainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mapBtn {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(20, 20, 20, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 0.9rem 2rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+/* ── Правая колонка ── */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.priceLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: 0.04em;
+}
+
+.price {
+  font-size: 3.6rem;
+  font-weight: 300;
+  color: #0d0d0d;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-top: -0.8rem;
+}
+
+.specRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.spec {
+  font-size: 1.35rem;
+  color: #555;
+  font-weight: 400;
+}
+
+.specIcon {
+  color: #888;
+  flex-shrink: 0;
+}
+
+.specDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ccc;
+  flex-shrink: 0;
+}
+
+.installment {
+  font-size: 1.4rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.installment strong {
+  color: #111;
+  font-weight: 600;
+}
+
+/* ── Payment plan ── */
+.planList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1.2rem;
+}
+
+.planRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.planLabel {
+  font-size: 1.35rem;
+  color: #777;
+  font-weight: 400;
+}
+
+.planPercent {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* ── Tags ── */
+.tagGroupLabel {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #aaa;
+  margin-top: 0.4rem;
+}
+
+.tagGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.featureTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #d0d0d0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem 0.5rem 0.6rem;
+  border-radius: 100px;
+}
+
+.featureCheck {
+  color: #fff;
+  background: #111;
+  border-radius: 50%;
+  flex-shrink: 0;
+  padding: 1px;
+}
+
+.lifestyleTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #e8f5ee;
+  color: #2a7a4b;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+}
+
+/* ── Thumbnails ── */
+.thumbs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.thumbStack {
+  display: flex;
+  flex: 1;
+}
+
+.thumb {
+  width: 7rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 1.8rem;
+  flex-shrink: 0;
+  margin-left: -1.6rem;
+  border: 3.5px solid #fff;
+}
+
+.thumb:first-child {
+  margin-left: 0;
+}
+
+.thumbNav {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.thumbArrow {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  border: 1.5px solid #e0e0e0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.thumbArrow:hover {
+  border-color: #aaa;
+}
+
+/* ── Описание ── */
+.bottom {
+  display: grid;
+  grid-template-columns: 26rem 1fr 16rem;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.descLabel {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #aaa;
+  margin-bottom: 0.8rem;
+}
+
+.descTitle {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #0d0d0d;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.descText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.descText p {
+  font-size: 1.5rem;
+  color: #666;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.readMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 1rem 1rem 1rem 2.4rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  width: fit-content;
+  transition: background 0.2s;
+}
+
+.readMoreBtn:hover {
+  background: #333;
+}
+
+.readMorePlus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  margin-left: 1.2rem;
+}
+
+.devLogo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.devLogoWrap {
+  position: relative;
+  width: 18rem;
+  height: 13rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.devLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.devLogoText {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: var(--font-bodoni), serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 1);
+}
+
+/* ── Галерея ── */
+.gallery {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+.galleryItem {
+  width: 18rem;
+  height: 14rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-left: -2.4rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  border: 3px solid #fff;
+}
+
+.galleryItem:first-child {
+  margin-left: 0;
+}
+
+.galleryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .center {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .left {
+    grid-row: 2;
+  }
+
+  .right {
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .center {
+    grid-column: 1;
+  }
+
+  .mainImgWrap {
+    height: 30rem;
+  }
+
+  .bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .devLogo {
+    justify-content: flex-start;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+}

@@ -1,0 +1,76 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  border: none;
+  border-radius: 100px;
+  padding: 0.5rem 0.5rem 0.5rem 3rem;
+  /* Фиксируем высоту, чтобы кнопка без иконки оставалась
+     такой же высокой, как и вариант с кружком-иконкой (4rem + 2×0.5rem паддинг). */
+  min-height: 5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  width: fit-content;
+  transition: filter 0.2s;
+}
+
+/* Когда иконки нет — правый паддинг становится симметричным левому,
+   чтобы текст не прилипал к правому краю пилюли. */
+.btn:not(:has(.dot)) {
+  padding-right: 3rem;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+.btn:active {
+  filter: brightness(0.95);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Чёрный фон — белый текст */
+.dark {
+  background: #000000;
+  color: #fff;
+}
+
+.dark .dot {
+  background: #fff;
+  color: #000000;
+}
+
+/* Белый фон — чёрный текст */
+.light {
+  background: #fff;
+  color: #000000;
+}
+
+.light .dot {
+  background: #000000;
+  color: #fff;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1;
+}

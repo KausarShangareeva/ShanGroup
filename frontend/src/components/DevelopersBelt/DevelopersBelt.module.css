@@ -1,0 +1,148 @@
+.section {
+  background: black;
+  width: 100%;
+  padding: 10rem 0 8rem;
+  overflow: hidden;
+}
+
+/* ── Заголовок ── */
+.heading {
+  text-align: center;
+  margin-bottom: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-family: var(--font-kuzanyan), Georgia, serif;
+  font-size: clamp(2.8rem, 4vw, 5rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+  text-align: center;
+}
+
+.sub {
+  font-family: var(--font-gt-eesti), sans-serif;
+  font-size: clamp(1.2rem, 1.4vw, 1.6rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* ── Ряды ── */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.rowOuter {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.rowTrack {
+  display: flex;
+  gap: 1.4rem;
+  width: max-content;
+}
+
+/* Скролл влево */
+.trackLeft {
+  animation: scrollLeft 32s linear infinite;
+}
+
+/* Скролл вправо */
+.trackRight {
+  animation: scrollRight 32s linear infinite;
+}
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ── Тег-карточка ── */
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.2rem 2.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10rem;
+  background: rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    border-color 0.3s,
+    background 0.3s;
+}
+
+.tag:hover {
+  border-color: var(--color-gold);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.tagLogo {
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.3rem;
+}
+
+.tagName {
+  font-family: var(--font-gt-eesti), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+
+@media (max-width: 600px) {
+  .title {
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+  }
+
+  .tag {
+    padding: 1rem 1.8rem;
+  }
+
+  .tagName {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,57 @@
+/* ══════════════════════════════════════════
+   Unified Icon component
+   — единственный источник стилей для иконок
+   ══════════════════════════════════════════ */
+
+/* Просто инлайновая иконка: нужный цвет через currentColor,
+   родительский flex не ломает выравнивание */
+.plain {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Иконка в квадратной рамке (как в навигационном дропдауне) */
+.boxed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  border: 1px solid;
+  flex-shrink: 0;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
+}
+
+/* ── Цветовые схемы ──
+   Цвет задаётся через currentColor, чтобы его можно было
+   переопределять извне (например, из :hover родителя). */
+
+.color_gray {
+  color: #b0a090;
+}
+.color_black {
+  color: #111;
+}
+.color_white {
+  color: #fff;
+}
+
+/* Для boxed-варианта цветовая схема управляет ещё фоном и рамкой */
+.boxed.color_gray {
+  background: #fff;
+  border-color: #e4e0d8;
+}
+.boxed.color_black {
+  background: #fff;
+  border-color: #111;
+}
+.boxed.color_white {
+  background: #111;
+  border-color: #111;
+}
