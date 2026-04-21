@@ -1,4 +1,5 @@
 import Container from "@/components/layout/Container";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./WhyDubai.module.css";
 
 const CIRCLES = [
@@ -34,13 +35,12 @@ export default function WhyDubai() {
       <div className={styles.noise} />
       <div className={styles.overlay}>
         <Container>
-          <h2 className={styles.title}>МЫ ЗНАЕМ ДУБАЙ ИЗНУТРИ</h2>
-          <p className={styles.body}>
-            ShanGroup — это команда экспертов, которая помогает найти, купить и
-            выгодно инвестировать в недвижимость Дубая. Апартаменты у моря,
-            пентхаусы в Downtown, виллы с видом на Бурдж-Халифа — мы подберём
-            объект под вашу цель и бюджет, и сопроводим на каждом этапе сделки.
-          </p>
+          <SectionTitle
+            title="МЫ ЗНАЕМ ДУБАЙ ИЗНУТРИ"
+            subtitle="ShanGroup — это команда экспертов, которая помогает найти, купить и выгодно инвестировать в недвижимость Дубая. Апартаменты у моря, пентхаусы в Downtown, виллы с видом на Бурдж-Халифа — мы подберём объект под вашу цель и бюджет, и сопроводим на каждом этапе сделки."
+            align="center"
+            dark
+          />
           <p className={styles.cursive}>ваш актив в надёжных руках.</p>
 
           <div className={styles.circles}>

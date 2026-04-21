@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  background-color: var(--color-gold);
+  background-color: var(--color-sand);
   width: 100%;
   overflow: hidden;
 }

@@ -37,8 +37,7 @@ function asPropertyCardProps(p) {
     href: `/${p.id}`,
     featured: p.visa,
     offPlan: p.delivery && p.delivery !== "Готово",
-    delivery:
-      p.delivery && p.delivery !== "Готово" ? p.delivery : undefined,
+    delivery: p.delivery && p.delivery !== "Готово" ? p.delivery : undefined,
     developer: p.developer,
     beds: p.beds,
     baths: p.baths,
@@ -57,16 +56,10 @@ export default function DeveloperDetailPage({ slug }) {
     (p) => p.developer && p.developer.toLowerCase() === key.toLowerCase(),
   );
 
-  const apartments = pickByType(owned, (p) =>
-    /апартамент/i.test(p.type ?? ""),
-  );
+  const apartments = pickByType(owned, (p) => /апартамент/i.test(p.type ?? ""));
   const villas = pickByType(owned, (p) => /вилл/i.test(p.type ?? ""));
-  const townhouses = pickByType(owned, (p) =>
-    /таунхаус/i.test(p.type ?? ""),
-  );
-  const penthouses = pickByType(owned, (p) =>
-    /пентхаус/i.test(p.type ?? ""),
-  );
+  const townhouses = pickByType(owned, (p) => /таунхаус/i.test(p.type ?? ""));
+  const penthouses = pickByType(owned, (p) => /пентхаус/i.test(p.type ?? ""));
 
   const heroProperty = owned[0];
   const galleryThumbs = owned.slice(1, 5);
@@ -95,11 +88,7 @@ export default function DeveloperDetailPage({ slug }) {
 
               <div className={styles.brandRow}>
                 {dev.logo && (
-                  <img
-                    src={dev.logo}
-                    alt={key}
-                    className={styles.brandLogo}
-                  />
+                  <img src={dev.logo} alt={key} className={styles.brandLogo} />
                 )}
                 <div>
                   <p className={styles.brandKicker}>Застройщик</p>
@@ -150,10 +139,7 @@ export default function DeveloperDetailPage({ slug }) {
 
             <div className={styles.heroRight}>
               {heroProperty ? (
-                <Link
-                  href={`/${heroProperty.id}`}
-                  className={styles.heroCard}
-                >
+                <Link href={`/${heroProperty.id}`} className={styles.heroCard}>
                   <img
                     src={heroProperty.image}
                     alt={heroProperty.name}
@@ -219,9 +205,7 @@ export default function DeveloperDetailPage({ slug }) {
           ) : (
             <div className={styles.projectGroup}>
               <div className={styles.projectHeader}>
-                <h2 className={styles.projectTitle}>
-                  Рекомендованные проекты
-                </h2>
+                <h2 className={styles.projectTitle}>Рекомендованные проекты</h2>
               </div>
               <div className={styles.projectGrid}>
                 {fallback.map((p) => (
@@ -238,17 +222,19 @@ export default function DeveloperDetailPage({ slug }) {
         <section className={styles.communities}>
           <Container>
             <div className={styles.communitiesHeader}>
-              <h2 className={styles.projectTitle}>
-                Комьюнити от {key}
-              </h2>
+              <h2 className={styles.projectTitle}>Комьюнити от {key}</h2>
               <p className={styles.communitiesSub}>
-                Жилые сообщества, которые девелопер строит сейчас и сдаёт в
+                Жилые Районы, которые застройщик строит сейчас и сдаёт в
                 ближайшие годы.
               </p>
             </div>
             <div className={styles.communitiesGrid}>
               {dev.communities.map((c) => (
-                <Link key={c.href} href={c.href} className={styles.communityChip}>
+                <Link
+                  key={c.href}
+                  href={c.href}
+                  className={styles.communityChip}
+                >
                   {c.label}
                   <ArrowRight size={14} />
                 </Link>
@@ -308,8 +294,9 @@ export default function DeveloperDetailPage({ slug }) {
             </h2>
             <p className={styles.ctaText}>
               Большинство покупателей в Дубае инвестируют не интуитивно, а
-              осознанно. Эксперты ShanGroup помогут подобрать лучший лот, проверить
-              договор и сопроводить сделку — от выбора до получения ключей.
+              осознанно. Эксперты ShanGroup помогут подобрать лучший лот,
+              проверить договор и сопроводить сделку — от выбора до получения
+              ключей.
             </p>
             <div className={styles.ctaBtns}>
               <Link href="/contact" className={styles.ctaPrimary}>

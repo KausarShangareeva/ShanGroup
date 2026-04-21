@@ -8,7 +8,7 @@ import styles from "./Breadcrumb.module.css";
 
 const LABELS = {
   catalog: "Каталог",
-  communities: "Сообщества",
+  communities: "Районы",
   developers: "Застройщики",
   blog: "Блог",
   about: "О нас",
@@ -34,9 +34,7 @@ const LABELS = {
 function toLabel(segment) {
   return (
     LABELS[segment] ||
-    segment
-      .replace(/-/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase())
+    segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
   );
 }
 

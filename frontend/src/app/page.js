@@ -21,20 +21,20 @@ export default function HomePage() {
       <OfferOfMonth />
       <NewProperties />
       <PropertyTypeSection
-        tag="Виллы"
+        tag=""
         title="Виллы на продажу"
         properties={VILLAS}
         catalogHref="/villas"
       />
       <PropertyTypeSection
-        tag="Апартаменты"
+        tag=""
         title="Апартаменты на продажу"
         properties={APARTMENTS}
         catalogHref="/apartments"
         dark
       />
       <PropertyTypeSection
-        tag="Таунхаусы"
+        tag=""
         title="Таунхаусы на продажу"
         properties={TOWNHOUSES}
         catalogHref="/townhouses"

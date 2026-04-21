@@ -118,7 +118,9 @@
   border: 1.5px solid #d8d8d8;
   border-radius: 0.3rem;
   flex-shrink: 0;
-  transition: background 0.12s, border-color 0.12s;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
   position: relative;
 }
 

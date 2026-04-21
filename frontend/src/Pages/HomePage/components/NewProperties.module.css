@@ -1,6 +1,24 @@
 .section {
+  position: relative;
+  overflow: hidden;
   padding: 6rem 0 8rem;
-  background: #f7f8fa;
+  background: var(--color-sand);
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Шапка секции ── */
@@ -32,10 +50,12 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  border: 1.5px solid #ddd;
-  background: #fff;
-  color: #111;
+  border: 1.5px solid rgba(255, 255, 255, 1);
+  background: transparent;
+  color: #fff;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition:
     background 0.2s,
     border-color 0.2s,
@@ -43,25 +63,31 @@
 }
 
 .arrowBtn:hover {
-  background: #111;
-  border-color: #111;
-  color: #fff;
+  background: #fff;
+  border-color: #fff;
+  color: #111;
 }
 
-/* ── Карусель ── */
+/* ── Карусель — native scroll-snap ── */
 .viewport {
-  overflow: hidden;
-  width: 100%;
-}
-
-.strip {
   display: flex;
   gap: 2rem;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+  padding-bottom: 0.4rem;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .cardWrap {
+  scroll-snap-align: start;
   flex: 0 0 calc((100% - 4rem) / 3);
   min-width: 0;
 }
@@ -73,8 +99,12 @@
 }
 
 @media (max-width: 600px) {
+  .viewport {
+    padding-left: 1.5rem;
+    scroll-padding-left: 1.5rem;
+  }
   .cardWrap {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% - 3rem);
   }
   .header {
     flex-direction: column;
@@ -116,14 +146,12 @@
   height: 52rem;
   border-radius: 2rem;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  transition: box-shadow 0.4s;
+
   background-color: white;
 }
 
 .card:hover {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16);
 }
 
 /* ── Фото: занимает оставшееся место, сжимается при раскрытии панели ── */

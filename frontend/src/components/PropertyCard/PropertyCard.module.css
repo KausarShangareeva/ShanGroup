@@ -13,16 +13,16 @@
      переносим на .imgWrap (верхние углы) и .body (нижние), тень
      делаем через filter: drop-shadow, чтобы она шла по реальному
      силуэту карточки, а не по прямоугольнику. */
+  border: 1px solid #d0d0d0;
+  border-radius: 2rem;
   overflow: visible;
   position: relative;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.08));
   transition:
     filter 0.3s,
     transform 0.3s;
 }
 
 .card:hover {
-  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.18));
   transform: translateY(-3px);
 }
 

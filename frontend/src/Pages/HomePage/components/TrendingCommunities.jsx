@@ -94,31 +94,34 @@ const COMMUNITIES = [
 export default function TrendingCommunities() {
   return (
     <section className={styles.section}>
-      <Container>
-        <SectionTitle
-          tag="Районы"
-          title="Популярные районы Дубая"
-          subtitle="Лучшие жилые районы ОАЭ — от островных вилл до высоток в даунтауне"
-          align="center"
-        />
+      <div className={styles.noise} />
+      <div className={styles.inner}>
+        <Container>
+          <SectionTitle
+            title="Популярные районы Дубая"
+            subtitle="Лучшие жилые районы ОАЭ — от островных вилл до высоток в даунтауне"
+            align="center"
+            dark
+          />
 
-        <div className={styles.grid}>
-          {COMMUNITIES.map(({ name, developer, href, img }) => (
-            <Link key={href} href={href} className={styles.card}>
-              <div className={styles.imgWrap}>
-                <img src={img} alt={name} className={styles.img} />
-              </div>
-              <div className={styles.info}>
-                <span className={styles.developer}>{developer}</span>
-                <h3 className={styles.name}>{name}</h3>
-              </div>
-            </Link>
-          ))}
-          <div className={styles.moreCell}>
-            <Button label="Все районы" href="/communities" />
+          <div className={styles.grid}>
+            {COMMUNITIES.map(({ name, developer, href, img }) => (
+              <Link key={href} href={href} className={styles.card}>
+                <div className={styles.imgWrap}>
+                  <img src={img} alt={name} className={styles.img} />
+                </div>
+                <div className={styles.info}>
+                  <span className={styles.developer}>{developer}</span>
+                  <h3 className={styles.name}>{name}</h3>
+                </div>
+              </Link>
+            ))}
+            <div className={styles.moreCell}>
+              <Button label="Все районы" href="/communities" />
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </section>
   );
 }

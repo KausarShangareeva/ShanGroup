@@ -22,7 +22,10 @@ function renderTitle(title, highlight, pills) {
 
   while ((match = pillRegex.exec(title)) !== null) {
     if (match.index > lastIndex) {
-      segments.push({ type: "text", value: title.slice(lastIndex, match.index) });
+      segments.push({
+        type: "text",
+        value: title.slice(lastIndex, match.index),
+      });
     }
     segments.push({ type: "pill", index: parseInt(match[1], 10) });
     lastIndex = match.index + match[0].length;
@@ -46,7 +49,7 @@ function renderTitle(title, highlight, pills) {
             style={pill.color ? { background: pill.color } : {}}
           >
             <img src={pill.src} alt="" className={styles.pillImg} />
-          </span>
+          </span>,
         );
       }
       continue;
@@ -80,11 +83,14 @@ function renderTitle(title, highlight, pills) {
         result.push(remaining.slice(0, earliestIdx));
       }
 
-      const matched = remaining.slice(earliestIdx, earliestIdx + earliest.word.length);
+      const matched = remaining.slice(
+        earliestIdx,
+        earliestIdx + earliest.word.length,
+      );
       result.push(
         <span key={`hl-${i}-${earliestIdx}`} className={styles.highlight}>
           {matched}
-        </span>
+        </span>,
       );
 
       remaining = remaining.slice(earliestIdx + earliest.word.length);
@@ -105,7 +111,10 @@ export default function SectionTitle({
   pills,
 }) {
   return (
-    <div className={`${styles.wrapper} ${styles[align]}`} style={mb !== undefined ? { marginBottom: mb } : {}}>
+    <div
+      className={`${styles.wrapper} ${styles[align]}`}
+      style={mb !== undefined ? { marginBottom: mb } : {}}
+    >
       {tag && (
         <span className={styles.tag} style={dark ? { color: "#c9963a" } : {}}>
           {tag}
@@ -114,7 +123,14 @@ export default function SectionTitle({
       <h2 className={styles.title} style={dark ? { color: "#fff" } : {}}>
         {renderTitle(title, highlight, pills)}
       </h2>
-      {subtitle && <p className={styles.subtitle} style={dark ? { color: "rgba(255,255,255,0.6)" } : {}}>{subtitle}</p>}
+      {subtitle && (
+        <p
+          className={styles.subtitle}
+          style={dark ? { color: "rgba(255,255,255,0.7)" } : {}}
+        >
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }

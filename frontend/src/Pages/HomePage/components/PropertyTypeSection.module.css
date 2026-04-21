@@ -1,10 +1,28 @@
 .section {
+  position: relative;
+  overflow: hidden;
   padding: 8rem 0;
-  background: #ffffff;
+  background: #f7f8fa;
 }
 
 .dark {
-  background: #111;
+  background: var(--color-sand);
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Шапка ── */
@@ -36,10 +54,11 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  border: 1.5px solid #ddd;
-  background: #fff;
+  border: 1.1px solid #000000;
+  background: white;
   color: #111;
   cursor: pointer;
+  touch-action: manipulation;
   transition:
     background 0.2s,
     border-color 0.2s,
@@ -54,7 +73,7 @@
 
 .dark .arrowBtn {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 1);
   color: #fff;
 }
 
@@ -71,28 +90,62 @@
   gap: 2.4rem;
 }
 
-/* ── Карусель (если карточек > 3) ──
-   Даём padding по вертикали — чтобы hover-lift и drop-shadow у
-   карточек не обрезались сверху/снизу. Padding по горизонтали
-   оставляет место бейджу «Топ предложение», который у первой
-   карточки торчит за левый край. */
+/* ── Карусель — native scroll-snap ── */
 .viewport {
-  overflow: hidden;
-  width: 100%;
-  padding: 2rem 1.5rem;
-  margin: -2rem -1.5rem;
-}
-
-.strip {
   display: flex;
   gap: 2.4rem;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .cardWrap {
+  scroll-snap-align: start;
   flex: 0 0 calc((100% - 4.8rem) / 3);
   min-width: 0;
+}
+
+/* ── Dots ── */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 3rem;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  padding: 0;
+  touch-action: manipulation;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.dark .dot {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.dotActive {
+  background: #111;
+  transform: scale(1.3);
+}
+
+.dark .dotActive {
+  background: #fff;
 }
 
 /* ── Адаптив ── */
@@ -109,12 +162,20 @@
   .grid {
     grid-template-columns: 1fr;
   }
+  .viewport {
+    padding-left: 1.5rem;
+    scroll-padding-left: 1.5rem;
+  }
   .cardWrap {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% - 3rem);
   }
   .header {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .headerRight {
+    width: 100%;
+    justify-content: space-between;
   }
   .section {
     padding: 5rem 0;

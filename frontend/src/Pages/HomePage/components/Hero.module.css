@@ -35,13 +35,18 @@
   letter-spacing: -0.01em;
 }
 
+/* Обёртка hero-тела: main + searchBar внутри */
+.heroBody {
+  position: relative;
+  padding-bottom: 4rem;
+}
+
 /* Основной блок */
 .main {
   display: grid;
   grid-template-columns: 1fr 38rem;
   gap: 2.4rem;
   align-items: stretch;
-  margin-bottom: 3rem;
   height: 54rem;
 }
 
@@ -64,7 +69,6 @@
   border-radius: 2rem;
   position: relative;
   height: 100%;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
   clip-path: inset(0 round 2rem);
   isolation: isolate;
 }
@@ -234,14 +238,19 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* Строка поиска */
+/* Строка поиска — абсолютно позиционирована поверх main */
 .searchBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
   background: #fff;
   border-radius: 10rem;
   padding: 1.4rem 1.6rem;
   display: flex;
   align-items: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.13);
 }
 
 .searchField {
@@ -302,21 +311,66 @@
 }
 
 @media (max-width: 1024px) {
+  .heroBody {
+    padding-bottom: 0;
+  }
   .main {
     grid-template-columns: 1fr;
+    height: auto;
+    gap: 2rem;
   }
   .imageWrap {
     height: 40rem;
   }
+  .cardWrap {
+    height: 50rem;
+    overflow: hidden;
+  }
+  .badge {
+    display: none;
+  }
   .searchBar {
+    position: static;
     flex-wrap: wrap;
     border-radius: 2rem;
     gap: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   }
   .divider {
     display: none;
   }
   .searchField {
     padding: 0.8rem 1rem;
+    flex: 1 1 calc(50% - 1rem);
+  }
+  .searchBtn {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 2.4rem 0 2rem;
+    min-height: unset;
+  }
+  .title {
+    font-size: clamp(2.8rem, 8vw, 4rem);
+    margin-bottom: 2rem;
+  }
+  .titleOval {
+    width: 8rem;
+    height: 3.8rem;
+  }
+  .main {
+    gap: 1.6rem;
+  }
+  .imageWrap {
+    height: 28rem;
+  }
+  .cardWrap {
+    display: none;
   }
 }

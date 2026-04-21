@@ -26,6 +26,7 @@ import {
   Plus,
   ArrowRight,
   ChevronDown,
+  PenLine,
 } from "lucide-react";
 import styles from "./Icon.module.css";
 
@@ -125,6 +126,7 @@ const REGISTRY = {
   "landmark": Landmark,
   // Услуги / документы
   "file-text": FileText,
+  "pen-line": PenLine,
   "credit-card": CreditCard,
   "info": Info,
   "star": Star,

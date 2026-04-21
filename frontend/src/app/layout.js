@@ -182,6 +182,11 @@ const gtEesti = localFont({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata = {
   title: "ShanGroup — Недвижимость в Дубае",
   description: "Премиальная недвижимость в Дубае. Апартаменты, виллы, инвестиции.",

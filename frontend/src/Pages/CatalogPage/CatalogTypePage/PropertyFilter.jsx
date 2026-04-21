@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo, useRef, useEffect, Fragment } from "react";
+import { MapPin, Building2, CircleDollarSign, BedDouble, Home, Layers, Eye, Paintbrush, SlidersHorizontal, Search, CheckCircle2, HardHat, CreditCard, TrendingUp } from "lucide-react";
 import Flag from "react-world-flags";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
 import MultiSelect from "./MultiSelect";
-import Dropdown from "./Dropdown";
 import Button from "@/components/Button/Button";
 import { EMIRATES } from "@/utils/properties";
 import styles from "./PropertyFilter.module.css";
@@ -120,10 +120,10 @@ const PRICE_RANGES = [
 ];
 
 const STATUS_OPTIONS = [
-  { key: "ready", label: "Готово к заселению" },
-  { key: "offPlan", label: "Строящаяся" },
-  { key: "installment", label: "Рассрочка" },
-  { key: "investment", label: "Для инвестиций" },
+  { key: "ready",       label: "Готово к заселению", Icon: CheckCircle2 },
+  { key: "offPlan",     label: "Строящаяся",          Icon: HardHat      },
+  { key: "installment", label: "Рассрочка",            Icon: CreditCard   },
+  { key: "investment",  label: "Для инвестиций",       Icon: TrendingUp   },
 ];
 
 // Per-type extra dropdown configs
@@ -132,10 +132,11 @@ const TYPE_EXTRA_FIELDS = {
     {
       key: "type",
       label: "Тип",
-      values: (items) =>
-        uniq(items, "type")
-          .sort()
-          .map((v) => ({ val: v, label: v })),
+      values: (items) => {
+        const extra = ["Дуплекс", "Офис", "Отдельные апартаменты"];
+        const all = [...new Set([...uniq(items, "type"), ...extra])].sort();
+        return all.map((v) => ({ val: v, label: v }));
+      },
     },
   ],
   villas: [
@@ -212,6 +213,16 @@ const TYPE_EXTRA_FIELDS = {
   ],
 };
 
+const EXTRA_ICONS = {
+  type: Home,
+  beds: BedDouble,
+  villaType: Home,
+  finishType: Paintbrush,
+  townhouseType: Home,
+  view: Eye,
+  levels: Layers,
+};
+
 function uniq(items, key) {
   return [...new Set(items.map((p) => p[key]).filter(Boolean))];
 }
@@ -261,6 +272,7 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
   const extraFields = TYPE_EXTRA_FIELDS[typeSlug] ?? [];
 
   const [currency, setCurrency] = useState("AED");
+  const [showExtra, setShowExtra] = useState(false);
 
   const [pending, setPending] = useState(EMPTY_PENDING);
   const [pendingExtra, setPendingExtra] = useState({});
@@ -322,19 +334,25 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       if (on) {
         const opt = STATUS_OPTIONS.find((s) => s.key === key);
         if (opt)
-          tags.push({ key: `status_${key}`, label: opt.label, icon: "status" });
+          tags.push({ key: `status_${key}`, label: opt.label, icon: "status", IconComponent: opt.Icon });
       }
     });
+    // Beds range tag
+    const bMin = pendingExtra.bedsMin;
+    const bMax = pendingExtra.bedsMax;
+    if ((bMin !== "" && bMin !== undefined) || (bMax !== "" && bMax !== undefined)) {
+      const minL = bMin === 0 ? "Студия" : bMin !== "" && bMin !== undefined ? String(bMin) : "—";
+      const maxL = bMax !== "" && bMax !== undefined ? String(bMax) : "—";
+      tags.push({ key: "extra_beds_range", label: `Спальни: ${minL} → ${maxL}`, icon: "beds" });
+    }
     Object.entries(pendingExtra || {}).forEach(([key, val]) => {
-      if (val) {
-        const field = extraFields.find((f) => f.key === key);
-        const icon = key === "beds" || key === "levels" ? "beds" : "filter";
-        tags.push({
-          key: `extra_${key}`,
-          label: `${field?.label ?? key}: ${val}`,
-          icon,
-        });
-      }
+      if (key === "bedsMin" || key === "bedsMax") return;
+      const field = extraFields.find((f) => f.key === key);
+      const icon = key === "levels" ? "beds" : "filter";
+      const arr = Array.isArray(val) ? val : val ? [val] : [];
+      arr.forEach((v) =>
+        tags.push({ key: `extra_${key}__${v}`, label: `${field?.label ?? key}: ${v}`, icon })
+      );
     });
     return tags;
   }, [pending, pendingExtra, currency, extraFields]);
@@ -349,6 +367,14 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
   }, [pending, pendingExtra, applied, activeTags.length]);
 
   function removeTag(tagKey) {
+    if (tagKey === "extra_beds_range") {
+      setPendingExtra((prev) => {
+        const next = { ...prev, bedsMin: "", bedsMax: "" };
+        setApplied((a) => ({ ...(a ?? pending), extra: next }));
+        return next;
+      });
+      return;
+    }
     // Update pending then immediately apply so results update
     setPending((prev) => {
       let next = { ...prev };
@@ -369,9 +395,13 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       return next;
     });
     if (tagKey.startsWith("extra_")) {
-      const k = tagKey.replace("extra_", "");
+      const rest = tagKey.replace("extra_", "");
+      const sep = rest.indexOf("__");
+      const fieldKey = rest.slice(0, sep);
+      const fieldVal = rest.slice(sep + 2);
       setPendingExtra((prev) => {
-        const next = { ...prev, [k]: "" };
+        const arr = Array.isArray(prev[fieldKey]) ? prev[fieldKey] : [];
+        const next = { ...prev, [fieldKey]: arr.filter((v) => v !== fieldVal) };
         setApplied((a) => ({ ...(a ?? pending), extra: next }));
         return next;
       });
@@ -398,8 +428,14 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       if (applied.status?.offPlan && p.delivery === "Готово") return false;
       if (applied.status?.installment && p.delivery === "Готово") return false;
       if (applied.status?.investment && !p.visa) return false;
+      const bMin = applied.extra?.bedsMin;
+      const bMax = applied.extra?.bedsMax;
+      if (bMin !== "" && bMin !== undefined && Number(p.beds) < Number(bMin)) return false;
+      if (bMax !== "" && bMax !== undefined && Number(p.beds) > Number(bMax)) return false;
       for (const [key, val] of Object.entries(applied.extra || {})) {
-        if (val && String(p[key]) !== String(val)) return false;
+        if (key === "bedsMin" || key === "bedsMax") continue;
+        const arr = Array.isArray(val) ? val : val ? [val] : [];
+        if (arr.length > 0 && !arr.map(String).includes(String(p[key]))) return false;
       }
       return true;
     });
@@ -410,103 +446,155 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
   return (
     <>
       <div className={styles.filter}>
-        {/* Dropdowns grid */}
-        <div className={styles.row}>
-          <div className={styles.field}>
-            <span className={styles.label}>Район</span>
-            <MultiSelect
-              options={districtOptions}
-              selected={pending.districts}
-              onChange={(val) => setPendingField("districts", val)}
-              placeholder="Все районы"
-            />
-          </div>
+        <h2 className={styles.filterTitle}>Найдите идеальное жильё</h2>
 
-          <div className={styles.field}>
-            <span className={styles.label}>Застройщик</span>
-            <MultiSelect
-              options={developerOptions}
-              selected={pending.developers}
-              onChange={(val) => setPendingField("developers", val)}
-              placeholder="Все застройщики"
-            />
-          </div>
-
-          <div className={styles.field}>
-            <span className={styles.label}>Цена</span>
-            <PricePill
-              priceIdx={pending.priceIdx}
-              currency={currency}
-              onCurrency={setCurrency}
-              onPrice={(i) => setPendingField("priceIdx", i)}
-              pillStyles={pillStyles}
-            />
-          </div>
-
-          {extraFields.map((field) => (
-            <div key={field.key} className={styles.field}>
-              <span className={styles.label}>{field.label}</span>
-              <Dropdown
-                placeholder={`Все`}
-                value={pendingExtra[field.key] ?? ""}
-                options={[{ val: "", label: "Все" }, ...field.values(items)]}
-                onChange={(val) => setExtraField(field.key, val)}
+        {/* Pill-style filter bar */}
+        <div className={styles.filterBar}>
+          <div className={styles.filterField}>
+            <div className={styles.filterIconBadge}><MapPin size={18} /></div>
+            <div className={styles.filterFieldInner}>
+              <span className={styles.filterFieldLabel}>Район</span>
+              <MultiSelect
+                flat
+                options={districtOptions}
+                selected={pending.districts}
+                onChange={(val) => setPendingField("districts", val)}
+                placeholder="Все районы"
               />
             </div>
-          ))}
+          </div>
+
+          <div className={styles.filterField}>
+            <div className={styles.filterIconBadge}><Building2 size={18} /></div>
+            <div className={styles.filterFieldInner}>
+              <span className={styles.filterFieldLabel}>Застройщик</span>
+              <MultiSelect
+                flat
+                options={developerOptions}
+                selected={pending.developers}
+                onChange={(val) => setPendingField("developers", val)}
+                placeholder="Все застройщики"
+              />
+            </div>
+          </div>
+
+          <div className={styles.filterField}>
+            <div className={styles.filterIconBadge}><CircleDollarSign size={18} /></div>
+            <div className={styles.filterFieldInner}>
+              <span className={styles.filterFieldLabel}>Цена</span>
+              <PricePill
+                flat
+                priceIdx={pending.priceIdx}
+                currency={currency}
+                onCurrency={setCurrency}
+                onPrice={(i) => setPendingField("priceIdx", i)}
+                pillStyles={pillStyles}
+              />
+            </div>
+          </div>
+
+          {extraFields.length > 0 && (
+            <button
+              type="button"
+              className={`${styles.filterExtraBtn} ${showExtra ? styles.filterExtraBtnActive : ""}`}
+              onClick={() => setShowExtra((v) => !v)}
+              title="Дополнительные фильтры"
+            >
+              <SlidersHorizontal size={18} />
+            </button>
+          )}
+
+          <button
+            type="button"
+            className={`${styles.filterSearchBtn} ${isDirty ? styles.filterSearchBtnDirty : ""}`}
+            onClick={applyFilters}
+          >
+            <Search size={18} />
+            Найти
+          </button>
         </div>
 
+        {/* Extra fields (expanded) */}
+        {showExtra && extraFields.length > 0 && (
+          <div className={styles.filterExtraRow}>
+            {extraFields.map((field) => {
+              const Icon = EXTRA_ICONS[field.key] ?? SlidersHorizontal;
+              return (
+                <div key={field.key} className={styles.filterField}>
+                  <div className={styles.filterIconBadge}><Icon size={18} /></div>
+                  <div className={styles.filterFieldInner}>
+                    <span className={styles.filterFieldLabel}>{field.label}</span>
+                    {field.key === "beds" ? (
+                      <BedsRangePill
+                        flat
+                        bedsMin={pendingExtra.bedsMin ?? ""}
+                        bedsMax={pendingExtra.bedsMax ?? ""}
+                        onBedsMin={(v) => setExtraField("bedsMin", v)}
+                        onBedsMax={(v) => setExtraField("bedsMax", v)}
+                        pillStyles={pillStyles}
+                      />
+                    ) : (
+                      <MultiSelect
+                        flat
+                        options={field.values(items).map((o) => o.label)}
+                        selected={pendingExtra[field.key] ?? []}
+                        onChange={(val) => setExtraField(field.key, val)}
+                        placeholder="Все"
+                      />
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
         {/* Status pills */}
+        <p className={styles.statusLabel}>Статус объекта</p>
         <div className={styles.statusRow}>
-          {STATUS_OPTIONS.map(({ key, label }) => (
+          {STATUS_OPTIONS.map(({ key, label, Icon }) => (
             <button
               key={key}
               type="button"
               onClick={() => toggleStatus(key)}
               className={`${styles.statusBtn} ${pending.status[key] ? styles.statusBtnActive : ""}`}
             >
+              <Icon size={14} strokeWidth={1.5} />
               {label}
             </button>
           ))}
         </div>
 
-        {/* Bottom: active tags + actions */}
-        <div className={styles.bottomRow}>
-          <div className={styles.tags}>
-            {activeTags.map((t) => (
-              <span key={t.key} className={styles.tag}>
-                <span className={styles.tagIcon}>{TAG_ICONS[t.icon]}</span>
-                <span className={styles.tagLabel}>{t.label}</span>
-                <button
-                  type="button"
-                  className={styles.tagX}
-                  onClick={() => removeTag(t.key)}
-                  aria-label="Удалить фильтр"
-                >
-                  ×
-                </button>
-              </span>
-            ))}
-          </div>
-          <div className={styles.actions}>
-            <button
-              type="button"
-              className={`${styles.applyBtn} ${isDirty ? styles.applyBtnDirty : ""}`}
-              onClick={applyFilters}
-            >
-              {isDirty ? "Применить ●" : "Применить"}
-            </button>
-            {(hasFilters || applied) && (
-              <button
-                type="button"
-                className={styles.resetBtn}
-                onClick={resetFilters}
-              >
+        {/* Active tags + reset */}
+        {(activeTags.length > 0 || applied) && (
+          <div className={styles.bottomRow}>
+            <div className={styles.tags}>
+              {activeTags.map((t) => (
+                <span key={t.key} className={styles.tag}>
+                  <span className={styles.tagIcon}>
+                    {t.IconComponent
+                      ? <t.IconComponent size={12} strokeWidth={1.5} />
+                      : TAG_ICONS[t.icon]}
+                  </span>
+                  <span className={styles.tagLabel}>{t.label}</span>
+                  <button
+                    type="button"
+                    className={styles.tagX}
+                    onClick={() => removeTag(t.key)}
+                    aria-label="Удалить фильтр"
+                  >
+                    ×
+                  </button>
+                </span>
+              ))}
+            </div>
+            <div className={styles.actions}>
+              <button type="button" className={styles.resetBtn} onClick={resetFilters}>
                 Сбросить
               </button>
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Count */}
@@ -550,7 +638,7 @@ function pluralize(n, one, few, many) {
   return many;
 }
 
-function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles }) {
+function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles, flat = false }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -571,7 +659,7 @@ function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles }) {
     <div className={pillStyles.wrap} ref={ref}>
       <button
         type="button"
-        className={`${pillStyles.pill} ${isSet ? pillStyles.pillActive : ""} ${open ? pillStyles.pillOpen : ""}`}
+        className={`${pillStyles.pill} ${flat ? pillStyles.pillFlat : ""} ${isSet ? (flat ? pillStyles.pillFlatActive : pillStyles.pillActive) : ""} ${!flat && open ? pillStyles.pillOpen : ""}`}
         onClick={() => setOpen((v) => !v)}
       >
         <span>{label}</span>
@@ -591,7 +679,7 @@ function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles }) {
       </button>
 
       {open && (
-        <div className={pillStyles.dropdown}>
+        <div className={`${pillStyles.dropdown} ${flat ? pillStyles.dropdownFlat : ""}`}>
           {/* Currency toggle */}
           <div className={styles.currencyRow}>
             {[
@@ -624,6 +712,94 @@ function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles }) {
                 {fmtRange(r, currency)}
               </button>
             ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const BED_OPTIONS = [
+  { val: "", label: "Любое" },
+  { val: 0, label: "Студия" },
+  { val: 1, label: "1" },
+  { val: 2, label: "2" },
+  { val: 3, label: "3" },
+  { val: 4, label: "4" },
+  { val: 5, label: "5" },
+  { val: 6, label: "6" },
+  { val: 7, label: "7" },
+];
+
+function BedsRangePill({ bedsMin, bedsMax, onBedsMin, onBedsMax, pillStyles, flat = false }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function onOut(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", onOut);
+    return () => document.removeEventListener("mousedown", onOut);
+  }, []);
+
+  const isSet = (bedsMin !== "" && bedsMin !== undefined) || (bedsMax !== "" && bedsMax !== undefined);
+  const minLabel = bedsMin === 0 ? "Студия" : bedsMin !== "" && bedsMin !== undefined ? String(bedsMin) : "Мин";
+  const maxLabel = bedsMax !== "" && bedsMax !== undefined ? String(bedsMax) : "Макс";
+  const displayText = isSet ? `${minLabel} — ${maxLabel}` : "Все";
+
+  return (
+    <div className={pillStyles.wrap} ref={ref}>
+      <button
+        type="button"
+        className={`${pillStyles.pill} ${flat ? pillStyles.pillFlat : ""} ${isSet ? (flat ? pillStyles.pillFlatActive : pillStyles.pillActive) : ""} ${!flat && open ? pillStyles.pillOpen : ""}`}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span>{displayText}</span>
+        <svg
+          className={`${pillStyles.chevron} ${open ? pillStyles.chevronOpen : ""}`}
+          width="11" height="11" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" strokeWidth="2.5"
+          strokeLinecap="round" strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className={`${pillStyles.dropdown} ${flat ? pillStyles.dropdownFlat : ""}`}>
+          <div className={styles.bedsRow}>
+            <div className={styles.bedsCol}>
+              <p className={styles.bedsColLabel}>Мин. спален</p>
+              <div className={pillStyles.list}>
+                {BED_OPTIONS.map((o) => (
+                  <button
+                    key={String(o.val)}
+                    type="button"
+                    className={`${pillStyles.option} ${String(bedsMin) === String(o.val) ? pillStyles.optionActive : ""}`}
+                    onClick={() => onBedsMin(o.val)}
+                  >
+                    {o.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className={styles.bedsDivider} />
+            <div className={styles.bedsCol}>
+              <p className={styles.bedsColLabel}>Макс. спален</p>
+              <div className={pillStyles.list}>
+                {BED_OPTIONS.map((o) => (
+                  <button
+                    key={String(o.val)}
+                    type="button"
+                    className={`${pillStyles.option} ${String(bedsMax) === String(o.val) ? pillStyles.optionActive : ""}`}
+                    onClick={() => onBedsMax(o.val)}
+                  >
+                    {o.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}

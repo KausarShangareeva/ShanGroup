@@ -30,19 +30,20 @@
 
 .title {
   font-size: clamp(2.8rem, 4vw, 4.8rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #1a1a2e;
   line-height: 1.15;
   margin: 0;
   font-family: var(--font-kuzanyan);
+  max-width: 70rem;
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #777;
-  max-width: 56rem;
+  max-width: 70rem;
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: 300;
   margin: 0;
 }
 

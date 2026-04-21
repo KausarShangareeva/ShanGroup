@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Container from "@/components/layout/Container";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import styles from "./QuoteBanner.module.css";
 
 const QUOTES = [
@@ -59,7 +60,7 @@ export default function QuoteBanner() {
         >
           <span className={styles.quoteMarkLeft}>&ldquo;</span>
           <blockquote className={styles.blockquote}>
-            {label && <span className={styles.label}>{label}</span>}
+            {label && <SectionTitle tag={label} align="center" dark mb="0" />}
             <p className={styles.text}>{text}</p>
             <cite className={styles.author}>— {author}</cite>
           </blockquote>

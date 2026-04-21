@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Flag from "react-world-flags";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import LikeButton from "@/components/LikeButton/LikeButton";
 import Icon from "@/components/Icon/Icon";
 import Container from "./Container";
@@ -78,7 +78,7 @@ const navItems = [
       },
     ],
   },
-  { label: "Сообщества", type: "communities", href: "/communities" },
+  { label: "Районы", type: "communities", href: "/communities" },
   { label: "Застройщики", type: "developers", href: "/developers" },
   {
     label: "О нас",
@@ -995,6 +995,7 @@ export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [activeNav, setActiveNav] = useState(null);
+  const [mobileSection, setMobileSection] = useState(null);
   const navTimeoutRef = useRef(null);
   const closeNav = () => setActiveNav(null);
   const pathname = usePathname();
@@ -1050,6 +1051,7 @@ export default function Navigation() {
                 icon="phone-call"
               />
               <button
+                type="button"
                 className={styles.burger}
                 onClick={() => setMenuOpen(!menuOpen)}
               >
@@ -1089,35 +1091,97 @@ export default function Navigation() {
         {/* Мобильное меню */}
         {menuOpen && (
           <div className={styles.mobile}>
-            {navItems.map((item) =>
-              item.dropdown ? (
-                <div key={item.label}>
-                  <p className={styles.mobileGroup}>{item.label}</p>
-                  {item.dropdown.map((d) => (
+            {/* ── Недвижимость ── */}
+            <p className={styles.mobileSectionLabel}>Недвижимость</p>
+            <div className={styles.mobileCard}>
+              <button
+                type="button"
+                className={styles.mobileRow}
+                onClick={() =>
+                  setMobileSection(
+                    mobileSection === "properties" ? null : "properties",
+                  )
+                }
+              >
+                <span>Новостройки ОАЭ</span>
+                <ChevronDown
+                  size={16}
+                  className={`${styles.chevron} ${mobileSection === "properties" ? styles.chevronOpen : ""}`}
+                />
+              </button>
+              {mobileSection === "properties" && (
+                <div className={styles.mobileSubList}>
+                  {navItems[0].dropdown.map((d) => (
                     <Link
                       key={d.href}
                       href={d.href}
-                      className={styles.mobileLink}
+                      className={styles.mobileSub}
                       onClick={() => setMenuOpen(false)}
                     >
                       {d.label}
                     </Link>
                   ))}
                 </div>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={styles.mobileLink}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ),
-            )}
+              )}
+              <div className={styles.mobileCardDivider} />
+              <Link
+                href="/communities"
+                className={styles.mobileRow}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span>Районы</span>
+                <ChevronRight size={16} className={styles.mobileChevron} />
+              </Link>
+              <div className={styles.mobileCardDivider} />
+              <Link
+                href="/developers"
+                className={styles.mobileRow}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span>Застройщики</span>
+                <ChevronRight size={16} className={styles.mobileChevron} />
+              </Link>
+            </div>
+
+            {/* ── О нас ── */}
+            <p className={styles.mobileSectionLabel}>О нас</p>
+            <div className={styles.mobileCard}>
+              {navItems[3].dropdown.map((d, i) => (
+                <div key={d.href}>
+                  {i > 0 && <div className={styles.mobileCardDivider} />}
+                  <Link
+                    href={d.href}
+                    className={styles.mobileRow}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <span>{d.label}</span>
+                    <ChevronRight size={16} className={styles.mobileChevron} />
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Услуги ── */}
+            <p className={styles.mobileSectionLabel}>Услуги</p>
+            <div className={styles.mobileCard}>
+              {navItems[3].services.map((s, i) => (
+                <div key={s.href}>
+                  {i > 0 && <div className={styles.mobileCardDivider} />}
+                  <Link
+                    href={s.href}
+                    className={styles.mobileRow}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <span>{s.label}</span>
+                    <ChevronRight size={16} className={styles.mobileChevron} />
+                  </Link>
+                </div>
+              ))}
+            </div>
+
             <button
-              className={styles.loginBtn}
-              style={{ width: "100%", marginTop: "1rem" }}
+              type="button"
+              className={styles.mobileCtaBtn}
               onClick={() => {
                 setFormOpen(true);
                 setMenuOpen(false);

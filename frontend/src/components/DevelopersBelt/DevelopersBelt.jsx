@@ -1,5 +1,6 @@
 import developersData from "@/data/developers.json";
 import Container from "@/components/layout/Container";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";
 import styles from "./DevelopersBelt.module.css";
 
@@ -36,16 +37,14 @@ export default function DevelopersBelt() {
   return (
     <section className={styles.section}>
       <Container>
-        <div className={styles.heading}>
-          <h2 className={styles.title}>
-            Мы выстроили тёплые отношения
-            <br />
-            <span className={styles.titleAccent}>с лучшими застройщиками ОАЭ</span>
-          </h2>
-          <p className={styles.sub}>
-            Это позволяет получать объекты и условия, доступные не всем
-          </p>
-        </div>
+        <SectionTitle
+          tag="Застройщики"
+          title="Мы выстроили тёплые отношения с лучшими застройщиками ОАЭ"
+          subtitle="Это позволяет получать объекты и условия, доступные не всем"
+          align="center"
+          dark
+          mb="7rem"
+        />
       </Container>
 
       <div className={styles.rows}>

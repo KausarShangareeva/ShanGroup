@@ -1,14 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
 import styles from "./PropertyTypeSection.module.css";
-
-const GAP = 24; // px, matches 2.4rem gap at 10px base
 
 function getVisible() {
   if (typeof window === "undefined") return 3;
@@ -25,47 +23,71 @@ export default function PropertyTypeSection({
   dark = false,
 }) {
   const [visibleCount, setVisibleCount] = useState(3);
-  const hasCarousel = properties.length > visibleCount;
   const [index, setIndex] = useState(0);
   const viewportRef = useRef(null);
-  const stripRef = useRef(null);
+  const indexRef = useRef(0);
+  const maxIndexRef = useRef(0);
 
+  const hasCarousel = properties.length > visibleCount;
   const maxIndex = Math.max(0, properties.length - visibleCount);
+  maxIndexRef.current = maxIndex;
 
-  const applyTransform = useCallback((i) => {
-    if (!viewportRef.current || !stripRef.current) return;
-    const firstCard = stripRef.current.children[0];
-    if (!firstCard) return;
-    const step = firstCard.offsetWidth + GAP;
-    stripRef.current.style.transform = `translateX(-${i * step}px)`;
-  }, []);
-
-  const next = useCallback(() => {
-    setIndex((prev) => {
-      const n = prev >= maxIndex ? 0 : prev + 1;
-      applyTransform(n);
-      return n;
-    });
-  }, [maxIndex, applyTransform]);
-
-  const prev = useCallback(() => {
-    setIndex((prev) => {
-      const n = prev <= 0 ? maxIndex : prev - 1;
-      applyTransform(n);
-      return n;
-    });
-  }, [maxIndex, applyTransform]);
-
-  // Пересчёт при ресайзе, чтобы слайдер оставался выровненным.
   useEffect(() => {
-    const onResize = () => {
-      setVisibleCount(getVisible());
-      applyTransform(index);
-    };
     setVisibleCount(getVisible());
+    const onResize = () => setVisibleCount(getVisible());
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [index, applyTransform]);
+  }, []);
+
+  // Sync dots with native scroll
+  useEffect(() => {
+    const el = viewportRef.current;
+    if (!el) return;
+    let timer = null;
+    const update = () => {
+      const card = el.firstElementChild;
+      if (!card) return;
+      const step = card.offsetWidth + 24;
+      const i = Math.min(Math.round(el.scrollLeft / step), maxIndexRef.current);
+      indexRef.current = i;
+      setIndex(i);
+    };
+    const onScroll = () => {
+      clearTimeout(timer);
+      timer = setTimeout(update, 80);
+    };
+    const onTouchEnd = () => {
+      clearTimeout(timer);
+      setTimeout(update, 300);
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      el.removeEventListener("touchend", onTouchEnd);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  const scrollTo = (i) => {
+    const el = viewportRef.current;
+    if (!el) return;
+    const card = el.firstElementChild;
+    if (!card) return;
+    el.scrollLeft = i * (card.offsetWidth + 24);
+    indexRef.current = i;
+    setIndex(i);
+  };
+
+  const prev = () => {
+    const cur = indexRef.current;
+    scrollTo(cur <= 0 ? maxIndexRef.current : cur - 1);
+  };
+
+  const next = () => {
+    const cur = indexRef.current;
+    scrollTo(cur >= maxIndexRef.current ? 0 : cur + 1);
+  };
 
   const renderCard = (p) => (
     <PropertyCard
@@ -86,6 +108,8 @@ export default function PropertyTypeSection({
 
   return (
     <section className={`${styles.section} ${dark ? styles.dark : ""}`}>
+      <div className={styles.noise} />
+      <div className={styles.inner}>
       <Container>
         <div className={styles.header}>
           <SectionTitle
@@ -121,15 +145,26 @@ export default function PropertyTypeSection({
         </div>
 
         {hasCarousel ? (
-          <div className={styles.viewport} ref={viewportRef}>
-            <div className={styles.strip} ref={stripRef}>
+          <>
+            <div className={styles.viewport} ref={viewportRef}>
               {properties.map((p) => (
                 <div key={p.id} className={styles.cardWrap}>
                   {renderCard(p)}
                 </div>
               ))}
             </div>
-          </div>
+            <div className={styles.dots}>
+              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`${styles.dot} ${i === index ? styles.dotActive : ""}`}
+                  onClick={() => scrollTo(i)}
+                  aria-label={`Слайд ${i + 1}`}
+                />
+              ))}
+            </div>
+          </>
         ) : (
           <div className={styles.grid}>
             {properties.map((p) => (
@@ -138,6 +173,7 @@ export default function PropertyTypeSection({
           </div>
         )}
       </Container>
+      </div>
     </section>
   );
 }

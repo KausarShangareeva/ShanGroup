@@ -5,7 +5,31 @@
   width: 100%;
 }
 
-/* ── Trigger pill ── */
+/* Flat variant — trigger without border/background, used inside hero-style searchbar */
+.pillFlat {
+  border: none !important;
+  background: transparent !important;
+  height: auto !important;
+  padding: 0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  color: #111 !important;
+  border-radius: 0 !important;
+  justify-content: flex-start !important;
+}
+
+.pillFlat:hover {
+  border: none !important;
+  background: transparent !important;
+}
+
+.pillFlatActive {
+  background: transparent !important;
+  border: none !important;
+  color: #111 !important;
+}
+
+/* ── Trigger ── */
 .pill {
   display: flex;
   align-items: center;
@@ -15,7 +39,7 @@
   height: 4rem;
   padding: 0 1.2rem;
   border: 1px solid #e0e0e0;
-  border-radius: 0.8rem;
+  border-radius: 1rem;
   background: #fff;
   font-size: 1.35rem;
   font-weight: 400;
@@ -23,7 +47,7 @@
   cursor: pointer;
   white-space: nowrap;
   font-family: var(--font-montserrat);
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s;
   user-select: none;
 }
 
@@ -31,14 +55,22 @@
   border-color: #aaa;
 }
 
+/* Open state — bottom border invisible to merge with dropdown */
 .pillOpen {
   border-color: #1a1a2e;
+  border-bottom-color: transparent;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .pillActive {
   background: #1a1a2e;
   border-color: #1a1a2e;
   color: #fff;
+}
+
+.pillActive.pillOpen {
+  border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
 .pillActive:hover {
@@ -57,18 +89,41 @@
   transform: rotate(180deg);
 }
 
-/* ── Dropdown panel ── */
+/* ── Dropdown panel — seamless with trigger ── */
 .dropdown {
   position: absolute;
-  top: calc(100% + 4px);
+  top: 100%;
   left: 0;
-  min-width: 100%;
+  width: 100%;
   background: #fff;
-  border: 1px solid #d8d8d8;
-  border-radius: 0.8rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #1a1a2e;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   z-index: 200;
   overflow: hidden;
+}
+
+/* Dropdown in flat mode — full-width panel below the searchBar */
+.dropdownFlat {
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+  top: calc(100% + 25px);
+  left: -2rem;
+  right: -2rem;
+  width: auto;
+}
+
+.dropdownFlat .list {
+  max-height: 40rem;
+}
+
+.dropdownFlat .option {
+  white-space: normal;
+}
+
+.dropdownFlat .itemLabel {
+  white-space: normal;
 }
 
 /* Search row */
@@ -106,9 +161,16 @@
   padding: 0.4rem 0;
 }
 
-.list::-webkit-scrollbar { width: 3px; }
-.list::-webkit-scrollbar-track { background: transparent; }
-.list::-webkit-scrollbar-thumb { background: #e8e8e8; border-radius: 2px; }
+.list::-webkit-scrollbar {
+  width: 3px;
+}
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.list::-webkit-scrollbar-thumb {
+  background: #e8e8e8;
+  border-radius: 2px;
+}
 
 /* Single-select option */
 .option {
@@ -124,7 +186,9 @@
   font-family: var(--font-montserrat);
   cursor: pointer;
   text-align: left;
-  transition: background 0.12s, color 0.12s;
+  transition:
+    background 0.12s,
+    color 0.12s;
   white-space: nowrap;
 }
 
@@ -157,9 +221,11 @@
   width: 1.5rem;
   height: 1.5rem;
   border: 1.5px solid #d8d8d8;
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   flex-shrink: 0;
-  transition: background 0.12s, border-color 0.12s;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
   position: relative;
 }
 

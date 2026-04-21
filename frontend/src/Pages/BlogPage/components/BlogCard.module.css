@@ -6,12 +6,10 @@
   border-radius: 1.6rem;
   overflow: hidden;
   text-decoration: none;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s, transform 0.3s;
+  transition: transform 0.3s;
 }
 
 .card:hover {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   transform: translateY(-3px);
 }
 

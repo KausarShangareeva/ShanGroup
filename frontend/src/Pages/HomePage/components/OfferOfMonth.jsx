@@ -1,5 +1,4 @@
 import {
-  Phone,
   MapPin,
   Leaf,
   ChevronRight,
@@ -69,22 +68,6 @@ export default function OfferOfMonth() {
             </h2>
 
             <ContactButton label="Связаться с агентом" icon="phone" />
-
-            <div className={styles.agent}>
-              <img
-                src={p.image}
-                alt="Агент"
-                className={styles.agentAvatar}
-              />
-              <div className={styles.agentInfo}>
-                <span className={styles.agentName}>Джалиль</span>
-                <span className={styles.agentRole}>Агент по недвижимости</span>
-              </div>
-              <button className={styles.agentContactBtn}>
-                <Phone size={13} />
-                Контакт
-              </button>
-            </div>
           </div>
 
           {/* Центр — фото */}

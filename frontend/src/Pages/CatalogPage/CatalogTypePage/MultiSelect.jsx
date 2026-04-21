@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./Pill.module.css";
 
-export default function MultiSelect({ options, selected, onChange, placeholder = "Все" }) {
+export default function MultiSelect({ options, selected, onChange, placeholder = "Все", flat = false }) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const ref = useRef(null);
@@ -39,7 +39,7 @@ export default function MultiSelect({ options, selected, onChange, placeholder =
     <div className={styles.wrap} ref={ref}>
       <button
         type="button"
-        className={`${styles.pill} ${isSet ? styles.pillActive : ""} ${open ? styles.pillOpen : ""}`}
+        className={`${styles.pill} ${flat ? styles.pillFlat : ""} ${isSet ? (flat ? styles.pillFlatActive : styles.pillActive) : ""} ${!flat && open ? styles.pillOpen : ""}`}
         onClick={() => setOpen((v) => !v)}
       >
         <span>{displayText}</span>
@@ -54,7 +54,7 @@ export default function MultiSelect({ options, selected, onChange, placeholder =
       </button>
 
       {open && (
-        <div className={styles.dropdown}>
+        <div className={`${styles.dropdown} ${flat ? styles.dropdownFlat : ""}`}>
           <div className={styles.searchWrap}>
             <svg className={styles.searchIcon} width="13" height="13" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" strokeWidth="2"

@@ -186,12 +186,11 @@
   text-decoration: none;
   border: 1px solid #e8e8e8;
   transition:
-    box-shadow 0.3s,
+
     transform 0.3s;
 }
 
 .card:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
   transform: translateY(-3px);
 }
 

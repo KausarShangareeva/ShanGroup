@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./Pill.module.css";
 
-export default function Dropdown({ placeholder, value, options, onChange }) {
+export default function Dropdown({ placeholder, value, options, onChange, flat = false }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -27,7 +27,7 @@ export default function Dropdown({ placeholder, value, options, onChange }) {
     <div className={styles.wrap} ref={ref}>
       <button
         type="button"
-        className={`${styles.pill} ${isSet ? styles.pillActive : ""} ${open ? styles.pillOpen : ""}`}
+        className={`${styles.pill} ${flat ? styles.pillFlat : ""} ${isSet ? (flat ? styles.pillFlatActive : styles.pillActive) : ""} ${!flat && open ? styles.pillOpen : ""}`}
         onClick={() => setOpen((v) => !v)}
       >
         <span>{displayText}</span>
@@ -42,7 +42,7 @@ export default function Dropdown({ placeholder, value, options, onChange }) {
       </button>
 
       {open && (
-        <div className={styles.dropdown}>
+        <div className={`${styles.dropdown} ${flat ? styles.dropdownFlat : ""}`}>
           <div className={styles.list}>
             {options.map(({ val, label }) => (
               <button

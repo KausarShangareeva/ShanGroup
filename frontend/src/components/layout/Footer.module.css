@@ -164,4 +164,27 @@
   .grid {
     grid-template-columns: 1fr;
   }
+  .col:nth-child(2),
+  .col:nth-child(3) {
+    justify-self: stretch;
+  }
+  .bottom {
+    padding: 3rem 0;
+  }
+  .bottomCenter {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+  }
+  .bottomCenter a {
+    font-size: 1.5rem;
+  }
+  .bottomCenter p {
+    font-size: 1.4rem;
+  }
+  .colTitle {
+    font-size: 2rem;
+  }
+  .colLinks li a {
+    font-size: 1.6rem;
+  }
 }
