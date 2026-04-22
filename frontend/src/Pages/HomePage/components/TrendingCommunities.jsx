@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";
@@ -107,12 +108,13 @@ export default function TrendingCommunities() {
           <div className={styles.grid}>
             {COMMUNITIES.map(({ name, developer, href, img }) => (
               <Link key={href} href={href} className={styles.card}>
-                <div className={styles.imgWrap}>
-                  <img src={img} alt={name} className={styles.img} />
-                </div>
-                <div className={styles.info}>
-                  <span className={styles.developer}>{developer}</span>
+                <img src={img} alt={name} className={styles.img} />
+                <div className={styles.overlay}>
+                  <p className={styles.developer}>{developer}</p>
                   <h3 className={styles.name}>{name}</h3>
+                </div>
+                <div className={styles.arrow}>
+                  <ArrowUpRight size={15} strokeWidth={2} />
                 </div>
               </Link>
             ))}

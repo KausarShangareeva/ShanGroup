@@ -17,7 +17,9 @@ function MarqueeRow({ items, direction = "left" }) {
   const doubled = [...items, ...items];
   return (
     <div className={styles.rowOuter}>
-      <div className={`${styles.rowTrack} ${direction === "right" ? styles.trackRight : styles.trackLeft}`}>
+      <div
+        className={`${styles.rowTrack} ${direction === "right" ? styles.trackRight : styles.trackLeft}`}
+      >
         {doubled.map(({ name, file }, i) => (
           <div key={i} className={styles.tag}>
             <img
@@ -38,7 +40,7 @@ export default function DevelopersBelt() {
     <section className={styles.section}>
       <Container>
         <SectionTitle
-          tag="Застройщики"
+          tag=""
           title="Мы выстроили тёплые отношения с лучшими застройщиками ОАЭ"
           subtitle="Это позволяет получать объекты и условия, доступные не всем"
           align="center"

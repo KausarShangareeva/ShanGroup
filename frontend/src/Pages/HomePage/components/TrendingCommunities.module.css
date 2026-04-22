@@ -21,94 +21,146 @@
   z-index: 1;
 }
 
-/* ── Grid: 5 колонок как в референсе ── */
+/* ── Grid: 5 колонок ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1.2rem;
+  gap: 1rem;
   margin-top: 5rem;
 }
 
 /* ── Карточка ── */
 .card {
-  display: flex;
-  flex-direction: column;
+  display: block;
   text-decoration: none;
-  gap: 0.9rem;
-}
-
-.imgWrap {
-  aspect-ratio: 2 / 1;
-  border-radius: 1.2rem;
+  border-radius: 1.4rem;
   overflow: hidden;
-  background: #e8e9eb;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #1a1a1a;
 }
 
+/* ── Фото ── */
 .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.55s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.4s ease;
 }
 
 .card:hover .img {
-  transform: scale(1.2);
+  transform: scale(1.08);
+  opacity: 0.75;
 }
 
-/* ── Текст под фото ── */
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.developer {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-}
-
-.name {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #111;
-  line-height: 1.25;
-  margin: 0;
-  font-family: var(--font-montserrat);
-}
-
-/* ── Кнопка ── */
-.moreCell {
+/* ── Градиент поверх фото ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.18) 50%,
+    transparent 100%
+  );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding: 1.4rem 1.4rem 1.2rem;
+  transition: background 0.35s ease;
+}
+
+.card:hover .overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.28) 60%,
+    transparent 100%
+  );
+}
+
+/* ── Developer badge ── */
+.developer {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.4rem;
+  line-height: 1;
+}
+
+/* ── Name ── */
+.name {
+  font-family: var(--font-montserrat);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+  transition: color 0.2s;
+}
+
+.card:hover .name {
+  color: rgba(255, 230, 160, 1);
+}
+
+/* ── Arrow on hover ── */
+.arrow {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── "Все районы" ячейка ── */
+.moreCell {
+  display: flex;
   align-items: flex-end;
-  padding-bottom: 0.2rem;
+  justify-content: flex-end;
+  padding-bottom: 0.4rem;
 }
 
 /* ── Адаптив ── */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
+    gap: 0.7rem;
   }
-
-  .name {
-    font-size: 1.35rem;
+  .section {
+    padding: 6rem 0;
   }
 }

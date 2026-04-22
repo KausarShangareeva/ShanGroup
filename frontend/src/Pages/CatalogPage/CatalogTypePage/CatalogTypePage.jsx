@@ -10,6 +10,8 @@ import {
 import Container from "@/components/layout/Container";
 import PropertyFilter from "./PropertyFilter";
 import CatalogEditorial from "./CatalogEditorial";
+import AgentCTABanner from "./AgentCTABanner";
+import SubscribeBanner from "./SubscribeBanner";
 import {
   PROPERTY_TYPE_BY_SLUG,
   PROPERTY_TYPES,
@@ -27,6 +29,17 @@ const TYPE_ICONS = {
 };
 
 const EDITORIAL = {
+  "new-builds": {
+    title: "Новостройки на продажу в Дубае",
+    highlight: "Новостройки",
+    paragraphs: [
+      "Дубай — город, ставший символом роскоши и величия, — предлагает несравнимый выбор элитной недвижимости для тех, кто ищет вершину изысканной жизни. На фоне захватывающего горизонта и культовых достопримечательностей новостройки Дубая переосмысляют стандарты величия и утончённости.",
+      "Новостройки Дубая — это архитектурные шедевры, демонстрирующие авангардный дизайн и передовые технологии строительства. От элегантных современных пентхаусов до роскошных вилл у воды — каждый проект воплощает приверженность города инновациям и эстетическому совершенству.",
+      "Откройте для себя эти роскошные резиденции в самых эксклюзивных районах Дубая. Будь то легендарный Palm Jumeirah, динамичный Downtown Dubai или спокойный Emirates Hills — каждая локация предлагает уникальное сочетание престижа, удобства и захватывающих видов.",
+      "Жизнь в новостройках Дубая — это нечто большее, чем просто жильё. Жители получают доступ к инфраструктуре мирового класса: частным пляжам, инфинити-бассейнам с видом на skyline, спа-центрам и консьерж-сервисам, готовым удовлетворить любой запрос.",
+      "Новостройки Дубая оснащены новейшими технологиями умного дома: автоматизированное освещение и климат-контроль, передовые системы безопасности — всё это делает каждый дом максимально комфортным и защищённым.",
+    ],
+  },
   apartments: {
     title: "Элитные апартаменты на продажу в Дубае",
     highlight: "апартаменты",
@@ -132,6 +145,8 @@ export default function CatalogTypePage({ typeSlug }) {
         </section>
 
         <PropertyFilter key={typeSlug} items={items} typeSlug={typeSlug} />
+
+        <AgentCTABanner />
       </Container>
 
       {editorial && (
@@ -141,6 +156,10 @@ export default function CatalogTypePage({ typeSlug }) {
           paragraphs={editorial.paragraphs}
         />
       )}
+
+      <Container>
+        <SubscribeBanner />
+      </Container>
     </main>
   );
 }

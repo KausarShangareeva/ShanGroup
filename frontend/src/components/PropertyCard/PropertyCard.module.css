@@ -7,7 +7,7 @@
   flex-direction: column;
   /* Фиксированная высота — так hover-reveal контактов «съедает»
      место у изображения (flex: 1), а не растягивает карточку вниз. */
-  height: 56rem;
+  height: 50rem;
   /* overflow: visible — бейдж «Топ предложение» имеет хвостик,
      который должен торчать за левый край карточки. Скругление
      переносим на .imgWrap (верхние углы) и .body (нижние), тень
@@ -24,6 +24,7 @@
 
 .card:hover {
   transform: translateY(-3px);
+  z-index: 20;
 }
 
 /* ── Фото ── */
@@ -38,6 +39,12 @@
   overflow: hidden;
   background: #fff;
   border-radius: 1.8rem 1.8rem 0 0;
+}
+
+.imgLink {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .img {
@@ -152,7 +159,7 @@
 
 /* ── Тело ── */
 .body {
-  padding: 2rem 2rem 1.8rem;
+  padding: 2rem 2rem 2rem;
   background: #fff;
   border-radius: 0 0 1.8rem 1.8rem;
   display: flex;
@@ -171,21 +178,21 @@
 }
 
 .name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #111;
+  font-family: var(--font-abril);
+  font-size: 1.8rem;
+  font-weight: 100;
+  color: #666;
   line-height: 1.3;
   margin: 0;
-  flex: 1;
-  min-width: 0;
 }
 
 .price {
+  font-family: var(--font-montserrat);
   font-size: 2rem;
-  font-weight: 500;
-  color: #191a23;
-  line-height: 1.2;
-  font-family: var(--font-montserrat, inherit);
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.02em;
+  line-height: 1;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -193,23 +200,26 @@
 .location {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   font-size: 1.4rem;
   color: #888;
 }
 
-/* Иконка локации красится в тот же акцент, что цена и иконки
-   характеристик — текст района остаётся нейтрально-серым. */
-.location :global(svg) {
+.locationIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 2.6rem;
+  height: 2.6rem;
   border-radius: 0.5rem;
   background: #f5f5f5;
   color: #191a23;
   flex-shrink: 0;
+}
+
+.locationIcon :global(svg) {
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 /* ── Строка характеристик (спальни / санузлы / площадь) ── */
@@ -217,10 +227,9 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  padding: 1.5rem 0;
+  padding-top: 1.5rem;
   margin-top: 0.2rem;
   border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
   flex-wrap: wrap;
 }
 
@@ -266,15 +275,17 @@
 
 /* ── Ряд агента ── */
 .agentRow {
+  border-top: 1px solid #f0f0f0;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-top: 0.4rem;
+  padding-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 .agentAvatar {
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -285,7 +296,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  gap: 0.1rem;
+  gap: 5px;
 }
 
 .agentLabel {
@@ -297,12 +308,19 @@
 }
 
 .agentName {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #111;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.agentPhone {
+  font-size: 1.4rem;
+  color: #b5b5b5;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
 /* ══════════════════════════════════════════
@@ -317,14 +335,14 @@
   margin-top: 0;
   opacity: 0;
   transition:
-    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.3s ease 0.05s;
+    max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    margin-top 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease 0.06s;
 }
 
 .card:hover .reveal {
-  max-height: 5rem;
-  margin-top: 1rem;
+  max-height: 11rem;
+  margin-top: 0;
   opacity: 1;
 }
 
@@ -362,8 +380,22 @@
   border-color: #111;
 }
 
+@keyframes waGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .contactBtnWa:hover {
-  background: #25d366;
-  color: #fff;
-  border-color: #25d366;
+  background: linear-gradient(135deg, #57ebde, #aefb2a, #57ebde);
+  background-size: 400% 400%;
+  animation: waGradient 2.5s ease infinite;
+  color: #111;
+  border-color: transparent;
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Mail, Phone, BedDouble, Bath, Maximize2 } from "lucide-react";
 import DeveloperTag from "@/components/DeveloperTag/DeveloperTag";
+import LikeButton from "@/components/LikeButton/LikeButton";
 import AGENT from "@/data/agent.json";
 import styles from "./PropertyCard.module.css";
 
@@ -49,17 +50,21 @@ export default function PropertyCard({
   baths,
   area,
   agent = AGENT,
+  isLiked = false,
+  onLike,
 }) {
   const waHref = `https://wa.me/${(agent.phone ?? "").replace(/\D/g, "")}`;
 
   return (
     <article className={styles.card}>
-      <Link href={href} className={styles.imgWrap}>
-        <img src={img} alt={name} className={styles.img} />
-      </Link>
-      {/* Бейджи — прямые потомки .card, а не .imgWrap, чтобы не попадать
-          под overflow: hidden у imgWrap и иметь возможность вылезать
-          за левый край карточки (эффект ленточки-обёртки). */}
+      <div className={styles.imgWrap}>
+        <Link href={href} className={styles.imgLink}>
+          <img src={img} alt={name} className={styles.img} />
+        </Link>
+      </div>
+      {/* LikeButton и бейджи — прямые потомки .card, а не .imgWrap,
+          чтобы не попадать под overflow: hidden у imgWrap. */}
+      <LikeButton isLiked={isLiked} onLike={onLike} variant="card" />
       <div className={styles.badges}>
         {featured && (
           <span className={styles.badgeFeatured}>
@@ -78,14 +83,16 @@ export default function PropertyCard({
 
       <div className={styles.body}>
         <div className={styles.priceRow}>
-          <h3 className={styles.name}>{name}</h3>
           <span className={styles.price}>{price}</span>
+          {developer && <DeveloperTag name={developer} />}
         </div>
 
-        {developer && <DeveloperTag name={developer} />}
+        <h3 className={styles.name}>{name}</h3>
 
         <div className={styles.location}>
-          <MapPin size={13} />
+          <span className={styles.locationIcon}>
+            <MapPin size={14} strokeWidth={1.8} />
+          </span>
           <span>{district}</span>
         </div>
 
@@ -131,22 +138,21 @@ export default function PropertyCard({
           </div>
         )}
 
-        <div className={styles.divider} />
-
-        {/* ── Агент ── */}
-        <div className={styles.agentRow}>
-          <img
-            src={agent.avatar}
-            alt={agent.name}
-            className={styles.agentAvatar}
-          />
-          <div className={styles.agentMeta}>
-            <span className={styles.agentName}>{agent.name}</span>
-          </div>
-        </div>
-
-        {/* ── Контакты (появляются при hover) ── */}
+        {/* ── Агент + контакты (появляются при hover) ── */}
         <div className={styles.reveal}>
+          <div className={styles.agentRow}>
+            <img
+              src={agent.avatar}
+              alt={agent.name}
+              className={styles.agentAvatar}
+            />
+            <div className={styles.agentMeta}>
+              <span className={styles.agentName}>{agent.name}</span>
+              {agent.phone && (
+                <span className={styles.agentPhone}>{agent.phone}</span>
+              )}
+            </div>
+          </div>
           <div className={styles.contacts}>
             <a href="mailto:info@shangroup.ae" className={styles.contactBtn}>
               <Mail size={13} />

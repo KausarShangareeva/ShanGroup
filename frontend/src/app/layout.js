@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Montserrat, Abril_Fatface, Bodoni_Moda } from "next/font/google";
+import { Montserrat, Abril_Fatface, Bodoni_Moda, Marck_Script } from "next/font/google";
 import "../styles/globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
@@ -24,6 +24,13 @@ const abrilFatface = Abril_Fatface({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-abril",
+  display: "swap",
+});
+
+const marckScript = Marck_Script({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-marck",
   display: "swap",
 });
 
@@ -194,7 +201,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ru" className={`${gtEesti.variable} ${montserrat.variable} ${abrilFatface.variable} ${bodoniModa.variable} ${belarus.variable} ${gothic60.variable} ${kuzanyan.variable} ${leotaro.variable} ${mavoble.variable} ${preciosa.variable}`}>
+    <html lang="ru" className={`${gtEesti.variable} ${montserrat.variable} ${abrilFatface.variable} ${bodoniModa.variable} ${marckScript.variable} ${belarus.variable} ${gothic60.variable} ${kuzanyan.variable} ${leotaro.variable} ${mavoble.variable} ${preciosa.variable}`}>
       <body>
         <Navigation />
         <Breadcrumb />

@@ -115,6 +115,12 @@
   line-height: 1;
 }
 
+.badgeLogo {
+  width: 4.8rem;
+  height: 4.8rem;
+  object-fit: contain;
+}
+
 .badgeSub {
   font-size: 1.1rem;
   font-weight: 400;

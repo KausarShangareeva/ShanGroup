@@ -7,12 +7,31 @@
   }
 }
 
+/* ── Outer — содержит wrapper + треугольный хвостик снизу-слева ── */
+.outer {
+  position: relative;
+  display: inline-block;
+  margin-left: -2.6rem;
+  pointer-events: auto;
+}
+
+.outer::after {
+  content: "";
+  border-bottom: 1rem solid #0000;
+  border-right: 0.85rem solid #3b2800;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -0.8rem;
+  left: 1.5px;
+}
+
 /* ── Wrapper — вращающийся блеск по периметру ── */
 .wrapper {
   position: relative;
   display: inline-flex;
   padding: 1.5px;
-  border-radius: 6px;
+  border-radius: 7px 7px 7px 0;
   overflow: hidden;
 }
 
@@ -65,7 +84,7 @@
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.55rem 1.2rem 0.55rem 0.8rem;
-  border-radius: 4px;
+  border-radius: 5px 5px 5px 0;
   box-shadow:
     0 2px 12px rgba(160, 100, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 220, 0.5);

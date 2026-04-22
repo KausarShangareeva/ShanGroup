@@ -1,12 +1,28 @@
 "use client";
 
 import { useState, useMemo, useRef, useEffect, Fragment } from "react";
-import { MapPin, Building2, CircleDollarSign, BedDouble, Home, Layers, Eye, Paintbrush, SlidersHorizontal, Search, CheckCircle2, HardHat, CreditCard, TrendingUp } from "lucide-react";
+import {
+  MapPin,
+  Building2,
+  CircleDollarSign,
+  BedDouble,
+  Home,
+  Layers,
+  Eye,
+  Paintbrush,
+  SlidersHorizontal,
+  Search,
+  CheckCircle2,
+  HardHat,
+  CreditCard,
+  TrendingUp,
+} from "lucide-react";
 import Flag from "react-world-flags";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
 import MultiSelect from "./MultiSelect";
 import Button from "@/components/Button/Button";
 import { EMIRATES } from "@/utils/properties";
+import { useLikes } from "@/components/LikeButton/useLikes";
 import styles from "./PropertyFilter.module.css";
 import pillStyles from "./Pill.module.css";
 
@@ -120,10 +136,10 @@ const PRICE_RANGES = [
 ];
 
 const STATUS_OPTIONS = [
-  { key: "ready",       label: "Готово к заселению", Icon: CheckCircle2 },
-  { key: "offPlan",     label: "Строящаяся",          Icon: HardHat      },
-  { key: "installment", label: "Рассрочка",            Icon: CreditCard   },
-  { key: "investment",  label: "Для инвестиций",       Icon: TrendingUp   },
+  { key: "ready", label: "Готово к заселению", Icon: CheckCircle2 },
+  { key: "offPlan", label: "Строящаяся", Icon: HardHat },
+  { key: "installment", label: "Рассрочка", Icon: CreditCard },
+  { key: "investment", label: "Для инвестиций", Icon: TrendingUp },
 ];
 
 // Per-type extra dropdown configs
@@ -270,9 +286,11 @@ const EMPTY_PENDING = {
 
 export default function PropertyFilter({ items, typeSlug = "villas" }) {
   const extraFields = TYPE_EXTRA_FIELDS[typeSlug] ?? [];
+  const { liked, toggle } = useLikes();
 
   const [currency, setCurrency] = useState("AED");
   const [showExtra, setShowExtra] = useState(false);
+  const [priceOpen, setPriceOpen] = useState(false);
 
   const [pending, setPending] = useState(EMPTY_PENDING);
   const [pendingExtra, setPendingExtra] = useState({});
@@ -334,16 +352,33 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       if (on) {
         const opt = STATUS_OPTIONS.find((s) => s.key === key);
         if (opt)
-          tags.push({ key: `status_${key}`, label: opt.label, icon: "status", IconComponent: opt.Icon });
+          tags.push({
+            key: `status_${key}`,
+            label: opt.label,
+            icon: "status",
+            IconComponent: opt.Icon,
+          });
       }
     });
     // Beds range tag
     const bMin = pendingExtra.bedsMin;
     const bMax = pendingExtra.bedsMax;
-    if ((bMin !== "" && bMin !== undefined) || (bMax !== "" && bMax !== undefined)) {
-      const minL = bMin === 0 ? "Студия" : bMin !== "" && bMin !== undefined ? String(bMin) : "—";
+    if (
+      (bMin !== "" && bMin !== undefined) ||
+      (bMax !== "" && bMax !== undefined)
+    ) {
+      const minL =
+        bMin === 0
+          ? "Студия"
+          : bMin !== "" && bMin !== undefined
+            ? String(bMin)
+            : "—";
       const maxL = bMax !== "" && bMax !== undefined ? String(bMax) : "—";
-      tags.push({ key: "extra_beds_range", label: `Спальни: ${minL} → ${maxL}`, icon: "beds" });
+      tags.push({
+        key: "extra_beds_range",
+        label: `Спальни: ${minL} → ${maxL}`,
+        icon: "beds",
+      });
     }
     Object.entries(pendingExtra || {}).forEach(([key, val]) => {
       if (key === "bedsMin" || key === "bedsMax") return;
@@ -351,7 +386,11 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       const icon = key === "levels" ? "beds" : "filter";
       const arr = Array.isArray(val) ? val : val ? [val] : [];
       arr.forEach((v) =>
-        tags.push({ key: `extra_${key}__${v}`, label: `${field?.label ?? key}: ${v}`, icon })
+        tags.push({
+          key: `extra_${key}__${v}`,
+          label: `${field?.label ?? key}: ${v}`,
+          icon,
+        }),
       );
     });
     return tags;
@@ -430,12 +469,15 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       if (applied.status?.investment && !p.visa) return false;
       const bMin = applied.extra?.bedsMin;
       const bMax = applied.extra?.bedsMax;
-      if (bMin !== "" && bMin !== undefined && Number(p.beds) < Number(bMin)) return false;
-      if (bMax !== "" && bMax !== undefined && Number(p.beds) > Number(bMax)) return false;
+      if (bMin !== "" && bMin !== undefined && Number(p.beds) < Number(bMin))
+        return false;
+      if (bMax !== "" && bMax !== undefined && Number(p.beds) > Number(bMax))
+        return false;
       for (const [key, val] of Object.entries(applied.extra || {})) {
         if (key === "bedsMin" || key === "bedsMax") continue;
         const arr = Array.isArray(val) ? val : val ? [val] : [];
-        if (arr.length > 0 && !arr.map(String).includes(String(p[key]))) return false;
+        if (arr.length > 0 && !arr.map(String).includes(String(p[key])))
+          return false;
       }
       return true;
     });
@@ -448,10 +490,12 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       <div className={styles.filter}>
         <h2 className={styles.filterTitle}>Найдите идеальное жильё</h2>
 
-        {/* Pill-style filter bar */}
-        <div className={styles.filterBar}>
+        {/* Filter grid — main row + extra row share same columns */}
+        <div className={styles.filterGrid}>
           <div className={styles.filterField}>
-            <div className={styles.filterIconBadge}><MapPin size={18} /></div>
+            <div className={styles.filterIconBadge}>
+              <MapPin size={18} />
+            </div>
             <div className={styles.filterFieldInner}>
               <span className={styles.filterFieldLabel}>Район</span>
               <MultiSelect
@@ -465,7 +509,9 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
           </div>
 
           <div className={styles.filterField}>
-            <div className={styles.filterIconBadge}><Building2 size={18} /></div>
+            <div className={styles.filterIconBadge}>
+              <Building2 size={18} />
+            </div>
             <div className={styles.filterFieldInner}>
               <span className={styles.filterFieldLabel}>Застройщик</span>
               <MultiSelect
@@ -478,8 +524,14 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
             </div>
           </div>
 
-          <div className={styles.filterField}>
-            <div className={styles.filterIconBadge}><CircleDollarSign size={18} /></div>
+          <div
+            className={styles.filterField}
+            onClick={() => setPriceOpen((v) => !v)}
+            style={{ cursor: "pointer" }}
+          >
+            <div className={styles.filterIconBadge}>
+              <CircleDollarSign size={18} />
+            </div>
             <div className={styles.filterFieldInner}>
               <span className={styles.filterFieldLabel}>Цена</span>
               <PricePill
@@ -489,6 +541,9 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
                 onCurrency={setCurrency}
                 onPrice={(i) => setPendingField("priceIdx", i)}
                 pillStyles={pillStyles}
+                open={priceOpen}
+                onToggle={() => setPriceOpen((v) => !v)}
+                onClose={() => setPriceOpen(false)}
               />
             </div>
           </div>
@@ -512,18 +567,20 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
             <Search size={18} />
             Найти
           </button>
-        </div>
 
-        {/* Extra fields (expanded) */}
-        {showExtra && extraFields.length > 0 && (
-          <div className={styles.filterExtraRow}>
-            {extraFields.map((field) => {
+          {/* Extra fields — automatically flow to row 2 in same grid */}
+          {showExtra &&
+            extraFields.map((field) => {
               const Icon = EXTRA_ICONS[field.key] ?? SlidersHorizontal;
               return (
                 <div key={field.key} className={styles.filterField}>
-                  <div className={styles.filterIconBadge}><Icon size={18} /></div>
+                  <div className={styles.filterIconBadge}>
+                    <Icon size={18} />
+                  </div>
                   <div className={styles.filterFieldInner}>
-                    <span className={styles.filterFieldLabel}>{field.label}</span>
+                    <span className={styles.filterFieldLabel}>
+                      {field.label}
+                    </span>
                     {field.key === "beds" ? (
                       <BedsRangePill
                         flat
@@ -546,8 +603,7 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
                 </div>
               );
             })}
-          </div>
-        )}
+        </div>
 
         {/* Status pills */}
         <p className={styles.statusLabel}>Статус объекта</p>
@@ -572,9 +628,11 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
               {activeTags.map((t) => (
                 <span key={t.key} className={styles.tag}>
                   <span className={styles.tagIcon}>
-                    {t.IconComponent
-                      ? <t.IconComponent size={12} strokeWidth={1.5} />
-                      : TAG_ICONS[t.icon]}
+                    {t.IconComponent ? (
+                      <t.IconComponent size={12} strokeWidth={1.5} />
+                    ) : (
+                      TAG_ICONS[t.icon]
+                    )}
                   </span>
                   <span className={styles.tagLabel}>{t.label}</span>
                   <button
@@ -589,7 +647,11 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
               ))}
             </div>
             <div className={styles.actions}>
-              <button type="button" className={styles.resetBtn} onClick={resetFilters}>
+              <button
+                type="button"
+                className={styles.resetBtn}
+                onClick={resetFilters}
+              >
                 Сбросить
               </button>
             </div>
@@ -606,13 +668,64 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
       {/* Grid */}
       <div className={styles.grid}>
         {filtered.slice(0, visibleCount).map((p, i) => (
-          <div
-            key={p.id}
-            className={styles.cardWrap}
-            style={{ animationDelay: `${(i % PAGE_SIZE) * 55}ms` }}
-          >
-            <PropertyCard {...asProps(p)} />
-          </div>
+          <Fragment key={p.id}>
+            {i === 10 && typeSlug === "new-builds" && (
+              <div className={styles.checklistCard}>
+                <div className={styles.checklistNoise} />
+                <div className={styles.checklistContent}>
+                  <h3 className={styles.checklistTitle}>Чеклист покупателя</h3>
+                  <p className={styles.checklistSub}>
+                    Всё что нужно знать перед покупкой недвижимости в ОАЭ
+                  </p>
+                </div>
+                <a href="/pdf/checklist" className={styles.checklistBtn}>
+                  Скачать чеклист
+                </a>
+              </div>
+            )}
+            {i === 20 && typeSlug === "new-builds" && (
+              <div className={styles.pickCard}>
+                <div className={styles.pickNoise} />
+                <div className={styles.pickContent}>
+                  <h3 className={styles.pickTitle}>
+                    Подберём варианты бесплатно
+                  </h3>
+                  <ul className={styles.pickList}>
+                    <li>— учтём ваш бюджет и пожелания</li>
+                    <li>— проконсультируем по всем вопросам</li>
+                    <li>— сэкономим время на поиске</li>
+                  </ul>
+                </div>
+                <a href="/contact" className={styles.pickBtn}>
+                  Выбрать варианты
+                </a>
+              </div>
+            )}
+            {i === 30 && typeSlug === "new-builds" && (
+              <div className={styles.guideCard}>
+                <div className={styles.guideNoise} />
+                <div className={styles.guideContent}>
+                  <h3 className={styles.guideTitle}>Гид покупателя</h3>
+                  <p className={styles.guideSub}>
+                    Всё необходимое перед покупкой недвижимости в ОАЭ
+                  </p>
+                </div>
+                <a href="/pdf/guide" className={styles.guideBtn}>
+                  Получить гид
+                </a>
+              </div>
+            )}
+            <div
+              className={styles.cardWrap}
+              style={{ animationDelay: `${(i % PAGE_SIZE) * 55}ms` }}
+            >
+              <PropertyCard
+                {...asProps(p)}
+                isLiked={liked.has(p.id)}
+                onLike={() => toggle(p.id)}
+              />
+            </div>
+          </Fragment>
         ))}
       </div>
 
@@ -638,17 +751,38 @@ function pluralize(n, one, few, many) {
   return many;
 }
 
-function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles, flat = false }) {
-  const [open, setOpen] = useState(false);
+function PricePill({
+  priceIdx,
+  currency,
+  onCurrency,
+  onPrice,
+  pillStyles,
+  flat = false,
+  open: externalOpen,
+  onToggle,
+  onClose,
+}) {
+  const controlled = externalOpen !== undefined;
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlled ? externalOpen : internalOpen;
+  const setOpen = controlled
+    ? (val) => {
+        const next = typeof val === "function" ? val(externalOpen) : val;
+        next ? onToggle?.() : onClose?.();
+      }
+    : setInternalOpen;
+
   const ref = useRef(null);
 
   useEffect(() => {
     function onOut(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target)) {
+        controlled ? onClose?.() : setInternalOpen(false);
+      }
     }
     document.addEventListener("mousedown", onOut);
     return () => document.removeEventListener("mousedown", onOut);
-  }, []);
+  }, [controlled, onClose]);
 
   const isSet = priceIdx > 0;
   const label = isSet
@@ -660,7 +794,7 @@ function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles, flat =
       <button
         type="button"
         className={`${pillStyles.pill} ${flat ? pillStyles.pillFlat : ""} ${isSet ? (flat ? pillStyles.pillFlatActive : pillStyles.pillActive) : ""} ${!flat && open ? pillStyles.pillOpen : ""}`}
-        onClick={() => setOpen((v) => !v)}
+        onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}
       >
         <span>{label}</span>
         <svg
@@ -679,7 +813,10 @@ function PricePill({ priceIdx, currency, onCurrency, onPrice, pillStyles, flat =
       </button>
 
       {open && (
-        <div className={`${pillStyles.dropdown} ${flat ? pillStyles.dropdownFlat : ""}`}>
+        <div
+          className={`${pillStyles.dropdown} ${flat ? pillStyles.dropdownFlat : ""}`}
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Currency toggle */}
           <div className={styles.currencyRow}>
             {[
@@ -731,7 +868,14 @@ const BED_OPTIONS = [
   { val: 7, label: "7" },
 ];
 
-function BedsRangePill({ bedsMin, bedsMax, onBedsMin, onBedsMax, pillStyles, flat = false }) {
+function BedsRangePill({
+  bedsMin,
+  bedsMax,
+  onBedsMin,
+  onBedsMax,
+  pillStyles,
+  flat = false,
+}) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -743,9 +887,17 @@ function BedsRangePill({ bedsMin, bedsMax, onBedsMin, onBedsMax, pillStyles, fla
     return () => document.removeEventListener("mousedown", onOut);
   }, []);
 
-  const isSet = (bedsMin !== "" && bedsMin !== undefined) || (bedsMax !== "" && bedsMax !== undefined);
-  const minLabel = bedsMin === 0 ? "Студия" : bedsMin !== "" && bedsMin !== undefined ? String(bedsMin) : "Мин";
-  const maxLabel = bedsMax !== "" && bedsMax !== undefined ? String(bedsMax) : "Макс";
+  const isSet =
+    (bedsMin !== "" && bedsMin !== undefined) ||
+    (bedsMax !== "" && bedsMax !== undefined);
+  const minLabel =
+    bedsMin === 0
+      ? "Студия"
+      : bedsMin !== "" && bedsMin !== undefined
+        ? String(bedsMin)
+        : "Мин";
+  const maxLabel =
+    bedsMax !== "" && bedsMax !== undefined ? String(bedsMax) : "Макс";
   const displayText = isSet ? `${minLabel} — ${maxLabel}` : "Все";
 
   return (
@@ -758,16 +910,23 @@ function BedsRangePill({ bedsMin, bedsMax, onBedsMin, onBedsMax, pillStyles, fla
         <span>{displayText}</span>
         <svg
           className={`${pillStyles.chevron} ${open ? pillStyles.chevronOpen : ""}`}
-          width="11" height="11" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" strokeWidth="2.5"
-          strokeLinecap="round" strokeLinejoin="round"
+          width="11"
+          height="11"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
 
       {open && (
-        <div className={`${pillStyles.dropdown} ${flat ? pillStyles.dropdownFlat : ""}`}>
+        <div
+          className={`${pillStyles.dropdown} ${flat ? pillStyles.dropdownFlat : ""}`}
+        >
           <div className={styles.bedsRow}>
             <div className={styles.bedsCol}>
               <p className={styles.bedsColLabel}>Мин. спален</p>

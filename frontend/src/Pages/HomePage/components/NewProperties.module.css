@@ -21,7 +21,6 @@
   z-index: 1;
 }
 
-/* ── Шапка секции ── */
 .header {
   display: flex;
   align-items: flex-end;
@@ -37,7 +36,6 @@
   flex-shrink: 0;
 }
 
-/* ── Стрелки ── */
 .arrows {
   display: flex;
   gap: 1rem;
@@ -68,10 +66,10 @@
   color: #111;
 }
 
-/* ── Карусель — native scroll-snap ── */
+/* ── Carousel ── */
 .viewport {
   display: flex;
-  gap: 2rem;
+  gap: 2.4rem;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
@@ -80,6 +78,8 @@
   scrollbar-width: none;
   width: 100%;
   padding-bottom: 0.4rem;
+  padding-left: 2rem;
+  scroll-padding-left: 2rem;
 }
 
 .viewport::-webkit-scrollbar {
@@ -88,13 +88,13 @@
 
 .cardWrap {
   scroll-snap-align: start;
-  flex: 0 0 calc((100% - 4rem) / 3);
+  flex: 0 0 calc((100% - 4.8rem) / 3);
   min-width: 0;
 }
 
 @media (max-width: 960px) {
   .cardWrap {
-    flex: 0 0 calc((100% - 2rem) / 2);
+    flex: 0 0 calc((100% - 2.4rem) / 2);
   }
 }
 
@@ -138,29 +138,27 @@
   transform: scale(1.3);
 }
 
-/* ── Card: flex-колонка, фиксированная высота ── */
+/* ══════════════════════════════════════
+   CARD
+   ══════════════════════════════════════ */
+
 .card {
   display: flex;
-  padding: 1rem;
   flex-direction: column;
-  height: 52rem;
+  height: 50rem;
   border-radius: 2rem;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
   cursor: pointer;
-
-  background-color: white;
 }
 
-.card:hover {
-}
-
-/* ── Фото: занимает оставшееся место, сжимается при раскрытии панели ── */
+/* ── Photo area ── */
 .imageWrap {
   flex: 1;
   min-height: 0;
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 1.8rem 1.8rem 0 0;
 }
 
 .image {
@@ -169,17 +167,13 @@
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition:
-    transform 0.55s ease,
-    opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .card:hover .image {
-  transform: scale(1.04);
   opacity: 0;
 }
 
-/* ── Video overlay ── */
 .video {
   position: absolute;
   inset: 0;
@@ -187,7 +181,7 @@
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.45s ease;
+  transition: opacity 0.5s ease;
   pointer-events: none;
 }
 
@@ -195,100 +189,111 @@
   opacity: 1;
 }
 
-/* ── Visa badge position ── */
-.visaWrap {
+/* ── Developer strip ── */
+.devStrip {
   position: absolute;
-  top: 1.2rem;
-  left: 1.2rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3.2rem 1.6rem 1.4rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+  z-index: 2;
+  transition: opacity 0.45s ease;
 }
 
-/* ── Панель информации: снизу, полностью непрозрачная ── */
+.card:hover .devStrip {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.devStripLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.stripLogo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 1px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.stripDevName {
+  font-family: var(--font-montserrat);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stripDelivery {
+  font-family: var(--font-montserrat);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10rem;
+  padding: 0.35rem 1.1rem;
+  white-space: nowrap;
+}
+
+/* ── Visa badge ── */
+.visaWrap {
+  position: absolute;
+  top: 1.6rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 0 1.6rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ══════════════════════════════════════
+   INFO PANEL
+   ══════════════════════════════════════ */
+
 .overlay {
   flex-shrink: 0;
   background: #fff;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 1.6rem 1.8rem 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1rem;
+  border-radius: 0 0 1.8rem 1.8rem;
 }
 
-/* ── Gold overlay variant ── */
-.overlayGold {
-  background:
-    radial-gradient(
-      ellipse farthest-corner at right bottom,
-      #fedb37 0%,
-      #fdb931 8%,
-      #9f7928 30%,
-      #8a6e2f 40%,
-      transparent 80%
-    ),
-    radial-gradient(
-      ellipse farthest-corner at left top,
-      #ffffff 0%,
-      #ffffac 8%,
-      #d1b464 25%,
-      #5d4a1f 62.5%,
-      #5d4a1f 100%
-    );
-  color: #3b2800;
-}
-
-.overlayGold .name {
-  color: #3b2800;
-}
-.overlayGold .location {
-  color: #6b4a10;
-}
-.overlayGold .metaItem {
-  color: #6b4a10;
-}
-.overlayGold .priceUsd {
-  color: #1e1000;
-}
-.overlayGold .agentName {
-  color: #3b2800;
-}
-.overlayGold .agentPhone {
-  color: #7a5520;
-}
-.overlayGold .divider {
-  background: rgba(100, 60, 0, 0.2);
-}
-.overlayGold .cardArrowBtn {
-  border-color: rgba(100, 60, 0, 0.3);
-  background: rgba(255, 255, 255, 0.4);
-  color: #3b2800;
-}
-.overlayGold .cardArrowBtn:hover {
-  background: #3b2800;
-  color: #fdb931;
-  border-color: #3b2800;
-}
-
-/* ── Верхняя строка (всегда видна) ── */
+/* Name + arrow */
 .topRow {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-}
-
-.nameWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  flex: 1;
+  gap: 0.8rem;
 }
 
 .name {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #0d0d0d;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin: 0;
-  font-family: var(--font-montserrat);
+  font-family: var(--font-abril);
+  font-size: 1.8rem;
+  font-weight: 100;
+  color: #666;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
 }
 
 .cardArrowBtn {
@@ -298,156 +303,119 @@
   width: 3.4rem;
   height: 3.4rem;
   border-radius: 50%;
-  border: 1.5px solid #e0e0e0;
-  background: #fff;
-  color: #333;
+  border: none;
+  background: #111;
+  color: #fff;
   cursor: pointer;
   flex-shrink: 0;
-  transition:
-    background 0.25s,
-    border-color 0.25s;
+  transition: background 0.2s;
 }
 
-.card:hover .cardArrowBtn {
-  background: #111;
-  border-color: #111;
-  color: #fff;
+.cardArrowBtn:hover {
+  background: #333;
 }
 
-/* ── Детали: раскрываются вверх (сжимают imageWrap) ── */
-.details {
+/* Reveal: location → contacts animate in on hover */
+.reveal {
   overflow: hidden;
   max-height: 0;
-  margin-top: 0;
-  transition:
-    max-height 0.48s cubic-bezier(0.4, 0, 0.2, 1),
-    margin-top 0.48s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card:hover .details {
-  max-height: 24rem;
-  margin-top: 1.4rem;
-}
-
-.detailsInner {
+  opacity: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  transform: translateY(1.6rem);
-  opacity: 0;
+  gap: 1.2rem;
   transition:
-    transform 0.4s ease 0.06s,
-    opacity 0.35s ease 0.06s;
+    max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease 0.05s;
 }
 
-.card:hover .detailsInner {
-  transform: translateY(0);
+.card:hover .reveal {
+  max-height: 26rem;
   opacity: 1;
 }
 
+/* Location */
 .location {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 1.3rem;
-  color: #777;
-}
-
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.metaItem {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 1.25rem;
-  color: #555;
-}
-
-.price {
-  display: flex;
-  align-items: baseline;
   gap: 0.8rem;
+  font-family: var(--font-montserrat);
+  font-size: 1.4rem;
+  color: #888;
 }
 
-.priceUsd {
-  font-size: 1.7rem;
+.locationIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.5rem;
+  background: #f5f5f5;
+  color: #191a23;
+  flex-shrink: 0;
+}
+
+/* Price */
+.price {
+  font-family: var(--font-montserrat);
+  font-size: 2rem;
   font-weight: 700;
   color: #111;
-}
-
-.priceBadge {
-  color: rgb(25, 26, 35);
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 1.2;
-  font-family: var(--font-montserrat, inherit);
-  white-space: nowrap;
-  flex-shrink: 0;
-  margin: 1rem 0;
-}
-
-.divider {
-  height: 1px;
-  background: #f0f0f0;
-}
-
-/* ── Content row: инфо слева, карта справа ── */
-.contentRow {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.leftCol {
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
   flex: 1;
+}
+
+/* Stats: area · delivery · bedrooms */
+.stats {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  min-width: 0;
-}
-
-.mapWrap {
-  width: 15rem;
-  flex-shrink: 0;
-  border-radius: 1.2rem;
-  overflow: hidden;
-  background: #eef0f4;
-  border: 1px solid #e8e8e8;
-}
-
-.mapFrame {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.7) brightness(1.05);
-}
-
-/* ── Agent ──
-   Стиль повторяет PropertyCard: никакой серой «плашки»-контейнера,
-   сверху тонкая разделительная линия, лейбл «ВАШ АГЕНТ» + имя. */
-.agent {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
   border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap;
 }
 
-.agentTop {
+.stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-montserrat);
+  font-size: 1.4rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.statIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.5rem;
+  background: #f5f5f5;
+  color: #191a23;
+  flex-shrink: 0;
+}
+
+.statUnit {
+  color: #686a79;
+  font-weight: 500;
+}
+
+/* Agent row */
+.agentRow {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-top: 0.6rem;
 }
 
 .agentAvatar {
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -458,19 +426,12 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  gap: 0.1rem;
-}
-
-.agentLabel {
-  font-size: 1rem;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
+  gap: 2px;
 }
 
 .agentName {
-  font-size: 1.3rem;
+  font-family: var(--font-montserrat);
+  font-size: 1.5rem;
   font-weight: 600;
   color: #111;
   white-space: nowrap;
@@ -478,20 +439,29 @@
   text-overflow: ellipsis;
 }
 
-.contactBtns {
+.agentPhone {
+  font-family: var(--font-montserrat);
+  font-size: 1.4rem;
+  color: #b5b5b5;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Text contact buttons */
+.contacts {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.6rem;
+  margin-top: 0.6rem;
+  padding-bottom: 0.4rem;
 }
 
-/* Стили кнопок «Почта / Звонок / WhatsApp» синхронизированы
-   с PropertyCard.module.css — одинаковая база и одинаковый hover
-   (чёрная заливка для «Почта»/«Звонок», зелёная для WhatsApp). */
 .contactBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  font-family: var(--font-montserrat);
   font-size: 1.1rem;
   font-weight: 600;
   color: #555;
@@ -514,24 +484,28 @@
   border-color: #111;
 }
 
-.contactBtnWa:hover {
-  background: #25d366;
-  color: #fff;
-  border-color: #25d366;
+@keyframes waGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.contactBtnWa:hover {
+  background: linear-gradient(135deg, #57ebde, #aefb2a, #57ebde);
+  background-size: 400% 400%;
+  animation: waGradient 2.5s ease infinite;
+  color: #111;
+  border-color: transparent;
 }
 
 @media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
   .card {
-    height: 46rem;
+    height: 54rem;
   }
 }

@@ -1,13 +1,12 @@
 .section {
-  background: #f7f7f7;
-  padding: 8rem 0 9rem;
-  margin-top: 6rem;
+  background: #f7f8fa;
+  padding: 8rem 0;
+  margin-top: 0;
 }
 
 .inner {
   max-width: 120rem;
   margin: 0 auto;
-  padding: 0 4rem;
 }
 
 .title {
@@ -50,10 +49,6 @@
 }
 
 @media (max-width: 800px) {
-  .inner {
-    padding: 0 2rem;
-  }
-
   .cols {
     grid-template-columns: 1fr;
     gap: 2rem;

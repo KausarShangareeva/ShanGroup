@@ -1011,7 +1011,7 @@ export default function Navigation() {
         <Container>
           <nav className={styles.nav}>
             <Link href="/" className={styles.logo}>
-              ShanGroup
+              <img src="/logo.png" alt="ShanGroup" className={styles.logoImg} />
             </Link>
 
             <ul className={styles.links}>

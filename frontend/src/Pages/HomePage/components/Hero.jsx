@@ -53,7 +53,7 @@ export default function Hero() {
                 style={{ backgroundImage: "url('/circle_text.svg')" }}
               >
                 <div className={styles.badgeCenter}>
-                  <span className={styles.badgeSG}>SG</span>
+                  <img src="/logo2.png" alt="ShanGroup" className={styles.badgeLogo} />
                 </div>
               </div>
 

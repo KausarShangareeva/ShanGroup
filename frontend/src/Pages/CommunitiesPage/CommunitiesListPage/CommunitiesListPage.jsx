@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowUpRight, MapPin } from "lucide-react";
 import Container from "@/components/layout/Container";
 import DEVELOPERS from "@/data/developers.json";
 import { devSlug } from "@/utils/devSlug";
@@ -24,6 +23,36 @@ function buildCommunityGroups() {
   return groups;
 }
 
+function CommunityCard({ community, developerKey, index }) {
+  return (
+    <Link href={community.href} className={styles.card}>
+      <div className={styles.cardTop}>
+        <div className={styles.imgWrap}>
+          {community.image ? (
+            <img src={community.image} alt={community.label} className={styles.img} />
+          ) : (
+            <div className={styles.imgFallback}>
+              <span className={styles.imgInitial}>{community.label.charAt(0)}</span>
+            </div>
+          )}
+        </div>
+        <div className={styles.cardTopRight}>
+          <div className={styles.cardInfo}>
+            <h3 className={styles.cardName}>{community.label}</h3>
+            <span className={styles.cardSub}>{developerKey}</span>
+          </div>
+          <span className={styles.cardNumber}>
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+      </div>
+      {community.desc && (
+        <p className={styles.cardDesc}>{community.desc}</p>
+      )}
+    </Link>
+  );
+}
+
 export default function CommunitiesListPage() {
   const groups = buildCommunityGroups();
   const total = groups.reduce((acc, g) => acc + g.communities.length, 0);
@@ -34,7 +63,7 @@ export default function CommunitiesListPage() {
         <Container>
           <h1 className={styles.heroTitle}>
             {total}{" "}
-            <span className={styles.heroTitleUnderline}>сообществ</span>
+            <span className={styles.heroTitleUnderline}>комьюнити</span>
             <br />
             от ведущих застройщиков
           </h1>
@@ -57,9 +86,7 @@ export default function CommunitiesListPage() {
                   <div className={styles.groupHeaderText}>
                     <p className={styles.groupKicker}>Застройщик</p>
                     <h2 className={styles.groupTitle}>
-                      <Link
-                        href={`/developers/${devSlug(group.developerKey)}`}
-                      >
+                      <Link href={`/developers/${devSlug(group.developerKey)}`}>
                         {group.developerKey}
                       </Link>
                     </h2>
@@ -71,21 +98,13 @@ export default function CommunitiesListPage() {
                 </div>
 
                 <div className={styles.grid}>
-                  {group.communities.map((community) => (
-                    <Link
+                  {group.communities.map((community, i) => (
+                    <CommunityCard
                       key={community.href}
-                      href={community.href}
-                      className={styles.card}
-                    >
-                      <div className={styles.cardIcon}>
-                        <MapPin size={18} />
-                      </div>
-                      <div className={styles.cardBody}>
-                        <p className={styles.cardName}>{community.label}</p>
-                        <p className={styles.cardDev}>{group.developerKey}</p>
-                      </div>
-                      <ArrowUpRight size={18} className={styles.cardArrow} />
-                    </Link>
+                      community={community}
+                      developerKey={group.developerKey}
+                      index={i}
+                    />
                   ))}
                 </div>
               </section>

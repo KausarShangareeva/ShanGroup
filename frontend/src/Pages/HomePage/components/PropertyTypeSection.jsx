@@ -6,6 +6,7 @@ import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
+import { useLikes } from "@/components/LikeButton/useLikes";
 import styles from "./PropertyTypeSection.module.css";
 
 function getVisible() {
@@ -27,6 +28,7 @@ export default function PropertyTypeSection({
   const viewportRef = useRef(null);
   const indexRef = useRef(0);
   const maxIndexRef = useRef(0);
+  const { liked, toggle } = useLikes();
 
   const hasCarousel = properties.length > visibleCount;
   const maxIndex = Math.max(0, properties.length - visibleCount);
@@ -103,6 +105,8 @@ export default function PropertyTypeSection({
       beds={p.beds}
       baths={p.baths}
       area={p.area}
+      isLiked={liked.has(p.id)}
+      onLike={() => toggle(p.id)}
     />
   );
 

@@ -6,7 +6,9 @@ import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";
 import NewPropertyCard from "./NewPropertyCard";
-import PROPERTIES from "@/data/properties/objects.json";
+import ALL_PROPERTIES from "@/data/properties/objects.json";
+
+const PROPERTIES = ALL_PROPERTIES.filter((p) => p.video);
 import AGENT from "@/data/agent.json";
 import { useLikes } from "@/components/LikeButton/useLikes";
 import styles from "./NewProperties.module.css";
@@ -23,10 +25,7 @@ export default function NewProperties() {
   const [index, setIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
   const viewportRef = useRef(null);
-  const timerRef = useRef(null);
-
   const maxIndex = Math.max(0, PROPERTIES.length - visibleCount);
-
   const indexRef = useRef(0);
 
   const scrollTo = useCallback((i) => {
@@ -54,16 +53,6 @@ export default function NewProperties() {
     const max = maxIndexRef.current;
     scrollTo(cur <= 0 ? max : cur - 1);
   }, [scrollTo]);
-
-  const startTimer = useCallback(() => {
-    clearInterval(timerRef.current);
-    timerRef.current = setInterval(next, 5000);
-  }, [next]);
-
-  useEffect(() => {
-    startTimer();
-    return () => clearInterval(timerRef.current);
-  }, [startTimer]);
 
   useEffect(() => {
     setVisibleCount(getVisible());
@@ -121,7 +110,7 @@ export default function NewProperties() {
               <button
                 type="button"
                 className={styles.arrowBtn}
-                onClick={() => { prev(); startTimer(); }}
+                onClick={prev}
                 aria-label="Назад"
               >
                 <ChevronLeft size={22} strokeWidth={1.8} />
@@ -129,7 +118,7 @@ export default function NewProperties() {
               <button
                 type="button"
                 className={styles.arrowBtn}
-                onClick={() => { next(); startTimer(); }}
+                onClick={next}
                 aria-label="Вперёд"
               >
                 <ChevronRight size={22} strokeWidth={1.8} />
@@ -158,7 +147,7 @@ export default function NewProperties() {
               key={i}
               type="button"
               className={`${styles.dot} ${i === index ? styles.dotActive : ""}`}
-              onClick={() => { scrollTo(i); startTimer(); }}
+              onClick={() => scrollTo(i)}
               aria-label={`Слайд ${i + 1}`}
             />
           ))}

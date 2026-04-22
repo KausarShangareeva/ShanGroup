@@ -1,6 +1,7 @@
 @font-face {
   font-family: "EducationalGothic";
-  src: url("/fonts/EDUCATIONALGOTHIC-REGULAR/EDUCATIONALGOTHIC-REGULAR.OTF") format("opentype");
+  src: url("/fonts/EDUCATIONALGOTHIC-REGULAR/EDUCATIONALGOTHIC-REGULAR.OTF")
+    format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +17,6 @@
   --color-primary-light: #2a2a42;
 
   --color-sand: #c28a5c;
-
   --color-gold: #d97a7a;
   --color-gold-dark: #b85a5a;
 
@@ -25,27 +25,30 @@
 
   /* Typography */
   --font-sans: var(--font-gt-eesti), system-ui, -apple-system, sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
   --font-educational-gothic: "EducationalGothic", sans-serif;
+  /* Google Fonts (loaded via next/font/google in layout.js):
+     --font-abril  → Abril Fatface
+     --font-marck  → Marck Script */
 
-  --text-xs:   0.75rem;    /* 12px */
-  --text-sm:   0.875rem;   /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg:   1.125rem;   /* 18px */
-  --text-xl:   1.25rem;    /* 20px */
-  --text-2xl:  1.5rem;     /* 24px */
-  --text-3xl:  1.875rem;   /* 30px */
-  --text-4xl:  2.25rem;    /* 36px */
-  --text-5xl:  3rem;       /* 48px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-5xl: 3rem; /* 48px */
 
   /* Spacing */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.25rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
@@ -53,10 +56,10 @@
   --space-24: 6rem;
 
   /* Border radius */
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
   /* Shadows */
@@ -65,12 +68,12 @@
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.14);
 
   /* Transitions */
-  --transition-fast:   0.15s ease;
-  --transition-base:   0.25s ease;
-  --transition-slow:   0.4s ease;
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
 
   /* Z-index */
-  --z-nav:    100;
-  --z-popup:  1000;
-  --z-toast:  2000;
+  --z-nav: 100;
+  --z-popup: 1000;
+  --z-toast: 2000;
 }

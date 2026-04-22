@@ -2,13 +2,14 @@
 .btn {
   display: flex;
   align-items: center;
-  min-width: 3.4rem;
-  height: 3.4rem;
+  min-width: 3.6rem;
+  height: 3.6rem;
   border-radius: 10rem;
-  border: 1.3px solid transparent;
-  padding: 0 0.9rem;
+  border: 1.5px solid transparent;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.88) padding-box;
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   color: #aaa;
   cursor: pointer;
   text-decoration: none;
@@ -23,63 +24,43 @@
   background: rgba(255, 255, 255, 1);
 }
 
-.active {
-  background: rgba(255, 255, 255, 0.92);
-  color: transparent;
-}
-
-.active:hover {
-  background: rgba(255, 255, 255, 1);
-}
-
-/* ── Активная карточка: переливающийся градиентный бордер ── */
-.active.card {
-  border: 1.3px solid transparent;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92))
-      padding-box,
-    linear-gradient(135deg, #e8a87c, #d4737a, #8b5cf6, #678bf0, #e8a87c)
-      border-box;
-  background-size:
-    100% 100%,
-    250% 250%;
-  animation: borderShimmer 2.8s linear infinite;
-}
-
-.active.card:hover {
-  background:
-    linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) padding-box,
-    linear-gradient(135deg, #e8a87c, #d4737a, #8b5cf6, #678bf0, #e8a87c)
-      border-box;
-  background-size:
-    100% 100%,
-    250% 250%;
-}
-
-@keyframes borderShimmer {
-  0% {
-    background-position:
-      0 0,
-      0% 50%;
-  }
-  50% {
-    background-position:
-      0 0,
-      100% 50%;
-  }
-  100% {
-    background-position:
-      0 0,
-      0% 50%;
-  }
-}
-
-/* ── Card: позиционирование — right: fixed, растёт влево ── */
+/* ── Card variant: тёмное стекло поверх фото ── */
 .card {
   position: absolute;
   top: 1.2rem;
-  right: 1.2rem;
+  right: 1.4rem;
   z-index: 10;
+  width: 3.6rem;
+  min-width: 3.6rem;
+  padding: 0;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.card .label {
+  display: none;
+}
+
+.card:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ── Активная карточка ── */
+.active.card {
+  border-color: var(--color-sand);
+  background: rgba(0, 0, 0, 1);
+  color: transparent;
+}
+
+.active.card:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: var(--color-sand);
 }
 
 /* ── Nav: круглая кнопка как в ContactButton ── */
@@ -158,22 +139,13 @@
   padding-right: 0.7rem;
 }
 
-/* ── Gradient shimmer heart (card liked state) ── */
+/* ── Sand heart (card liked state) ── */
 .heartGradient {
   width: 1.6rem;
   height: 1.6rem;
   display: block;
   flex-shrink: 0;
-  background: linear-gradient(
-    135deg,
-    #e8a87c,
-    #d4737a,
-    #8b5cf6,
-    #678bf0,
-    #e8a87c
-  );
-  background-size: 250% 250%;
-  animation: heartShimmer 2.8s linear infinite;
+  background: var(--color-sand);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z' fill='black'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z' fill='black'/%3E%3C/svg%3E");
   -webkit-mask-size: contain;
@@ -182,16 +154,4 @@
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
-}
-
-@keyframes heartShimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }

@@ -1,30 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Heart } from "lucide-react";
 import styles from "./LikeButton.module.css";
 
-/**
- * LikeButton — универсальная кнопка-сердечко.
- *
- * Карточка:  <LikeButton isLiked={...} onLike={...} variant="card" />
- * Навигация: <LikeButton href="/favorites" variant="nav" />
- */
 export default function LikeButton({
-  isLiked,
+  isLiked: isLikedProp = false,
   onLike,
   href,
   variant = "card",
   className = "",
 }) {
+  const [localLiked, setLocalLiked] = useState(isLikedProp);
+  const liked = onLike ? isLikedProp : localLiked;
+
   const baseClass =
-    `${styles.btn} ${variant === "card" ? styles.card : ""} ${variant === "nav" ? styles.nav : ""} ${isLiked ? styles.active : ""} ${className}`.trim();
+    `${styles.btn} ${variant === "card" ? styles.card : ""} ${variant === "nav" ? styles.nav : ""} ${liked ? styles.active : ""} ${className}`.trim();
 
   const inner =
-    isLiked && variant === "card" ? (
+    liked && variant === "card" ? (
       <span className={styles.heartGradient} />
     ) : (
-      <Heart fill="white" size={20} strokeWidth={2} />
+      <Heart fill="none" size={20} strokeWidth={2} />
     );
 
   if (href) {
@@ -37,17 +35,21 @@ export default function LikeButton({
 
   const handleClick = (e) => {
     e.stopPropagation();
-    onLike?.();
+    if (onLike) {
+      onLike();
+    } else {
+      setLocalLiked((v) => !v);
+    }
   };
 
   return (
     <button
       className={baseClass}
       onClick={handleClick}
-      aria-label={isLiked ? "Убрать из избранного" : "Добавить в избранное"}
+      aria-label={liked ? "Убрать из избранного" : "Добавить в избранное"}
     >
       <span className={styles.label}>
-        {isLiked ? "В списке объектов" : "Добавить в список"}
+        {liked ? "В списке объектов" : "Добавить в список"}
       </span>
       {inner}
     </button>

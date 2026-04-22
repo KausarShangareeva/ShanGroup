@@ -13,7 +13,7 @@ export default function ExpertAnalytics() {
     <section className={styles.section}>
       <Container>
         <SectionTitle
-          tag="Аналитика"
+          tag=""
           title="Аналитика от экспертов Inside"
           subtitle="Актуальные обзоры рынка, инвестиционные стратегии и разбор тенденций от команды ShanGroup"
           align="center"

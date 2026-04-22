@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
   padding: 8rem 0;
   background: #f7f8fa;
 }
@@ -95,12 +95,14 @@
   display: flex;
   gap: 2.4rem;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   width: 100%;
+  padding: 6px 0 0.4rem 2rem;
+  scroll-padding-left: 2rem;
 }
 
 .viewport::-webkit-scrollbar {
@@ -163,8 +165,8 @@
     grid-template-columns: 1fr;
   }
   .viewport {
-    padding-left: 1.5rem;
-    scroll-padding-left: 1.5rem;
+    padding-left: 2rem;
+    scroll-padding-left: 2rem;
   }
   .cardWrap {
     flex: 0 0 calc(100% - 3rem);

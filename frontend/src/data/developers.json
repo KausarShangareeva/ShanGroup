@@ -5,17 +5,17 @@
     "category": "giant",
     "info": "Создатель Burj Khalifa и Downtown Dubai. Крупнейший госзастройщик ОАЭ с высокой ликвидностью.",
     "communities": [
-      { "label": "Emaar South", "href": "/communities/emaar-south" },
-      { "label": "The Oasis", "href": "/communities/the-oasis" },
-      { "label": "The Valley", "href": "/communities/the-valley" },
-      { "label": "Dubai Hills Estate", "href": "/communities/dubai-hills" },
-      { "label": "Rashid Yachts & Marina", "href": "/communities/rashid-yachts" },
-      { "label": "Emaar Beachfront", "href": "/communities/emaar-beachfront" },
-      { "label": "Dubai Creek Harbour", "href": "/communities/creek-harbour" },
-      { "label": "Arabian Ranches III", "href": "/communities/arabian-ranches-3" },
-      { "label": "Downtown Dubai", "href": "/communities/downtown" },
-      { "label": "The Heights", "href": "/communities/the-heights" },
-      { "label": "Grand Polo Club & Resort", "href": "/communities/grand-polo-club" }
+      { "label": "Emaar South", "href": "/communities/emaar-south", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553608/Emaar_South_g0wrwv.png", "desc": "Современный район у Expo City с доступными виллами и апартаментами. Идеален для семей и инвесторов." },
+      { "label": "The Oasis", "href": "/communities/the-oasis", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/The_Oasis_ajzkkq.png", "desc": "Закрытые виллы в окружении искусственных лагун. Эксклюзивный жилой остров с прямым выходом к воде." },
+      { "label": "The Valley", "href": "/communities/the-valley", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553616/The_VALLEY_deiivy.png", "desc": "Семейное комьюнити у Dubai–Al Ain Road. Виллы с садами и природной тематикой вдали от шума." },
+      { "label": "Dubai Hills Estate", "href": "/communities/dubai-hills", "desc": "Оазис спокойствия: огромный парк, гольф и элитные школы. Лучшее комьюнити для семейной жизни." },
+      { "label": "Rashid Yachts & Marina", "href": "/communities/rashid-yachts", "desc": "Yacht club–резиденции у Dubai Canal. Апартаменты с видом на яхты и премиальная инфраструктура." },
+      { "label": "Emaar Beachfront", "href": "/communities/emaar-beachfront", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/Emaar_Beachfront_rh2hlz.png", "desc": "Закрытый пляжный остров между Palm и JBR. Элитные апартаменты с приватным доступом к морю." },
+      { "label": "Dubai Creek Harbour", "href": "/communities/creek-harbour", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553613/Dubai_Creek_Harbour_qi1iqb.png", "desc": "Будущий деловой центр у старого Дубая. Культовый Creek Tower и резиденции у воды." },
+      { "label": "Arabian Ranches III", "href": "/communities/arabian-ranches-3", "desc": "Семейное комьюнити с виллами и лагунами в Dubailand. Закрытая застройка с клубным сервисом." },
+      { "label": "Downtown Dubai", "href": "/communities/downtown", "desc": "Культовый центр: Burj Khalifa, Dubai Mall, фонтаны. Премиальный статус, деловая активность и лучшие рестораны." },
+      { "label": "The Heights", "href": "/communities/the-heights", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553615/The_Heights_fese1x.png", "desc": "Мастер-план нового поколения у Dubai–Al Ain Road. Зелёный район с виллами и таунхаусами." },
+      { "label": "Grand Polo Club & Resort", "href": "/communities/grand-polo-club", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553612/Grand_Polo_Club_Resort_yu0wnw.png", "desc": "Уникальный проект с полями для поло. Элитные виллы в окружении природы с клубным образом жизни." }
     ]
   },
   "Meraas": {
@@ -24,11 +24,11 @@
     "category": "giant",
     "info": "Создатель Bluewaters, City Walk и Port de La Mer. Лидер премиальной прибрежной застройки.",
     "communities": [
-      { "label": "The Acres", "href": "/communities/the-acres" },
-      { "label": "Bluewaters Island", "href": "/communities/bluewaters" },
-      { "label": "Port de la Mer", "href": "/communities/port-de-la-mer" },
-      { "label": "City Walk", "href": "/communities/city-walk" },
-      { "label": "Cherrywoods", "href": "/communities/cherrywoods" }
+      { "label": "The Acres", "href": "/communities/the-acres", "desc": "Экологичное вилльное комьюнити с лесными тропами и лагунами в Dubailand от Meraas." },
+      { "label": "Bluewaters Island", "href": "/communities/bluewaters", "desc": "Остров напротив JBR с Ain Dubai и брендовыми резиденциями. Образ жизни у воды." },
+      { "label": "Port de la Mer", "href": "/communities/port-de-la-mer", "desc": "Средиземноморский стиль в сердце Jumeirah. Марина, яхты и виллы у моря от Meraas." },
+      { "label": "City Walk", "href": "/communities/city-walk", "desc": "Городской квартал в стиле Нью-Йорка с бутиками, ресторанами и арт-пространствами." },
+      { "label": "Cherrywoods", "href": "/communities/cherrywoods", "desc": "Зелёное закрытое комьюнити с таунхаусами у Dubailand. Семейная атмосфера и природные тропы." }
     ]
   },
   "DAMAC": {
@@ -37,12 +37,12 @@
     "category": "premium",
     "info": "Брендированная роскошь: коллаборации с Cavalli и de GRISOGONO. Курортные комьюнити с гибкими рассрочками.",
     "communities": [
-      { "label": "DAMAC Islands 2", "href": "/communities/damac-islands-2" },
-      { "label": "DAMAC Riverside", "href": "/communities/damac-riverside" },
-      { "label": "DAMAC Hills 2", "href": "/communities/damac-hills-2" },
-      { "label": "DAMAC Lagoons", "href": "/communities/damac-lagoons" },
-      { "label": "DAMAC Hills", "href": "/communities/damac-hills" },
-      { "label": "Sun City", "href": "/communities/sun-city" }
+      { "label": "DAMAC Islands 2", "href": "/communities/damac-islands-2", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553615/Damac_Islands_2_xovwrc.png", "desc": "Виллы на островах с тропическим образом жизни. Полинезийская концепция от DAMAC в Дубае." },
+      { "label": "DAMAC Riverside", "href": "/communities/damac-riverside", "desc": "Резиденции у канала с водными активностями и тропической концепцией от DAMAC." },
+      { "label": "DAMAC Hills 2", "href": "/communities/damac-hills-2", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553616/Damac_Hills_2_ainaac.png", "desc": "Доступное комьюнити с лагунами и аквапарком. Активный отдых для всей семьи в Dubailand." },
+      { "label": "DAMAC Lagoons", "href": "/communities/damac-lagoons", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/Damac_Lagoons_jegefn.png", "desc": "Средиземноморские виллы у искусственных лагун. Вдохновлено лучшими курортами Европы." },
+      { "label": "DAMAC Hills", "href": "/communities/damac-hills", "desc": "Первый гольф-клуб от DAMAC. Виллы и апартаменты с видом на Trump Golf Course." },
+      { "label": "Sun City", "href": "/communities/sun-city", "desc": "Закрытое комьюнити в иберийском стиле с архитектурой городов Испании от DAMAC." }
     ]
   },
   "Aldar": {
@@ -57,9 +57,9 @@
     "category": "boutique",
     "info": "Быстрорастущий застройщик Шарджи. Экологичные «умные» города для семейного проживания.",
     "communities": [
-      { "label": "Masaar", "href": "/communities/masaar" },
-      { "label": "Aljada", "href": "/communities/aljada" },
-      { "label": "Jouri Hills", "href": "/communities/jouri-hills" }
+      { "label": "Masaar", "href": "/communities/masaar", "desc": "Лесное комьюнити Шарджи с 50 000 деревьев. Таунхаусы и виллы в экологичном закрытом районе." },
+      { "label": "Aljada", "href": "/communities/aljada", "desc": "Новый мастер-план в Шардже: жильё, торговля, образование и досуг в едином пространстве." },
+      { "label": "Jouri Hills", "href": "/communities/jouri-hills", "desc": "Элитные виллы в Jumeirah Golf Estates с гольф-полями и живописными природными видами." }
     ]
   },
   "Ellington": {
@@ -78,14 +78,14 @@
     "category": "giant",
     "info": "Создатель Palm Jumeirah. Государственный масштаб и эксклюзивность прибрежных локаций.",
     "communities": [
-      { "label": "Dubai Islands", "href": "/communities/dubai-islands" },
-      { "label": "Palm Jebel Ali", "href": "/communities/palm-jebel-ali" },
-      { "label": "Deira Islands", "href": "/communities/deira-islands" },
-      { "label": "Palm Jumeirah", "href": "/communities/palm-jumeirah" },
-      { "label": "Jumeirah Village Circle", "href": "/communities/jumeirah-village-circle" }
+      { "label": "Dubai Islands", "href": "/communities/dubai-islands", "desc": "Пять тематических островов у побережья. Новый курортный мастер-план с отелями и виллами у воды." },
+      { "label": "Palm Jebel Ali", "href": "/communities/palm-jebel-ali", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/Palm_Jebel_Ali_et0om8.png", "desc": "Крупнейший рукотворный остров мира. Ультра-премиальные виллы и эксклюзивные пляжи от Nakheel." },
+      { "label": "Deira Islands", "href": "/communities/deira-islands", "desc": "Реновация исторического района Дубая. Торговые улицы, пляжи и жильё у воды в старом городе." },
+      { "label": "Palm Jumeirah", "href": "/communities/palm-jumeirah", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553608/Palm_Jumeirah_ftxtay.png", "desc": "Частные пляжи, закрытые виллы и роскошные отели. Гарантия абсолютной приватности и высшего статуса." },
+      { "label": "Jumeirah Village Circle", "href": "/communities/jumeirah-village-circle", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553608/Jumeirah_Village_Circle_kip8nj.png", "desc": "Зелёный семейный район с парками и школами. Лидер по ROI и доступности жилья в Дубае." }
     ]
   },
-  "NSHAMA": {
+  "Nshama": {
     "logo": "/developer_logo/NSHAMA.jpeg",
     "info": "Застройщик доступного жилья, создатель комьюнити Town Square Dubai."
   },
@@ -95,11 +95,11 @@
     "category": "premium",
     "info": "Полный контроль качества на всех этапах. Лидер по материалам и отделке в Дубае.",
     "communities": [
-      { "label": "Sobha Siniya Island", "href": "/communities/sobha-siniya" },
-      { "label": "Sobha Elwood", "href": "/communities/sobha-elwood" },
-      { "label": "Sobha Reserve", "href": "/communities/sobha-reserve" },
-      { "label": "Sobha Hartland II", "href": "/communities/sobha-hartland-2" },
-      { "label": "Sobha Hartland", "href": "/communities/sobha-hartland" }
+      { "label": "Sobha Siniya Island", "href": "/communities/sobha-siniya", "desc": "Уединённый остров в Умм-эль-Кувейне. Виллы у пляжа, мангровые леса и яхтинг вдали от города." },
+      { "label": "Sobha Elwood", "href": "/communities/sobha-elwood", "desc": "Лесное вилльное комьюнити с 10 000 деревьями. Экологичная концепция жизни от Sobha Realty." },
+      { "label": "Sobha Reserve", "href": "/communities/sobha-reserve", "desc": "Виллы в Dubailand с международными гольф-полями и первоклассной отделкой от Sobha." },
+      { "label": "Sobha Hartland II", "href": "/communities/sobha-hartland-2", "desc": "Продолжение Sobha Hartland у Dubai Canal. Апартаменты и виллы с прямым доступом к воде." },
+      { "label": "Sobha Hartland", "href": "/communities/sobha-hartland", "desc": "Зелёное комьюнити в MBR City у Canal. Школы, парки и высочайшее качество от Sobha." }
     ]
   },
   "Samana": {
@@ -180,9 +180,9 @@
     "category": "giant",
     "info": "Создатель Mall of the Emirates и премиального комьюнити Tilal Al Ghaf.",
     "communities": [
-      { "label": "Tilal Al Ghaf", "href": "/communities/tilal-al-ghaf" },
-      { "label": "Ghaf Woods", "href": "/communities/ghaf-woods" },
-      { "label": "Al Zahia", "href": "/communities/al-zahia" }
+      { "label": "Tilal Al Ghaf", "href": "/communities/tilal-al-ghaf", "desc": "Лагунный мастер-план от MAF. Виллы, таунхаусы и апартаменты у пляжа — лидер семейных комьюнити." },
+      { "label": "Ghaf Woods", "href": "/communities/ghaf-woods", "desc": "Первый в Дубае лесной район с 10 000 деревьев гаф. Виллы и апартаменты в экотематике." },
+      { "label": "Al Zahia", "href": "/communities/al-zahia", "desc": "Первое джентрифицированное закрытое комьюнити Шарджи от MAF. Семейная архитектура и лагуны." }
     ]
   },
   "Tarrad": {
@@ -207,7 +207,7 @@
     "category": "giant",
     "info": "Государственный гигант, создавший JBR и Business Bay. Масштабные семейные комьюнити.",
     "communities": [
-      { "label": "Maritime City", "href": "/communities/maritime-city" }
+      { "label": "Maritime City", "href": "/communities/maritime-city", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553611/Maritime_city_pr2aqc.png", "desc": "Портовый деловой район у Dubai Creek. Апартаменты, отели и коммерческие объекты у воды." }
     ]
   },
   "Tiger Properties": {
