@@ -1,98 +1,233 @@
+/* ─────────────────────────────────────────────────────────────
+   Hero — editorial-neumorphic style
+   - Warm sand palette via --sand / --sand-deep
+   - Mixed type: Montserrat (display) + Instrument Serif italic accent
+     + JetBrains Mono for kickers/eyebrows
+   - Neumorphic raised cards, ken-burns image, glass live-chip
+   ───────────────────────────────────────────────────────────── */
+
 .section {
-  background: linear-gradient(135deg, #fdf8f2 0%, #eef3f8 100%);
-  padding: 4rem 0 3rem;
-  min-height: 100vh;
-}
-
-/* Заголовок */
-.title {
-  font-size: clamp(3.6rem, 5vw, 6.4rem);
-  font-weight: 600;
-  color: #111;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  max-width: 100rem;
-  margin-bottom: 3rem;
-}
-
-.titleOval {
-  display: inline-block;
-  width: 14rem;
-  height: 5.6rem;
-  border-radius: 100px;
-  background-size: cover;
-  background-position: center;
-  vertical-align: middle;
-  margin: 0 0.4rem;
+  background: var(--bg);
+  padding: 1.6rem 0 4rem;
   position: relative;
-  top: -0.2rem;
+  /* Clip horizontal grain overflow without trapping the SearchBar
+     dropdown panel that extends below this section. `overflow-x: clip` +
+     explicit `overflow-y: visible` keeps the dropdown visible. */
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
-.titleAccent {
-  font-style: italic;
+/* Warm grain wash (light radials) — already inset:0 to its parent box,
+   so the gradient itself can't bleed out; the section's overflow-x:clip
+   only handles potential layout overflow from negative-origin radials. */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, var(--grain-1), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, var(--grain-2), transparent 60%);
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Top row: headline + meta strip ───────────────────────── */
+.topRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 4rem;
+  padding-bottom: 3.2rem;
+}
+
+/* Headline (.title*) extracted to <PageTitleH1> — see
+   src/components/PageTitleH1/PageTitleH1.module.css */
+
+/* ── Meta strip (right of headline) ───────────────────────── */
+.metaStrip {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 28rem;
+  max-width: 32rem;
+}
+
+.metaCard {
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  border-radius: 1.8rem;
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.metaKicker {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.liveDot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 99px;
+  background: #1c8a4a;
+  animation: pulseDot 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.metaText {
+  font-size: 1.3rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.statRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.statCard {
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  border-radius: 1.4rem;
+  padding: 1rem 1.4rem;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.statValue {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-top: 0.2rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.statValue small {
+  font-size: 1.4rem;
+  color: var(--muted);
   font-weight: 400;
-  color: #d97a7a;
-  letter-spacing: -0.01em;
 }
 
-/* Обёртка hero-тела: main + searchBar внутри */
+/* ── Hero body: image + agent grid ────────────────────────── */
 .heroBody {
   position: relative;
-  padding-bottom: 4rem;
+  /* SearchBar now lives in normal flow — no need to reserve absolute slot */
 }
 
-/* Основной блок */
 .main {
   display: grid;
-  grid-template-columns: 1fr 38rem;
-  gap: 2.4rem;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 1.8rem;
   align-items: stretch;
   height: 54rem;
 }
 
-/* Фото */
+/* ── Hero image (raised neumorphic card with ken-burns) ──── */
 .imageWrap {
-  border-radius: 2rem;
+  position: relative;
+  border-radius: 3.2rem;
   overflow: hidden;
   height: 100%;
+  background: var(--bg);
+  box-shadow: var(--neu-raised);
 }
 
 .image {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(1.05) contrast(1.02);
+  animation: kenburns 24s ease-in-out infinite;
 }
 
-/* Карточка агента */
-.card {
-  border-radius: 2rem;
-  position: relative;
-  height: 100%;
-  clip-path: inset(0 round 2rem);
-  isolation: isolate;
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
 }
 
+.locChip {
+  position: absolute;
+  top: 2.2rem;
+  left: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+/* ── Card wrapper (agent) ─────────────────────────────────── */
 .cardWrap {
   position: relative;
   height: 100%;
 }
 
+/* Agent card */
+.card {
+  border-radius: 3.2rem;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg);
+  box-shadow: var(--neu-raised);
+}
+
+/* Skyline-style circular badge top-right */
 .badge {
   position: absolute;
-  top: -5.2rem;
-  right: -5.2rem;
+  top: 1.8rem;
+  right: 1.8rem;
   z-index: 10;
-  width: 14rem;
-  height: 14rem;
+  width: 8.8rem;
+  height: 8.8rem;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  animation: badgeSpin 12s linear infinite;
-  background-size: contain;
-  background-size: 90%;
+  background: rgba(255, 255, 255, 0.94);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  background-size: 56%;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -104,37 +239,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: badgeSpin 12s linear infinite reverse;
-}
-
-.badgeSG {
-  font-size: 3rem;
-  font-family: var(--font-abril), serif;
-  font-weight: 400;
-  color: #d97a7a;
-  line-height: 1;
 }
 
 .badgeLogo {
   width: 4.8rem;
   height: 4.8rem;
   object-fit: contain;
-}
-
-.badgeSub {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: rgba(50, 50, 50, 0.7);
-  letter-spacing: 0.15em;
-}
-
-@keyframes badgeSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .agentVideo {
@@ -158,18 +268,44 @@
 .agentBlur {
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.75) 40%,
-    rgba(0, 0, 0, 0.82) 100%
+    rgba(0, 0, 0, 0.55) 35%,
+    rgba(0, 0, 0, 0.78) 100%
   );
-  padding: 3.2rem 2.4rem 2.8rem;
+  padding: 3.2rem 2.4rem 2.4rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  color: #fff;
+}
+
+/* Online tag */
+.onlineTag {
+  position: absolute;
+  top: 2.2rem;
+  left: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 1.2rem 0.6rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 5;
+}
+
+.onlineDot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 99px;
+  background: #3ee07a;
+  animation: pulseDot 1.6s ease-in-out infinite;
 }
 
 .agentNameRow {
@@ -179,141 +315,251 @@
 }
 
 .agentName {
-  font-size: 2.2rem;
+  font-family: var(--font-montserrat);
   font-weight: 700;
+  font-size: 2.6rem;
+  letter-spacing: -0.02em;
   color: #fff;
 }
 
 .agentBadge {
-  color: #2da44e;
+  color: #1c8a4a;
   flex-shrink: 0;
 }
 
 .agentBio {
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.5;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.45;
+  max-width: 32rem;
 }
 
 .agentStats {
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1.2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  gap: 0.4rem;
+  margin: 0.4rem 0 0.6rem;
 }
 
 .stat {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  text-align: left;
 }
 
-/* CTA */
-.tourBtn {
-  background: linear-gradient(to right, #e8a06a, #d97a7a);
-  border: none;
+.statN {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: -0.01em;
   color: #fff;
-  border-radius: 1.4rem;
-  padding: 1.4rem 2rem;
-  cursor: pointer;
+}
+
+.statL {
+  font-size: 1.05rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+/* Two-line CTA text inside <PrimaryButton variant="light"> on the agent card */
+.tourBtnText {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
-  width: 100%;
-  transition: filter 0.2s;
-  font-family: inherit;
-  box-shadow: 0 4px 16px rgba(217, 122, 122, 0.35);
-}
-
-.tourBtn:hover {
-  filter: brightness(1.08);
+  align-items: flex-start;
+  gap: 0.1rem;
+  line-height: 1.1;
 }
 
 .tourMain {
-  font-size: 1.7rem;
+  font-family: var(--font-montserrat);
   font-weight: 600;
-  color: #fff;
+  font-size: 1.4rem;
+  color: var(--ink);
 }
 
 .tourSub {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--muted);
 }
 
-/* Строка поиска — абсолютно позиционирована поверх main */
-.searchBar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+/* ── SearchBar wrap — sits below the hero cards in normal flow
+   with a clear gap so it doesn't visually cling to the image edge. */
+.searchBarWrap {
+  margin-top: 3.2rem;
+  position: relative;
   z-index: 10;
-  background: #fff;
-  border-radius: 10rem;
-  padding: 1.4rem 1.6rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.13);
 }
 
-.searchField {
-  display: flex;
+/* ── Market ticker ──────────────────────────────────────── */
+.ticker {
+  margin-top: 1.8rem;
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  border-radius: 999px;
+  padding: 1.2rem 0;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+.tickerTrack {
+  display: inline-flex;
+  white-space: nowrap;
+  gap: 0;
+  animation: marqueeX 38s linear infinite;
+}
+
+.tickerItem {
+  display: inline-flex;
   align-items: center;
   gap: 1rem;
-  padding: 0 2.4rem;
-  cursor: pointer;
-  flex: 1;
-}
-
-.searchIcon {
-  color: #aaa;
-  flex-shrink: 0;
-}
-
-.fieldLabel {
-  display: block;
-  font-size: 1.1rem;
-  color: #aaa;
-  font-weight: 400;
-}
-
-.fieldValue {
-  display: block;
-  font-size: 1.5rem;
+  padding: 0 2.8rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  color: #111;
+  color: var(--ink-2);
+  border-right: 1px solid var(--line);
 }
 
-.divider {
-  width: 1px;
-  height: 3.5rem;
-  background: #eee;
-  flex-shrink: 0;
+.tickerKey {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
-.searchBtn {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  background: #111;
-  color: #fff;
-  border: none;
-  border-radius: 10rem;
-  padding: 1.2rem 2.8rem;
-  font-size: 1.6rem;
+.tickerVal {
+  color: var(--ink);
   font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s;
-  font-family: inherit;
-  margin-left: 0.8rem;
 }
 
-.searchBtn:hover {
-  background: #333;
+.tickerValUp {
+  color: #1c8a4a;
+}
+
+.tickerTrend {
+  color: #1c8a4a;
+  display: inline-flex;
+}
+
+@keyframes marqueeX {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Trust row ──────────────────────────────────────────── */
+.trustRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 3.6rem;
+  padding: 2.6rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.trustStat {
+  padding: 0 3.2rem;
+  border-left: 1px solid var(--line);
+}
+
+.trustStat:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.trustN {
+  font-family: var(--font-montserrat);
+  font-size: 3.8rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.trustNMono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+.trustL {
+  font-size: 1.25rem;
+  color: var(--muted);
+  margin-top: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.05) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.12) translate(-1.5%, -1%);
+  }
+  100% {
+    transform: scale(1.05) translate(0, 0);
+  }
+}
+
+@keyframes badgeSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .topRow {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+  .metaStrip {
+    max-width: none;
+    min-width: 0;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -323,7 +569,7 @@
   .main {
     grid-template-columns: 1fr;
     height: auto;
-    gap: 2rem;
+    gap: 1.4rem;
   }
   .imageWrap {
     height: 40rem;
@@ -333,50 +579,60 @@
     overflow: hidden;
   }
   .badge {
-    display: none;
+    width: 7.2rem;
+    height: 7.2rem;
+    top: 1.4rem;
+    right: 1.4rem;
   }
-  .searchBar {
+  .badgeLogo {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+  .searchBarWrap {
     position: static;
-    flex-wrap: wrap;
-    border-radius: 2rem;
-    gap: 1rem;
-    margin-top: 2rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    margin-top: 1.6rem;
   }
-  .divider {
-    display: none;
+}
+
+@media (max-width: 1024px) {
+  .trustRow {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2.4rem;
   }
-  .searchField {
-    padding: 0.8rem 1rem;
-    flex: 1 1 calc(50% - 1rem);
+  .trustStat {
+    padding: 0 1.8rem;
   }
-  .searchBtn {
-    width: 100%;
-    justify-content: center;
-    margin-left: 0;
+  .trustStat:nth-child(3) {
+    border-left: 0;
+    padding-left: 0;
   }
 }
 
 @media (max-width: 560px) {
   .section {
-    padding: 2.4rem 0 2rem;
-    min-height: unset;
+    padding: 1rem 0 2rem;
   }
-  .title {
-    font-size: clamp(2.8rem, 8vw, 4rem);
-    margin-bottom: 2rem;
-  }
-  .titleOval {
-    width: 8rem;
-    height: 3.8rem;
-  }
+  /* .titlePrimary / .titleAccent / .titlePlace migrated to PageTitleH1.module.css */
   .main {
-    gap: 1.6rem;
+    gap: 1.2rem;
   }
   .imageWrap {
     height: 28rem;
+    border-radius: 2.2rem;
+  }
+  .card {
+    border-radius: 2.2rem;
   }
   .cardWrap {
-    display: none;
+    height: 42rem;
+  }
+  .searchBar {
+    grid-template-columns: 1fr;
+  }
+  .trustN {
+    font-size: 2.6rem;
+  }
+  .trustL {
+    font-size: 1.1rem;
   }
 }

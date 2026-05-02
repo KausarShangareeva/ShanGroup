@@ -1,28 +1,33 @@
+"use client";
+
+// "Предложение месяца" — carousel of 3 properties with prev/next arrows over
+// the photo, mobile pagination dots, and a 3-column desktop layout
+// (description / image / pricing). Mirrors the artifact's MonthlyOffer.
+
+import { useState } from "react";
 import {
-  MapPin,
-  Leaf,
-  ChevronRight,
-  ChevronLeft,
-  CircleDollarSign,
-  Maximize2,
-  CalendarCheck,
-  Trees,
-} from "lucide-react";
+  IcPin,
+  IcDollar,
+  IcCalendar,
+  IcChevron,
+  IcCheck,
+  IcPhone,
+} from "@/components/HeroIcons/HeroIcons";
+import { Maximize2, Trees, Leaf } from "lucide-react";
 import Container from "@/components/layout/Container";
-import FeatureTag from "@/components/FeatureTag/FeatureTag";
-import ContactButton from "@/components/ContactButton/ContactButton";
+import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import Button from "@/components/Button/Button";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import PROPERTIES from "@/data/properties/objects.json";
 import styles from "./OfferOfMonth.module.css";
 
 const FEATURES = [
-  { label: "Бассейн", emoji: "🏊‍♂️" },
-  { label: "Тренажёрный зал", emoji: "🏋️‍♂️" },
-  { label: "Консьерж", emoji: "🛎️" },
-  { label: "Умный дом", emoji: "🏠" },
-  { label: "Парковка", emoji: "🚗" },
-  { label: "SPA", emoji: "🧖‍♀️" },
+  "Бассейн",
+  "Тренажёрный зал",
+  "Консьерж",
+  "Умный дом",
+  "Парковка",
+  "SPA",
 ];
 
 const PAYMENT_PLAN = [
@@ -31,82 +36,135 @@ const PAYMENT_PLAN = [
   { label: "При получении ключей", percent: "30%" },
 ];
 
-function getDailyProperty() {
+// Pick 3 daily-rotated offers from PROPERTIES so the home page rotates
+// every day but stays stable within a session.
+function getRotatingOffers() {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 0);
-  const diff = now - start;
-  const oneDay = 1000 * 60 * 60 * 24;
-  const dayOfYear = Math.floor(diff / oneDay);
-  return PROPERTIES[dayOfYear % PROPERTIES.length];
+  const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+  const N = PROPERTIES.length;
+  return [
+    PROPERTIES[dayOfYear % N],
+    PROPERTIES[(dayOfYear + 1) % N],
+    PROPERTIES[(dayOfYear + 2) % N],
+  ];
 }
 
 export default function OfferOfMonth() {
-  const p = getDailyProperty();
-  const THUMBNAILS = [p.image, p.image, p.image, p.image];
-  const LIFESTYLE = [p.district, p.emirate.replace(/-/g, " ")];
+  const offers = getRotatingOffers();
+  const [idx, setIdx] = useState(0);
+  const total = offers.length;
+  const offer = offers[idx];
+  const next = () => setIdx((i) => (i + 1) % total);
+  const prev = () => setIdx((i) => (i - 1 + total) % total);
+
+  const lifestyle = [offer.district, offer.emirate.replace(/-/g, " ")];
+  const thumbs = [offer.image, offer.image, offer.image, offer.image];
 
   return (
     <section className={styles.section}>
       <Container>
         <SectionTitle
           tag="Предложение месяца"
-          title="Лучшие объекты от застройщиков ОАЭ"
+          title="Лучшие объекты от"
+          titleAccent="застройщиков ОАЭ"
           subtitle="Эксклюзивные условия, рассрочка до 5 лет и сопровождение на каждом этапе сделки"
           align="center"
         />
 
         <div className={styles.layout}>
-          {/* Левая колонка */}
+          {/* Левая колонка — описание */}
           <div className={styles.left}>
-            <p className={styles.descLabel}>ОПИСАНИЕ</p>
+            <p className={styles.descLabel}>Описание</p>
             <h2 className={styles.title}>
-              {p.name}
-              <br />
-              <span style={{ fontWeight: 400, fontSize: "0.75em" }}>
-                by {p.developer}
-              </span>
+              {offer.name}
+              <span className={styles.titleAccent}>by {offer.developer}</span>
             </h2>
 
-            <ContactButton label="Связаться с агентом" icon="phone" />
+            <PrimaryButton size="md" icon={<IcPhone />}>
+              Связаться с агентом
+            </PrimaryButton>
+
+            <p className={styles.leftDesc}>
+              {offer.name} — премиальный объект в {offer.district}. Уникальное
+              сочетание современного дизайна, инфраструктуры и выгодных условий
+              рассрочки от застройщика {offer.developer}.
+            </p>
           </div>
 
-          {/* Центр — фото */}
+          {/* Центр — фото с каруселью */}
           <div className={styles.center}>
             <div className={styles.mainImgWrap}>
-              <img
-                src={p.image}
-                alt={p.name}
-                className={styles.mainImg}
-              />
-              <button className={styles.mapBtn}>
-                <MapPin size={14} />
+              <img src={offer.image} alt={offer.name} className={styles.mainImg} />
+              <div className={styles.statusPill}>
+                <span className={styles.statusDot} />
+                Live · {offer.district}
+              </div>
+
+              {/* Carousel arrows */}
+              <button
+                type="button"
+                onClick={prev}
+                aria-label="Предыдущий"
+                className={`${styles.carouselArrow} ${styles.carouselArrowLeft}`}
+              >
+                <span className={styles.carouselChevronLeft}>
+                  <IcChevron size={14} />
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Следующий"
+                className={`${styles.carouselArrow} ${styles.carouselArrowRight}`}
+              >
+                <span className={styles.carouselChevronRight}>
+                  <IcChevron size={14} />
+                </span>
+              </button>
+
+              {/* Mobile pagination dots */}
+              <div className={styles.dots} aria-hidden>
+                {offers.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`${styles.dot} ${i === idx ? styles.dotActive : ""}`}
+                  />
+                ))}
+              </div>
+
+              <button type="button" className={styles.mapBtn}>
+                <IcPin size={13} />
                 Посмотреть на карте
               </button>
             </div>
           </div>
 
-          {/* Правая колонка */}
+          {/* Правая колонка — цена и детали */}
           <div className={styles.right}>
-            <p className={styles.priceLabel}>
-              <CircleDollarSign size={15} />
-              Минимальная цена
-            </p>
-            <p className={styles.price}>{p.priceUsd}</p>
-
-            <div className={styles.specRow}>
-              <Trees size={14} className={styles.specIcon} />
-              <span className={styles.spec}>{p.type}</span>
-              <span className={styles.specDot} />
-              <Maximize2 size={13} className={styles.specIcon} />
-              <span className={styles.spec}>{p.area}</span>
-              <span className={styles.specDot} />
-              <CalendarCheck size={13} className={styles.specIcon} />
-              <span className={styles.spec}>{p.delivery || "Готово"}</span>
+            <div className={styles.priceCard}>
+              <p className={styles.priceLabel}>
+                <IcDollar size={13} />
+                Минимальная цена
+              </p>
+              <p className={styles.price}>
+                <span className={styles.priceFromTag}>от</span>
+                {offer.priceUsd}
+              </p>
+              <div className={styles.specRow}>
+                <Trees size={13} className={styles.specIcon} />
+                <span className={styles.spec}>{offer.type}</span>
+                <span className={styles.specDot} />
+                <Maximize2 size={13} className={styles.specIcon} />
+                <span className={styles.spec}>{offer.area}</span>
+                <span className={styles.specDot} />
+                <IcCalendar size={13} />
+                <span className={styles.spec}>{offer.delivery || "Готово"}</span>
+              </div>
+              <p className={styles.installment}>
+                Рассрочка от <strong>2 лет</strong>
+              </p>
             </div>
-
-            <p className={styles.installment}>
-              Рассрочка от <strong>2 лет</strong>
-            </p>
 
             <div className={styles.planList}>
               {PAYMENT_PLAN.map(({ label, percent }) => (
@@ -117,71 +175,38 @@ export default function OfferOfMonth() {
               ))}
             </div>
 
-            <p className={styles.tagGroupLabel}>ОСОБЕННОСТИ</p>
-            <div className={styles.tagGroup}>
-              {FEATURES.map(({ label, emoji }) => (
-                <FeatureTag key={label} emoji={emoji}>
-                  {label}
-                </FeatureTag>
-              ))}
+            <div>
+              <p className={styles.tagGroupLabel}>Особенности</p>
+              <div className={styles.tagGroup}>
+                {FEATURES.map((label) => (
+                  <span key={label} className={styles.featureTag}>
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <p className={styles.tagGroupLabel}>СТИЛЬ ЖИЗНИ</p>
-            <div className={styles.tagGroup}>
-              {LIFESTYLE.map((l) => (
-                <span key={l} className={styles.lifestyleTag}>
-                  <Leaf size={13} />
-                  {l}
-                </span>
-              ))}
+            <div>
+              <p className={styles.tagGroupLabel}>Стиль жизни</p>
+              <div className={styles.tagGroup}>
+                {lifestyle.map((l) => (
+                  <span key={l} className={styles.lifestyleTag}>
+                    <Leaf size={12} />
+                    {l}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <div className={styles.thumbs}>
-              <div className={styles.thumbStack}>
-                {THUMBNAILS.map((src, i) => (
-                  <img key={i} src={src} alt="" className={styles.thumb} />
-                ))}
-              </div>
-              <div className={styles.thumbNav}>
-                <button className={styles.thumbArrow}>
-                  <ChevronLeft size={16} />
-                </button>
-                <button className={styles.thumbArrow}>
-                  <ChevronRight size={16} />
-                </button>
-              </div>
+              {thumbs.map((src, i) => (
+                <img key={i} src={src} alt="" className={styles.thumb} />
+              ))}
             </div>
-          </div>
-        </div>
 
-        {/* Описание + галерея */}
-        <div className={styles.bottom}>
-          <div className={styles.descBlock}>
-            <p className={styles.descLabel}>ОПИСАНИЕ</p>
-            <h3 className={styles.descTitle}>
-              Разработано
-              <br />
-              {p.developer}
-            </h3>
-          </div>
-
-          <div className={styles.descText}>
-            <p>
-              {p.name} — премиальный объект недвижимости в {p.district}.
-              Уникальное сочетание современного дизайна, инфраструктуры и
-              выгодных условий рассрочки от застройщика {p.developer}.
-            </p>
-            <Button label="Подробнее" href={`/${p.id}`} icon="plus" />
-          </div>
-
-          <div className={styles.devLogo}>
-            <div className={styles.devLogoWrap}>
-              <img
-                src={p.image}
-                alt={p.developer}
-                className={styles.devLogoImg}
-              />
-              <span className={styles.devLogoText}>{p.developer.toUpperCase()}</span>
+            {/* "Подробнее" — visible on mobile only (CSS) */}
+            <div className={styles.mobileDetailsCta}>
+              <Button label="Подробнее" href={`/${offer.id}`} icon="plus" />
             </div>
           </div>
         </div>

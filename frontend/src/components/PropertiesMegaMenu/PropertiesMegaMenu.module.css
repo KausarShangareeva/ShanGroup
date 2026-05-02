@@ -1,0 +1,478 @@
+/* ─────────────────────────────────────────────────────────────
+   PropertiesMegaMenu — "Новостройки ОАЭ" mega-dropdown
+   3-column desktop (rail / center / featured) + mobile sheet.
+   ───────────────────────────────────────────────────────────── */
+
+.menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 50;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.18),
+    0 10px 30px var(--shadow-dark);
+  animation: pmmSlideDown 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 2.4rem 0 2.6rem;
+}
+
+@keyframes pmmSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 24rem 1fr 28rem;
+  gap: 2.4rem;
+  align-items: start;
+}
+
+/* ── Section label (mono UPPERCASE, bottom-border) ───────── */
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 0 1rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1rem;
+}
+
+/* ── Left rail ───────────────────────────────────────────── */
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.railSection {
+  /* nothing — sectionLabel handles visual separation */
+}
+
+/* ── List rows (with optional count) ─────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 1rem;
+  font-family: inherit;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  text-align: left;
+}
+
+.listRow:hover {
+  background: var(--hover-bg-soft);
+  color: var(--ink);
+}
+
+.listRowAccent {
+  color: var(--sand-deep);
+  font-weight: 500;
+}
+
+.listRowCount {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* ── Developer link list ─────────────────────────────────── */
+.devList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.linkRow {
+  display: block;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  font-family: inherit;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.linkRow:hover {
+  background: var(--hover-bg-soft);
+  color: var(--ink);
+}
+
+.linkRowAccent {
+  color: var(--sand-deep);
+  margin-top: 0.2rem;
+}
+
+/* Mobile: dev links with arrow on right */
+.linkRowArrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.linkRowArrow:hover {
+  background: var(--hover-bg-soft);
+  color: var(--ink);
+}
+
+.linkArrow {
+  color: var(--muted);
+  transform: rotate(-45deg);
+}
+
+/* ── Center: tile grids ──────────────────────────────────── */
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+/* ── Tile (image card + label) ───────────────────────────── */
+.tile {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.tile:hover {
+  transform: translateY(-2px);
+}
+
+.tileImg {
+  aspect-ratio: 1.05 / 1;
+  border-radius: 1.4rem;
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.25s ease;
+}
+
+.tile:hover .tileImg {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.tileLabel {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 0 0.4rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── Mobile horizontal scroll row ────────────────────────── */
+.scrollRow {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.2rem 1.8rem;
+  margin: 0 -1.8rem;
+  scrollbar-width: none;
+}
+
+.scrollRow::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollTile {
+  flex: 0 0 13rem;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.scrollTileImg {
+  height: 8rem;
+  border-radius: 1.4rem;
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Emirates ───────────────────────────────────────────── */
+.emiratesGridDesktop {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+.emiratesGridMobile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.emirateChip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  border-radius: 1.4rem;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  font-family: inherit;
+  transition: transform 0.15s;
+}
+
+.emirateChip:hover {
+  transform: translateY(-1px);
+}
+
+.emirateThumb {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.emirateText {
+  text-align: left;
+  min-width: 0;
+}
+
+.emirateName {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.emirateCount {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+/* "Все эмираты" CTA wrapper — fills its grid slot to match chip height */
+.allEmiratesSlot {
+  display: flex;
+  align-items: stretch;
+  min-height: 4.8rem;
+}
+
+.allEmiratesSlot > * {
+  flex: 1;
+}
+
+/* ── Featured "Предложение дня" ──────────────────────────── */
+.featuredCompact {
+  margin-top: 1.8rem;
+}
+
+.featuredCard {
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  border-radius: 2rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.featuredImg {
+  position: relative;
+  aspect-ratio: 1.4 / 1;
+  border-radius: 1.4rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.featuredBrand {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+.featuredBody {
+  padding: 0 0.6rem 0.6rem;
+}
+
+.featuredName {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.featuredMeta {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.featuredFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.featuredPrice {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* featuredCta + featuredCtaArrow removed — now uses <PrimaryButton size="sm" trailingArrow /> */
+
+/* ── Mobile fullscreen sheet ─────────────────────────────── */
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 11, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 80;
+  animation: pmmFadeIn 0.25s ease;
+}
+
+.mobileSheet {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: pmmSlideUp 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@keyframes pmmFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pmmSlideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8rem 1.8rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.mobileTitle {
+  font-family: var(--font-montserrat);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.closeBtn {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 99px;
+  border: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  color: var(--ink);
+}
+
+.mobileBody {
+  padding: 0.8rem 1.8rem 3.2rem;
+}
+
+.mobileSection {
+  margin-bottom: 2.2rem;
+}

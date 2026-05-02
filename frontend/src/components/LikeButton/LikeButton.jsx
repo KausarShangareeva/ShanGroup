@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Heart } from "lucide-react";
+import { IcHeart } from "@/components/HeroIcons/HeroIcons";
 import styles from "./LikeButton.module.css";
 
 export default function LikeButton({
@@ -18,9 +19,13 @@ export default function LikeButton({
   const baseClass =
     `${styles.btn} ${variant === "card" ? styles.card : ""} ${variant === "nav" ? styles.nav : ""} ${liked ? styles.active : ""} ${className}`.trim();
 
+  // Nav variant uses the editorial 1.5px hand-drawn IcHeart;
+  // card variant keeps the chunkier lucide Heart for the photo overlay.
   const inner =
     liked && variant === "card" ? (
       <span className={styles.heartGradient} />
+    ) : variant === "nav" ? (
+      <IcHeart size={15} />
     ) : (
       <Heart fill="none" size={20} strokeWidth={2} />
     );

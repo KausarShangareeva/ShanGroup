@@ -1,10 +1,26 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Flag from "react-world-flags";
-import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import Flag from "@/components/Flag/Flag";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
+import RichMegaMenu from "@/components/RichMegaMenu/RichMegaMenu";
+import CategoryMegaMenu from "@/components/CategoryMegaMenu/CategoryMegaMenu";
+import DistrictsMegaMenu from "@/components/DistrictsMegaMenu/DistrictsMegaMenu";
+import PropertiesMegaMenu from "@/components/PropertiesMegaMenu/PropertiesMegaMenu";
+import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
+import { useTheme } from "@/hooks/useTheme";
+// Lucide kept for hamburger (Menu) and burger toggle X — purely utility,
+// not part of the editorial icon language. ChevronDown/Right also stay
+// lucide for now (used in many places with consistent visual weight).
+// Sun/Moon used in the BurgerDrawer theme SegPicker (HeroIcons doesn't ship them).
+import { ChevronDown, ChevronRight, Menu, X, Sun, Moon } from "lucide-react";
+import {
+  IcSearch,
+  IcClose,
+  IcPhone,
+} from "@/components/HeroIcons/HeroIcons";
 import LikeButton from "@/components/LikeButton/LikeButton";
 import Icon from "@/components/Icon/Icon";
 import Container from "./Container";
@@ -81,7 +97,76 @@ const navItems = [
   { label: "Районы", type: "communities", href: "/communities" },
   { label: "Застройщики", type: "developers", href: "/developers" },
   {
+    label: "Инвестиции",
+    type: "invest",
+    services: [
+      {
+        label: "Golden Visa $545K+",
+        desc: "10-летняя резидентская виза",
+        href: "/services/golden-visa",
+        iconName: "shield",
+      },
+      {
+        label: "Investor Visa $204K+",
+        desc: "2-летняя инвесторская виза",
+        href: "/services/investor-visa",
+        iconName: "file-text",
+      },
+      {
+        label: "Рассрочка 1% / месяц",
+        desc: "От застройщика, без банка",
+        href: "/services/installment",
+        iconName: "credit-card",
+      },
+      {
+        label: "Ипотека для нерезидентов",
+        desc: "От 25% первый взнос",
+        href: "/services/mortgage",
+        iconName: "briefcase",
+      },
+    ],
+    dropdown: [
+      {
+        label: "Off-plan стратегия",
+        desc: "Покупка до запуска · ROI 25–40%",
+        href: "/invest/offplan",
+        iconName: "trending-up",
+      },
+      {
+        label: "Готовая аренда",
+        desc: "Стабильный доход 6–9% годовых",
+        href: "/invest/rental",
+        iconName: "home",
+      },
+      {
+        label: "Краткосрочная аренда",
+        desc: "Airbnb-формат, доход до 12%",
+        href: "/invest/short-term",
+        iconName: "calendar",
+      },
+      {
+        label: "Flip-стратегия",
+        desc: "Перепродажа на handover",
+        href: "/invest/flip",
+        iconName: "info",
+      },
+      {
+        label: "ROI калькулятор",
+        desc: "Доходность за 3/5/10 лет",
+        href: "/invest/calculator",
+        iconName: "file-text",
+      },
+      {
+        label: "Налоговый гид ОАЭ",
+        desc: "0% налог на доход физлиц",
+        href: "/invest/tax",
+        iconName: "info",
+      },
+    ],
+  },
+  {
     label: "О нас",
+    type: "about",
     services: [
       {
         label: "Получение визы",
@@ -275,6 +360,69 @@ const TOP_DEVS = [
   { label: "Nakheel Properties", href: "/developers/nakheel" },
   { label: "Meraas", href: "/developers/meraas" },
   { label: "Binghatti", href: "/developers/binghatti" },
+];
+
+// ── RichMegaMenu data (О нас + Инвестиции) ─────────────────────
+// 3 columns each, hand-drawn SVG icons via MMIcon kind names.
+const ABOUT_COLUMNS = [
+  {
+    title: "Мы в соцсетях",
+    items: [
+      { label: "Instagram", sub: "@shangroup.ae", icon: "ig", href: "#" },
+      { label: "YouTube", sub: "Видео о недвижимости", icon: "yt", href: "#" },
+      { label: "Telegram", sub: "Новости и объекты", icon: "tg", href: "#" },
+      { label: "WhatsApp", sub: "Написать нам", icon: "wa", href: "#" },
+    ],
+  },
+  {
+    title: "О нас",
+    items: [
+      { label: "О компании", sub: "Наша история и миссия", icon: "info", href: "/about" },
+      { label: "Отзывы", sub: "Опыт наших клиентов", icon: "star", href: "/reviews" },
+      { label: "Статьи", sub: "Полезные материалы", icon: "doc", href: "/articles" },
+      { label: "Блог", sub: "Новости рынка", icon: "book", href: "/blog" },
+      { label: "Вопросы и ответы", sub: "Частые вопросы", icon: "help", href: "/faq" },
+    ],
+  },
+  {
+    title: "Услуги",
+    items: [
+      { label: "Получение визы", sub: "Резидентские и инвесторские визы", icon: "passport", href: "/services/visa" },
+      { label: "Регистрация компаний", sub: "Фрихолд и фризона", icon: "biz", href: "/services/company" },
+      { label: "Банковские счета", sub: "Личные и корпоративные счета", icon: "bank", href: "/services/banking" },
+      { label: "Доверенности", sub: "Оформление и нотариальное заверение", icon: "pen", href: "/services/poa" },
+    ],
+  },
+];
+
+const INVEST_COLUMNS = [
+  {
+    title: "Стратегии",
+    items: [
+      { label: "Off-plan стратегия", sub: "Покупка до запуска · ROI 25–40%", icon: "trend", href: "/invest/offplan" },
+      { label: "Готовая аренда", sub: "Стабильный доход 6–9% годовых", icon: "key", href: "/invest/rental" },
+      { label: "Краткосрочная аренда", sub: "Airbnb-формат, доход до 12%", icon: "calendar", href: "/invest/short-term" },
+      { label: "Flip-стратегия", sub: "Перепродажа на handover", icon: "swap", href: "/invest/flip" },
+    ],
+  },
+  {
+    title: "Программы",
+    items: [
+      { label: "Golden Visa $545K+", sub: "10-летняя резидентская виза", icon: "shield", href: "/services/golden-visa" },
+      { label: "Investor Visa $204K+", sub: "2-летняя инвесторская виза", icon: "passport", href: "/services/investor-visa" },
+      { label: "Рассрочка 1% / месяц", sub: "От застройщика, без банка", icon: "percent", href: "/services/installment" },
+      { label: "Ипотека для нерезидентов", sub: "От 25% первый взнос", icon: "bank", href: "/services/mortgage" },
+    ],
+  },
+  {
+    title: "Инструменты",
+    items: [
+      { label: "ROI калькулятор", sub: "Доходность за 3/5/10 лет", icon: "calc", href: "/invest/calculator" },
+      { label: "Сравнение районов", sub: "Цены, аренда, рост капитала", icon: "compare", href: "/invest/compare" },
+      { label: "Налоговый гид ОАЭ", sub: "0% налог на доход физлиц", icon: "doc", href: "/invest/tax" },
+      { label: "Инвестиционный отчёт 2026", sub: "Прогнозы и тренды рынка", icon: "chart", href: "/invest/report" },
+    ],
+  },
 ];
 
 function PropertiesMegaDropdown({ timeoutRef, onClose }) {
@@ -565,6 +713,144 @@ function devHref(key) {
   return `/developers/${key.toLowerCase().replace(/[\s.&]+/g, "-")}`;
 }
 
+// Map our existing iconName values onto the CategoryMegaMenu icon kinds
+// (shield/diamond/trend/spark — the artifact's CatIcon set).
+const DEV_ICON_MAP = {
+  shield: "shield",
+  gem: "diamond",
+  flame: "trend",
+  sparkles: "spark",
+};
+
+// Adapter: turn DEV_CATEGORIES into CategoryMegaMenu's `categories` shape.
+const DEVELOPERS_MEGA_CATEGORIES = DEV_CATEGORIES.map((c) => ({
+  key: c.key,
+  icon: DEV_ICON_MAP[c.iconName] || "shield",
+  title: c.label,
+  desc: c.desc,
+  items: c.devKeys.map((k) => ({
+    label: DEV_DISPLAY_NAMES[k] || k,
+    href: devHref(k),
+  })),
+}));
+
+// ── DistrictsMegaMenu data ─────────────────────────────────
+const slugDistrict = (s) =>
+  `/communities/${s
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[\s.]+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")}`;
+
+const DISTRICTS_GROUPS = [
+  {
+    dev: "DAMAC",
+    icon: "D",
+    items: [
+      "DAMAC Islands 2",
+      "DAMAC Riverside",
+      "DAMAC Hills 2",
+      "DAMAC Lagoons",
+      "DAMAC Hills",
+      "Sun City",
+    ],
+  },
+  {
+    dev: "EMAAR",
+    icon: "E",
+    items: [
+      "Emaar South",
+      "The Oasis",
+      "The Valley",
+      "Dubai Hills Estate",
+      "Rashid Yachts & Marina",
+      "Emaar Beachfront",
+      "Dubai Creek Harbour",
+      "Arabian Ranches III",
+      "Downtown Dubai",
+      "The Heights",
+      "Grand Polo Club & Resort",
+    ],
+  },
+  {
+    dev: "SOBHA",
+    icon: "S",
+    items: [
+      "Sobha Siniya Island",
+      "Sobha Elwood",
+      "Sobha Reserve",
+      "Sobha Hartland II",
+      "Sobha Hartland",
+    ],
+  },
+  {
+    dev: "NAKHEEL",
+    icon: "N",
+    items: [
+      "Dubai Islands",
+      "Palm Jebel Ali",
+      "Deira Islands",
+      "Palm Jumeirah",
+      "Jumeirah Village Circle",
+    ],
+  },
+  {
+    dev: "MERAAS",
+    icon: "M",
+    items: [
+      "The Acres",
+      "Bluewaters Island",
+      "Port de la Mer",
+      "City Walk",
+      "Cherrywoods",
+    ],
+  },
+  {
+    dev: "MAJID AL FUTTAIM",
+    icon: "F",
+    items: ["Tilal Al Ghaf", "Ghaf Woods", "Al Zahia"],
+  },
+  {
+    dev: "ARADA",
+    icon: "A",
+    items: ["Masaar", "Aljada", "Jouri Hills"],
+  },
+].map((g) => ({
+  ...g,
+  items: g.items.map((label) => ({ label, href: slugDistrict(label) })),
+}));
+
+// ── PropertiesMegaMenu data ────────────────────────────────
+// Uses existing FEATURED + TOP_DEVS + EMIRATES + PROPERTY_TYPES, plus
+// a small static list for "Объекты офф-план" with item counts.
+const PROPERTIES_OFFPLAN = [
+  { label: "Виллы на продажу", href: "/villas", count: "248" },
+  { label: "Апартаменты на продажу", href: "/apartments", count: "1,840" },
+  { label: "Таунхаусы на продажу", href: "/townhouses", count: "412" },
+  { label: "Пентхаусы на продажу", href: "/penthouses", count: "96" },
+  { label: "Набережная (Waterfront)", href: "/waterfront", count: "284" },
+  { label: "Все новостройки", href: "/new-builds", all: true },
+];
+
+const DISTRICTS_POPULAR = [
+  "Expo City Dubai",
+  "Al Marjan Island",
+  "Dubai South",
+  "Dubai Maritime City",
+  "MBR City",
+  "Dubailand",
+  "Business Bay",
+  "Jumeirah Village Circle",
+  "Madinat Jumeirah",
+  "Al Jaddaf",
+  "Sheikh Zayed Road",
+  "DIFC",
+  "Motor City",
+  "The Meadows",
+  "Dubai Investment Park",
+  "Emirates Living",
+].map((label) => ({ label, href: slugDistrict(label) }));
+
 function DevelopersMegaDropdown({ timeoutRef, onClose }) {
   const handleMouseEnter = () => clearTimeout(timeoutRef.current);
   const handleMouseLeave = () => {
@@ -658,7 +944,7 @@ function CommunitiesMegaDropdown({ timeoutRef, onClose }) {
                               borderRadius: "0.5rem",
                               objectFit: "cover",
                               flexShrink: 0,
-                              border: "1px solid #e8e3da",
+                              border: "1px solid var(--line)",
                             }}
                           />
                         )}
@@ -875,17 +1161,19 @@ function MegaDropdown({ item, timeoutRef, onClose }) {
   );
 }
 
-/* ── PillDropdown (язык / валюта) ── */
+/* ── PillDropdown (язык / валюта) ──
+   primary  → big line in dropdown (Montserrat 500)
+   secondary → small mono kicker beneath (12px JetBrains Mono) */
 const languages = [
-  { code: "RU", label: "Русский", countryCode: "RU" },
-  { code: "EN", label: "English", countryCode: "GB" },
-  { code: "AR", label: "العربية", countryCode: "AE" },
+  { code: "RU", label: "Русский", countryCode: "RU", primary: "Русский", secondary: "RU" },
+  { code: "EN", label: "English", countryCode: "GB", primary: "English", secondary: "EN" },
+  { code: "AR", label: "العربية", countryCode: "AE", primary: "العربية", secondary: "AR" },
 ];
 const currencies = [
-  { code: "USD", label: "Доллар США", countryCode: "US" },
-  { code: "EUR", label: "Евро", countryCode: "EU" },
-  { code: "RUB", label: "Российский рубль", countryCode: "RU" },
-  { code: "AED", label: "Дирхам ОАЭ", countryCode: "AE" },
+  { code: "USD", label: "Доллар США", countryCode: "US", primary: "USD", secondary: "Доллар США" },
+  { code: "EUR", label: "Евро", countryCode: "EU", primary: "EUR", secondary: "Евро" },
+  { code: "RUB", label: "Российский рубль", countryCode: "RU", primary: "RUB", secondary: "Российский рубль" },
+  { code: "AED", label: "Дирхам ОАЭ", countryCode: "AE", primary: "AED", secondary: "Дирхам ОАЭ" },
 ];
 
 function PillDropdown({
@@ -919,30 +1207,37 @@ function PillDropdown({
       {open && (
         <div className={styles.pillDropdownPanel}>
           <ul className={styles.megaList}>
-            {items.map((item) => (
-              <li key={item.code}>
-                <button
-                  className={`${styles.pillItem} ${current.code === item.code ? styles.pillItemActive : ""}`}
-                  onClick={() => {
-                    onSelect(item);
-                    onClose();
-                  }}
-                >
-                  <Flag
-                    code={item.countryCode}
-                    style={{
-                      width: 22,
-                      height: 15,
-                      borderRadius: 3,
-                      flexShrink: 0,
+            {items.map((item) => {
+              const active = current.code === item.code;
+              return (
+                <li key={item.code}>
+                  <button
+                    className={`${styles.pillItem} ${active ? styles.pillItemActive : ""}`}
+                    onClick={() => {
+                      onSelect(item);
+                      onClose();
                     }}
-                  />
-                  <span className={styles.dropdownText}>
-                    <span className={styles.pillItemCode}>{item.code}</span>
-                  </span>
-                </button>
-              </li>
-            ))}
+                  >
+                    <Flag code={item.countryCode} size={20} />
+                    <span className={styles.pillItemText}>
+                      <span className={styles.pillItemPrimary}>
+                        {item.primary || item.code}
+                      </span>
+                      {item.secondary && (
+                        <span className={styles.pillItemSecondary}>
+                          {item.secondary}
+                        </span>
+                      )}
+                    </span>
+                    {active && (
+                      <span className={styles.pillItemCheck} aria-hidden>
+                        ✓
+                      </span>
+                    )}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
@@ -950,23 +1245,20 @@ function PillDropdown({
   );
 }
 
-function LangSelector({ timeoutRef, open, onOpen, onClose }) {
-  const [current, setCurrent] = useState(languages[0]);
+function LangSelector({ timeoutRef, open, onOpen, onClose, value, onChange }) {
+  const current = languages.find((l) => l.code === value) || languages[0];
   return (
     <PillDropdown
       items={languages}
       current={current}
-      onSelect={setCurrent}
+      onSelect={(l) => onChange(l.code)}
       timeoutRef={timeoutRef}
       open={open}
       onOpen={onOpen}
       onClose={onClose}
       renderTrigger={(c) => (
         <>
-          <Flag
-            code={c.countryCode}
-            style={{ width: 20, height: 14, borderRadius: 2 }}
-          />
+          <Flag code={c.countryCode} size={18} />
           <span>{c.code}</span>
         </>
       )}
@@ -974,13 +1266,21 @@ function LangSelector({ timeoutRef, open, onOpen, onClose }) {
   );
 }
 
-function CurrencySelector({ timeoutRef, open, onOpen, onClose }) {
-  const [current, setCurrent] = useState(currencies[0]);
+function CurrencySelector({
+  timeoutRef,
+  open,
+  onOpen,
+  onClose,
+  value,
+  onChange,
+}) {
+  const current =
+    currencies.find((c) => c.code === value) || currencies[0];
   return (
     <PillDropdown
       items={currencies}
       current={current}
-      onSelect={setCurrent}
+      onSelect={(c) => onChange(c.code)}
       timeoutRef={timeoutRef}
       open={open}
       onOpen={onOpen}
@@ -990,15 +1290,342 @@ function CurrencySelector({ timeoutRef, open, onOpen, onClose }) {
   );
 }
 
+/* ── Burger drawer (mobile) ────────────────────────────────
+   Overlay + right-anchored drawer, with search-filtered nav
+   (numbered icons), expandable sections, settings (Lang /
+   Currency / Theme as segmented controls), and footer CTA.
+   Mirrors the artifact's BurgerMenu structure. */
+
+const BURGER_NAV = [
+  {
+    label: "Новостройки ОАЭ",
+    icon: "01",
+    items: [
+      { label: "Все объекты", href: "/new-builds", arrow: true },
+      { label: "Готовые", href: "/ready" },
+      { label: "Off-plan", href: "/off-plan" },
+      { label: "Апартаменты", href: "/apartments" },
+      { label: "Виллы", href: "/villas" },
+      { label: "Пентхаусы", href: "/penthouses" },
+      { label: "Таунхаусы", href: "/townhouses" },
+    ],
+  },
+  {
+    label: "Районы",
+    icon: "02",
+    items: [
+      { label: "Dubai Marina", href: "/communities/dubai-marina" },
+      { label: "Palm Jumeirah", href: "/communities/palm-jumeirah" },
+      { label: "Downtown Dubai", href: "/communities/downtown" },
+      { label: "Business Bay", href: "/communities/business-bay" },
+      { label: "JVC", href: "/communities/jvc" },
+      { label: "Все районы", href: "/communities", arrow: true },
+    ],
+  },
+  {
+    label: "Застройщики",
+    icon: "03",
+    items: [
+      { label: "EMAAR", href: "/developers/emaar" },
+      { label: "DAMAC", href: "/developers/damac" },
+      { label: "SOBHA", href: "/developers/sobha" },
+      { label: "NAKHEEL", href: "/developers/nakheel" },
+      { label: "MERAAS", href: "/developers/meraas" },
+      { label: "Все застройщики", href: "/developers", arrow: true },
+    ],
+  },
+  {
+    label: "Инвестиции",
+    icon: "04",
+    items: [
+      { label: "ROI калькулятор", href: "/invest/calculator" },
+      { label: "Golden Visa", href: "/services/golden-visa" },
+      { label: "Ипотека", href: "/services/mortgage" },
+      { label: "Налоги", href: "/invest/tax" },
+      { label: "Управление", href: "/services/management" },
+    ],
+  },
+  {
+    label: "О нас",
+    icon: "05",
+    items: [
+      { label: "О компании", href: "/about" },
+      { label: "Команда", href: "/team" },
+      { label: "Услуги", href: "/services" },
+      { label: "Отзывы", href: "/reviews" },
+      { label: "Блог", href: "/blog" },
+      { label: "Контакты", href: "/contacts" },
+    ],
+  },
+];
+
+function SegPicker({ options, value, onChange }) {
+  return (
+    <div className={styles.segPicker}>
+      {options.map((o) => {
+        const active = o.value === value;
+        return (
+          <button
+            key={o.value}
+            type="button"
+            onClick={() => onChange(o.value)}
+            className={`${styles.segItem} ${active ? styles.segItemActive : ""}`}
+          >
+            {o.icon}
+            <span>{o.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function BurgerDrawer({
+  open,
+  onClose,
+  onContact,
+  language,
+  setLanguage,
+  currency,
+  setCurrency,
+  theme,
+  setTheme,
+}) {
+  const [expanded, setExpanded] = useState(null);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (!open) {
+      setExpanded(null);
+      setQuery("");
+      return;
+    }
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open, onClose]);
+
+  const q = query.trim().toLowerCase();
+  const filteredNav = q
+    ? BURGER_NAV.map((s) => ({
+        ...s,
+        items: s.items.filter((it) => it.label.toLowerCase().includes(q)),
+      })).filter(
+        (s) => s.items.length > 0 || s.label.toLowerCase().includes(q),
+      )
+    : BURGER_NAV;
+
+  return (
+    <>
+      <div
+        onClick={onClose}
+        className={`${styles.burgerBackdrop} ${open ? styles.burgerBackdropOpen : ""}`}
+      />
+      <aside
+        className={`${styles.burgerDrawer} ${open ? styles.burgerDrawerOpen : ""}`}
+      >
+        {/* Header */}
+        <div className={styles.burgerHeader}>
+          <div>
+            <div className={styles.burgerTitle}>Меню</div>
+            <div className={styles.burgerSub}>ShanGroup · Dubai</div>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className={styles.burgerClose}
+            aria-label="Закрыть"
+          >
+            <IcClose size={16} />
+          </button>
+        </div>
+
+        {/* Search */}
+        <div className={styles.burgerSearchWrap}>
+          <div className={styles.burgerSearch}>
+            <span className={styles.burgerSearchIcon}>
+              <IcSearch size={15} />
+            </span>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Поиск по меню, районам, застройщикам…"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                className={styles.burgerSearchClear}
+                aria-label="Очистить"
+              >
+                <IcClose size={13} />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Scrollable nav */}
+        <div className={styles.burgerScroll}>
+          {filteredNav.length === 0 ? (
+            <div className={styles.burgerEmpty}>Ничего не найдено</div>
+          ) : (
+            filteredNav.map((s, idx) => {
+              const isOpen = expanded === idx || !!q;
+              return (
+                <div key={s.label} className={styles.burgerSection}>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpanded(isOpen && !q ? null : idx)
+                    }
+                    className={`${styles.burgerSectionBtn} ${isOpen ? styles.burgerSectionBtnOpen : ""}`}
+                  >
+                    <span className={styles.burgerSectionIcon}>
+                      {s.icon}
+                    </span>
+                    <span className={styles.burgerSectionLabel}>
+                      {s.label}
+                    </span>
+                    {!q && (
+                      <ChevronDown
+                        size={13}
+                        className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`}
+                      />
+                    )}
+                  </button>
+                  {isOpen && (
+                    <div className={styles.burgerSubList}>
+                      {s.items.map((it) => (
+                        <Link
+                          key={it.label}
+                          href={it.href || "#"}
+                          onClick={onClose}
+                          className={`${styles.burgerSubItem} ${it.arrow ? styles.burgerSubItemAccent : ""}`}
+                        >
+                          {it.label}
+                          {it.arrow ? " →" : ""}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          )}
+
+          {/* Settings */}
+          <div className={styles.burgerSettings}>
+            <div className={styles.burgerSettingsLabel}>Настройки</div>
+            <div className={styles.burgerSettingRow}>
+              <span className={styles.burgerSettingName}>Язык</span>
+              <SegPicker
+                value={language}
+                onChange={setLanguage}
+                options={languages.map((l) => ({
+                  value: l.code,
+                  icon: <Flag code={l.countryCode} size={14} />,
+                  label: l.code,
+                }))}
+              />
+            </div>
+            <div className={styles.burgerSettingRow}>
+              <span className={styles.burgerSettingName}>Валюта</span>
+              <SegPicker
+                value={currency}
+                onChange={setCurrency}
+                options={currencies.map((c) => ({
+                  value: c.code,
+                  icon: <Flag code={c.countryCode} size={14} />,
+                  label: c.code,
+                }))}
+              />
+            </div>
+            <div className={styles.burgerSettingRow}>
+              <span className={styles.burgerSettingName}>Тема</span>
+              <SegPicker
+                value={theme}
+                onChange={setTheme}
+                options={[
+                  {
+                    value: "light",
+                    icon: <Sun size={13} />,
+                    label: "Светлая",
+                  },
+                  {
+                    value: "dark",
+                    icon: <Moon size={13} />,
+                    label: "Тёмная",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Footer CTA */}
+        <div className={styles.burgerFooter}>
+          <PrimaryButton
+            size="md"
+            fullWidth
+            icon={<IcPhone />}
+            onClick={onContact}
+          >
+            Связаться с агентом
+          </PrimaryButton>
+          <div className={styles.burgerFooterMeta}>
+            <span>+971 4 261 8838</span>
+            <span>RERA #2087</span>
+          </div>
+        </div>
+      </aside>
+    </>
+  );
+}
+
 /* ── Root Navigation ── */
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [activeNav, setActiveNav] = useState(null);
   const [mobileSection, setMobileSection] = useState(null);
+  const [theme, setTheme] = useTheme();
+  const [language, setLanguage] = useState("RU");
+  const [currency, setCurrency] = useState("USD");
   const navTimeoutRef = useRef(null);
   const closeNav = () => setActiveNav(null);
   const pathname = usePathname();
+
+  // Hydrate language/currency from localStorage on mount; persist on change.
+  useEffect(() => {
+    try {
+      const lang = localStorage.getItem("shan-lang");
+      const curr = localStorage.getItem("shan-currency");
+      if (lang) setLanguage(lang);
+      if (curr) setCurrency(curr);
+    } catch {
+      /* storage unavailable — ignore */
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      localStorage.setItem("shan-lang", language);
+    } catch {
+      /* */
+    }
+  }, [language]);
+  useEffect(() => {
+    try {
+      localStorage.setItem("shan-currency", currency);
+    } catch {
+      /* */
+    }
+  }, [currency]);
 
   const activeItem = typeof activeNav === "number" ? navItems[activeNav] : null;
 
@@ -1033,12 +1660,20 @@ export default function Navigation() {
                 open={activeNav === "lang"}
                 onOpen={() => setActiveNav("lang")}
                 onClose={closeNav}
+                value={language}
+                onChange={setLanguage}
               />
               <CurrencySelector
                 timeoutRef={navTimeoutRef}
                 open={activeNav === "currency"}
                 onOpen={() => setActiveNav("currency")}
                 onClose={closeNav}
+                value={currency}
+                onChange={setCurrency}
+              />
+              <ThemeToggle
+                theme={theme}
+                onToggle={() => setTheme(theme === "dark" ? "light" : "dark")}
               />
               <LikeButton
                 href="/favorites"
@@ -1061,8 +1696,10 @@ export default function Navigation() {
           </nav>
         </Container>
 
-        {/* Мега-дропдаун — на всю ширину, дочерний к header */}
-        {activeItem?.dropdown && (
+        {/* Generic 3-column MegaDropdown — only for items that don't have a
+            dedicated mega-menu component (currently nothing on the home nav).
+            All five typed items render their own dedicated component below. */}
+        {activeItem?.dropdown && !activeItem.type && (
           <MegaDropdown
             item={activeItem}
             timeoutRef={navTimeoutRef}
@@ -1070,128 +1707,117 @@ export default function Navigation() {
           />
         )}
         {activeItem?.type === "communities" && (
-          <CommunitiesMegaDropdown
-            timeoutRef={navTimeoutRef}
+          <DistrictsMegaMenu
+            open
             onClose={closeNav}
+            groups={DISTRICTS_GROUPS}
+            popular={DISTRICTS_POPULAR}
+            ctaLabel="Гиды по районам"
+            ctaHref="/communities"
+            onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
+            onMouseLeave={() => {
+              navTimeoutRef.current = setTimeout(closeNav, 150);
+            }}
           />
         )}
         {activeItem?.type === "developers" && (
-          <DevelopersMegaDropdown
-            timeoutRef={navTimeoutRef}
+          <CategoryMegaMenu
+            open
             onClose={closeNav}
+            label="Застройщики"
+            categories={DEVELOPERS_MEGA_CATEGORIES}
+            ctaLabel="Все застройщики"
+            ctaHref="/developers"
+            onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
+            onMouseLeave={() => {
+              navTimeoutRef.current = setTimeout(closeNav, 150);
+            }}
           />
         )}
         {activeItem?.type === "properties" && (
-          <PropertiesMegaDropdown
-            timeoutRef={navTimeoutRef}
+          <PropertiesMegaMenu
+            open
             onClose={closeNav}
+            data={{
+              offplan: PROPERTIES_OFFPLAN,
+              developers: TOP_DEVS,
+              ctaAllDevelopers: {
+                label: "Все застройщики",
+                href: "/developers",
+              },
+              types: PROPERTY_TYPES.slice(0, 5).map((t) => ({
+                label: t.label,
+                img: t.image,
+                href: t.href,
+              })),
+              areas: PROPERTY_TYPES.slice(5, 10).map((t) => ({
+                label: t.label,
+                img: t.image,
+                href: t.href,
+              })),
+              emirates: EMIRATES.map((e) => ({
+                label: e.label,
+                count: `${e.count} объектов`,
+                img: e.img,
+                href: e.href,
+              })),
+              ctaAllEmirates: { label: "Все эмираты", href: "/emirates" },
+              featured: {
+                brand: FEATURED.developer,
+                name: FEATURED.name,
+                meta: `${FEATURED.type} · ${FEATURED.area} · ${FEATURED.delivery}`,
+                price: FEATURED.priceUsd,
+                img: FEATURED.image,
+                href: `/${FEATURED.id}`,
+              },
+            }}
+            onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
+            onMouseLeave={() => {
+              navTimeoutRef.current = setTimeout(closeNav, 150);
+            }}
           />
         )}
-
-        {/* Мобильное меню */}
-        {menuOpen && (
-          <div className={styles.mobile}>
-            {/* ── Недвижимость ── */}
-            <p className={styles.mobileSectionLabel}>Недвижимость</p>
-            <div className={styles.mobileCard}>
-              <button
-                type="button"
-                className={styles.mobileRow}
-                onClick={() =>
-                  setMobileSection(
-                    mobileSection === "properties" ? null : "properties",
-                  )
-                }
-              >
-                <span>Новостройки ОАЭ</span>
-                <ChevronDown
-                  size={16}
-                  className={`${styles.chevron} ${mobileSection === "properties" ? styles.chevronOpen : ""}`}
-                />
-              </button>
-              {mobileSection === "properties" && (
-                <div className={styles.mobileSubList}>
-                  {navItems[0].dropdown.map((d) => (
-                    <Link
-                      key={d.href}
-                      href={d.href}
-                      className={styles.mobileSub}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {d.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-              <div className={styles.mobileCardDivider} />
-              <Link
-                href="/communities"
-                className={styles.mobileRow}
-                onClick={() => setMenuOpen(false)}
-              >
-                <span>Районы</span>
-                <ChevronRight size={16} className={styles.mobileChevron} />
-              </Link>
-              <div className={styles.mobileCardDivider} />
-              <Link
-                href="/developers"
-                className={styles.mobileRow}
-                onClick={() => setMenuOpen(false)}
-              >
-                <span>Застройщики</span>
-                <ChevronRight size={16} className={styles.mobileChevron} />
-              </Link>
-            </div>
-
-            {/* ── О нас ── */}
-            <p className={styles.mobileSectionLabel}>О нас</p>
-            <div className={styles.mobileCard}>
-              {navItems[3].dropdown.map((d, i) => (
-                <div key={d.href}>
-                  {i > 0 && <div className={styles.mobileCardDivider} />}
-                  <Link
-                    href={d.href}
-                    className={styles.mobileRow}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>{d.label}</span>
-                    <ChevronRight size={16} className={styles.mobileChevron} />
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            {/* ── Услуги ── */}
-            <p className={styles.mobileSectionLabel}>Услуги</p>
-            <div className={styles.mobileCard}>
-              {navItems[3].services.map((s, i) => (
-                <div key={s.href}>
-                  {i > 0 && <div className={styles.mobileCardDivider} />}
-                  <Link
-                    href={s.href}
-                    className={styles.mobileRow}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>{s.label}</span>
-                    <ChevronRight size={16} className={styles.mobileChevron} />
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            <button
-              type="button"
-              className={styles.mobileCtaBtn}
-              onClick={() => {
-                setFormOpen(true);
-                setMenuOpen(false);
-              }}
-            >
-              Оставить заявку
-            </button>
-          </div>
+        {activeItem?.type === "invest" && (
+          <RichMegaMenu
+            open
+            onClose={closeNav}
+            label="Инвестиции"
+            columns={INVEST_COLUMNS}
+            onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
+            onMouseLeave={() => {
+              navTimeoutRef.current = setTimeout(closeNav, 150);
+            }}
+          />
+        )}
+        {activeItem?.type === "about" && (
+          <RichMegaMenu
+            open
+            onClose={closeNav}
+            label="О нас"
+            columns={ABOUT_COLUMNS}
+            onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
+            onMouseLeave={() => {
+              navTimeoutRef.current = setTimeout(closeNav, 150);
+            }}
+          />
         )}
       </header>
+
+      {/* Mobile burger drawer — search + numbered nav + settings + footer CTA */}
+      <BurgerDrawer
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        onContact={() => {
+          setFormOpen(true);
+          setMenuOpen(false);
+        }}
+        language={language}
+        setLanguage={setLanguage}
+        currency={currency}
+        setCurrency={setCurrency}
+        theme={theme}
+        setTheme={setTheme}
+      />
 
       <PopupForm isOpen={formOpen} onClose={() => setFormOpen(false)} />
     </>

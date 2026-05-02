@@ -103,6 +103,7 @@ function renderTitle(title, highlight, pills) {
 export default function SectionTitle({
   tag,
   title,
+  titleAccent, // optional italic-sand fragment appended to the title
   subtitle,
   align = "left",
   dark = false,
@@ -110,18 +111,35 @@ export default function SectionTitle({
   highlight,
   pills,
 }) {
+  const isCenter = align === "center";
   return (
     <div
       className={`${styles.wrapper} ${styles[align]}`}
       style={mb !== undefined ? { marginBottom: mb } : {}}
     >
-      {tag && (
-        <span className={styles.tag} style={dark ? { color: "#c9963a" } : {}}>
-          {tag}
-        </span>
-      )}
+      {tag &&
+        (isCenter ? (
+          <span
+            className={styles.tagFlanked}
+            style={dark ? { color: "#c9963a" } : {}}
+          >
+            <span className={styles.tagLine} aria-hidden />
+            <span>{tag}</span>
+            <span className={styles.tagLine} aria-hidden />
+          </span>
+        ) : (
+          <span className={styles.tag} style={dark ? { color: "#c9963a" } : {}}>
+            {tag}
+          </span>
+        ))}
       <h2 className={styles.title} style={dark ? { color: "#fff" } : {}}>
         {renderTitle(title, highlight, pills)}
+        {titleAccent && (
+          <>
+            {" "}
+            <span className={styles.titleAccent}>{titleAccent}</span>
+          </>
+        )}
       </h2>
       {subtitle && (
         <p

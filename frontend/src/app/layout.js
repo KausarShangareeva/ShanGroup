@@ -1,5 +1,14 @@
+import { cookies } from "next/headers";
 import localFont from "next/font/local";
-import { Montserrat, Abril_Fatface, Bodoni_Moda, Marck_Script } from "next/font/google";
+import {
+  Montserrat,
+  Abril_Fatface,
+  Bodoni_Moda,
+  Marck_Script,
+  Cormorant_Garamond,
+  Instrument_Serif,
+  JetBrains_Mono,
+} from "next/font/google";
 import "../styles/globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
@@ -9,6 +18,29 @@ import Footer from "@/components/layout/Footer";
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
   variable: "--font-montserrat",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -199,9 +231,21 @@ export const metadata = {
   description: "Премиальная недвижимость в Дубае. Апартаменты, виллы, инвестиции.",
 };
 
-export default function RootLayout({ children }) {
+// Theme is read from a cookie so the server can render <html data-theme="...">
+// on the very first response — no FOUC and no inline boot-script (Next.js 16
+// warns about <script> inside React components). The useTheme hook on the
+// client keeps the cookie + localStorage in sync after a manual toggle.
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("shan-theme")?.value === "dark" ? "dark" : "light";
+
   return (
-    <html lang="ru" className={`${gtEesti.variable} ${montserrat.variable} ${abrilFatface.variable} ${bodoniModa.variable} ${marckScript.variable} ${belarus.variable} ${gothic60.variable} ${kuzanyan.variable} ${leotaro.variable} ${mavoble.variable} ${preciosa.variable}`}>
+    <html
+      lang="ru"
+      data-theme={theme}
+      suppressHydrationWarning
+      className={`${gtEesti.variable} ${montserrat.variable} ${cormorant.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} ${abrilFatface.variable} ${bodoniModa.variable} ${marckScript.variable} ${belarus.variable} ${gothic60.variable} ${kuzanyan.variable} ${leotaro.variable} ${mavoble.variable} ${preciosa.variable}`}
+    >
       <body>
         <Navigation />
         <Breadcrumb />

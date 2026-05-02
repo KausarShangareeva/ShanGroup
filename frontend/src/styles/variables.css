@@ -7,25 +7,56 @@
   font-display: swap;
 }
 
-:root {
-  /* Colors */
-  --color-bg: #ffffff;
-  --color-text: #111111;
-  --color-text-muted: #888888;
+:root,
+[data-theme="light"] {
+  /* === Editorial-neumorphic palette (warm sand) === */
+  --bg: oklch(0.975 0.004 75);
+  --bg-2: oklch(0.955 0.006 75);
+  --ink: #0a0a0b;
+  --ink-2: #1a1a1c;
+  --ink-inverse: #fafaf7;
+  --muted: oklch(0.55 0.005 75);
+  --muted-2: oklch(0.7 0.005 75);
+  --line: oklch(0.88 0.004 75);
+  --sand: oklch(0.72 0.06 55);
+  --sand-deep: oklch(0.55 0.08 50);
+  --gold-warm: oklch(0.78 0.08 80);
+  --shadow-light: rgba(255, 255, 255, 0.92);
+  --shadow-dark: rgba(160, 155, 145, 0.28);
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --hover-bg-soft: rgba(0, 0, 0, 0.035);
+  --grain-1: oklch(0.92 0.02 60 / 0.5);
+  --grain-2: oklch(0.93 0.015 80 / 0.4);
 
-  --color-primary: #1a1a2e;
-  --color-primary-light: #2a2a42;
+  /* PrimaryButton tokens — light theme defaults (inverted in dark theme below) */
+  --btn-dark-bg: #0a0a0b;
+  --btn-dark-fg: #ffffff;
+  --btn-dark-icon-bg: rgba(255, 255, 255, 0.1);
+  --btn-light-bg: #ffffff;
+  --btn-light-fg: #0a0a0b;
+  --btn-light-icon-bg: rgba(10, 10, 11, 0.06);
 
-  --color-sand: #c28a5c;
-  --color-gold: #d97a7a;
-  --color-gold-dark: #b85a5a;
+  /* === Legacy aliases (kept for non-migrated components) === */
+  --color-bg: var(--bg);
+  --color-text: var(--ink);
+  --color-text-muted: var(--muted);
 
-  --color-border: #e8e3da;
-  --color-surface: #f8f5f0;
+  --color-primary: var(--ink);
+  --color-primary-light: var(--ink-2);
+
+  --color-sand: var(--sand);
+  --color-gold: var(--sand-deep);
+  --color-gold-dark: var(--sand-deep);
+
+  --color-border: var(--line);
+  --color-surface: var(--bg-2);
 
   /* Typography */
   --font-sans: var(--font-gt-eesti), system-ui, -apple-system, sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
+  --font-serif: var(--font-cormorant), "Times New Roman", Georgia, serif;
+  --font-italic: var(--font-instrument), "Cormorant Garamond", serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
   --font-educational-gothic: "EducationalGothic", sans-serif;
   /* Google Fonts (loaded via next/font/google in layout.js):
      --font-abril  → Abril Fatface
@@ -67,6 +98,17 @@
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.09);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.14);
 
+  /* Neumorphic raised/inset/flat shadow presets */
+  --neu-raised:
+    -8px -8px 20px var(--shadow-light), 8px 8px 24px var(--shadow-dark);
+  --neu-raised-sm:
+    -4px -4px 10px var(--shadow-light), 4px 4px 12px var(--shadow-dark);
+  --neu-flat:
+    -1px -1px 2px var(--shadow-light), 1px 1px 2px var(--shadow-dark);
+  --neu-inset:
+    inset 4px 4px 10px var(--shadow-dark),
+    inset -4px -4px 10px var(--shadow-light);
+
   /* Transitions */
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;
@@ -76,4 +118,47 @@
   --z-nav: 100;
   --z-popup: 1000;
   --z-toast: 2000;
+}
+
+[data-theme="dark"] {
+  --bg: oklch(0.18 0.006 75);
+  --bg-2: oklch(0.22 0.008 75);
+  --ink: oklch(0.96 0.004 75);
+  --ink-2: oklch(0.88 0.004 75);
+  --ink-inverse: #0a0a0b;
+  --muted: oklch(0.62 0.005 75);
+  --muted-2: oklch(0.5 0.005 75);
+  --line: oklch(0.3 0.004 75);
+  --sand: oklch(0.78 0.07 60);
+  --sand-deep: oklch(0.82 0.08 65);
+  --gold-warm: oklch(0.82 0.1 82);
+  --shadow-light: rgba(255, 255, 255, 0.04);
+  --shadow-dark: rgba(0, 0, 0, 0.55);
+  --hover-bg: rgba(255, 255, 255, 0.07);
+  --hover-bg-soft: rgba(255, 255, 255, 0.04);
+  --grain-1: oklch(0.3 0.04 60 / 0.35);
+  --grain-2: oklch(0.28 0.03 80 / 0.3);
+
+  /* PrimaryButton tokens — inverted for dark theme so contrast stays high */
+  --btn-dark-bg: #fafaf7;
+  --btn-dark-fg: #0a0a0b;
+  --btn-dark-icon-bg: rgba(10, 10, 11, 0.08);
+  --btn-light-bg: oklch(0.28 0.008 75);
+  --btn-light-fg: oklch(0.96 0.004 75);
+  --btn-light-icon-bg: rgba(255, 255, 255, 0.1);
+
+  /* legacy aliases re-resolve through the cascade */
+  --color-bg: var(--bg);
+  --color-text: var(--ink);
+  --color-text-muted: var(--muted);
+  --color-border: var(--line);
+  --color-surface: var(--bg-2);
+}
+
+html {
+  color-scheme: light;
+  transition: background 0.35s ease;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
 }

@@ -1,0 +1,204 @@
+/* ─────────────────────────────────────────────────────────────
+   RichMegaMenu — N-column mega-dropdown with icon-backed rows.
+   Faithful port of the artifact's `buildRichMenu` look.
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Desktop dropdown ─────────────────────────────────────── */
+.menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 50;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.18),
+    0 10px 30px var(--shadow-dark);
+  animation: mmSlideDown 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+@keyframes mmSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 0;
+  align-items: start;
+  padding: 2.4rem 0 2.8rem;
+}
+
+.col {
+  padding: 0 2.4rem;
+  min-width: 0;
+}
+
+.col:first-child {
+  padding-left: 0;
+}
+
+.col:last-child {
+  padding-right: 0;
+}
+
+.colInner {
+  min-width: 0;
+}
+
+.colTitle {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0 1.2rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0.6rem;
+}
+
+.colList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Row ──────────────────────────────────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 1.2rem;
+  text-align: left;
+  text-decoration: none;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.row:hover {
+  background: var(--hover-bg-soft);
+}
+
+.rowIcon {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.9rem;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.rowLabel {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.rowSub {
+  font-size: 1.2rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* ── Mobile fullscreen sheet ──────────────────────────────── */
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 11, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 80;
+  animation: mmFadeIn 0.25s ease;
+}
+
+.mobileSheet {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: mmSlideUp 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@keyframes mmFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mmSlideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8rem 1.8rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.mobileTitle {
+  font-family: var(--font-montserrat);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.closeBtn {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 99px;
+  border: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  color: var(--ink);
+}
+
+.mobileBody {
+  padding: 1.8rem 1.2rem 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}

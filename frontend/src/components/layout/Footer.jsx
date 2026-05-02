@@ -1,14 +1,11 @@
+// Editorial dark Footer — final anchor of the page.
+// Big Cormorant wordmark + italic-sand tagline → 3 link columns
+// → socials/contacts row → mono copyright bar.
+
 import Link from "next/link";
-import {
-  Phone,
-  MapPin,
-  Instagram,
-  Youtube,
-  Send,
-  Linkedin,
-} from "lucide-react";
+import { Instagram, Youtube, Send, Linkedin } from "lucide-react";
 import Container from "./Container";
-import AreaBadge from "@/components/AreaBadge/AreaBadge";
+import { IcPin, IcPhone } from "@/components/HeroIcons/HeroIcons";
 import { devSlug } from "@/utils/devSlug";
 import styles from "./Footer.module.css";
 
@@ -34,38 +31,16 @@ const information = [
   { label: "Контакты", href: "/contacts" },
   { label: "Вакансии", href: "/careers" },
   { label: "Стать партнером", href: "/partners" },
-  { label: "Партнерская программа", href: "/partners" },
   { label: "Подкасты", href: "/podcast" },
   { label: "Карта сайта", href: "/sitemap" },
 ];
 
 const developers = [
-  "Emaar",
-  "Meraas",
-  "DAMAC",
-  "Aldar",
-  "Arada",
-  "Ellington",
-  "Eagle Hills",
-  "Nakheel",
-  "NSHAMA",
-  "Sobha",
-  "Samana",
-  "Binghatti",
-  "Danube",
-  "Deyaar",
-  "Omniyat",
-  "Object 1",
-  "Ohana",
-  "Iman Developers",
-  "Imtiaz",
-  "IMKAN",
-  "BEYOND",
-  "Reportage Properties",
-  "H&H Development",
-  "RAK Properties",
-  "Wasl",
-  "Majid Al Futtaim",
+  "Emaar", "Meraas", "DAMAC", "Aldar", "Arada", "Ellington",
+  "Eagle Hills", "Nakheel", "NSHAMA", "Sobha", "Samana", "Binghatti",
+  "Danube", "Deyaar", "Omniyat", "Object 1", "Ohana", "Iman Developers",
+  "Imtiaz", "IMKAN", "BEYOND", "Reportage Properties", "H&H Development",
+  "RAK Properties", "Wasl", "Majid Al Futtaim",
 ];
 
 const areas = {
@@ -102,12 +77,37 @@ const areas = {
   ],
 };
 
+const SOCIALS = [
+  { label: "Instagram", href: "#", Icon: Instagram },
+  { label: "YouTube", href: "#", Icon: Youtube },
+  { label: "Telegram", href: "#", Icon: Send },
+  { label: "LinkedIn", href: "#", Icon: Linkedin },
+];
+
 export default function Footer() {
   return (
     <footer className={styles.footer}>
+      <div className={styles.grain} aria-hidden />
+
       <Container>
+        {/* Brand block — large wordmark + italic tagline */}
+        <div className={styles.brand}>
+          <div className={styles.wordmark}>ShanGroup</div>
+          <div className={styles.tagline}>
+            <span className={styles.taglineKicker}>
+              Real estate · Dubai · Est. 2018
+            </span>
+            <span className={styles.taglineAccent}>
+              ваш актив в надёжных руках
+            </span>
+          </div>
+        </div>
+
+        <div className={styles.divider} />
+
+        {/* Link columns */}
         <div className={styles.grid}>
-          {/* Колонка 1 — Недвижимость + Информация */}
+          {/* Column 1 — Properties + Information */}
           <div className={styles.col}>
             <h4 className={styles.colTitle}>Недвижимость в ОАЭ</h4>
             <ul className={styles.colLinks}>
@@ -118,7 +118,7 @@ export default function Footer() {
               ))}
             </ul>
 
-            <h4 className={styles.colTitle} style={{ marginTop: "2rem" }}>
+            <h4 className={`${styles.colTitle} ${styles.colTitleSpaced}`}>
               Информация
             </h4>
             <ul className={styles.colLinks}>
@@ -130,32 +130,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Колонка 2 — Застройщики */}
+          {/* Column 2 — Developers */}
           <div className={styles.col}>
             <h4 className={styles.colTitle}>
-              <Link href="/developers">Застройщики в ОАЭ</Link>
+              <Link href="/developers">Застройщики ОАЭ</Link>
             </h4>
             <ul className={styles.colLinks}>
-              {developers.map((item) => (
-                <li key={item}>
-                  <Link href={`/developers/${devSlug(item)}`}>
-                    {item}
-                  </Link>
+              {developers.map((name) => (
+                <li key={name}>
+                  <Link href={`/developers/${devSlug(name)}`}>{name}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Колонка 3 — Районы */}
+          {/* Column 3 — Areas */}
           <div className={styles.col}>
             <h4 className={styles.colTitle}>
-              <Link href="/communities">Районы в ОАЭ</Link>
+              <Link href="/communities">Районы ОАЭ</Link>
             </h4>
 
-            <div className={styles.areaGroup}>
-              <AreaBadge image="https://res.cloudinary.com/dxp7ppipg/image/upload/v1774374967/downtown_eyw1xz.jpg">
-                Топовые
-              </AreaBadge>
+            <div className={styles.subGroup}>
+              <div className={styles.subLabel}>Топовые</div>
               <ul className={styles.colLinks}>
                 {areas.top.map((item) => (
                   <li key={item.label}>
@@ -165,10 +161,8 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div className={styles.areaGroup}>
-              <AreaBadge image="https://res.cloudinary.com/dxp7ppipg/image/upload/v1774374965/Town_Square_tjupl2.jpg">
-                Жилые
-              </AreaBadge>
+            <div className={styles.subGroup}>
+              <div className={styles.subLabel}>Жилые</div>
               <ul className={styles.colLinks}>
                 {areas.residential.map((item) => (
                   <li key={item.label}>
@@ -178,10 +172,8 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div className={styles.areaGroup}>
-              <AreaBadge image="https://res.cloudinary.com/dxp7ppipg/image/upload/v1774374946/Sobha_Hartland_j0p6yt.webp">
-                Новые и эксклюзивные
-              </AreaBadge>
+            <div className={styles.subGroup}>
+              <div className={styles.subLabel}>Новые и эксклюзивные</div>
               <ul className={styles.colLinks}>
                 {areas.exclusive.map((item) => (
                   <li key={item.label}>
@@ -193,38 +185,49 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
+        <div className={styles.divider} />
+
+        {/* Bottom: socials + contacts */}
         <div className={styles.bottom}>
-          <div className={styles.bottomLeft}>
-            <span className={styles.logo}>ShanGroup</span>
-            <div className={styles.socials}>
-              <a href="#" aria-label="Instagram">
-                <Instagram size={26} />
+          <div className={styles.socials}>
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className={styles.socialBtn}
+              >
+                <Icon size={18} strokeWidth={1.6} />
               </a>
-              <a href="#" aria-label="YouTube">
-                <Youtube size={26} />
-              </a>
-              <a href="#" aria-label="Telegram">
-                <Send size={26} />
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <Linkedin size={26} />
-              </a>
-            </div>
+            ))}
           </div>
 
-          <div className={styles.bottomCenter}>
-            <Link href="/contacts">Наши контакты</Link>
-            <Link href="/careers">Карьера в ShanGroup</Link>
-            <Link href="/articles">Справочник инвестора</Link>
+          <div className={styles.contacts}>
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.contactRow}
+            >
+              <IcPin size={14} />
+              Office 1403, Arenco Tower, Media City, Dubai, UAE
+            </a>
+            <a href="tel:+97142618838" className={styles.contactRow}>
+              <IcPhone size={14} />
+              +971 4 261 8838
+              <span className={styles.contactNote}>
+                · отвечаем на русском языке
+              </span>
+            </a>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className={styles.copyright}>
+          <span>© 2026 ShanGroup · Dubai · RERA #2087</span>
+          <div className={styles.legalLinks}>
             <Link href="/privacy">Политика конфиденциальности</Link>
-            <p>
-              <MapPin size={18} /> Office 1403, Arenco Tower, Media City, Dubai,
-              UAE
-            </p>
-            <p>
-              <Phone size={18} /> +971 4 261 8838 (отвечаем на русском языке)
-            </p>
+            <Link href="/terms">Пользовательское соглашение</Link>
           </div>
         </div>
       </Container>

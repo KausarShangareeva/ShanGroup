@@ -27,6 +27,8 @@ import {
   ArrowRight,
   ChevronDown,
   PenLine,
+  TrendingUp,
+  Calendar,
 } from "lucide-react";
 import styles from "./Icon.module.css";
 
@@ -141,6 +143,8 @@ const REGISTRY = {
   "plus": Plus,
   "arrow-right": ArrowRight,
   "chevron-down": ChevronDown,
+  "trending-up": TrendingUp,
+  "calendar": Calendar,
 };
 
 const SIZE_PX = { xs: 12, sm: 14, md: 18, lg: 22, xl: 28 };

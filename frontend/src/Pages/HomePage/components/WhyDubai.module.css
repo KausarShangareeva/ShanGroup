@@ -1,223 +1,222 @@
+/* ─────────────────────────────────────────────────────────────
+   WhyDubai — editorial-neumorphic stat cards.
+   Light warm bg with grain wash, 4 cards in a row, each with photo
+   on top + mono eyebrow + big display value + optional ranked list.
+   ───────────────────────────────────────────────────────────── */
+
 .section {
+  background: var(--bg);
+  padding: 9rem 0 7rem;
   position: relative;
-  background-color: var(--color-sand);
-  width: 100%;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
-/* Shadow image overlay */
-.shadow {
+/* Warm grain wash — same atmospheric pattern as Hero/OfferOfMonth */
+.section::before {
+  content: "";
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   pointer-events: none;
   z-index: 0;
+  background:
+    radial-gradient(900px 500px at -10% 110%, var(--grain-2), transparent 60%),
+    radial-gradient(800px 400px at 110% -10%, var(--grain-1), transparent 60%);
 }
 
-/* SVG noise overlay */
-.noise {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  pointer-events: none;
-  opacity: 0.32;
-  mix-blend-mode: overlay;
-}
-
-/* Контент управляет высотой */
-.overlay {
+.section > * {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 10rem 0 8rem;
 }
 
-.title {
-  font-family: var(--font-kuzanyan), Georgia, serif;
-  font-size: clamp(2rem, 4vw, 4rem);
-  font-weight: 300;
-  letter-spacing: 0.15em;
-  color: #fff;
-  margin: 0 0 2.4rem;
-  text-transform: uppercase;
-}
-
-.body {
-  font-family: var(--font-montserrat), Georgia, serif;
-  font-size: clamp(2.5rem, 1.3vw, 1.6rem);
-  font-weight: 200;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.3;
-  max-width: 100rem;
-  margin: 0 auto;
-}
-
+/* "ваш актив в надёжных руках" — italic-sand accent line, like a signature */
 .cursive {
-  font-family: var(--font-kuzanyan), Georgia, serif;
-  font-size: clamp(1.8rem, 3vw, 3.2rem);
-  font-weight: 400;
-  color: #fff;
-  margin: 2rem 0 8rem;
+  font-family: var(--font-italic);
   font-style: italic;
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
+  font-weight: 400;
+  color: var(--sand-deep);
+  text-align: center;
+  margin: 1.4rem 0 6rem;
+  letter-spacing: -0.005em;
 }
 
-/* ── 4 кружочка ── */
-.circles {
+/* ── Cards grid ─────────────────────────────────────────── */
+.cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4rem 3rem;
-  width: 100%;
+  gap: 2rem;
 }
 
-.circleItem {
+.card {
+  background: var(--bg);
+  box-shadow: var(--neu-flat);
+  border-radius: 2.4rem;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  text-align: center;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.circleRing {
-  position: relative;
-  width: 18.4rem;
-  height: 18.4rem;
-  border-radius: 50%;
-  padding: 4px;
-  background-color: white;
-  animation: spinGradient 3s linear infinite;
-  flex-shrink: 0;
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--neu-raised-sm);
 }
 
-.circleWrap {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+/* ── Photo on top ────────────────────────────────────────── */
+.imgWrap {
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  animation: counterSpin 3s linear infinite;
+  position: relative;
+  background: var(--bg-2);
 }
 
-@keyframes spinGradient {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes counterSpin {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-.circleImg {
+.img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.6s ease;
 }
 
-.circleText {
+.card:hover .img {
+  transform: scale(1.04);
+}
+
+/* ── Body ────────────────────────────────────────────────── */
+.body {
+  padding: 2rem 2rem 2.4rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
 }
 
-.circleValue {
-  font-family: var(--font-kuzanyan), Georgia, serif;
-  font-size: clamp(2.8rem, 3.5vw, 4.2rem);
-  font-weight: 800;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.circleLabel {
-  font-family: var(--font-montserrat), Georgia, serif;
-  font-size: 1.8rem;
-  font-weight: 200;
-  color: rgba(255, 255, 255, 1);
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  line-height: 1.5;
-  max-width: 30rem;
-  white-space: pre-line;
+  color: var(--sand-deep);
 }
 
-.circleList {
+.value {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  font-size: clamp(3.2rem, 3.6vw, 4.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+  margin-top: 0.6rem;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--font-montserrat);
+  font-size: 1.4rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 0.6rem;
+  text-wrap: pretty;
+}
+
+/* ── Ranked list (Top-5 cities) ─────────────────────────── */
+.list {
   list-style: none;
   padding: 0;
-  margin: 1.2rem 0 0;
+  margin: 1.6rem 0 0;
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-.circleListItem {
-  font-family: var(--font-montserrat), Georgia, serif;
+.row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: 0.55rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  letter-spacing: 0.1em;
-  font-size: 1.8rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
-  transition: color 0.2s;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.18s;
 }
 
-.circleListItem:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+.row:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
-.circleListNum {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.5);
-  min-width: 1.4rem;
+.rowNum {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--muted-2);
+  min-width: 1.6rem;
   text-align: right;
 }
 
-.circleListGold {
-  color: #fff !important;
-  font-weight: 700 !important;
-  font-size: 2rem !important;
-  letter-spacing: 0.14em !important;
-  font-family: var(--font-kuzanyan), Georgia, serif;
+.rowName {
+  flex: 1;
 }
 
-.circleListGold .circleListNum {
-  color: rgba(255, 255, 255, 1) !important;
+/* Highlighted row (Дубай in the leaderboard) — italic Cormorant accent */
+.rowHighlight {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: -0.005em;
+  text-transform: none;
 }
 
-.circleGold {
-  font-family: var(--font-kuzanyan), Georgia, serif;
-  font-size: 3rem;
+.rowHighlight .rowNum {
+  color: var(--sand-deep);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* ── Gold figure ($31B) — italic sand-deep, Cormorant ──── */
+.gold {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
   font-weight: 400;
-  color: #1e1e1e;
-  margin-top: 0.6rem;
-  letter-spacing: 0.02em;
+  color: var(--sand-deep);
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
 }
 
-@media (max-width: 900px) {
-  .circles {
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cards {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
   }
 }
 
 @media (max-width: 560px) {
-  .circles {
+  .section {
+    padding: 5rem 0 4rem;
+  }
+  .cursive {
+    margin: 1rem 0 4rem;
+  }
+  .cards {
     grid-template-columns: 1fr;
   }
-
-  .overlay {
-    padding: 6rem 0 5rem;
+  .body {
+    padding: 1.6rem 1.6rem 2rem;
+  }
+  .value {
+    font-size: clamp(2.8rem, 8vw, 3.6rem);
   }
 }

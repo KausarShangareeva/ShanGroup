@@ -1,0 +1,84 @@
+/* ─────────────────────────────────────────────────────────────
+   PageTitleH1 — editorial 3-register heading in Cormorant Garamond.
+   Primary line (largest) → italic accent (sand-deep) → place anchor.
+   ───────────────────────────────────────────────────────────── */
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  max-width: 30ch;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+/* Primary — Cormorant Garamond, weight 500, large */
+.primary {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(5.6rem, 6.4vw, 10rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* Italic-sand accent — Cormorant italic */
+.accent {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sand-deep);
+  font-size: clamp(3.4rem, 3.8vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.005em;
+  max-width: 22ch;
+  margin-top: 0.4rem;
+}
+
+/* Place anchor — same family, with a short horizontal dash before it */
+.place {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.6rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 2.4vw, 3.6rem);
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.placeDash {
+  display: inline-block;
+  width: 3.2rem;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+  .title {
+    gap: 0.2rem;
+  }
+  .primary {
+    font-size: clamp(4rem, 12vw, 6.4rem);
+  }
+  .accent {
+    font-size: clamp(2.6rem, 7.6vw, 3.8rem);
+  }
+  .place {
+    font-size: clamp(2rem, 5.5vw, 2.6rem);
+  }
+  .placeDash {
+    width: 2.2rem;
+  }
+}

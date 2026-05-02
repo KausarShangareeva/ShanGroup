@@ -1,76 +1,120 @@
+/* PrimaryButton-style — deep ink pill, leading/trailing icon in tinted circle,
+   outer drop shadow + inset top-light highlight, hover lift. */
+
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 1.2rem;
-  border: none;
-  border-radius: 100px;
-  padding: 0.5rem 0.5rem 0.5rem 3rem;
-  /* Фиксируем высоту, чтобы кнопка без иконки оставалась
-     такой же высокой, как и вариант с кружком-иконкой (4rem + 2×0.5rem паддинг). */
+  border: 0;
+  border-radius: 999px;
+  padding: 0.6rem 0.6rem 0.6rem 2.4rem;
   min-height: 5rem;
-  font-size: 1.5rem;
-  font-weight: 500;
   font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   cursor: pointer;
   text-decoration: none;
   width: fit-content;
-  transition: filter 0.2s;
+  white-space: nowrap;
+  transition:
+    transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.18s,
+    background 0.15s;
+  will-change: transform, box-shadow;
 }
 
-/* Когда иконки нет — правый паддинг становится симметричным левому,
-   чтобы текст не прилипал к правому краю пилюли. */
+/* When there's no trailing icon, use symmetric padding so the label
+   doesn't hug the right edge. */
 .btn:not(:has(.dot)) {
-  padding-right: 3rem;
+  padding-right: 2.4rem;
 }
 
 .btn:hover {
-  filter: brightness(1.1);
+  transform: translateY(-1px);
 }
 
 .btn:active {
-  filter: brightness(0.95);
+  transform: translateY(0);
 }
 
 .btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
 }
 
-/* Чёрный фон — белый текст */
+/* Dark variant — deep ink */
 .dark {
-  background: #000000;
+  background: var(--ink, #0a0a0b);
   color: #fff;
+  box-shadow:
+    0 14px 28px rgba(10, 10, 11, 0.32),
+    0 4px 10px rgba(10, 10, 11, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.dark:hover {
+  box-shadow:
+    0 18px 36px rgba(10, 10, 11, 0.42),
+    0 6px 14px rgba(10, 10, 11, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .dark .dot {
-  background: #fff;
-  color: #000000;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Белый фон — чёрный текст */
+/* Light variant — paper surface */
 .light {
-  background: #fff;
-  color: #000000;
+  background: #ffffff;
+  color: var(--ink, #0a0a0b);
+  box-shadow:
+    0 12px 26px rgba(10, 10, 11, 0.16),
+    0 3px 8px rgba(10, 10, 11, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.light:hover {
+  box-shadow:
+    0 16px 32px rgba(10, 10, 11, 0.2),
+    0 4px 10px rgba(10, 10, 11, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.06);
 }
 
 .light .dot {
-  background: #000000;
-  color: #fff;
+  background: rgba(10, 10, 11, 0.06);
+  color: var(--ink, #0a0a0b);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .label {
   white-space: nowrap;
 }
 
+/* Icon circle */
 .dot {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  width: 3.6rem;
+  height: 3.6rem;
   border-radius: 50%;
   flex-shrink: 0;
   font-size: 1.6rem;
-  font-weight: 300;
   line-height: 1;
+}
+
+/* Focus ring — sand-deep accent matches editorial palette */
+.btn:focus-visible {
+  outline: 2px solid var(--sand-deep);
+  outline-offset: 3px;
 }

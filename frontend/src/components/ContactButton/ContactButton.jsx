@@ -24,12 +24,12 @@ export default function ContactButton({ label, icon, href, onClick }) {
       onClick={onClick}
       className={styles.btn}
     >
-      <span className={styles.label}>{label}</span>
       {Icon && (
         <span className={styles.iconWrap}>
-          <Icon size={20} strokeWidth={1.8} />
+          <Icon size={16} strokeWidth={1.8} />
         </span>
       )}
+      <span className={styles.label}>{label}</span>
     </Tag>
   );
 }
