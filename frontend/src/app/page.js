@@ -1,52 +1,35 @@
 import Hero from "@/Pages/HomePage/components/Hero";
 import OfferOfMonth from "@/Pages/HomePage/components/OfferOfMonth";
-import NewProperties from "@/Pages/HomePage/components/NewProperties";
-import TrendingCommunities from "@/Pages/HomePage/components/TrendingCommunities";
-import PropertyTypeSection from "@/Pages/HomePage/components/PropertyTypeSection";
-import WhyDubai from "@/Pages/HomePage/components/WhyDubai";
-import QuoteBanner from "@/components/QuoteBanner/QuoteBanner";
-import DevelopersBelt from "@/components/DevelopersBelt/DevelopersBelt";
-import ExpertAnalytics from "@/Pages/HomePage/components/ExpertAnalytics";
-import WhyProperty from "@/Pages/HomePage/components/WhyProperty";
-import OurApproach from "@/Pages/HomePage/components/OurApproach";
-import ExpertCTA from "@/Pages/HomePage/components/ExpertCTA";
-import VILLAS from "@/data/properties/villas.json";
-import APARTMENTS from "@/data/properties/apartments.json";
-import TOWNHOUSES from "@/data/properties/townhouses.json";
+import PropertyTabs from "@/Pages/HomePage/components/PropertyTabs";
+import StatsStrip from "@/Pages/HomePage/components/StatsStrip";
+import DevelopersStrip from "@/Pages/HomePage/components/DevelopersStrip";
+import HomeBlog from "@/Pages/HomePage/components/HomeBlog";
+import LeadForm from "@/Pages/HomePage/components/LeadForm";
+import CountryCompare from "@/Pages/HomePage/components/CountryCompare";
+import DubaiMap from "@/Pages/HomePage/components/DubaiMap";
+import InvestorFAQ from "@/Pages/HomePage/components/InvestorFAQ";
+import TelegramChannel from "@/Pages/HomePage/components/TelegramChannel";
+import GoldenVisaCalc from "@/Pages/HomePage/components/GoldenVisaCalc";
+import InvestorMatch from "@/Pages/HomePage/components/InvestorMatch";
+import CompareTray from "@/Pages/HomePage/components/CompareTray";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <OfferOfMonth />
-      <NewProperties />
-      <PropertyTypeSection
-        tag=""
-        title="Виллы на продажу"
-        properties={VILLAS}
-        catalogHref="/villas"
-      />
-      <PropertyTypeSection
-        tag=""
-        title="Апартаменты на продажу"
-        properties={APARTMENTS}
-        catalogHref="/apartments"
-        dark
-      />
-      <PropertyTypeSection
-        tag=""
-        title="Таунхаусы на продажу"
-        properties={TOWNHOUSES}
-        catalogHref="/townhouses"
-      />
-      <TrendingCommunities />
-      <QuoteBanner />
-      <WhyDubai />
-      <DevelopersBelt />
-      <WhyProperty />
-      <OurApproach />
-      <ExpertAnalytics />
-      <ExpertCTA />
+      <PropertyTabs />
+      <StatsStrip />
+      <DevelopersStrip />
+      <HomeBlog />
+      <GoldenVisaCalc />
+      <InvestorMatch />
+      <LeadForm />
+      <CountryCompare />
+      <DubaiMap />
+      <InvestorFAQ />
+      <TelegramChannel />
+      <CompareTray />
     </>
   );
 }
