@@ -1,0 +1,42 @@
+{
+  "anna-kim": {
+    "name": "Anna Kim",
+    "role": "Property Consultant",
+    "phone": "+971 4 261 8838",
+    "email": "anna@shangroup.ae",
+    "whatsapp": "+971426188384",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80&auto=format&fit=crop&crop=faces"
+  },
+  "igor-shan": {
+    "name": "Igor Shan",
+    "role": "Senior Consultant",
+    "phone": "+971 4 261 8839",
+    "email": "igor@shangroup.ae",
+    "whatsapp": "+971426188385",
+    "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80&auto=format&fit=crop&crop=faces"
+  },
+  "mustafa-amir": {
+    "name": "Mustafa Amir",
+    "role": "Senior Consultant",
+    "phone": "+971 4 261 8838",
+    "email": "mustafa@shangroup.ae",
+    "whatsapp": "+971426188384",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&auto=format&fit=crop&crop=faces"
+  },
+  "aigerim-karenova": {
+    "name": "Aigerim Karenova",
+    "role": "Lead Advisor",
+    "phone": "+971 4 261 8839",
+    "email": "aigerim@shangroup.ae",
+    "whatsapp": "+971426188385",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80&auto=format&fit=crop&crop=faces"
+  },
+  "dmitry-levin": {
+    "name": "Dmitry Levin",
+    "role": "Investment Manager",
+    "phone": "+971 4 261 8840",
+    "email": "dmitry@shangroup.ae",
+    "whatsapp": "+971426188386",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80&auto=format&fit=crop&crop=faces"
+  }
+}

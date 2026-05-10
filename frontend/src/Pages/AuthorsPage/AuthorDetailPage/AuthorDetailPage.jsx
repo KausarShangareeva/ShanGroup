@@ -1,27 +1,15 @@
 import Link from "next/link";
 import Flag from "react-world-flags";
-import {
-  ArrowLeft,
-  Mail,
-  Phone,
-  Star,
-  Briefcase,
-  MapPin,
-  Clock,
-  MessageCircle,
-  Send,
-  Instagram,
-} from "lucide-react";
 import Container from "@/components/layout/Container";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
 import AgentPreviewCard from "@/components/AgentPreviewCard/AgentPreviewCard";
 import Icon from "@/components/Icon/Icon";
 import GoldVerifiedIcon from "@/Pages/ArticlesPage/ArticleDetailPage/GoldVerifiedIcon";
-import AUTHORS from "@/data/authors.json";
-import OBJECTS from "@/data/properties/objects.json";
-import APARTMENTS from "@/data/properties/apartments.json";
-import VILLAS from "@/data/properties/villas.json";
-import TOWNHOUSES from "@/data/properties/townhouses.json";
+import AUTHORS from "@/data/i18n/ru/people/authors.json";
+import OBJECTS from "@/data/i18n/ru/properties/objects.json";
+import APARTMENTS from "@/data/i18n/ru/properties/apartments.json";
+import VILLAS from "@/data/i18n/ru/properties/villas.json";
+import TOWNHOUSES from "@/data/i18n/ru/properties/townhouses.json";
 import styles from "./AuthorDetailPage.module.css";
 
 // Все объекты из четырёх property-файлов в одном массиве — отсюда
@@ -91,14 +79,14 @@ export default function AuthorDetailPage({ slug }) {
                   className={styles.socialBtn}
                   aria-label="Позвонить"
                 >
-                  <Phone size={16} />
+                  <Icon name="phone" size={16}  />
                 </a>
                 <a
                   href={`mailto:${author.email}`}
                   className={styles.socialBtn}
                   aria-label="Email"
                 >
-                  <Mail size={16} />
+                  <Icon name="mail" size={16}  />
                 </a>
                 {author.socials?.telegram && (
                   <a
@@ -108,7 +96,7 @@ export default function AuthorDetailPage({ slug }) {
                     className={styles.socialBtn}
                     aria-label="Telegram"
                   >
-                    <Send size={16} />
+                    <Icon name="send" size={16}  />
                   </a>
                 )}
                 {author.socials?.whatsapp && (
@@ -119,7 +107,7 @@ export default function AuthorDetailPage({ slug }) {
                     className={styles.socialBtn}
                     aria-label="WhatsApp"
                   >
-                    <MessageCircle size={16} />
+                    <Icon name="message" size={16}  />
                   </a>
                 )}
                 {author.socials?.instagram && (
@@ -130,14 +118,14 @@ export default function AuthorDetailPage({ slug }) {
                     className={styles.socialBtn}
                     aria-label="Instagram"
                   >
-                    <Instagram size={16} />
+                    <Icon name="instagram" size={16}  />
                   </a>
                 )}
               </div>
             </div>
 
             <div className={styles.heroRating}>
-              <Star size={16} fill="#FBBF24" color="#FBBF24" />
+              <Icon name="star" size={16} fill="#FBBF24" color="#FBBF24"  />
               <span className={styles.heroRatingValue}>{author.rating}</span>
               <span className={styles.heroRatingReviews}>
                 ({author.reviews} отзывов)
@@ -159,7 +147,7 @@ export default function AuthorDetailPage({ slug }) {
                 </li>
                 {author.experienceSince && (
                   <li className={styles.infoItem}>
-                    <Briefcase size={14} className={styles.infoIcon} />
+                    <Icon name="briefcase" size={14} className={styles.infoIcon}  />
                     <span className={styles.infoLabel}>Опыт с:</span>
                     <span className={styles.infoValue}>
                       {author.experienceSince} г.
@@ -168,7 +156,7 @@ export default function AuthorDetailPage({ slug }) {
                 )}
                 {author.areas?.length > 0 && (
                   <li className={styles.infoItem}>
-                    <MapPin size={14} className={styles.infoIcon} />
+                    <Icon name="map-pin" size={14} className={styles.infoIcon}  />
                     <span className={styles.infoLabel}>Районы:</span>
                     <span className={styles.infoValue}>
                       {author.areas.join(", ")}
@@ -199,7 +187,7 @@ export default function AuthorDetailPage({ slug }) {
                   </span>
                 </li>
                 <li className={styles.infoItem}>
-                  <Clock size={14} className={styles.infoIcon} />
+                  <Icon name="clock" size={14} className={styles.infoIcon}  />
                   <span className={styles.infoLabel}>Ответы:</span>
                   <span className={styles.infoValue}>
                     {author.responseRate} · {author.responseTime}

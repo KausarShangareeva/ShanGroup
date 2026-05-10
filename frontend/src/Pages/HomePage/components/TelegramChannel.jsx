@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -8,13 +9,6 @@ const NEU_RAISED =
   "-8px -8px 20px var(--shadow-light), 8px 8px 24px var(--shadow-dark)";
 const NEU_FLAT =
   "-1px -1px 2px var(--shadow-light), 1px 1px 2px var(--shadow-dark)";
-
-const BULLETS = [
-  "3–5 эксклюзивных объектов в неделю",
-  "Аналитика рынка и Q-отчёты от ShanGroup Research",
-  "Прямой чат с консультантом · ответ 15 мин",
-  "Нет спама — только реальные сделки",
-];
 
 const PREVIEW_MSGS = [
   { tag: "🔥 NEW", title: "Bvlgari Lighthouse", price: "$6.4M", roi: "+ ROI 6.8%" },
@@ -24,6 +18,8 @@ const PREVIEW_MSGS = [
 
 export default function TelegramChannel() {
   const isMobile = useIsMobile();
+  const t = useTranslations("HomePage.telegramChannel");
+  const BULLETS = t.raw("bullets");
   const [subscribed, setSubscribed] = useState(false);
 
   return (
@@ -84,7 +80,7 @@ export default function TelegramChannel() {
                   background: "oklch(0.7 0.18 240)",
                 }}
               />
-              Закрытый канал · 1 248 инвесторов
+              {t("channelStatus")}
             </div>
 
             <h2
@@ -100,9 +96,9 @@ export default function TelegramChannel() {
                 textWrap: "balance",
               }}
             >
-              Off-plan{" "}
+              {t("titleA")}{" "}
               <span style={{ fontStyle: "italic", color: "oklch(0.78 0.14 240)" }}>
-                до публичного запуска
+                {t("titleB")}
               </span>
             </h2>
             <p
@@ -114,7 +110,7 @@ export default function TelegramChannel() {
                 color: "rgba(255,255,255,.7)",
               }}
             >
-              Эксклюзивные предложения от Tier-1 застройщиков за 2–4 недели до релиза. Цены от прайса, лучшие планировки, гибкие условия рассрочки.
+              {t("subtitle")}
             </p>
 
             <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 10 }}>
@@ -182,7 +178,7 @@ export default function TelegramChannel() {
                   <path d="M14.6 2.2 1.7 7.1c-.9.3-.9.8-.2 1l3.3 1 1.3 4c.2.4.3.6.6.6.4 0 .5-.2.7-.4l1.6-1.5 3.3 2.4c.6.3 1 .2 1.2-.6L15.3 3c.2-1-.2-1.4-.7-.8Zm-3 3.4-6.2 5.6-.2 2.6L4 9.4l7.6-4.7c.3-.2.6 0 .4.2Z" />
                 </svg>
               </span>
-              {subscribed ? "Открываем Telegram…" : "Подписаться на канал"}
+              {subscribed ? t("subscribing") : t("subscribe")}
               <span aria-hidden style={{ display: "inline-grid", placeItems: "center", marginLeft: -2 }}>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4 10 L10 4 M5 4 H10 V9" />
@@ -199,7 +195,7 @@ export default function TelegramChannel() {
                 letterSpacing: ".06em",
               }}
             >
-              @shangroup_invest · бесплатно · отписаться в 1 клик
+              {t("footnote")}
             </div>
           </div>
 
@@ -278,10 +274,10 @@ export default function TelegramChannel() {
                         textOverflow: "ellipsis",
                       }}
                     >
-                      ShanGroup · Off-plan
+                      {t("phoneTitle")}
                     </div>
                     <div style={{ fontSize: 9, color: "oklch(0.7 0.05 240)" }}>
-                      1 248 подписчиков
+                      {t("phoneSubscribers")}
                     </div>
                   </div>
                 </div>
@@ -369,10 +365,10 @@ export default function TelegramChannel() {
               </div>
               <div>
                 <div style={{ fontSize: 11.5, fontWeight: 700, color: "#0A0A0B", lineHeight: 1 }}>
-                  +47 за неделю
+                  {t("weeklyBadge")}
                 </div>
                 <div style={{ fontSize: 9.5, color: "var(--muted)", marginTop: 2 }}>
-                  новых подписчиков
+                  {t("weeklyDesc")}
                 </div>
               </div>
             </div>

@@ -1,0 +1,268 @@
+{
+  "hero": {
+    "badge": "Off-plan → Handover · 18–36 months",
+    "titleA": "Buy at launch,",
+    "titleB": "sell",
+    "titleC": "at the keys",
+    "subtitle": "Enter the project on launch day at the developer's exclusive price. Pay 20–30% over 18–36 months. We sell on handover for a 30–60% gain on the deployed capital. No rentals, no renovation — pure speculative upside.",
+    "subtitleBoldFragment": "30–60% on deployed capital.",
+    "ctaPrimary": "Get the shortlist",
+    "ctaSecondary": "Calculate ROI on capital",
+    "trust": [
+      { "v": "+42%", "l": "median upside at handover" },
+      { "v": "20%", "l": "minimum first instalment" },
+      { "v": "24 mo", "l": "average deal cycle" }
+    ],
+    "chart": {
+      "kicker": "Case: Sobha Hartland · 1BR · 24 mo",
+      "subject": "+$184K on $148K deployed",
+      "badge": "+124% ROIC",
+      "points": [
+        { "l": "Launch",     "v": "$520K" },
+        { "l": "50% built",  "v": "$640K" },
+        { "l": "Handover",   "v": "$762K" }
+      ],
+      "labels": {
+        "launch": "Launch",
+        "handover": "Handover",
+        "profit": "Profit"
+      },
+      "values": {
+        "launch": "$520K",
+        "handover": "$762K",
+        "profit": "+$184K"
+      }
+    }
+  },
+  "stats": {
+    "items": [
+      { "v": "+42%", "l": "median upside off-plan → handover", "source": "Property Monitor 2024" },
+      { "v": "20%",  "l": "minimum first instalment",            "source": "Emaar / Damac launch" },
+      { "v": "0%",   "l": "capital gains tax",                   "source": "UAE Tax Code" },
+      { "v": "126K", "l": "off-plan transactions in 2024",       "source": "DLD" }
+    ],
+    "sourceLabel": "source"
+  },
+  "howItWorks": {
+    "kicker": "How Flip works",
+    "titleA": "5 stages",
+    "titleB": "from launch to exit",
+    "stages": [
+      { "n": "01", "icon": "search",        "t": "Launch project shortlist",   "d": "Analysis of a 40+ developer pipeline. We filter by location, price index and the developer's appreciation history.", "m": "Day 1–7" },
+      { "n": "02", "icon": "key",            "t": "Pre-launch booking",         "d": "Access to inventory at the closed stage — before the public sales start. Prices 8–15% below day one.",                "m": "Day 7–10" },
+      { "n": "03", "icon": "file-text",     "t": "OQOOD + payments",            "d": "Registration with the DLD, OQOOD certificate. You pay on the developer's schedule (typically 20% / 40% / 40%).",          "m": "Month 1–18" },
+      { "n": "04", "icon": "bar-chart",     "t": "Market monitoring",           "d": "Each quarter — a report on prices in the project, in the district and among competitors. Exit point — algorithmic.",     "m": "Month 6–24" },
+      { "n": "05", "icon": "trending-up",   "t": "Resale at handover",          "d": "Listings on 8 platforms + ShanGroup's closed buyer pool. Deal through DLD in 3–6 weeks.",                                  "m": "Month 18–36" }
+    ]
+  },
+  "paymentPlan": {
+    "kicker": "Capital in instalments",
+    "titleA": "Don't pay everything",
+    "titleB": "upfront",
+    "intro": "The developer offers interest-free instalments over 18–36 months. Your real cash at launch is 20%. The rest goes in 4–5 tranches on the construction schedule — or you sell at any moment after OQOOD via assignment.",
+    "milestones": [
+      { "m": "Booking",          "t": "Day 0",      "pct": 5,  "cum": 5 },
+      { "m": "DLD registration", "t": "Month 1",    "pct": 15, "cum": 20 },
+      { "m": "30% built",        "t": "Month 8",    "pct": 10, "cum": 30 },
+      { "m": "60% built",        "t": "Month 16",   "pct": 20, "cum": 50 },
+      { "m": "Handover",         "t": "Month 24",   "pct": 50, "cum": 100 }
+    ],
+    "exitNote": {
+      "label": "Exit point (optional)",
+      "detail": "after 30% — assignment in 7 days"
+    },
+    "summary": {
+      "label": "$520K property",
+      "primary": "$104K",
+      "subline": "first year",
+      "breakdown": "$26K — booking · $78K — over 12 months"
+    },
+    "cumPrefix": "total"
+  },
+  "economics": {
+    "kicker": "Deal unit economics",
+    "titleA": "P&L of a single",
+    "titleB": "flip cycle",
+    "lines": [
+      { "l": "Purchase price at launch",          "v": 520000, "pos": false, "hl": false },
+      { "l": "DLD transfer fee (4%)",              "v": 20800,  "pos": false, "hl": false },
+      { "l": "OQOOD + admin",                       "v": 1500,   "pos": false, "hl": false },
+      { "l": "ShanGroup fee at purchase",          "v": 0,       "pos": false, "hl": false, "note": "0% — paid by the developer" },
+      { "l": "Sale price at handover",             "v": 762000, "pos": true,  "hl": true  },
+      { "l": "Agent fee at sale (2%)",              "v": -15240, "pos": false, "hl": false },
+      { "l": "DLD on sale (4%, 50/50 split)",       "v": -15240, "pos": false, "hl": false }
+    ],
+    "summary": {
+      "netProfitLabel": "Net profit",
+      "netProfitNote": "after all fees and DLD",
+      "roicLabel": "ROIC on your cash ($156K)",
+      "roicNote": "over 24 months · IRR ≈ 49%",
+      "taxLabel": "Tax",
+      "taxNote": "0% capital gains in the UAE for individuals"
+    }
+  },
+  "calc": {
+    "kicker": "ROIC on equity",
+    "titleA": "Flip-deal",
+    "titleB": "calculator",
+    "controls": {
+      "price": "Launch property price",
+      "dp": "First instalment",
+      "appreciation": "Handover appreciation",
+      "months": "Time to handover",
+      "monthsUnit": "months"
+    },
+    "result": {
+      "netProfitLabel": "Net profit",
+      "roicLabel": "ROIC on equity",
+      "annualizedLabel": "Annualized",
+      "annualizedUnit": "/ yr",
+      "cashInLabel": "Cash-in (1st instalment)",
+      "exitLabel": "Exit price",
+      "cta": "Get lots matching these parameters"
+    }
+  },
+  "projects": {
+    "kicker": "2026 pipeline",
+    "titleA": "Where the",
+    "titleB": "biggest upside lives",
+    "items": [
+      { "dev": "Emaar",   "name": "Vida Residences Dubai Mall",   "launch": "Q2 2026",   "handover": "Q4 2027", "from": "$580K",  "upside": "+38%", "tag": "Downtown" },
+      { "dev": "Sobha",   "name": "Hartland II — Phase 3",        "launch": "Q1 2026",   "handover": "Q3 2028", "from": "$460K",  "upside": "+45%", "tag": "Hartland" },
+      { "dev": "Damac",   "name": "Cavalli Couture Tower",         "launch": "On sale",   "handover": "Q2 2027", "from": "$720K",  "upside": "+32%", "tag": "Safa Park" },
+      { "dev": "Meraas",  "name": "Bluewaters Bay 2",              "launch": "Q3 2026",   "handover": "Q1 2028", "from": "$950K",  "upside": "+40%", "tag": "Bluewaters" },
+      { "dev": "Nakheel", "name": "Palm Jebel Ali Villas",          "launch": "On sale",   "handover": "Q4 2028", "from": "$1.42M", "upside": "+55%", "tag": "Palm Jebel Ali" },
+      { "dev": "Select",  "name": "Peninsula 5",                    "launch": "Q4 2025",   "handover": "Q4 2027", "from": "$380K",  "upside": "+36%", "tag": "Business Bay" }
+    ],
+    "launchLabel": "Launch",
+    "handoverLabel": "Handover",
+    "fromLabel": "From",
+    "detailsCta": "Request details →",
+    "footnote": "Full shortlist of 30+ pre-launch lots — closed database, sent after a call."
+  },
+  "compare": {
+    "kicker": "Comparison",
+    "titleA": "Flip",
+    "titleB": "vs",
+    "titleC": "rental strategy",
+    "headers": {
+      "param": "Parameter",
+      "flip": "Flip",
+      "flipNote": "→ This strategy",
+      "rent": "Rental",
+      "rentNote": "Long / Short"
+    },
+    "rows": [
+      { "l": "Capital appreciation per cycle",  "a": "30–60%",                  "aw": true,  "l2": "0% (rent)",            "lw": false },
+      { "l": "Time to exit",                     "a": "18–36 mo",                "aw": true,  "l2": "Indefinite",            "lw": false },
+      { "l": "Minimum cash",                     "a": "5–20% of price",          "aw": true,  "l2": "100%",                  "lw": false },
+      { "l": "Income while held",                "a": "0",                       "aw": false, "l2": "8–12% / yr",            "lw": true  },
+      { "l": "Operational work",                 "a": "None",                    "aw": true,  "l2": "Guests 24/7, repairs",  "lw": false },
+      { "l": "Capital gains tax",                "a": "0%",                      "aw": true,  "l2": "—",                     "lw": false },
+      { "l": "Project risk (delay/freeze)",      "a": "Present",                 "aw": false, "l2": "None",                  "lw": true  },
+      { "l": "Ideal for",                        "a": "Entrepreneurs, traders",  "aw": true,  "l2": "Cashflow investors",    "lw": true }
+    ]
+  },
+  "risks": {
+    "kicker": "Transparent about risks",
+    "titleA": "What can",
+    "titleB": "go wrong",
+    "intro": "Flip is a speculative strategy. Returns are not guaranteed. We remove 80% of risk through project selection and DLD escrow mechanics, but the remaining 20% sits with the investor. We're open about that.",
+    "items": [
+      { "r": "Construction freeze",            "m": "We only work with tier-1 developers with a 10+ year track record (Emaar, Sobha, Damac, Nakheel, Meraas). DLD escrow account." },
+      { "r": "Market drawdown at handover",     "m": "We stress-test every deal at a −15% scenario. We only accept projects with expected appreciation of 50%+ — a 25%+ margin of safety." },
+      { "r": "Difficulty selling",              "m": "ShanGroup's closed pool — 2,400+ buyers with verified capital. Average resale time at handover — 3–6 weeks." },
+      { "r": "Payment cash-flow gaps",          "m": "Every developer instalment is matched to your cashflow. If preferred — we sell via assignment of rights before handover." }
+    ]
+  },
+  "cases": {
+    "kicker": "Closed deals",
+    "titleA": "Real",
+    "titleB": "flip deals",
+    "objectLabel": "Property",
+    "buyLabel": "Buy",
+    "exitLabel": "Exit",
+    "monthsLabel": "Cycle",
+    "monthsUnit": "mo",
+    "items": [
+      {
+        "name": "Artem V.", "role": "Moscow, IT founder",
+        "bought": "Sobha Hartland · 1BR · 78 sqm",
+        "buyPrice": "$520K", "exitPrice": "$762K",
+        "profit": "+$186K", "months": 24, "roic": "119% ROIC",
+        "quote": "Bought at pre-launch through a ShanGroup introduction, $48K cheaper than day one. Sold 26 days before handover."
+      },
+      {
+        "name": "Inga D.", "role": "Dubai, private investor",
+        "bought": "Damac Lagoons · 3BR Townhouse",
+        "buyPrice": "$880K", "exitPrice": "$1.38M",
+        "profit": "+$384K", "months": 30, "roic": "145% ROIC",
+        "quote": "Townhouse with an artificial lagoon — clean lifestyle-segment bet. Paid back at 2.4× on capital."
+      },
+      {
+        "name": "Semyon R.", "role": "London, family office",
+        "bought": "Emaar Beachfront · 2BR · 105 sqm",
+        "buyPrice": "$1.24M", "exitPrice": "$1.82M",
+        "profit": "+$462K", "months": 28, "roic": "124% ROIC",
+        "quote": "Ran 4 flip deals in parallel. All exited in the money. Dubai outperformed US REITs in the portfolio 3×."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Questions",
+    "titleA": "What",
+    "titleB": "investors ask",
+    "titleC": "most often",
+    "items": [
+      { "q": "What is OQOOD and why do I need it?", "a": "OQOOD is the pre-registration certificate with the DLD when buying off-plan. It grants legal title until the Title Deed is issued. Without OQOOD the deal is not legally recognised — we file it within the first 30 days." },
+      { "q": "Can I sell before handover?", "a": "Yes — this is called assignment. Once 30%+ of the price is paid, you can resell to a new buyer with DLD re-registration. It takes 7–14 days. Ideal for locking profit early." },
+      { "q": "What is ShanGroup's fee?", "a": "0% at purchase (the developer pays the fee). 2% of the deal price at resale on handover. No other charges — not for sourcing, not for support, not for paperwork." },
+      { "q": "What if the market drops by handover?", "a": "We stress-test every deal at a −15% scenario. We only accept projects with expected appreciation of 50%+ — a 25% margin of safety. In a downside, you exit at breakeven or hold for 12% NET rental yield." },
+      { "q": "What's the minimum budget?", "a": "Real cash at launch — from $50K (5% booking + 15% over 12 months). Full property — from $250K. ROIC sweet spot: $500–800K property, $130–200K cash-in." },
+      { "q": "How many flip deals can I run in parallel?", "a": "Technically — unlimited, but we recommend no more than 3–4 simultaneously. Each requires capital for quarterly instalments. Family offices with us run 6–10 parallel positions." },
+      { "q": "Do I get the investor visa?", "a": "Yes. A property from $205K qualifies for the 2-year Investor Visa, from $545K for the 10-year Golden Visa. The visa activates after OQOOD — i.e. BEFORE handover. Full support included." },
+      { "q": "How are payments to the developer protected?", "a": "Every dirham flows through a DLD-controlled escrow. The developer doesn't receive money directly — only when construction milestones are verified. If a project freezes, funds are returned to investors." }
+    ]
+  },
+  "leadForm": {
+    "badge": "Shortlist within 24 hours",
+    "titleA": "Get 3–5 lots",
+    "titleB": "matched to your capital",
+    "subtitle": "An off-plan expert will send a PDF with the projects, ROIC forecast, payment schedule and a stress test for each lot. No fluff, no call-back chase.",
+    "perks": [
+      "3–5 launch lots with 60%+ ROIC",
+      "Handover price forecast (model)",
+      "Full payment schedule and cashflow"
+    ],
+    "form": {
+      "capitalLabel": "Capital at launch",
+      "capitals": [
+        { "id": "100",  "l": "$50–150K" },
+        { "id": "200",  "l": "$150–300K" },
+        { "id": "500",  "l": "$300K–700K" },
+        { "id": "1000", "l": "$700K+" }
+      ],
+      "horizonLabel": "Horizon",
+      "horizons": [
+        { "id": "18",  "l": "18 mo" },
+        { "id": "24",  "l": "24 mo" },
+        { "id": "36",  "l": "36 mo" },
+        { "id": "any", "l": "Any" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only the shortlist and a call from the expert.",
+      "submit": "Get the shortlist →"
+    },
+    "success": {
+      "title": "Thank you, {name}!",
+      "fallbackName": "investor",
+      "line1": "Preparing a personal shortlist of 3–5 launch projects matched to your capital and horizon.",
+      "line2": "An off-plan expert will call {phone} within 30 minutes."
+    }
+  },
+  "metadata": {
+    "title": "Flip strategy in Dubai · Resell at handover up to 60% — ShanGroup",
+    "description": "Buy off-plan at launch and sell at handover. 30–60% capital gain over 18–36 months. Turnkey via ShanGroup."
+  }
+}

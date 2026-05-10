@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Алексей Шан",
+    "slug": "aleksey-shan",
+    "role": "Основатель ShanGroup",
+    "avatar": "https://mockmind-api.uifaces.co/content/human/196.jpg",
+    "bio": "Основатель ShanGroup, 10+ лет в недвижимости ОАЭ. Помог более 300 семьям и инвесторам найти идеальные объекты в Дубае. Специализируется на премиальной и инвестиционной недвижимости.",
+    "email": "alexey@shangroup.ae",
+    "phone": "+971 50 123 4567",
+    "language": "Русский, English",
+    "responseRate": "100%",
+    "responseTime": "В течение часа",
+    "rating": 4.9,
+    "reviews": 247,
+    "experienceSince": 2014,
+    "areas": ["Downtown Dubai", "Palm Jumeirah", "Dubai Marina", "Business Bay"],
+    "socials": {
+      "telegram": "https://t.me/shangroup",
+      "whatsapp": "https://wa.me/971501234567",
+      "instagram": "https://instagram.com/shangroup"
+    }
+  },
+  {
+    "name": "Мария Которва",
+    "slug": "maria-kotorva",
+    "role": "Аналитик рынка",
+    "avatar": "https://mockmind-api.uifaces.co/content/human/128.jpg",
+    "bio": "Аналитик рынка недвижимости с 6-летним опытом. Отслеживает данные DLD, строит прогнозы и готовит еженедельные обзоры рынка для клиентов ShanGroup.",
+    "email": "maria@shangroup.ae",
+    "phone": "+971 55 987 6543",
+    "language": "Русский, English, Deutsch",
+    "responseRate": "98%",
+    "responseTime": "В течение 2 часов",
+    "rating": 4.8,
+    "reviews": 134,
+    "experienceSince": 2019,
+    "areas": ["JVC", "Business Bay", "Dubai Creek Harbour", "MBR City"],
+    "socials": {
+      "telegram": "https://t.me/shangroup",
+      "whatsapp": "https://wa.me/971559876543",
+      "instagram": "https://instagram.com/shangroup"
+    }
+  },
+  {
+    "name": "Расул Маратов",
+    "slug": "rasul-maratov",
+    "role": "Визовый специалист",
+    "avatar": "https://mockmind-api.uifaces.co/content/human/141.jpg",
+    "bio": "Визовый специалист и юрист по недвижимости ОАЭ. Помогает клиентам оформить Золотую визу, разобраться в законодательстве и подготовить документы для сделок.",
+    "email": "rasul@shangroup.ae",
+    "phone": "+971 52 456 7890",
+    "language": "Русский, English, Arabic",
+    "responseRate": "100%",
+    "responseTime": "В течение часа",
+    "rating": 4.9,
+    "reviews": 189,
+    "experienceSince": 2016,
+    "areas": ["Downtown Dubai", "DIFC", "Dubai Marina", "Expo City"],
+    "socials": {
+      "telegram": "https://t.me/shangroup",
+      "whatsapp": "https://wa.me/971524567890",
+      "instagram": "https://instagram.com/shangroup"
+    }
+  }
+]

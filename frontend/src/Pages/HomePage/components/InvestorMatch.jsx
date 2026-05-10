@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -12,62 +13,66 @@ const NEU_FLAT =
 const NEU_INSET =
   "inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light)";
 
-const IM_STEPS = [
-  {
-    id: "goal",
-    label: "Цель инвестиции",
-    sub: "Что для вас важнее всего сейчас?",
-    type: "cards",
-    options: [
-      { v: "live", title: "Жить самому",     sub: "Дом для жизни в Дубае",       emoji: "home" },
-      { v: "rent", title: "Сдавать в аренду", sub: "Стабильный кэш-флоу 7–9%",    emoji: "key" },
-      { v: "flip", title: "Перепродать",      sub: "Off-plan → готовое +30%",     emoji: "flip" },
-      { v: "visa", title: "Golden Visa",      sub: "ВНЖ для семьи на 10 лет",     emoji: "visa" },
-    ],
-  },
-  {
-    id: "budget",
-    label: "Бюджет",
-    sub: "В долларах США (USD)",
-    type: "slider",
-    min: 150_000,
-    max: 5_000_000,
-    step: 50_000,
-    default: 800_000,
-  },
-  {
-    id: "type",
-    label: "Тип недвижимости",
-    sub: "Можно выбрать несколько",
-    type: "chips-multi",
-    options: ["Апартаменты", "Виллы", "Пентхаусы", "Таунхаусы", "Студии"],
-  },
-  {
-    id: "horizon",
-    label: "Горизонт инвестиции",
-    sub: "Как долго планируете держать актив?",
-    type: "cards",
-    options: [
-      { v: "1-2",  title: "1–2 года",  sub: "Перепродажа off-plan", emoji: "flash" },
-      { v: "3-5",  title: "3–5 лет",   sub: "Рост капитала",         emoji: "grow" },
-      { v: "5-10", title: "5–10 лет",  sub: "Кэш-флоу + рост",       emoji: "calendar" },
-      { v: "10+",  title: "10+ лет",   sub: "Семейный актив",        emoji: "anchor" },
-    ],
-  },
-  {
-    id: "country",
-    label: "Гражданство",
-    sub: "Поможем учесть налоговые соглашения",
-    type: "chips-single",
-    options: ["Россия", "Казахстан", "Беларусь", "Узбекистан", "Украина", "ОАЭ", "Другое"],
-  },
-  {
-    id: "contact",
-    label: "Куда отправить подборку?",
-    sub: "Только email и телефон. Никакого спама.",
-    type: "contact",
-  },
+// Скелет шагов: id, тип и иконки/настройки. Лейблы и опции
+// (заголовки, подзаголовки, варианты ответов) подгружаем через t() в рантайме.
+const IM_STEP_KEYS = ["goal", "budget", "type", "horizon", "country", "contact"];
+const IM_STEP_TYPE = {
+  goal: "cards",
+  budget: "slider",
+  type: "chips-multi",
+  horizon: "cards",
+  country: "chips-single",
+  contact: "contact",
+};
+const IM_GOAL_OPTIONS = [
+  { v: "live", emoji: "home" },
+  { v: "rent", emoji: "key" },
+  { v: "flip", emoji: "flip" },
+  { v: "visa", emoji: "visa" },
 ];
+const IM_HORIZON_OPTIONS = [
+  { v: "1-2", emoji: "flash" },
+  { v: "3-5", emoji: "grow" },
+  { v: "5-10", emoji: "calendar" },
+  { v: "10+", emoji: "anchor" },
+];
+const IM_BUDGET_CONFIG = {
+  min: 150_000,
+  max: 5_000_000,
+  step: 50_000,
+  default: 800_000,
+};
+
+function buildSteps(t) {
+  return IM_STEP_KEYS.map((id) => {
+    const type = IM_STEP_TYPE[id];
+    const base = {
+      id,
+      type,
+      label: t(`steps.${id}.label`),
+      sub: t(`steps.${id}.sub`),
+    };
+    if (type === "cards") {
+      const list = id === "goal" ? IM_GOAL_OPTIONS : IM_HORIZON_OPTIONS;
+      return {
+        ...base,
+        options: list.map((o) => ({
+          v: o.v,
+          emoji: o.emoji,
+          title: t(`steps.${id}.options.${o.v}.title`),
+          sub: t(`steps.${id}.options.${o.v}.sub`),
+        })),
+      };
+    }
+    if (type === "chips-multi" || type === "chips-single") {
+      return { ...base, options: t.raw(`steps.${id}.options`) };
+    }
+    if (type === "slider") {
+      return { ...base, ...IM_BUDGET_CONFIG };
+    }
+    return base;
+  });
+}
 
 function fmtUsd(n) {
   return "$" + n.toLocaleString("ru-RU").replace(/,/g, " ");
@@ -215,13 +220,15 @@ function CardOptions({ options, value, onChange, isMobile }) {
 }
 
 function BudgetSlider({ min, max, step, value, onChange }) {
+  const t = useTranslations("HomePage.investorMatch.steps.budget");
+  const labels = t.raw("ranges");
   const pct = ((value - min) / (max - min)) * 100;
 
   const ranges = [
-    { from: 150_000, to: 500_000,    l: "Студии · 1BR JVC, Dubailand" },
-    { from: 500_000, to: 1_500_000,  l: "1–2BR Marina, Creek Harbour" },
-    { from: 1_500_000, to: 3_000_000, l: "3BR · виллы Tilal, Oasis" },
-    { from: 3_000_000, to: 5_000_000, l: "Пентхаусы · Palm, Downtown" },
+    { from: 150_000, to: 500_000,    l: labels[0] },
+    { from: 500_000, to: 1_500_000,  l: labels[1] },
+    { from: 1_500_000, to: 3_000_000, l: labels[2] },
+    { from: 3_000_000, to: 5_000_000, l: labels[3] },
   ];
   const matched = ranges.find((r) => value >= r.from && value <= r.to) || ranges[0];
 
@@ -365,7 +372,7 @@ function BudgetSlider({ min, max, step, value, onChange }) {
               textTransform: "uppercase",
             }}
           >
-            В этом диапазоне
+            {t("inThisRange")}
           </div>
           <div style={{ fontSize: 13, color: "var(--ink)", fontWeight: 500, marginTop: 2 }}>
             {matched.l}
@@ -499,10 +506,11 @@ function IMField({ label, icon, ...rest }) {
 }
 
 function ContactStep({ email, phone, onChange }) {
+  const t = useTranslations("HomePage.investorMatch.steps.contact");
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       <IMField
-        label="Email"
+        label={t("emailLabel")}
         type="email"
         placeholder="ivan@gmail.com"
         value={email}
@@ -515,9 +523,9 @@ function ContactStep({ email, phone, onChange }) {
         }
       />
       <IMField
-        label="Телефон / WhatsApp"
+        label={t("phoneLabel")}
         type="tel"
-        placeholder="+7 999 123-45-67"
+        placeholder={t("phonePlaceholder")}
         value={phone}
         onChange={(e) => onChange("phone", e.target.value)}
         icon={
@@ -534,7 +542,7 @@ function ContactStep({ email, phone, onChange }) {
           lineHeight: 1.5,
         }}
       >
-        Нажимая «Получить подборку», вы&nbsp;соглашаетесь с&nbsp;политикой конфиденциальности. Мы&nbsp;не&nbsp;передаём данные третьим лицам и&nbsp;не&nbsp;шлём спам.
+        {t("policy")}
       </div>
     </div>
   );
@@ -565,6 +573,7 @@ const SUCCESS_MATCHES = [
 ];
 
 function SuccessScreen({ answers, onReset, isMobile }) {
+  const t = useTranslations("HomePage.investorMatch.success");
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20 }}>
       <div
@@ -604,11 +613,11 @@ function SuccessScreen({ answers, onReset, isMobile }) {
               lineHeight: 1.1,
             }}
           >
-            Подборка готова!
+            {t("title")}
           </div>
           <div style={{ fontSize: 13.5, color: "var(--muted)", marginTop: 4 }}>
-            Отправили на{" "}
-            <strong style={{ color: "var(--ink-2)" }}>{answers.email}</strong> · старший консультант свяжется в&nbsp;ближайшие 15&nbsp;мин
+            {t("sentTo")}{" "}
+            <strong style={{ color: "var(--ink-2)" }}>{answers.email}</strong> · {t("consultantNote")}
           </div>
         </div>
       </div>
@@ -624,7 +633,7 @@ function SuccessScreen({ answers, onReset, isMobile }) {
             marginBottom: 10,
           }}
         >
-          Топ-3 объекта под ваш профиль
+          {t("topMatches")}
         </div>
         <div
           style={{
@@ -716,7 +725,7 @@ function SuccessScreen({ answers, onReset, isMobile }) {
           trailingArrow
           style={{ flex: 1, justifyContent: "center" }}
         >
-          Открыть полную подборку
+          {t("openFull")}
         </PrimaryButton>
         <button
           onClick={onReset}
@@ -732,7 +741,7 @@ function SuccessScreen({ answers, onReset, isMobile }) {
             border: "1px solid var(--line)",
           }}
         >
-          Пройти заново
+          {t("restart")}
         </button>
       </div>
     </div>
@@ -740,6 +749,9 @@ function SuccessScreen({ answers, onReset, isMobile }) {
 }
 
 function InvestorMatchInner({ isMobile }) {
+  const t = useTranslations("HomePage.investorMatch");
+  const TRUST = t.raw("trust");
+  const IM_STEPS = buildSteps(t);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -809,7 +821,7 @@ function InvestorMatchInner({ isMobile }) {
           }}
         >
           <span aria-hidden style={{ display: "inline-block", width: 32, height: 1, background: "var(--sand-deep)", opacity: 0.55 }} />
-          Investor Match · 60 секунд
+          {t("kicker")}
           <span aria-hidden style={{ display: "inline-block", width: 32, height: 1, background: "var(--sand-deep)", opacity: 0.55 }} />
         </div>
         <h2
@@ -826,9 +838,9 @@ function InvestorMatchInner({ isMobile }) {
             textWrap: "balance",
           }}
         >
-          Найдём идеальный объект{" "}
+          {t("titleA")}{" "}
           <span style={{ fontStyle: "italic", color: "var(--sand-deep)", fontWeight: 400 }}>
-            под ваши цели
+            {t("titleB")}
           </span>
         </h2>
         <p
@@ -840,7 +852,7 @@ function InvestorMatchInner({ isMobile }) {
             color: "var(--muted)",
           }}
         >
-          6 быстрых вопросов — и&nbsp;вы&nbsp;получите 3 персональные подборки от&nbsp;старшего консультанта с&nbsp;расчётом ROI, налогов и&nbsp;Golden&nbsp;Visa.
+          {t("subtitle")}
         </p>
       </div>
 
@@ -877,7 +889,7 @@ function InvestorMatchInner({ isMobile }) {
                   whiteSpace: "nowrap",
                 }}
               >
-                {String(step + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                {t("stepCounter", { cur: String(step + 1).padStart(2, "0"), total: String(total).padStart(2, "0") })}
               </div>
               <div
                 style={{
@@ -912,7 +924,7 @@ function InvestorMatchInner({ isMobile }) {
                   whiteSpace: "nowrap",
                 }}
               >
-                ~{Math.max(10, 60 - step * 10)} сек
+                {t("secondsLeft", { n: Math.max(10, 60 - step * 10) })}
               </div>
             </div>
 
@@ -1006,7 +1018,7 @@ function InvestorMatchInner({ isMobile }) {
                 <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M11 7 H3 M7 3 L3 7 L7 11" />
                 </svg>
-                Назад
+                {t("back")}
               </button>
 
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -1019,7 +1031,7 @@ function InvestorMatchInner({ isMobile }) {
                     display: isMobile ? "none" : "inline",
                   }}
                 >
-                  Enter ↵ для продолжения
+                  {t("enterHint")}
                 </span>
                 <PrimaryButton
                   size="md"
@@ -1030,7 +1042,7 @@ function InvestorMatchInner({ isMobile }) {
                     pointerEvents: canNext() ? "auto" : "none",
                   }}
                 >
-                  {isLast ? "Получить подборку" : "Далее"}
+                  {isLast ? t("submit") : t("next")}
                 </PrimaryButton>
               </div>
             </div>
@@ -1049,12 +1061,7 @@ function InvestorMatchInner({ isMobile }) {
           gap: isMobile ? 8 : 12,
         }}
       >
-        {[
-          { v: "2,140+", l: "клиентов" },
-          { v: "$2.4B", l: "сделок" },
-          { v: "RERA #2087", l: "лицензия" },
-          { v: "60 сек", l: "среднее время" },
-        ].map((s) => (
+        {TRUST.map((s) => (
           <div
             key={s.l}
             style={{

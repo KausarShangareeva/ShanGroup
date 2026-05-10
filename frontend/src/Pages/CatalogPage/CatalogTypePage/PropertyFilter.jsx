@@ -1,22 +1,6 @@
 "use client";
 
 import { useState, useMemo, useRef, useEffect, Fragment } from "react";
-import {
-  MapPin,
-  Building2,
-  CircleDollarSign,
-  BedDouble,
-  Home,
-  Layers,
-  Eye,
-  Paintbrush,
-  SlidersHorizontal,
-  Search,
-  CheckCircle2,
-  HardHat,
-  CreditCard,
-  TrendingUp,
-} from "lucide-react";
 import Flag from "react-world-flags";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
 import MultiSelect from "./MultiSelect";
@@ -25,6 +9,8 @@ import { EMIRATES } from "@/utils/properties";
 import { useLikes } from "@/components/LikeButton/useLikes";
 import styles from "./PropertyFilter.module.css";
 import pillStyles from "./Pill.module.css";
+
+import Icon, { getIconComponent } from "@/components/Icon/Icon";
 
 const PAGE_SIZE = 9;
 
@@ -136,10 +122,10 @@ const PRICE_RANGES = [
 ];
 
 const STATUS_OPTIONS = [
-  { key: "ready", label: "Готово к заселению", Icon: CheckCircle2 },
-  { key: "offPlan", label: "Строящаяся", Icon: HardHat },
-  { key: "installment", label: "Рассрочка", Icon: CreditCard },
-  { key: "investment", label: "Для инвестиций", Icon: TrendingUp },
+  { key: "ready", label: "Готово к заселению", Icon: getIconComponent("check-circle") },
+  { key: "offPlan", label: "Строящаяся", Icon: getIconComponent("hard-hat") },
+  { key: "installment", label: "Рассрочка", Icon: getIconComponent("credit-card") },
+  { key: "investment", label: "Для инвестиций", Icon: getIconComponent("trending-up") },
 ];
 
 // Per-type extra dropdown configs
@@ -230,13 +216,13 @@ const TYPE_EXTRA_FIELDS = {
 };
 
 const EXTRA_ICONS = {
-  type: Home,
-  beds: BedDouble,
-  villaType: Home,
-  finishType: Paintbrush,
-  townhouseType: Home,
-  view: Eye,
-  levels: Layers,
+  type: getIconComponent("home"),
+  beds: getIconComponent("bed"),
+  villaType: getIconComponent("home"),
+  finishType: getIconComponent("paintbrush"),
+  townhouseType: getIconComponent("home"),
+  view: getIconComponent("eye"),
+  levels: getIconComponent("layers"),
 };
 
 function uniq(items, key) {
@@ -494,7 +480,7 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
         <div className={styles.filterGrid}>
           <div className={styles.filterField}>
             <div className={styles.filterIconBadge}>
-              <MapPin size={18} />
+              <Icon name="map-pin" size={18}  />
             </div>
             <div className={styles.filterFieldInner}>
               <span className={styles.filterFieldLabel}>Район</span>
@@ -510,7 +496,7 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
 
           <div className={styles.filterField}>
             <div className={styles.filterIconBadge}>
-              <Building2 size={18} />
+              <Icon name="building-2" size={18}  />
             </div>
             <div className={styles.filterFieldInner}>
               <span className={styles.filterFieldLabel}>Застройщик</span>
@@ -564,18 +550,18 @@ export default function PropertyFilter({ items, typeSlug = "villas" }) {
             className={`${styles.filterSearchBtn} ${isDirty ? styles.filterSearchBtnDirty : ""}`}
             onClick={applyFilters}
           >
-            <Search size={18} />
+            <Icon name="search" size={18}  />
             Найти
           </button>
 
           {/* Extra fields — automatically flow to row 2 in same grid */}
           {showExtra &&
             extraFields.map((field) => {
-              const Icon = EXTRA_ICONS[field.key] ?? SlidersHorizontal;
+              const FieldIcon = EXTRA_ICONS[field.key] ?? getIconComponent("sliders");
               return (
                 <div key={field.key} className={styles.filterField}>
                   <div className={styles.filterIconBadge}>
-                    <Icon size={18} />
+                    <FieldIcon size={18} strokeWidth={1.6} />
                   </div>
                   <div className={styles.filterFieldInner}>
                     <span className={styles.filterFieldLabel}>

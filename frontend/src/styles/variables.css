@@ -28,6 +28,10 @@
   --grain-1: oklch(0.92 0.02 60 / 0.5);
   --grain-2: oklch(0.93 0.015 80 / 0.4);
 
+  /* "Warm tinted highlight surface" — для крупных CTA-карточек (LeadForm, Footer).
+     В тёмной теме переключается на тёмный тёплый аналог. */
+  --surface-warm: linear-gradient(135deg, oklch(0.96 0.018 80) 0%, oklch(0.92 0.025 78) 100%);
+
   /* PrimaryButton tokens — light theme defaults (inverted in dark theme below) */
   --btn-dark-bg: #0a0a0b;
   --btn-dark-fg: #ffffff;
@@ -138,6 +142,8 @@
   --hover-bg-soft: rgba(255, 255, 255, 0.04);
   --grain-1: oklch(0.3 0.04 60 / 0.35);
   --grain-2: oklch(0.28 0.03 80 / 0.3);
+
+  --surface-warm: linear-gradient(135deg, oklch(0.24 0.014 75) 0%, oklch(0.20 0.010 75) 100%);
 
   /* PrimaryButton tokens — inverted for dark theme so contrast stays high */
   --btn-dark-bg: #fafaf7;

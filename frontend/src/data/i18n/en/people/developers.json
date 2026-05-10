@@ -1,0 +1,293 @@
+{
+  "Emaar": {
+    "logo": "/developer_logo/emaar.png",
+    "top": true,
+    "category": "giant",
+    "info": "Creator of Burj Khalifa and Downtown Dubai. The largest state-backed developer in the UAE with high liquidity.",
+    "communities": [
+      { "label": "Emaar South", "href": "/communities/emaar-south", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553608/Emaar_South_g0wrwv.png", "desc": "A modern community next to Expo City with affordable villas and apartments. Ideal for families and investors." },
+      { "label": "The Oasis", "href": "/communities/the-oasis", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/The_Oasis_ajzkkq.png", "desc": "Gated villas surrounded by manmade lagoons. An exclusive residential island with direct water access." },
+      { "label": "The Valley", "href": "/communities/the-valley", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553616/The_VALLEY_deiivy.png", "desc": "A family community by Dubai–Al Ain Road. Villas with gardens and a nature-led theme away from the city noise." },
+      { "label": "Dubai Hills Estate", "href": "/communities/dubai-hills", "desc": "An oasis of calm: a vast park, golf course and elite schools. The best community for family living." },
+      { "label": "Rashid Yachts & Marina", "href": "/communities/rashid-yachts", "desc": "Yacht-club residences by the Dubai Canal. Apartments overlooking the marina with premium amenities." },
+      { "label": "Emaar Beachfront", "href": "/communities/emaar-beachfront", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/Emaar_Beachfront_rh2hlz.png", "desc": "A gated beachfront island between Palm and JBR. Elite apartments with private sea access." },
+      { "label": "Dubai Creek Harbour", "href": "/communities/creek-harbour", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553613/Dubai_Creek_Harbour_qi1iqb.png", "desc": "The future business hub by Old Dubai. Iconic Creek Tower and waterfront residences." },
+      { "label": "Arabian Ranches III", "href": "/communities/arabian-ranches-3", "desc": "A family community with villas and lagoons in Dubailand. A gated development with club-style service." },
+      { "label": "Downtown Dubai", "href": "/communities/downtown", "desc": "The iconic centre: Burj Khalifa, Dubai Mall, fountains. Premium status, business activity and the city's best restaurants." },
+      { "label": "The Heights", "href": "/communities/the-heights", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553615/The_Heights_fese1x.png", "desc": "A next-generation master plan by Dubai–Al Ain Road. A green community with villas and townhouses." },
+      { "label": "Grand Polo Club & Resort", "href": "/communities/grand-polo-club", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553612/Grand_Polo_Club_Resort_yu0wnw.png", "desc": "A unique project with polo fields. Elite villas surrounded by nature and a club lifestyle." }
+    ]
+  },
+  "Meraas": {
+    "logo": "/developer_logo/Meraas.jpeg",
+    "top": true,
+    "category": "giant",
+    "info": "Creator of Bluewaters, City Walk and Port de La Mer. The leader in premium waterfront development.",
+    "communities": [
+      { "label": "The Acres", "href": "/communities/the-acres", "desc": "An eco-friendly villa community with forest trails and lagoons in Dubailand by Meraas." },
+      { "label": "Bluewaters Island", "href": "/communities/bluewaters", "desc": "An island opposite JBR with Ain Dubai and branded residences. A waterfront lifestyle." },
+      { "label": "Port de la Mer", "href": "/communities/port-de-la-mer", "desc": "Mediterranean style in the heart of Jumeirah. Marina, yachts and seafront villas by Meraas." },
+      { "label": "City Walk", "href": "/communities/city-walk", "desc": "A New York–style urban district with boutiques, restaurants and art spaces." },
+      { "label": "Cherrywoods", "href": "/communities/cherrywoods", "desc": "A green gated community with townhouses near Dubailand. Family vibe and nature trails." }
+    ]
+  },
+  "DAMAC": {
+    "logo": "/developer_logo/damac.jpeg",
+    "top": true,
+    "category": "premium",
+    "info": "Branded luxury: collaborations with Cavalli and de GRISOGONO. Resort-style communities with flexible payment plans.",
+    "communities": [
+      { "label": "DAMAC Islands 2", "href": "/communities/damac-islands-2", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553615/Damac_Islands_2_xovwrc.png", "desc": "Island villas with a tropical lifestyle. A Polynesian concept by DAMAC in Dubai." },
+      { "label": "DAMAC Riverside", "href": "/communities/damac-riverside", "desc": "Canal-side residences with water activities and a tropical concept by DAMAC." },
+      { "label": "DAMAC Hills 2", "href": "/communities/damac-hills-2", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553616/Damac_Hills_2_ainaac.png", "desc": "An affordable community with lagoons and a water park. Active leisure for the whole family in Dubailand." },
+      { "label": "DAMAC Lagoons", "href": "/communities/damac-lagoons", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/Damac_Lagoons_jegefn.png", "desc": "Mediterranean villas around manmade lagoons. Inspired by Europe's finest resorts." },
+      { "label": "DAMAC Hills", "href": "/communities/damac-hills", "desc": "DAMAC's first golf club. Villas and apartments overlooking Trump Golf Course." },
+      { "label": "Sun City", "href": "/communities/sun-city", "desc": "A gated community in the Iberian style with architecture inspired by Spanish cities by DAMAC." }
+    ]
+  },
+  "Aldar": {
+    "logo": "/developer_logo/Aldar.jpeg",
+    "top": true,
+    "category": "giant",
+    "info": "The leading Abu Dhabi developer. Projects on Yas and Saadiyat islands backed by state reliability."
+  },
+  "Arada": {
+    "logo": "/developer_logo/Arada.jpeg",
+    "top": true,
+    "category": "boutique",
+    "info": "A fast-growing Sharjah developer. Eco-friendly smart cities for family living.",
+    "communities": [
+      { "label": "Masaar", "href": "/communities/masaar", "desc": "Sharjah's forest community with 50,000 trees. Townhouses and villas in an eco-friendly gated district." },
+      { "label": "Aljada", "href": "/communities/aljada", "desc": "A new master plan in Sharjah: housing, retail, education and leisure in one space." },
+      { "label": "Jouri Hills", "href": "/communities/jouri-hills", "desc": "Elite villas in Jumeirah Golf Estates with golf courses and scenic natural views." }
+    ]
+  },
+  "Ellington": {
+    "logo": "/developer_logo/Ellington.jpeg",
+    "top": true,
+    "category": "premium",
+    "info": "A boutique developer with signature design. A benchmark for finishing quality, ROI up to 9% per year."
+  },
+  "Eagle Hills": {
+    "logo": "/developer_logo/Eagle_Hills.jpeg",
+    "info": "An international developer with projects across the Middle East."
+  },
+  "Nakheel": {
+    "logo": "/developer_logo/Nakheel.jpeg",
+    "top": true,
+    "category": "giant",
+    "info": "Creator of Palm Jumeirah. State-scale projects and exclusivity of waterfront locations.",
+    "communities": [
+      { "label": "Dubai Islands", "href": "/communities/dubai-islands", "desc": "Five themed islands off the coast. A new resort master plan with hotels and waterfront villas." },
+      { "label": "Palm Jebel Ali", "href": "/communities/palm-jebel-ali", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553614/Palm_Jebel_Ali_et0om8.png", "desc": "The world's largest manmade island. Ultra-premium villas and exclusive beaches by Nakheel." },
+      { "label": "Deira Islands", "href": "/communities/deira-islands", "desc": "Renovation of Dubai's historic district. Shopping streets, beaches and waterfront homes in the old city." },
+      { "label": "Palm Jumeirah", "href": "/communities/palm-jumeirah", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553608/Palm_Jumeirah_ftxtay.png", "desc": "Private beaches, gated villas and luxury hotels. A guarantee of absolute privacy and top-tier status." },
+      { "label": "Jumeirah Village Circle", "href": "/communities/jumeirah-village-circle", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553608/Jumeirah_Village_Circle_kip8nj.png", "desc": "A green family district with parks and schools. Dubai's leader for ROI and housing affordability." }
+    ]
+  },
+  "Nshama": {
+    "logo": "/developer_logo/NSHAMA.jpeg",
+    "info": "An affordable-housing developer, creator of the Town Square Dubai community."
+  },
+  "Sobha": {
+    "logo": "/developer_logo/sobha.jpeg",
+    "top": true,
+    "category": "premium",
+    "info": "Full quality control across every stage. The leader in materials and finishing in Dubai.",
+    "communities": [
+      { "label": "Sobha Siniya Island", "href": "/communities/sobha-siniya", "desc": "A secluded island in Umm Al Quwain. Beachfront villas, mangrove forests and yachting away from the city." },
+      { "label": "Sobha Elwood", "href": "/communities/sobha-elwood", "desc": "A forest villa community with 10,000 trees. An eco-friendly living concept by Sobha Realty." },
+      { "label": "Sobha Reserve", "href": "/communities/sobha-reserve", "desc": "Villas in Dubailand with international golf courses and first-class finishing by Sobha." },
+      { "label": "Sobha Hartland II", "href": "/communities/sobha-hartland-2", "desc": "The continuation of Sobha Hartland by Dubai Canal. Apartments and villas with direct waterfront access." },
+      { "label": "Sobha Hartland", "href": "/communities/sobha-hartland", "desc": "A green community in MBR City by the Canal. Schools, parks and the highest quality from Sobha." }
+    ]
+  },
+  "Samana": {
+    "logo": "/developer_logo/Samana.jpeg",
+    "category": "growth",
+    "info": "Affordable luxury with private pools on balconies. High rental yields."
+  },
+  "Binghatti": {
+    "logo": "/developer_logo/Binghatti.png",
+    "category": "growth",
+    "info": "Architectural avant-garde. Collaborations with Mercedes-Benz and Jacob & Co, fast project delivery."
+  },
+  "Danube": {
+    "logo": "/developer_logo/Danube.jpeg",
+    "category": "growth",
+    "info": "1% per month payment plan. Ideal for a Buy-to-Let strategy with a low entry point."
+  },
+  "Deyaar": {
+    "logo": "/developer_logo/Deyaar.png",
+    "info": "A developer with more than 30 completed projects in Dubai."
+  },
+  "Omniyat": {
+    "logo": "/developer_logo/Omniyat.png",
+    "top": true,
+    "category": "premium",
+    "info": "Ultra-luxury developer. Collaborations with Zaha Hadid. The choice of property collectors."
+  },
+  "Object 1": {
+    "logo": "/developer_logo/Object 1.jpeg",
+    "category": "boutique",
+    "info": "A European approach to construction in Dubai. Smart-home tech and stylish architecture in JVC."
+  },
+  "Ohana": {
+    "logo": "/developer_logo/ohana.png",
+    "info": "A boutique developer of villas and townhouses in Dubai's premium districts."
+  },
+  "Iman Developers": {
+    "logo": "/developer_logo/Iman_Developers.jpeg",
+    "category": "boutique",
+    "info": "An impeccable reputation in JVC. Modern minimalism and high tenant occupancy."
+  },
+  "Imtiaz": {
+    "logo": "/developer_logo/imtiaz.png",
+    "category": "growth",
+    "info": "Projects with maximum ROI and turnkey readiness for premium tenants."
+  },
+  "IMKAN": {
+    "logo": "/developer_logo/IMKAN.jpeg",
+    "info": "An Abu Dhabi developer with projects on Saadiyat Island and waterfront locations."
+  },
+  "BEYOND": {
+    "logo": "/developer_logo/BEYOND.jpeg",
+    "category": "boutique",
+    "info": "An innovative developer with smart-home technology in every project."
+  },
+  "Reportage Properties": {
+    "logo": "/developer_logo/Reportage_Properties.jpeg",
+    "category": "growth",
+    "info": "An active UAE developer with affordable payment plans and a broad project portfolio."
+  },
+  "H&H Development": {
+    "logo": "/developer_logo/H&H.png",
+    "info": "A boutique developer of exclusive residences in Dubai's central districts."
+  },
+  "RAK Properties": {
+    "logo": "/developer_logo/RAK_Properties.jpeg",
+    "category": "boutique",
+    "info": "The largest developer in Ras Al Khaimah. Waterfront development on Al Marjan Island."
+  },
+  "Wasl": {
+    "logo": "/developer_logo/wasl.png",
+    "category": "giant",
+    "info": "A state-backed Dubai developer with a diversified property portfolio."
+  },
+  "Majid Al Futtaim": {
+    "logo": "/developer_logo/Majid_Al_Futtaim.jpg",
+    "top": true,
+    "category": "giant",
+    "info": "Creator of Mall of the Emirates and the premium community Tilal Al Ghaf.",
+    "communities": [
+      { "label": "Tilal Al Ghaf", "href": "/communities/tilal-al-ghaf", "desc": "A lagoon master plan by MAF. Villas, townhouses and apartments by the beach — a leader among family communities." },
+      { "label": "Ghaf Woods", "href": "/communities/ghaf-woods", "desc": "Dubai's first forest district with 10,000 ghaf trees. Villas and apartments with an eco theme." },
+      { "label": "Al Zahia", "href": "/communities/al-zahia", "desc": "Sharjah's first gentrified gated community by MAF. Family-oriented architecture and lagoons." }
+    ]
+  },
+  "Tarrad": {
+    "logo": "/developer_logo/Tarrad.jpeg",
+    "info": "A developer with projects in Dubailand, focused on affordable, quality housing."
+  },
+  "Select Group": {
+    "logo": "/developer_logo/SELECT_GROUP.png",
+    "top": true,
+    "category": "premium",
+    "info": "A premium real estate expert in Dubai Marina. A partnership with the Six Senses brand."
+  },
+  "Azizi Developments": {
+    "logo": "/developer_logo/AZIZI_DEVELOPMENTS.webp",
+    "top": true,
+    "category": "growth",
+    "info": "The largest private developer in the UAE. From studios to skyscrapers, with the broadest location coverage."
+  },
+  "Dubai Properties": {
+    "logo": "/developer_logo/DUBAI_HOLDING.png",
+    "top": true,
+    "category": "giant",
+    "info": "A state giant that built JBR and Business Bay. Large-scale family communities.",
+    "communities": [
+      { "label": "Maritime City", "href": "/communities/maritime-city", "image": "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775553611/Maritime_city_pr2aqc.png", "desc": "A port-side business district by Dubai Creek. Apartments, hotels and commercial space on the water." }
+    ]
+  },
+  "Tiger Properties": {
+    "logo": "/developer_logo/TIGER_PROPERTIES.png",
+    "category": "growth",
+    "info": "An experienced developer of residential and commercial high-rises across the UAE."
+  },
+  "London Gate": {
+    "logo": "/developer_logo/LONDON_GATE.jpeg",
+    "category": "premium",
+    "info": "A collaboration with Franck Muller. English quality standards at Dubai scale."
+  },
+  "MAG Property": {
+    "logo": "/developer_logo/MAG_PROPERTY.jpeg",
+    "category": "growth",
+    "info": "A developer focused on innovation and quality housing in key Dubai districts."
+  },
+  "Taraf": {
+    "logo": "/developer_logo/taraf.png",
+    "category": "premium",
+    "info": "The luxury arm of Yas Holding. Branded Karl Lagerfeld residences."
+  },
+  "LIV Developers": {
+    "logo": "/developer_logo/LIV_DEVELOPERS.png",
+    "category": "premium",
+    "info": "A boutique developer of luxury apartments in Dubai Marina."
+  },
+  "Prestige One": {
+    "logo": "/developer_logo/PRESTIGE_ONE.png",
+    "category": "boutique",
+    "info": "Designer solutions and premium service in every project."
+  },
+  "DEVMARK GROUP": {
+    "logo": "/developer_logo/DEVMARK_GROUP.jpeg",
+    "info": "A consultancy and development company with exclusive UAE projects."
+  },
+  "SAAS Properties": {
+    "logo": "/developer_logo/SAAS_PROPERTIES.jpeg",
+    "info": "A family Abu Dhabi developer creating quality residential spaces."
+  },
+  "TownX Development": {
+    "logo": "/developer_logo/TOWNX_DEVELOPMENT.jpg",
+    "category": "boutique",
+    "info": "Modern, functional residential complexes in sought-after districts."
+  },
+  "SRG Properties": {
+    "logo": "/developer_logo/SRG_PROPERTIES.jpg",
+    "info": "A family developer with a long history and quality management."
+  },
+  "Alef Group": {
+    "logo": "/developer_logo/ALEF_GROUP.jpeg",
+    "category": "boutique",
+    "info": "A leading Sharjah developer. Creator of premium spaces, including Al Mamsha."
+  },
+  "B.N.H Developers": {
+    "logo": "/developer_logo/B.N.H_DEVELOPERS.png",
+    "info": "A boutique developer of modern residential projects with attention to detail."
+  },
+  "Gulf Land Developer": {
+    "logo": "/developer_logo/GULF_LAND_DEVELOPER.jpeg",
+    "info": "Quality residential communities in Dubai's emerging districts."
+  },
+  "Hijazi Real Estate": {
+    "logo": "/developer_logo/HIJAZI_REAL_ESTATE.webp",
+    "info": "An investment and construction company with a portfolio in growth districts."
+  },
+  "Orra Development": {
+    "logo": "/developer_logo/ORRA_DEVELOPMENT.png",
+    "info": "Premium housing in Jumeirah Lakes Towers and central districts."
+  },
+  "Condor Developers": {
+    "logo": "/developer_logo/CONDOR_DEVELOPERS.jpeg",
+    "info": "An international group building residential complexes with high finishing quality."
+  },
+  "Deca Properties": {
+    "logo": "/developer_logo/DECA_PROPERTIES.png",
+    "info": "A progressive developer with innovative solutions in the UAE market."
+  },
+  "Expo Dubai Group": {
+    "logo": "/developer_logo/expo_dubai_group.png",
+    "info": "The official developer of the Expo 2020 territory, managing Expo City Dubai."
+  }
+}

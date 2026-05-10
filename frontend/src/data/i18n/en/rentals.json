@@ -1,0 +1,235 @@
+{
+  "hero": {
+    "badge": "Cashflow from month one",
+    "titleA": "Buy now.",
+    "titleB": "Collect 6–9% annual yield",
+    "titleC": "every month.",
+    "subtitle": "Ready property in Dubai means passive income that starts within 14 days after the deal. The property manager handles tenants, repairs and taxes. You receive clean cashflow in dollars.",
+    "ctaPrimary": "Find a property",
+    "ctaSecondary": "Calculate income",
+    "trust": [
+      { "v": "14 d", "l": "to first payout" },
+      { "v": "92%", "l": "short-term occupancy" },
+      { "v": "0%", "l": "income tax" }
+    ],
+    "chart": {
+      "kicker": "Example annual cashflow",
+      "subject": "1BR · JVC · $260K",
+      "badge": "8.2% NET",
+      "monthsAbbr": ["J","F","M","A","M","J","J","A","S","O","N","D"],
+      "labels": {
+        "avgMonth": "Avg month",
+        "yearNet": "Year net",
+        "payback": "Payback"
+      },
+      "values": {
+        "avgMonth": "$1,780",
+        "yearNet": "$21,320",
+        "payback": "12.2 yr"
+      }
+    }
+  },
+  "stats": {
+    "items": [
+      { "v": "8.4%", "l": "average gross yield in Dubai 2025", "source": "Property Monitor" },
+      { "v": "92%", "l": "short-term occupancy Marina/Downtown", "source": "AirDNA" },
+      { "v": "+11%", "l": "rental rate growth YoY", "source": "DLD Rental Index" },
+      { "v": "$1.8K", "l": "median rent 1BR / month", "source": "Bayut" }
+    ],
+    "sourceLabel": "source"
+  },
+  "why": {
+    "kicker": "Why ready",
+    "titleA": "Four reasons",
+    "titleB": "why",
+    "titleC": "investors choose ready rentals",
+    "items": [
+      { "n": "01", "icon": "clock",        "t": "Income from month one",       "d": "The property is built and often already tenanted. After closing, the property manager signs a contract within 7–14 days. Cashflow begins before month-end." },
+      { "n": "02", "icon": "briefcase",    "t": "Full property management",     "d": "We handle tenant search, vetting, contracts, DEWA bills, cleaning and minor repairs. You receive a clean transfer once a month. Fee 8–12%." },
+      { "n": "03", "icon": "building",     "t": "Zero construction risk",       "d": "The property exists. You can visit it, walk through, inspect the finish. No delays, no force majeure. Utilities, lifts, infrastructure — all working." },
+      { "n": "04", "icon": "trending-up",  "t": "Capital growth + cashflow",    "d": "Dubai prices rise 7–11% a year. You get both rental yield 6–9% and capital appreciation. Total return 14–20% per year in dollars." }
+    ]
+  },
+  "how": {
+    "kicker": "Process",
+    "titleA": "5 steps",
+    "titleB": "from enquiry",
+    "titleC": "to first cashflow",
+    "steps": [
+      { "n": 1, "t": "Strategy choice",    "d": "Long-term or short-term. We model it against your budget and horizon.", "k": "1 hour" },
+      { "n": 2, "t": "Shortlist and tour", "d": "3–5 properties matched to your goal. Online tour or on-site visit.",   "k": "3–7 days" },
+      { "n": 3, "t": "SPA + Transfer",     "d": "Contract, legal review, registration at the DLD.",                      "k": "10–14 days" },
+      { "n": 4, "t": "PM agreement",       "d": "We hand the unit over to the property manager. DEWA, internet, insurance connected.", "k": "5–7 days" },
+      { "n": 5, "t": "Cashflow",           "d": "First monthly transfer (net of fees) lands in your account.",            "k": "Live" }
+    ]
+  },
+  "calc": {
+    "kicker": "Calculator",
+    "titleA": "Forecast your",
+    "titleB": "passive income",
+    "controls": {
+      "price": "Property price",
+      "strategy": "Rental strategy",
+      "occupancy": "Average annual occupancy"
+    },
+    "strategies": [
+      { "id": "short", "l": "Short-term (Airbnb)", "d": "Higher income, higher costs" },
+      { "id": "long",  "l": "Long-term (yearly)",   "d": "Stable, less effort" }
+    ],
+    "result": {
+      "monthlyLabel": "Monthly cashflow (net)",
+      "yieldLabel": "Net yield",
+      "paybackLabel": "Payback",
+      "paybackUnit": "years",
+      "yearNetLabel": "Year net",
+      "taxLabel": "Tax",
+      "cta": "Get properties at this yield"
+    }
+  },
+  "listings": {
+    "kicker": "On sale now",
+    "titleA": "Properties with",
+    "titleB": "proven cashflow",
+    "items": [
+      { "name": "Marina Vista 1BR", "area": "Dubai Marina",   "price": "$510K", "rentMonth": "$4,100", "yield": "7.8%", "strategy": "Short-term", "occ": "94%" },
+      { "name": "JVC Studio",       "area": "JVC",            "price": "$195K", "rentMonth": "$1,450", "yield": "8.4%", "strategy": "Long-term",  "occ": "100%" },
+      { "name": "Downtown 2BR",     "area": "Downtown Dubai", "price": "$880K", "rentMonth": "$6,800", "yield": "6.9%", "strategy": "Short-term", "occ": "89%" }
+    ],
+    "priceLabel": "Price",
+    "rentLabel": "Rent / mo.",
+    "occLabel": "Occupancy",
+    "availableLabel": "→ Available",
+    "netLabel": "NET"
+  },
+  "strategyCompare": {
+    "kicker": "Strategy comparison",
+    "titleA": "Short-term",
+    "titleB": "vs",
+    "titleC": "long-term rentals",
+    "headers": {
+      "param": "Parameter",
+      "short": "Short-term",
+      "shortNote": "Airbnb / Booking",
+      "long": "Long-term",
+      "longNote": "Annual contract"
+    },
+    "rows": [
+      { "l": "Gross yield",             "s": "10–14%",            "sw": true,  "lng": "6–8%",             "lw": false },
+      { "l": "Owner effort",            "s": "Minimal (PM)",       "sw": true,  "lng": "Minimal (PM)",      "lw": true },
+      { "l": "Income stability",         "s": "Seasonal peaks",     "sw": false, "lng": "Equal payments",    "lw": true },
+      { "l": "Tenant turnover",          "s": "100+ /year",         "sw": false, "lng": "1 /year",           "lw": true },
+      { "l": "Property wear",            "s": "Higher",             "sw": false, "lng": "Lower",             "lw": true },
+      { "l": "Minimum budget",           "s": "$200K",              "sw": true,  "lng": "$150K",             "lw": true },
+      { "l": "Typical property",         "s": "1BR Marina/Downtown", "sw": true,  "lng": "Studio/1BR JVC",    "lw": true },
+      { "l": "Golden Visa eligible",    "s": "Yes",                "sw": true,  "lng": "Yes",               "lw": true }
+    ]
+  },
+  "areas": {
+    "kicker": "Districts by yield",
+    "titleA": "Where the",
+    "titleB": "highest yield",
+    "titleC": "lives in Dubai",
+    "items": [
+      { "n": "JVC",            "y": 8.4, "p": "$160–280K", "t": "Best studio/1BR yields" },
+      { "n": "Dubai Marina",   "y": 7.6, "p": "$420–680K", "t": "Top short-term district" },
+      { "n": "Business Bay",   "y": 7.2, "p": "$380–620K", "t": "Tourist foot traffic" },
+      { "n": "Downtown",       "y": 6.9, "p": "$650K+",    "t": "Premium, stable" },
+      { "n": "Dubai Hills",    "y": 6.5, "p": "$540–880K", "t": "Family long-term" },
+      { "n": "Palm Jumeirah",  "y": 6.1, "p": "$1.2M+",    "t": "Premium short-term" }
+    ]
+  },
+  "risks": {
+    "kicker": "Transparent about risks",
+    "titleA": "What can",
+    "titleB": "happen",
+    "titleC": "— and how we hedge it",
+    "intro": "Rentals are a business. We talk about real risks and show the protection mechanisms we apply for every client.",
+    "items": [
+      { "r": "Property sits empty",       "m": "Our PM partner guarantees 85%+ average occupancy or refunds part of the fee." },
+      { "r": "Bad tenant / non-payment",  "m": "Legal vetting, 5–10% deposit, RERA-backed insurance." },
+      { "r": "Falling rental rates",      "m": "The DLD Rental Index is public — we track the market and switch strategy." },
+      { "r": "Wear and breakdowns",       "m": "5% reserve fund from monthly rent for repairs. Fixed-price contractor rates." }
+    ]
+  },
+  "cases": {
+    "kicker": "Client cases",
+    "titleA": "Real",
+    "titleB": "cashflow",
+    "titleC": "from investors",
+    "objectLabel": "Property",
+    "priceLabel": "Price",
+    "monthlyUnit": "/mo",
+    "items": [
+      {
+        "name": "Mikhail K.", "role": "Saint Petersburg, logistics company owner",
+        "bought": "1BR · Marina · short-term", "spend": "$520K", "monthly": "$4,180", "yield": "7.6%",
+        "quote": "Bought the apartment in March. By April I had the first $3,800. The PM runs Airbnb end-to-end. I don't even know the login."
+      },
+      {
+        "name": "Nastya P.", "role": "Moscow, marketer",
+        "bought": "Studio · JVC · long-term", "spend": "$210K", "monthly": "$1,480", "yield": "8.5%",
+        "quote": "Bought for Golden Visa. Tenant moved in for 2 years. Money lands on the 1st of every month. Best investment of my life."
+      },
+      {
+        "name": "Karim A.", "role": "Almaty, fuel-station chain owner",
+        "bought": "3 apartments · JVC + Marina", "spend": "$1.45M", "monthly": "$11,200", "yield": "7.9%",
+        "quote": "Diversified: 2 short-term for cashflow + 1 long-term for stability. ShanGroup manages all three."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Questions",
+    "titleA": "What",
+    "titleB": "investors ask",
+    "titleC": "most often",
+    "items": [
+      { "q": "How much does the property manager cost?", "a": "Long-term: 5–8% of collected rent. Short-term: 18–22% (including cleaning, linen, listings on 8+ platforms, guest communication)." },
+      { "q": "Can I buy without coming to Dubai?", "a": "Yes. A remote deal via power of attorney is handled in 7 days. Online tours, video link during the DLD transfer." },
+      { "q": "How do I receive the money — to a home bank account?", "a": "We open a UAE account for you (Emirates NBD, Mashreq) at purchase. Rent arrives in dirhams, easily converted to USD/EUR/RUB." },
+      { "q": "What if the apartment sits empty?", "a": "Our PM partner guarantees 85%+ occupancy or covers the gap from their fee. For long-term: vacant periods are covered by the current tenant's deposit." },
+      { "q": "What's the minimum entry budget?", "a": "From $150K (studio in JVC) — 8–9% yield. From $200K — 1BR Business Bay. From $500K — Marina/Downtown short-term with premium income." },
+      { "q": "Who pays taxes, insurance, service charge?", "a": "The service charge is paid by the owner (5–25 AED/sqft per year). It's already included in our yield calculations. The UAE has no income tax." }
+    ]
+  },
+  "leadForm": {
+    "badge": "30 minutes to a call",
+    "titleA": "Get 3 properties with",
+    "titleB": "proven cashflow",
+    "subtitle": "An expert will pick options matching your budget and strategy. Each comes with real rental history, yield forecast, and PM partner contacts.",
+    "perks": [
+      "3 properties with real rental history",
+      "PDF with cashflow forecast",
+      "PM partner contacts"
+    ],
+    "form": {
+      "strategyLabel": "Strategy",
+      "strategies": [
+        { "id": "short", "l": "Short-term (8–10%)" },
+        { "id": "long",  "l": "Long-term (6–8%)" },
+        { "id": "mix",   "l": "Mix / undecided" },
+        { "id": "visa",  "l": "For Golden Visa" }
+      ],
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "200",  "l": "$150–300K" },
+        { "id": "500",  "l": "$300K–700K" },
+        { "id": "1000", "l": "$700K–1.5M" },
+        { "id": "2000", "l": "$1.5M+" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only the shortlist and a call from an expert.",
+      "submit": "Get cashflow properties →"
+    },
+    "success": {
+      "title": "Thank you, {name}!",
+      "fallbackName": "investor",
+      "line1": "An expert will prepare a shortlist of 3 ready properties with real cashflow figures.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "Ready rentals in Dubai · 6–9% annual yield — ShanGroup",
+    "description": "Ready Dubai property for 6–9% passive income. A property manager handles everything. Payback in 11–14 years."
+  }
+}

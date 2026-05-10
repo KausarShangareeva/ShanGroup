@@ -2,14 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  LayoutGrid,
-  Home,
-  Building2,
-  Fence,
-  Layers,
-  Waves,
-} from "lucide-react";
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
@@ -21,15 +13,16 @@ import {
   getPropertiesByEmirate,
   PROPERTY_TYPES,
 } from "@/utils/properties";
+import { getIconComponent } from "@/components/Icon/Icon";
 import styles from "./EmiratePage.module.css";
 
 const TYPE_ICONS = {
-  "new-builds": LayoutGrid,
-  villas: Home,
-  apartments: Building2,
-  townhouses: Fence,
-  penthouses: Layers,
-  waterfront: Waves,
+  "new-builds": getIconComponent("layout-grid"),
+  villas: getIconComponent("home"),
+  apartments: getIconComponent("building-2"),
+  townhouses: getIconComponent("fence"),
+  penthouses: getIconComponent("layers"),
+  waterfront: getIconComponent("waves"),
 };
 
 function asPropertyCardProps(p) {
@@ -97,20 +90,20 @@ export default function EmiratePage({ slug }) {
                 className={`${styles.heroCatChip} ${activeType === "all" ? styles.heroCatChipActive : ""}`}
                 onClick={() => setActiveType("all")}
               >
-                <LayoutGrid size={15} />
+                <Icon name="layout-grid" size={15}  />
                 Все ({all.length})
               </button>
               {PROPERTY_TYPES.filter((t) => !t.isAll).map((t) => {
                 const count = all.filter(t.matches).length;
                 if (count === 0) return null;
-                const Icon = TYPE_ICONS[t.slug];
+                const TypeIcon = TYPE_ICONS[t.slug];
                 return (
                   <button
                     key={t.slug}
                     className={`${styles.heroCatChip} ${activeType === t.slug ? styles.heroCatChipActive : ""}`}
                     onClick={() => setActiveType(t.slug)}
                   >
-                    {Icon && <Icon size={15} />}
+                    {TypeIcon && <TypeIcon size={15} strokeWidth={1.6} />}
                     {t.label} ({count})
                   </button>
                 );

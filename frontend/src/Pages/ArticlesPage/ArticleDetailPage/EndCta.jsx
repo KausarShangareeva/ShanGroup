@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
 import Button from "@/components/Button/Button";
 import CountryCodeSelect from "@/components/CountryCodeSelect/CountryCodeSelect";
-import COUNTRIES from "@/data/countries.json";
+import COUNTRIES from "@/data/i18n/ru/references/countries.json";
 import GoldVerifiedIcon from "./GoldVerifiedIcon";
 import styles from "./EndCta.module.css";
 
+import Icon from "@/components/Icon/Icon";
 const DEFAULT_COUNTRY =
   COUNTRIES.find((c) => c.iso2 === "AE") ?? COUNTRIES[0];
 
@@ -135,7 +135,7 @@ export default function EndCta({ author }) {
                       <span className={styles.methodLabel}>{label}</span>
                       {isActive && (
                         <span className={styles.methodBadge}>
-                          <Check size={12} strokeWidth={3} />
+                          <Icon name="check" size={12}  />
                           Выбрано
                         </span>
                       )}

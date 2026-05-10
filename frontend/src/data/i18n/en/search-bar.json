@@ -1,0 +1,73 @@
+{
+  "fields": {
+    "location": "Location",
+    "type": "Property type",
+    "price": "Price",
+    "beds": "Bedrooms",
+    "extras": "More"
+  },
+  "placeholders": {
+    "locationSearch": "Enter community or city…",
+    "locationSearchMobile": "Community, city…"
+  },
+  "panels": {
+    "locationTitle": "Location",
+    "typeTitle": "Property type",
+    "priceTitle": "Price",
+    "bedsTitle": "Number of bedrooms",
+    "extrasTitle": "Additional filters"
+  },
+  "values": {
+    "any": "Any",
+    "anyBeds": "Any",
+    "fromLabel": "From",
+    "toLabel": "To",
+    "noLimit": "no limit",
+    "studio": "Studio",
+    "filtersBadge": "{count} filters",
+    "filtersDefault": "Filters",
+    "anyBedsLowercase": "any",
+    "bedsAbbr": "{n} BR",
+    "findCount": "Search {count} listings",
+    "filtersExtraLabel": "Extras",
+    "currencySymbol": "$"
+  },
+  "extras": {
+    "offplan": "Off-plan / new builds",
+    "ready": "Ready properties",
+    "resale": "Resale",
+    "golden": "Golden Visa eligible",
+    "roi8": "ROI 8%+",
+    "yield": "Sea / Marina view",
+    "branded": "Branded residences",
+    "instal": "Developer payment plan"
+  },
+  "types": {
+    "apt": "Apartments",
+    "villa": "Villas",
+    "th": "Townhouses",
+    "ph": "Penthouses",
+    "off": "Offices",
+    "land": "Land"
+  },
+  "locations": {
+    "dxb": { "label": "Dubai, UAE", "sub": "All communities" },
+    "dm": { "label": "Dubai Marina", "sub": "Premium area" },
+    "dt": { "label": "Downtown Dubai", "sub": "Burj Khalifa" },
+    "pj": { "label": "Palm Jumeirah", "sub": "Island living" },
+    "bh": { "label": "Business Bay", "sub": "Business centre" },
+    "jvc": { "label": "JVC", "sub": "Family area" },
+    "ah": { "label": "Arabian Ranches", "sub": "Villas" },
+    "dh": { "label": "Dubai Hills Estate", "sub": "Golf community" },
+    "auh": { "label": "Abu Dhabi", "sub": "Saadiyat / Yas" },
+    "rak": { "label": "Ras Al Khaimah", "sub": "Al Marjan Island" }
+  },
+  "mobile": {
+    "title": "Find a property",
+    "secLocation": "Location",
+    "secType": "Property type",
+    "secPrice": "Price",
+    "secBeds": "Bedrooms",
+    "secExtras": "Extras"
+  }
+}

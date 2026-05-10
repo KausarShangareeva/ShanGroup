@@ -1,0 +1,262 @@
+{
+  "hero": {
+    "badge": "UAE Federal Authority for Identity & Citizenship",
+    "titleA": "10 years of residency",
+    "titleB": "in the United",
+    "titleC": "Arab Emirates.",
+    "subtitle": "Invest $545K (2M AED) and more in real estate and receive a Golden Visa for yourself, your spouse and your children. No employer required, no bank guarantee, no mandatory residency. Full freedom of movement.",
+    "ctaPrimary": "Book a consultation",
+    "ctaSecondary": "Check eligibility",
+    "trust": [
+      { "v": "10 yrs",   "l": "visa term" },
+      { "v": "30–60 d",  "l": "processing" },
+      { "v": "Whole family", "l": "parents included" }
+    ],
+    "card": {
+      "country": "United Arab Emirates",
+      "title": "Golden Visa",
+      "subtitle": "10-Year Residency",
+      "holderLabel": "HOLDER",
+      "holderPlaceholder": "<YOUR NAME>",
+      "categoryLabel": "CATEGORY",
+      "categoryValue": "Investor",
+      "validLabel": "VALID",
+      "validValue": "2026–2036",
+      "familyLabel": "FAMILY",
+      "familyValue": "Sponsored",
+      "chipTax": "0% income tax",
+      "chipResidence": "No mandatory residency"
+    }
+  },
+  "stats": {
+    "items": [
+      { "v": "$545K",     "l": "minimum in real estate",            "source": "ICA · Federal Decree 56/2018" },
+      { "v": "10 yrs",     "l": "residency term, renewable",         "source": "UAE Cabinet Resolution" },
+      { "v": "0%",         "l": "personal income tax",                "source": "UAE Tax Procedures Law" },
+      { "v": "183 countries","l": "visa-free / visa-on-arrival",       "source": "Henley Passport Index 2025" }
+    ]
+  },
+  "routes": {
+    "kicker": "How to qualify",
+    "titleA": "4 routes",
+    "titleB": "through",
+    "titleC": "real estate",
+    "popularLabel": "POPULAR",
+    "fromLabel": "from",
+    "reqsLabel": "What's needed",
+    "items": [
+      {
+        "n": "01", "t": "Ready property", "min": "$545K", "popular": true,
+        "d": "Purchase of one or several units totalling 2M AED+. Ready or off-plan (50%+ paid). The fastest path — 30–45 days.",
+        "reqs": ["Property in your name", "DLD title deed", "Minimum $545K (2M AED)"]
+      },
+      {
+        "n": "02", "t": "Off-plan from the developer", "min": "$545K",
+        "d": "Off-plan purchase directly from approved developers (EMAAR, DAMAC, Sobha). The visa is issued once 50%+ of the price is paid.",
+        "reqs": ["Approved developer", "50% paid", "SPA + payment receipts"]
+      },
+      {
+        "n": "03", "t": "Multiple properties", "min": "$545K combined",
+        "d": "You can build a portfolio: 2–3 apartments in different districts. The combined total must be 2M AED+. Ideal for diversification.",
+        "reqs": ["All units in your name", "Combined value 2M AED+", "Title deed for each"]
+      },
+      {
+        "n": "04", "t": "Mortgage (financed)", "min": "$545K equity",
+        "d": "Bank financing is allowed, but your equity must be 2M AED+. The mortgage portion does not count towards the visa amount.",
+        "reqs": ["Down payment 2M AED+", "Mortgage from a UAE bank", "NOC from the bank"]
+      }
+    ]
+  },
+  "benefits": {
+    "kicker": "What you get",
+    "titleA": "Residency is",
+    "titleB": "much more",
+    "titleC": "than a stamp",
+    "items": [
+      { "icon": "briefcase",   "t": "Family sponsor",          "d": "Your Golden Visa automatically extends to your spouse, all children (no age limit) and parents." },
+      { "icon": "globe",        "t": "No mandatory stay",       "d": "You can live outside the UAE. A single entry every 6 months is enough. The visa remains active." },
+      { "icon": "percent",      "t": "0% personal income tax",  "d": "UAE residents pay no tax on salary, dividends, rent or capital gains. Full financial clarity." },
+      { "icon": "bank",         "t": "UAE bank accounts",        "d": "Open accounts with Emirates NBD, Mashreq, ENBD Private. Multi-currency accounts, investment products, premium cards." },
+      { "icon": "book-open",    "t": "Schools and medicine",     "d": "Access to the best schools (GEMS, Repton, Dwight). DHA health insurance. Residents get enrolment priority." },
+      { "icon": "biz",          "t": "Business without kafala",  "d": "Open a 100%-owned mainland company, a free zone entity, or a branch — no local partner required." }
+    ]
+  },
+  "check": {
+    "kicker": "Eligibility checker",
+    "titleA": "Do you qualify",
+    "titleB": "for a Golden Visa",
+    "controls": {
+      "budget": "Your budget",
+      "planType": "Property type",
+      "family": "Family size"
+    },
+    "planOptions": [
+      { "id": "ready",   "l": "Ready",         "d": "30–45 days" },
+      { "id": "offplan", "l": "Off-plan 50%+", "d": "45–60 days" }
+    ],
+    "familyUnit": "ppl",
+    "eligible": "You qualify for a Golden Visa",
+    "surplus": "Surplus: ${amount}K",
+    "notEligible": "${amount}K short",
+    "minHint": "Minimum — $545K in real estate",
+    "labels": {
+      "duration": "Processing time",
+      "durationUnit": "d",
+      "visaTerm": "Visa term",
+      "visaTermValue": "10 yrs",
+      "fee": "Government fees (family)",
+      "familyMembers": "Family members"
+    },
+    "ctaEligible": "Start the application →",
+    "ctaNotEligible": "Find properties for my budget →"
+  },
+  "process": {
+    "kicker": "Process",
+    "titleA": "From enquiry",
+    "titleB": "to visa in your passport",
+    "steps": [
+      { "n": 1, "t": "Consultation",            "d": "An expert evaluates your profile and picks the optimal route.",         "k": "1 day" },
+      { "n": 2, "t": "Property shortlist",       "d": "3–5 properties from $545K. Online tour or on-site visit.",              "k": "5–10 days" },
+      { "n": 3, "t": "Deal",                     "d": "SPA, NOC, DLD registration. We obtain the title deed.",                  "k": "10–14 days" },
+      { "n": 4, "t": "Filing with ICA",          "d": "We prepare the document pack: title deed, passport, photo, medical test.","k": "5 days" },
+      { "n": 5, "t": "Biometrics + Emirates ID", "d": "Fly in for 1–2 days for fingerprints and the photo.",                    "k": "2 days" },
+      { "n": 6, "t": "Visa stamping",             "d": "The visa is affixed to your passport. The family receives theirs.",     "k": "5–10 days" }
+    ]
+  },
+  "listings": {
+    "kicker": "Visa-eligible inventory",
+    "titleA": "Ready",
+    "titleB": "for the Golden Visa",
+    "priceLabel": "Price",
+    "yieldLabel": "Yield (NET)",
+    "visaReadyBadge": "VISA-READY",
+    "includesLabel": "Includes",
+    "items": [
+      { "name": "Sobha Hartland Villa",   "area": "MBR City",      "rooms": "4BR", "price": "$1,450K", "yield": "8.2%", "visa": "Family · 10 years", "developer": "Sobha" },
+      { "name": "EMAAR Beachfront 2BR",   "area": "Dubai Harbour", "rooms": "2BR", "price": "$685K",   "yield": "7.8%", "visa": "Family · 10 years", "developer": "EMAAR" },
+      { "name": "DAMAC Marina 1BR",       "area": "Marina",        "rooms": "1BR", "price": "$545K",   "yield": "7.4%", "visa": "Family · 10 years", "developer": "DAMAC" }
+    ]
+  },
+  "compareVisas": {
+    "kicker": "Visa comparison",
+    "titleA": "Golden Visa",
+    "titleB": "vs",
+    "titleC": "other residence permits",
+    "headers": {
+      "param": "Parameter",
+      "golden": "Golden Visa",
+      "goldenNote": "UAE · 10 years",
+      "investor": "Investor Visa",
+      "investorNote": "UAE · 2 years",
+      "eu": "EU residency",
+      "euNote": "e.g. Greece"
+    },
+    "rows": [
+      { "l": "Residency term",         "g": "10 years",      "gw": true,  "i": "2 years",        "iw": false, "e": "5 years",      "ew": false },
+      { "l": "Minimum investment",      "g": "$545K",         "gw": true,  "i": "from $0 (job)",   "iw": true,  "e": "$200K",        "ew": true  },
+      { "l": "Family included",         "g": "Unlimited",     "gw": true,  "i": "Spouse only",     "iw": false, "e": "Up to 21",     "ew": false },
+      { "l": "Employer dependency",     "g": "None",          "gw": true,  "i": "Yes",             "iw": false, "e": "None",         "ew": true  },
+      { "l": "Mandatory residency",     "g": "None",          "gw": true,  "i": "None",            "iw": true,  "e": "None",         "ew": true  },
+      { "l": "Ownership rights",        "g": "Full",          "gw": true,  "i": "Full",            "iw": true,  "e": "Full",         "ew": true  },
+      { "l": "Path to citizenship",     "g": "No (UAE rare)", "gw": false, "i": "No",              "iw": false, "e": "Yes",          "ew": false },
+      { "l": "Processing time",         "g": "30–60 days",    "gw": true,  "i": "60–90 days",     "iw": false, "e": "30–60 days",   "ew": true  }
+    ]
+  },
+  "docs": {
+    "kicker": "Documents",
+    "titleA": "Document",
+    "titleB": "package checklist",
+    "items": [
+      { "t": "Passport",                "d": "Valid for 6+ months. All pages." },
+      { "t": "Title deed (DLD)",         "d": "Proof of ownership for 2M AED+." },
+      { "t": "Photo 35×45 mm",           "d": "White background, UAE standard." },
+      { "t": "Medical test",             "d": "Done in Dubai, 1 day. Cost ~$80." },
+      { "t": "Family certificates",      "d": "Marriage + children's birth. Apostille + translation." },
+      { "t": "Tenancy or property contract", "d": "UAE address confirmation (Ejari)." }
+    ]
+  },
+  "cases": {
+    "kicker": "Client stories",
+    "titleA": "Those who",
+    "titleB": "already received it",
+    "objectLabel": "Property",
+    "visaReceivedBadge": "✓ Visa received",
+    "items": [
+      {
+        "name": "Alexei V.", "role": "Moscow · IT entrepreneur",
+        "story": "Bought a 2BR at EMAAR Beachfront for $720K. Got the Golden Visa in 38 days. Brought the family — wife and two kids.",
+        "bought": "EMAAR Beachfront 2BR · $720K",
+        "stat": "38 days", "statL": "to visa issued"
+      },
+      {
+        "name": "Dinara K.", "role": "Almaty · medical centre chain",
+        "story": "Wanted GEMS schools for the kids. Bought a villa in MBR City for $1.8M. Visa for the entire family plus parents.",
+        "bought": "Sobha Hartland Villa · $1.8M",
+        "stat": "5 people", "statL": "family included"
+      },
+      {
+        "name": "Timur R.", "role": "Minsk · logistics",
+        "story": "Was on an Investor Visa, needed renewal every 2 years. Switched to Golden — 10 years now, no employer.",
+        "bought": "DAMAC Marina 1BR · $565K",
+        "stat": "10 yrs", "statL": "no renewals"
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Questions",
+    "titleA": "What",
+    "titleB": "people most often",
+    "titleC": "ask",
+    "items": [
+      { "q": "Can I get a Golden Visa without flying to the UAE?", "a": "Most of the process is remote: property selection, deal via power of attorney, document collection. You only need to fly in once for 1–2 days for biometrics and Emirates ID." },
+      { "q": "What if I sell the property — do I lose the visa?", "a": "Yes, the visa is tied to the property. If you sell, you need to buy another one for 2M AED+ or switch to a different visa type. Owning multiple properties gives you flexibility." },
+      { "q": "Can I work for a foreign company on this visa?", "a": "Yes. A UAE resident can work remotely for any country, open a UAE company, freelance. There are no restrictions." },
+      { "q": "Does the visa include family members?", "a": "Yes. Spouse, all children with no age limit, parents. Each receives their own Golden Visa with the same 10-year term, under your sponsorship." },
+      { "q": "How much does processing cost?", "a": "Visa government fee: ~6,700 AED ($1,825) for the main applicant. ~4,200 AED ($1,145) per family member. Our service fee is bundled into the deal." },
+      { "q": "What happens to the visa after 10 years?", "a": "The visa is automatically renewed for another 10 years as long as the property is still owned. No new tests or fresh application." },
+      { "q": "Can I apply for UAE citizenship?", "a": "UAE citizenship is granted only in rare cases (by special decree). The Golden Visa is residency, not a path to citizenship. But it grants almost every right of a citizen: business, education, healthcare." }
+    ]
+  },
+  "leadForm": {
+    "badge": "30 minutes to a call",
+    "titleA": "Get a",
+    "titleB": "Golden Visa roadmap",
+    "titleC": "tailored to your profile",
+    "subtitle": "A visa expert will pick the optimal path, properties matched to your goal, and provide a step-by-step plan to obtain a 10-year visa for your family.",
+    "perks": [
+      "Personal visa roadmap",
+      "3 properties within your budget",
+      "Document and timeline checklist"
+    ],
+    "form": {
+      "goalLabel": "Goal",
+      "goals": [
+        { "id": "family", "l": "Visa for the family" },
+        { "id": "self",   "l": "Just for me" },
+        { "id": "biz",    "l": "For my UAE business" },
+        { "id": "tax",    "l": "Tax residency" }
+      ],
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "545",  "l": "$545–700K" },
+        { "id": "1000", "l": "$700K–1.5M" },
+        { "id": "2000", "l": "$1.5–3M" },
+        { "id": "3000", "l": "$3M+" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only the roadmap and a call from the visa expert.",
+      "submit": "Get the Visa Roadmap →"
+    },
+    "success": {
+      "title": "Thank you, {name}!",
+      "fallbackName": "investor",
+      "line1": "A visa expert is preparing an individual roadmap for your Golden Visa application.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "Golden Visa UAE from $545K — 10-year residence visa · ShanGroup",
+    "description": "Obtain the UAE Golden Visa via real-estate investment from $545K (2M AED). 10-year residency for the whole family, 0% taxes. Processing 30–60 days."
+  }
+}

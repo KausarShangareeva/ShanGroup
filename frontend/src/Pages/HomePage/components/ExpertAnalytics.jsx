@@ -2,7 +2,7 @@ import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";
 import BlogCard from "@/Pages/BlogPage/components/BlogCard";
-import BLOG from "@/data/blog.json";
+import BLOG from "@/data/i18n/ru/content/blog.json";
 import styles from "./ExpertAnalytics.module.css";
 
 export default function ExpertAnalytics() {

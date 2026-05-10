@@ -216,7 +216,7 @@
 .badge {
   position: absolute;
   top: 1.8rem;
-  right: 1.8rem;
+  right: 2rem;
   z-index: 10;
   width: 8.8rem;
   height: 8.8rem;
@@ -227,7 +227,7 @@
   box-shadow:
     0 10px 26px rgba(0, 0, 0, 0.28),
     inset 0 0 0 1px rgba(0, 0, 0, 0.04);
-  background-size: 56%;
+  background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
 }

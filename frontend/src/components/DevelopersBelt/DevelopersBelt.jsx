@@ -1,4 +1,4 @@
-import developersData from "@/data/developers.json";
+import developersData from "@/data/i18n/ru/people/developers.json";
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";

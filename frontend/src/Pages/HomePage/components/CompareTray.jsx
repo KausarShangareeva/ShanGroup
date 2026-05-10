@@ -5,10 +5,10 @@ import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import { useLikes } from "@/components/LikeButton/useLikes";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import {
-  FUNNEL_PROPERTIES,
+  useFunnel,
   formatPrice,
   visaTier,
-} from "@/data/properties/funnelProperties";
+} from "@/utils/funnel";
 
 const NEU_RAISED =
   "-8px -8px 20px var(--shadow-light), 8px 8px 24px var(--shadow-dark)";
@@ -77,6 +77,7 @@ function CTField({ label, value, onChange, type = "text", placeholder }) {
 function CompareModal({ ids, onClose, onRemove, isMobile }) {
   const [step, setStep] = useState("compare");
   const [contact, setContact] = useState({ name: "", phone: "" });
+  const { FUNNEL_PROPERTIES } = useFunnel();
   const items = ids.map((id) => ({ id, ...FUNNEL_PROPERTIES[id] })).filter((it) => it.name);
 
   useEffect(() => {
@@ -526,6 +527,7 @@ function CompareModal({ ids, onClose, onRemove, isMobile }) {
 export default function CompareTray() {
   const isMobile = useIsMobile();
   const { liked, toggle } = useLikes();
+  const { FUNNEL_PROPERTIES } = useFunnel();
   const [open, setOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 

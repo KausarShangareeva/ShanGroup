@@ -1,25 +1,28 @@
 "use client";
 
-import { Heart } from "lucide-react";
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import NewPropertyCard from "@/Pages/HomePage/components/NewPropertyCard";
 import FunnelCard from "@/Pages/HomePage/components/FunnelCard";
-import OBJECTS from "@/data/properties/objects.json";
-import VILLAS from "@/data/properties/villas.json";
-import APARTMENTS from "@/data/properties/apartments.json";
-import TOWNHOUSES from "@/data/properties/townhouses.json";
-import AGENT from "@/data/agent.json";
+import OBJECTS from "@/data/i18n/ru/properties/objects.json";
+import VILLAS from "@/data/i18n/ru/properties/villas.json";
+import APARTMENTS from "@/data/i18n/ru/properties/apartments.json";
+import TOWNHOUSES from "@/data/i18n/ru/properties/townhouses.json";
+import AGENTS from "@/data/i18n/ru/people/agents.json";
+
+const AGENT = AGENTS["mustafa-amir"];
 import { useLikes } from "@/components/LikeButton/useLikes";
-import { FUNNEL_PROPERTIES } from "@/data/properties/funnelProperties";
+import { useFunnel } from "@/utils/funnel";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import styles from "./FavoritesPage.module.css";
 
+import Icon from "@/components/Icon/Icon";
 const ALL_PROPERTIES = [...OBJECTS, ...VILLAS, ...APARTMENTS, ...TOWNHOUSES];
 
 export default function FavoritesPage() {
   const isMobile = useIsMobile();
   const { liked, toggle } = useLikes();
+  const { FUNNEL_PROPERTIES } = useFunnel();
   const catalog = ALL_PROPERTIES.filter((p) => liked.has(p.id));
   const funnel = [...liked]
     .filter((id) => FUNNEL_PROPERTIES[id])
@@ -37,7 +40,7 @@ export default function FavoritesPage() {
 
         {total === 0 ? (
           <div className={styles.empty}>
-            <Heart size={44} strokeWidth={1.2} className={styles.emptyIcon} />
+            <Icon name="heart" size={44} className={styles.emptyIcon}  />
             <p className={styles.emptyText}>Ничего не сохранено</p>
           </div>
         ) : (

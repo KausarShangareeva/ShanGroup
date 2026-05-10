@@ -1,5 +1,5 @@
 import BlogDetailPage from "@/Pages/BlogPage/BlogDetailPage/BlogDetailPage";
-import BLOG from "@/data/blog.json";
+import BLOG from "@/data/i18n/ru/content/blog.json";
 
 export function generateStaticParams() {
   return BLOG.items.map((p) => ({ slug: p.slug }));

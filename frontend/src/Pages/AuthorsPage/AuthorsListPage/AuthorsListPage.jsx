@@ -1,7 +1,7 @@
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import AgentPreviewCard from "@/components/AgentPreviewCard/AgentPreviewCard";
-import AUTHORS from "@/data/authors.json";
+import AUTHORS from "@/data/i18n/ru/people/authors.json";
 import styles from "./AuthorsListPage.module.css";
 
 export default function AuthorsListPage() {

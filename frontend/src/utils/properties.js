@@ -2,12 +2,12 @@
 // каталога/эмирата читает данные отсюда, чтобы счётчики, фильтры и группировки
 // автоматически обновлялись при добавлении новых записей в JSON-файлы.
 
-import VILLAS from "@/data/properties/villas.json";
-import APARTMENTS from "@/data/properties/apartments.json";
-import TOWNHOUSES from "@/data/properties/townhouses.json";
-import PENTHOUSES from "@/data/properties/penthouses.json";
-import WATERFRONT from "@/data/properties/waterfront.json";
-import OBJECTS from "@/data/properties/objects.json";
+import VILLAS from "@/data/i18n/ru/properties/villas.json";
+import APARTMENTS from "@/data/i18n/ru/properties/apartments.json";
+import TOWNHOUSES from "@/data/i18n/ru/properties/townhouses.json";
+import PENTHOUSES from "@/data/i18n/ru/properties/penthouses.json";
+import WATERFRONT from "@/data/i18n/ru/properties/waterfront.json";
+import OBJECTS from "@/data/i18n/ru/properties/objects.json";
 
 // ── Реестр эмиратов ──────────────────────────────────────────────────────────
 // slug — это и URL `/<slug>`, и значение поля `emirate` в JSON.

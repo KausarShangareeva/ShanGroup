@@ -1,0 +1,246 @@
+{
+  "hero": {
+    "badge": "Strategy #1 for investors in 2026",
+    "titleA": "Buy before launch.",
+    "titleB": "Earn 25–40%",
+    "titleC": "in one construction cycle.",
+    "subtitle": "Off-plan means buying an apartment or villa directly from the developer at groundbreaking or early-booking stage. The price sits 18–35% below market. By handover, the same unit usually costs 25–40% more. You pay in instalments, with no bank involved.",
+    "ctaPrimary": "Get the 2026 shortlist",
+    "ctaSecondary": "How it works",
+    "trust": [
+      { "v": "0%", "l": "tax on gains" },
+      { "v": "DLD", "l": "escrow accounts" },
+      { "v": "5 min", "l": "to shortlist" }
+    ],
+    "chart": {
+      "kicker": "Example return on investment",
+      "subject": "Studio · $410K · 30 months",
+      "badge": "+38.5%",
+      "points": [
+        { "l": "Booking" },
+        { "l": "DLD" },
+        { "l": "30%" },
+        { "l": "60%" },
+        { "l": "Handover" },
+        { "l": "Resale" }
+      ],
+      "labels": {
+        "buy": "Booking price",
+        "handover": "Handover price",
+        "profit": "Net profit"
+      },
+      "values": {
+        "buy": "$410K",
+        "handover": "$568K",
+        "profit": "+$158K"
+      }
+    }
+  },
+  "stats": {
+    "items": [
+      { "v": "+$2.1B", "l": "off-plan launches Q1 2026", "source": "DXBinteract" },
+      { "v": "67%", "l": "of all Dubai deals in 2025", "source": "DLD" },
+      { "v": "32%", "l": "average growth over 2.5 years", "source": "Property Monitor" },
+      { "v": "0%", "l": "profit tax", "source": "UAE Tax Authority" }
+    ],
+    "sourceLabel": "source"
+  },
+  "why": {
+    "kicker": "Why off-plan",
+    "titleA": "Four reasons",
+    "titleB": "why",
+    "titleC": "investors choose this path",
+    "items": [
+      {
+        "n": "01",
+        "icon": "trending-up",
+        "t": "Price 18–35% below market",
+        "d": "Developers discount for early bookings. By handover, the same unit on the secondary market costs 25–40% more — you earn on the spread."
+      },
+      {
+        "n": "02",
+        "icon": "credit-card",
+        "t": "0% instalments from the developer",
+        "d": "Payments split across 30/60/90 months. No bank, no interest, no credit check. First instalment from 10–20%."
+      },
+      {
+        "n": "03",
+        "icon": "shield",
+        "t": "DLD escrow accounts",
+        "d": "Funds sit in Dubai Land Department escrow. The developer only receives them as construction milestones are completed. Government-backed safeguard against unfinished builds."
+      },
+      {
+        "n": "04",
+        "icon": "swap",
+        "t": "Pre-handover resale (assignment)",
+        "d": "You can sell the contract at 60–80% payment without waiting for keys. DLD fee 4%, profit clean — 0% capital gains tax in the UAE."
+      }
+    ]
+  },
+  "how": {
+    "kicker": "Process",
+    "titleA": "5 steps",
+    "titleB": "from enquiry",
+    "titleC": "to keys",
+    "steps": [
+      { "n": 1, "t": "Property shortlist", "d": "We pick 3 projects matched to your budget, goal and horizon.", "k": "1–3 days" },
+      { "n": 2, "t": "Booking and SPA", "d": "10K AED reservation deposit, then the Sale & Purchase Agreement.", "k": "1 week" },
+      { "n": 3, "t": "DLD + Oqood", "d": "Registration with the Dubai Land Department, first instalment of 10–20%.", "k": "10 days" },
+      { "n": 4, "t": "Scheduled payments", "d": "30/60/90 months. Each payment is tied to a construction milestone.", "k": "30–60 months" },
+      { "n": 5, "t": "Handover and decision", "d": "You collect the keys. Choose to live, rent out, or sell.", "k": "Decision" }
+    ]
+  },
+  "calc": {
+    "kicker": "Calculator",
+    "titleA": "Forecast your",
+    "titleB": "return",
+    "controls": {
+      "budget": "Budget",
+      "period": "Construction period",
+      "growth": "Price growth over period",
+      "periodUnit": "months",
+      "growthUnit": "%"
+    },
+    "result": {
+      "futureValueLabel": "Value at handover",
+      "profitLabel": "Profit",
+      "roiLabel": "Total ROI",
+      "annualizedLabel": "Annualised",
+      "taxLabel": "Tax",
+      "cta": "Find a property in my budget"
+    }
+  },
+  "launches": {
+    "kicker": "Quarterly launches",
+    "titleA": "What's",
+    "titleB": "launching now",
+    "items": [
+      { "dev": "EMAAR", "name": "Marina Cove", "area": "Dubai Marina", "priceFrom": "$410K", "handover": "Q4 2027", "roi": "+32%", "launch": "Launch 12 Feb", "down": "10%" },
+      { "dev": "DAMAC", "name": "Riverside Views", "area": "Dubai Investment Park", "priceFrom": "$285K", "handover": "Q2 2028", "roi": "+38%", "launch": "Booking open", "down": "20%" },
+      { "dev": "SOBHA", "name": "Hartland II", "area": "MBR City", "priceFrom": "$620K", "handover": "Q1 2027", "roi": "+28%", "launch": "30 units available", "down": "15%" }
+    ],
+    "priceFromLabel": "Price from",
+    "handoverLabel": "Handover",
+    "downLabel": "First instalment"
+  },
+  "compare": {
+    "kicker": "Comparison",
+    "titleA": "Off-plan",
+    "titleB": "vs",
+    "titleC": "ready property",
+    "headers": {
+      "param": "Parameter",
+      "offplan": "Off-plan",
+      "offplanNote": "→ This strategy",
+      "ready": "Ready (resale)",
+      "readyNote": "Ready"
+    },
+    "rows": [
+      { "l": "Price per sqm",          "op": "from 12,000 AED", "opWin": true,  "rd": "from 18,500 AED", "rdWin": false },
+      { "l": "First instalment",       "op": "10–20%",          "opWin": true,  "rd": "25–40%",          "rdWin": false },
+      { "l": "Seller instalments",     "op": "up to 60 mo. 0%", "opWin": true,  "rd": "None",            "rdWin": false },
+      { "l": "Time to profit",         "op": "30–48 months",    "opWin": false, "rd": "Immediate (rent)", "rdWin": true },
+      { "l": "Rent income now",        "op": "No",              "opWin": false, "rd": "Yes, 6–9% p.a.",  "rdWin": true },
+      { "l": "Price growth over 3 yr", "op": "25–40%",          "opWin": true,  "rd": "12–18%",          "rdWin": false },
+      { "l": "Profit tax",             "op": "0%",              "opWin": true,  "rd": "0%",              "rdWin": true },
+      { "l": "Escrow protection",      "op": "Yes (DLD)",       "opWin": true,  "rd": "—",               "rdWin": false }
+    ]
+  },
+  "risks": {
+    "kicker": "Transparent about risks",
+    "titleA": "What can",
+    "titleB": "go wrong",
+    "titleC": "— and how we hedge it",
+    "intro": "We don't sell 'guaranteed gold'. Every off-plan deal is a business case with clear risk parameters. Here are four scenarios investors worry about — and our answer.",
+    "items": [
+      { "r": "Handover delay", "m": "The contract sets a 10% penalty for delays over 12 months. Escrow guarantees a refund." },
+      { "r": "Market downturn", "m": "Off-plan, you enter 20–30% below market. The drawdown is absorbed." },
+      { "r": "Unable to resell", "m": "We help find a buyer through our 11K+ investor network across the CIS region." },
+      { "r": "Currency risk", "m": "The dirham has been pegged to the dollar (1 USD = 3.67 AED) since 1997." }
+    ]
+  },
+  "cases": {
+    "kicker": "Client cases",
+    "titleA": "Real",
+    "titleB": "numbers",
+    "titleC": "from investors",
+    "spentLabel": "→",
+    "monthsLabel": "months",
+    "objectLabel": "Property",
+    "items": [
+      {
+        "name": "Alexander K.", "role": "Moscow, IT entrepreneur",
+        "bought": "Studio · Marina Vista", "spend": "$420K", "returned": "$561K",
+        "months": 28, "profit": "+$141K · 33.6%",
+        "quote": "Bought at groundbreaking in 2023, sold 4 months before handover. 0% tax. Going into a new DAMAC project next."
+      },
+      {
+        "name": "Igor N.", "role": "Almaty, restaurant chain owner",
+        "bought": "2BR · Creek Harbour", "spend": "$890K", "returned": "$1.21M",
+        "months": 36, "profit": "+$320K · 36.0%",
+        "quote": "Bought two apartments at once: sold one, my sister lives in the other. The instalments gave peace of mind."
+      },
+      {
+        "name": "Elena S.", "role": "London, lawyer",
+        "bought": "Townhouse · Damac Lagoons", "spend": "$1.12M", "returned": "$1.46M",
+        "months": 30, "profit": "+$340K · 30.4%",
+        "quote": "Compared with London — 28% tax on rent there. Here, profit is clean. Already planning the next deal."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Questions",
+    "titleA": "What",
+    "titleB": "investors ask",
+    "titleC": "most often",
+    "items": [
+      { "q": "Can I buy without visiting Dubai?", "a": "Yes. Booking and the SPA are signed electronically. The DLD registration power of attorney is notarised at the UAE embassy or by a local notary in your country." },
+      { "q": "What if the developer goes bankrupt?", "a": "Your money sits in a Dubai Land Department escrow — the developer only receives it for completed milestones. In a bankruptcy, the DLD appoints a new contractor and your rights are protected." },
+      { "q": "What's the minimum entry budget?", "a": "From $200K (10% instalment plan, about $20K first instalment). For Golden Visa eligibility — from $545K in a single property." },
+      { "q": "How do I sell an apartment before handover?", "a": "After 30–40% paid, the assignment procedure is available — SPA transfer to a new buyer. 4% government fee, the rest is clean profit." },
+      { "q": "Is profit taxed in my home country?", "a": "There is no tax in the UAE. Declaring in your country of tax residency is individual — our legal team will advise." },
+      { "q": "How do you vet developer reliability?", "a": "We check RERA registration, the track record of delivered projects (minimum 3 successful ones), escrow exposure, and DLD rating. We only work with the top 15." }
+    ]
+  },
+  "leadForm": {
+    "badge": "30 minutes to a call",
+    "titleA": "Get 3 off-plan properties",
+    "titleB": "matched to your goal",
+    "subtitle": "An expert will pick options with ROI forecast, payment schedule and developer analysis. No spam. Free of charge.",
+    "perks": [
+      "Top 3 projects within your budget",
+      "PDF with yield forecast",
+      "Developer and escrow review"
+    ],
+    "form": {
+      "goalLabel": "Investment goal",
+      "goals": [
+        { "id": "income", "l": "Resale after handover" },
+        { "id": "rent",   "l": "Long-term rental" },
+        { "id": "visa",   "l": "Golden Visa" },
+        { "id": "live",   "l": "Family residence" }
+      ],
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "300",  "l": "$200–500K" },
+        { "id": "500",  "l": "$500K–1M" },
+        { "id": "1000", "l": "$1–3M" },
+        { "id": "3000", "l": "$3M+" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only the shortlist and a call from an expert.",
+      "submit": "Get the shortlist →"
+    },
+    "success": {
+      "title": "Thank you, {name}!",
+      "fallbackName": "investor",
+      "line1": "Senior advisor Igor Shan will prepare a shortlist of 3 properties matched to your budget and goal.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "Off-plan strategy in Dubai · ROI 25–40% — ShanGroup",
+    "description": "Buy Dubai property before launch. 25–40% ROI over the construction cycle. 0% developer instalments. DLD escrow accounts."
+  }
+}

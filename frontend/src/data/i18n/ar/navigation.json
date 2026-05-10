@@ -1,0 +1,136 @@
+{
+  "menu": {
+    "newbuilds": "Новостройки ОАЭ",
+    "communities": "Районы",
+    "developers": "Застройщики",
+    "invest": "Инвестиции",
+    "about": "О нас"
+  },
+  "actions": {
+    "contact": "Связаться",
+    "phone": "+971 4 261 8838",
+    "rera": "RERA #2087"
+  },
+  "burger": {
+    "title": "Меню",
+    "subtitle": "ShanGroup · Dubai",
+    "searchPlaceholder": "Поиск по меню, районам, застройщикам…",
+    "settings": "Настройки",
+    "language": "Язык",
+    "currency": "Валюта",
+    "theme": "Тема",
+    "themeLight": "Светлая",
+    "themeDark": "Тёмная"
+  },
+  "mega": {
+    "ourSocials": "Мы в соцсетях",
+    "services": "Услуги",
+    "offerOfDay": "Предложение дня",
+    "topDevelopers": "Топ застройщики",
+    "allDevelopers": "Все застройщики",
+    "offplanItems": "Объекты офф-план",
+    "emirates": "Эмираты",
+    "allEmirates": "Все эмираты →",
+    "communitiesGuides": "Гиды по районам",
+    "popularDistricts": "Популярные районы",
+    "ourCompany": "О нас",
+    "investStrategies": "Стратегии",
+    "investPrograms": "Программы",
+    "investTools": "Инструменты"
+  },
+  "newbuilds": {
+    "apartments": { "label": "Квартиры в Дубае", "desc": "Апартаменты и студии" },
+    "villas": { "label": "Дома и виллы", "desc": "Частные дома и виллы" },
+    "byLocation": { "label": "По локации", "desc": "Поиск по районам" },
+    "byDeveloper": { "label": "По застройщикам", "desc": "Ведущие застройщики ОАЭ" },
+    "abuDhabi": { "label": "Абу-Даби", "desc": "Недвижимость в столице" },
+    "sharjah": { "label": "Шарджа", "desc": "Недвижимость в Шардже" }
+  },
+  "invest": {
+    "goldenVisa": { "label": "Golden Visa $545K+", "desc": "10-летняя резидентская виза" },
+    "investorVisa": { "label": "Investor Visa $204K+", "desc": "2-летняя инвесторская виза" },
+    "installment": { "label": "Рассрочка 1% / месяц", "desc": "От застройщика, без банка" },
+    "mortgage": { "label": "Ипотека для нерезидентов", "desc": "От 25% первый взнос" },
+    "offplan": { "label": "Off-plan стратегия", "desc": "Покупка до запуска · ROI 25–40%" },
+    "rental": { "label": "Готовая аренда", "desc": "Стабильный доход 6–9% годовых" },
+    "shortTerm": { "label": "Краткосрочная аренда", "desc": "Airbnb-формат, доход до 12%" },
+    "flip": { "label": "Flip-стратегия", "desc": "Перепродажа на handover" },
+    "calculator": { "label": "ROI калькулятор", "desc": "Доходность за 3/5/10 лет" },
+    "tax": { "label": "Налоговый гид ОАЭ", "desc": "0% налог на доход физлиц" },
+    "compare": { "label": "Сравнение районов", "desc": "Цены, аренда, рост капитала" },
+    "report2026": { "label": "Инвестиционный отчёт 2026", "desc": "Прогнозы и тренды рынка" }
+  },
+  "about": {
+    "company": { "label": "О компании", "desc": "Наша история и миссия" },
+    "reviews": { "label": "Отзывы", "desc": "Опыт наших клиентов" },
+    "articles": { "label": "Статьи", "desc": "Полезные материалы" },
+    "blog": { "label": "Блог", "desc": "Новости рынка" },
+    "faq": { "label": "Вопросы и ответы", "desc": "Частые вопросы" }
+  },
+  "services": {
+    "visa": { "label": "Получение визы", "desc": "Резидентские и инвесторские визы" },
+    "company": { "label": "Регистрация компаний", "desc": "Фрихолд и фризона" },
+    "banking": { "label": "Банковские счета", "desc": "Личные и корпоративные счета" },
+    "poa": { "label": "Доверенности", "desc": "Оформление и нотариальное заверение" }
+  },
+  "socials": {
+    "instagram": { "label": "Instagram", "desc": "@shangroup.ae" },
+    "youtube": { "label": "YouTube", "desc": "Видео о недвижимости" },
+    "telegram": { "label": "Telegram", "desc": "Новости и объекты" },
+    "whatsapp": { "label": "WhatsApp", "desc": "Написать нам" }
+  },
+  "propTypes": {
+    "villas": "Виллы",
+    "apartments": "Апартаменты",
+    "townhouses": "Таунхаусы",
+    "penthouses": "Пентхаусы",
+    "waterfront": "Набережная",
+    "villasForSale": "Виллы на продажу",
+    "apartmentsForSale": "Квартиры на продажу",
+    "townhousesForSale": "Таунхаусы на продажу",
+    "penthousesForSale": "Пентхаусы на продажу",
+    "waterfrontFull": "Набережная (Waterfront)",
+    "allNewbuilds": "Все новостройки",
+    "objectsCount": "{count} объектов"
+  },
+  "devCategories": {
+    "giant": {
+      "label": "Государственные гиганты",
+      "desc": "Крупнейшие девелоперы ОАЭ, определяющие облик страны. Гарантия надежности, государственная поддержка и проекты мирового масштаба"
+    },
+    "premium": {
+      "label": "Премиум и люкс",
+      "desc": "Эксклюзивные резиденции с авторским дизайном и безупречным качеством отделки. Выбор тех, кто ценит стиль, эстетику и высокий уровень сервиса"
+    },
+    "growth": {
+      "label": "Инвестиционные",
+      "desc": "Застройщики с самыми гибкими планами платежей (от 1% в месяц) и высокой скоростью строительства. Идеально для максимизации арендной доходности"
+    },
+    "boutique": {
+      "label": "Бутик и новые звёзды",
+      "desc": "Молодые и амбициозные компании с фокусом на технологии умного дома, современную архитектуру и перспективные локации для роста цены"
+    }
+  },
+  "burgerSections": {
+    "newbuilds": "Новостройки ОАЭ",
+    "communities": "Районы",
+    "developers": "Застройщики",
+    "invest": "Инвестиции",
+    "about": "О нас",
+    "allObjects": "Все объекты",
+    "ready": "Готовые",
+    "offPlan": "Off-plan",
+    "allCommunities": "Все районы",
+    "roiCalc": "ROI калькулятор",
+    "goldenVisa": "Golden Visa",
+    "mortgage": "Ипотека",
+    "taxes": "Налоги",
+    "management": "Управление",
+    "company": "О компании",
+    "team": "Команда",
+    "services": "Услуги",
+    "reviews": "Отзывы",
+    "blog": "Блог",
+    "contacts": "Контакты"
+  }
+}

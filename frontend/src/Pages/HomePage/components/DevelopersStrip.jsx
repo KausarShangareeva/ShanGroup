@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -19,6 +20,7 @@ const DEV_LIST = [
 
 export default function DevelopersStrip() {
   const isMobile = useIsMobile();
+  const t = useTranslations("HomePage.developersStrip");
   return (
     <Container>
       <section style={{ paddingTop: isMobile ? 40 : 60, paddingBottom: isMobile ? 40 : 60 }}>
@@ -48,9 +50,12 @@ export default function DevelopersStrip() {
                 whiteSpace: "nowrap",
               }}
             >
-              Официальный
-              <br />
-              партнёр Tier-1
+              {t("title").split("\n").map((line, i, arr) => (
+                <span key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
             </div>
             <div
               style={{

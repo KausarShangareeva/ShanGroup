@@ -1,12 +1,4 @@
 import Link from "next/link";
-import {
-  LayoutGrid,
-  Home,
-  Building2,
-  Fence,
-  Layers,
-  Waves,
-} from "lucide-react";
 import Container from "@/components/layout/Container";
 import PropertyFilter from "./PropertyFilter";
 import CatalogEditorial from "./CatalogEditorial";
@@ -17,15 +9,16 @@ import {
   PROPERTY_TYPES,
   getPropertiesByType,
 } from "@/utils/properties";
+import { getIconComponent } from "@/components/Icon/Icon";
 import styles from "./CatalogTypePage.module.css";
 
 const TYPE_ICONS = {
-  "new-builds": LayoutGrid,
-  villas: Home,
-  apartments: Building2,
-  townhouses: Fence,
-  penthouses: Layers,
-  waterfront: Waves,
+  "new-builds": getIconComponent("layout-grid"),
+  villas: getIconComponent("home"),
+  apartments: getIconComponent("building-2"),
+  townhouses: getIconComponent("fence"),
+  penthouses: getIconComponent("layers"),
+  waterfront: getIconComponent("waves"),
 };
 
 const EDITORIAL = {
@@ -128,14 +121,14 @@ export default function CatalogTypePage({ typeSlug }) {
           <div className={styles.heroCatsWrap}>
             <div className={styles.heroCats}>
               {PROPERTY_TYPES.map((t) => {
-                const Icon = TYPE_ICONS[t.slug];
+                const TypeIcon = TYPE_ICONS[t.slug];
                 return (
                   <Link
                     key={t.slug}
                     href={`/${t.slug}`}
                     className={`${styles.heroCatChip} ${t.slug === typeSlug ? styles.heroCatChipActive : ""}`}
                   >
-                    {Icon && <Icon size={15} />}
+                    {TypeIcon && <TypeIcon size={15} strokeWidth={1.6} />}
                     {t.label}
                   </Link>
                 );

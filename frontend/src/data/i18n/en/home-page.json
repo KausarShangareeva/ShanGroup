@@ -1,0 +1,496 @@
+{
+  "hero": {
+    "title": {
+      "primary": "Real estate",
+      "accent": "for living and investment",
+      "place": "in Dubai"
+    },
+    "meta": {
+      "liveKicker": "Live · 28 listings today",
+      "text": "Private investors club for UAE real estate. Off-plan access before the public launch.",
+      "roiLabel": "ROI 2025",
+      "goldenVisaLabel": "Golden Visa"
+    },
+    "locChip": "Live · Dubai Marina",
+    "agent": {
+      "name": "Jalil Shan",
+      "bio": "Senior consultant · 9 years in Dubai luxury · RU / EN / AR",
+      "online": "Online · Available now",
+      "stats": {
+        "clients": "clients",
+        "gmv": "GMV 2025",
+        "reviews": "★ 89 reviews"
+      },
+      "cta": {
+        "main": "Book a viewing",
+        "sub": "We'll call you back within 15 minutes"
+      }
+    },
+    "ticker": {
+      "avgRoiKey": "Avg. ROI 2026",
+      "goldenVisaKey": "Golden Visa",
+      "goldenVisaValue": "from $545K"
+    },
+    "trust": [
+      { "n": "$2.4B", "l": "Deals 2018–2025" },
+      { "n": "2,140+", "l": "Clients from 47 countries" },
+      { "n": "320+", "l": "Exclusive listings" },
+      { "n": "RERA #2087", "l": "Dubai license" }
+    ]
+  },
+  "newFeatures": {
+    "kicker": "New",
+    "titleA": "Newest properties",
+    "titleB": "in Dubai and the UAE",
+    "subtitle": "Fresh listings from leading developers — exclusive conditions and payment plans.",
+    "hint": "Hover",
+    "hintTail": "for details.",
+    "favoritesLabel": "in favorites",
+    "ctaCatalog": "Browse catalog",
+    "goldenVisa": "Golden Visa",
+    "priceFrom": "From",
+    "specFrom": "from",
+    "specRooms": "rooms",
+    "specHandover": "handover",
+    "actionCall": "Call",
+    "actionMail": "Email"
+  },
+  "propertyTabs": {
+    "kicker": "Catalog",
+    "objectsCounter": "Catalog · {count} listings",
+    "titleA": "Pick the format",
+    "titleB": "that fits your scenario",
+    "subtitle": "Full catalog with specs. Hover any card — your consultant's contacts appear.",
+    "favoritesLabel": "in favorites",
+    "tabs": {
+      "apt": "Apartments",
+      "villa": "Villas",
+      "town": "Townhouses"
+    },
+    "ctaCatalog": {
+      "apt": "Browse apartments catalog",
+      "villa": "Browse villas catalog",
+      "town": "Browse townhouses catalog"
+    }
+  },
+  "offerOfMonth": {
+    "tag": "Offer of the month",
+    "titleA": "Top properties from",
+    "titleB": "UAE developers",
+    "subtitle": "Exclusive conditions, payment plans up to 5 years and full deal support",
+    "descLabel": "Description",
+    "by": "by",
+    "ctaContact": "Contact agent",
+    "viewMap": "View on map",
+    "live": "Live · {district}",
+    "description": "{name} — a premium property in {district}. A unique blend of modern design, infrastructure and favourable payment terms from {developer}.",
+    "minPrice": "Starting price",
+    "from": "from",
+    "ready": "Ready",
+    "installmentFrom": "Plan from",
+    "installmentYears": "2 years",
+    "features": "Features",
+    "lifestyle": "Lifestyle",
+    "more": "Details",
+    "featureList": [
+      "Pool",
+      "Gym",
+      "Concierge",
+      "Smart home",
+      "Parking",
+      "SPA"
+    ],
+    "paymentPlan": [
+      { "label": "On booking", "percent": "20%" },
+      { "label": "During construction", "percent": "50%" },
+      { "label": "On handover", "percent": "30%" }
+    ]
+  },
+  "trendingCommunities": {
+    "kicker": "Trending · 14 communities",
+    "titleA": "Popular communities",
+    "titleB": "in Dubai",
+    "subtitle": "Top UAE residential communities — from island villas to downtown highrises. Hover a card to see ROI, average price and listings count.",
+    "filters": {
+      "all": "All communities",
+      "EMAAR": "EMAAR",
+      "DAMAC": "DAMAC",
+      "NAKHEEL": "Nakheel"
+    },
+    "stat": {
+      "avgPrice": "avg. price",
+      "units": "listings"
+    },
+    "fullCatalog": {
+      "kicker": "Full catalog",
+      "title": "All UAE communities",
+      "desc": "66 locations · map · filters by budget and ROI",
+      "cta": "Open catalog"
+    }
+  },
+  "statsStrip": {
+    "kicker": "3 facts about Dubai market",
+    "items": [
+      { "v": "0%", "l": "tax on income & rent", "sub": "Personal income and rental income" },
+      { "v": "+18.4%", "l": "market growth 2024", "sub": "World ranking leader" },
+      { "v": "$545K", "l": "Golden Visa from", "sub": "10-year residence for the family" }
+    ]
+  },
+  "developersStrip": {
+    "title": "Official\nTier-1 partner"
+  },
+  "homeBlog": {
+    "kicker": "Blog · Analytics",
+    "titleA": "Fresh",
+    "titleB": "from the market",
+    "ctaAll": "All articles",
+    "ctaRead": "Read",
+    "minutes": "min",
+    "items": [
+      {
+        "tag": "ANALYTICS",
+        "date": "Apr 12, 2026",
+        "title": "Dubai Q1 2026 market: +6.2% growth, leaders — JVC and Creek Harbour",
+        "read": "8"
+      },
+      {
+        "tag": "GOLDEN VISA",
+        "date": "Apr 5, 2026",
+        "title": "How to get a 10-year residence: a step-by-step investor guide",
+        "read": "12"
+      },
+      {
+        "tag": "OFF-PLAN",
+        "date": "Mar 28, 2026",
+        "title": "Top 7 off-plan projects with handover in 2027",
+        "read": "10"
+      }
+    ]
+  },
+  "goldenVisaCalc": {
+    "kicker": "Calculator · Golden Visa · ROI",
+    "titleA": "How much you'll earn",
+    "titleB": "in Dubai",
+    "subtitle": "Move the budget slider — see matching properties, cash flow, tax savings and visa status. No registration required.",
+    "budget": "Investment budget",
+    "district": "District",
+    "horizon": "Investment horizon",
+    "yearsLong": {
+      "one": "year",
+      "few": "years",
+      "many": "years"
+    },
+    "tiers": {
+      "noneLabel": "No visa",
+      "noneDesc": "Below threshold — consider a mortgage or larger property",
+      "twoYearLabel": "Resident visa",
+      "twoYearDesc": "From $205K ready + $545K owned — 2 years",
+      "tenYearLabel": "Golden Visa 10 years",
+      "tenYearDesc": "From $2M owned — 10-year residency for the entire family"
+    },
+    "result": {
+      "netIncome": "Net income for {n} {unit}",
+      "rentPlusGrowth": "{rent} rent + {growth} capital appreciation",
+      "roiTotal": "ROI total",
+      "monthly": "Monthly",
+      "sqm": "Area",
+      "taxesUae": "UAE taxes",
+      "savedVs": "Saved vs RU:",
+      "noTaxNote": "No tax on income, rent or capital gains",
+      "matched": "Matching listings · {district}",
+      "options": "options",
+      "shareLabel": "Share calculation:",
+      "copied": "Copied",
+      "copy": "Copy",
+      "ctaPdf": "Get PDF report"
+    },
+    "disclaimer": "Calculation is based on average DLD data for 2025 and is not financial advice. Property purchase from $205,000 ready + $545,000 owned grants a 2-year investor visa; from $2,180,000 — Golden Visa for 10 years with extension."
+  },
+  "investorMatch": {
+    "kicker": "Investor Match · 60 seconds",
+    "titleA": "Find the perfect property",
+    "titleB": "for your goals",
+    "subtitle": "6 quick questions — and you'll receive 3 personal selections from a senior consultant with ROI, tax and Golden Visa calculations.",
+    "stepCounter": "{cur} / {total}",
+    "secondsLeft": "~{n} sec",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Get my matches",
+    "enterHint": "Press Enter ↵ to continue",
+    "success": {
+      "title": "Selection ready!",
+      "sentTo": "Sent to",
+      "consultantNote": "senior consultant will reach out within 15 minutes",
+      "topMatches": "Top-3 properties for your profile",
+      "openFull": "Open full selection",
+      "restart": "Start over"
+    },
+    "trust": [
+      { "v": "2,140+", "l": "clients" },
+      { "v": "$2.4B", "l": "in deals" },
+      { "v": "RERA #2087", "l": "license" },
+      { "v": "60 sec", "l": "average time" }
+    ],
+    "steps": {
+      "goal": {
+        "label": "Investment goal",
+        "sub": "What matters to you most right now?",
+        "options": {
+          "live": { "title": "Live there myself", "sub": "A home in Dubai" },
+          "rent": { "title": "Rent it out", "sub": "Stable 7–9% cash flow" },
+          "flip": { "title": "Flip", "sub": "Off-plan → ready +30%" },
+          "visa": { "title": "Golden Visa", "sub": "10-year residence for the family" }
+        }
+      },
+      "budget": {
+        "label": "Budget",
+        "sub": "In US dollars (USD)",
+        "ranges": [
+          "Studios · 1BR JVC, Dubailand",
+          "1–2BR Marina, Creek Harbour",
+          "3BR · villas Tilal, Oasis",
+          "Penthouses · Palm, Downtown"
+        ],
+        "inThisRange": "In this range"
+      },
+      "type": {
+        "label": "Property type",
+        "sub": "You can pick several",
+        "options": ["Apartments", "Villas", "Penthouses", "Townhouses", "Studios"]
+      },
+      "horizon": {
+        "label": "Investment horizon",
+        "sub": "How long do you plan to hold the asset?",
+        "options": {
+          "1-2": { "title": "1–2 years", "sub": "Off-plan flip" },
+          "3-5": { "title": "3–5 years", "sub": "Capital growth" },
+          "5-10": { "title": "5–10 years", "sub": "Cash flow + growth" },
+          "10+": { "title": "10+ years", "sub": "Family asset" }
+        }
+      },
+      "country": {
+        "label": "Citizenship",
+        "sub": "We'll factor in tax treaties",
+        "options": ["Russia", "Kazakhstan", "Belarus", "Uzbekistan", "Ukraine", "UAE", "Other"]
+      },
+      "contact": {
+        "label": "Where do we send your selection?",
+        "sub": "Just email and phone. No spam.",
+        "emailLabel": "Email",
+        "phoneLabel": "Phone / WhatsApp",
+        "phonePlaceholder": "+1 999 123-45-67",
+        "policy": "By clicking \"Get my matches\" you agree to the privacy policy. We don't share data with third parties and we don't spam."
+      }
+    }
+  },
+  "leadForm": {
+    "kicker": "Free consultation",
+    "titleA": "We'll match 3 properties",
+    "titleB": "to your request",
+    "subtitle": "Tell us what you're looking for — our consultant will call back within 15 minutes with a selection that fits your budget and goals.",
+    "perks": [
+      { "v": "15 min", "l": "average response time" },
+      { "v": "$0", "l": "consultation, no obligations" },
+      { "v": "RU/EN/AR", "l": "Russian-speaking manager" }
+    ],
+    "interests": [
+      { "id": "buy", "label": "Buy property", "desc": "For living or rental" },
+      { "id": "invest", "label": "Off-plan investment", "desc": "Developer payment plan" },
+      { "id": "visa", "label": "Get a Golden Visa", "desc": "10-year residence" },
+      { "id": "consult", "label": "Just consult", "desc": "No commitment" }
+    ],
+    "form": {
+      "interestQuestion": "What are you interested in?",
+      "budget": "Budget",
+      "upTo": "up to",
+      "namePlaceholder": "Your name",
+      "phonePlaceholder": "+1 / +971",
+      "submit": "Get selection in 15 minutes",
+      "policy": "By clicking the button, you agree to the",
+      "policyLink": "data policy"
+    },
+    "success": {
+      "title": "Request received",
+      "thanksFallback": "Thank you",
+      "callbackPrefix": ", we'll call you within 15 minutes at",
+      "phoneFallback": "the number you provided"
+    }
+  },
+  "countryCompare": {
+    "kicker": "Compare with your country",
+    "titleA": "UAE",
+    "titleVs": "vs",
+    "titleB": "your country",
+    "subtitle": "7 key investor metrics. Pick your country from the list — we'll compare directly.",
+    "otherCountry": "Other country",
+    "searchPlaceholder": "Search country…",
+    "notFound": "Not found",
+    "leader": "★ Leader",
+    "winsKicker": "UAE wins",
+    "winsLabel": "out of {total} metrics vs",
+    "ctaAnalyze": "Get detailed analysis",
+    "metricLabel": "Metric",
+    "insights": {
+      "tax": {
+        "title": "0% tax on rent & gains",
+        "matchSame": "{country} also has 0% tax — but Dubai's market grows faster.",
+        "withTax": "{country} has {pct}% tax. On a $1M portfolio you lose ~${loss}K over 5 years."
+      },
+      "visa": {
+        "title": "Golden Visa for 10 years",
+        "body": "Visa for the whole family + work permit. No mandatory residence."
+      }
+    },
+    "metrics": {
+      "tax_rent": "Rental tax",
+      "tax_capital": "Capital gains tax",
+      "roi": "Average ROI",
+      "appreciation": "Price growth 2024",
+      "safety": "Safety index",
+      "visa": "Investor residency",
+      "currency": "Currency stability"
+    },
+    "countries": {
+      "uae": "UAE",
+      "russia": "Russia",
+      "kazakhstan": "Kazakhstan",
+      "uk": "United Kingdom",
+      "usa": "USA",
+      "germany": "Germany",
+      "turkey": "Turkey",
+      "georgia": "Georgia",
+      "cyprus": "Cyprus",
+      "belarus": "Belarus",
+      "uzbekistan": "Uzbekistan",
+      "azerbaijan": "Azerbaijan"
+    },
+    "visaValues": {
+      "tenYears": "10 years",
+      "twoYears": "2 years",
+      "none": "no"
+    }
+  },
+  "marketPulse": {
+    "kicker": "Live · Q2 2026",
+    "titleA": "Market pulse",
+    "titleB": "of UAE real estate",
+    "subtitle": "Real-time data on 66 communities — updated live based on closed and public deals. Sources: DLD, DXBinteract, ShanGroup Research.",
+    "miniKpis": [
+      { "label": "Q2 deals", "value": "14,820", "trend": "+12%" },
+      { "label": "Avg. ROI", "value": "11.4%", "trend": "+0.8" },
+      { "label": "Transactions / day", "value": "167", "trend": "+9%" }
+    ],
+    "tabs": {
+      "roi": "ROI",
+      "price": "Price/m²",
+      "demand": "Demand"
+    },
+    "districtRange": "{name} · 24 months",
+    "updatedAgo": "Updated 2 min ago",
+    "topByYield": "TOP by yield",
+    "topYtd": "2026 YTD",
+    "leadMagnet": {
+      "badge": "Free",
+      "titleA": "Full report",
+      "titleB": "on the 2026 market",
+      "desc": "48-page PDF: ROI for 66 communities, price forecast, top-15 off-plan, taxes, Golden Visa.",
+      "emailPlaceholder": "your email",
+      "submit": "Get it",
+      "sentTo": "Report sent to",
+      "trust": "2,140+ investors already received it"
+    },
+    "bottomStats": [
+      { "label": "Average ROI 2026", "value": "11.4%", "delta": "+0.8 pp YoY" },
+      { "label": "Q1+Q2 deals volume", "value": "$48.6B", "delta": "+22.4% YoY" },
+      { "label": "Off-plan / ready", "value": "62 / 38%", "delta": "off-plan leads" },
+      { "label": "Avg. liquidity period", "value": "38 days", "delta": "−14% YoY" }
+    ],
+    "indexLabel": "index {n}",
+    "monthsShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  },
+  "dubaiMap": {
+    "kicker": "Map · {count} listings",
+    "titleA": "Find a property",
+    "titleB": "on the map",
+    "types": {
+      "all": "All",
+      "studio": "Studios",
+      "apt": "Apt.",
+      "penthouse": "Penthouses",
+      "villa": "Villas"
+    },
+    "budgetUpTo": "Up to",
+    "selectionLabel": "{count} listings in selection",
+    "legend": {
+      "standard": "Standard",
+      "gold": "Golden Visa"
+    }
+  },
+  "investorFAQ": {
+    "kicker": "FAQ · 10 answers for investors",
+    "titleA": "Closing the main",
+    "titleB": "objections",
+    "ctaAsk": "Ask your question",
+    "items": [
+      {
+        "q": "Can a foreigner buy property in Dubai?",
+        "a": "Yes. Since 2002, foreigners can buy property as full freehold ownership in designated zones — that's 90% of all new construction in Dubai, including Marina, Downtown, Palm Jumeirah, Creek Harbour, Business Bay."
+      },
+      {
+        "q": "What is the minimum budget to enter the market?",
+        "a": "From $145,000 — studios and compact apartments in Dubailand and JVC. Investor resident visa starts at $205,000 (ready property) + $545,000 owned; Golden Visa — from $2,180,000."
+      },
+      {
+        "q": "What taxes does an investor pay in the UAE?",
+        "a": "0% personal income tax, 0% rental income tax, 0% capital gains tax. One-time DLD fee on purchase — 4% of value. Annual service charge depends on the property (10–25 AED/sq.ft)."
+      },
+      {
+        "q": "How do I get a Golden Visa through property?",
+        "a": "The 10-year Golden Visa is granted on property purchase from 2,000,000 AED (~$545,000) owned. A 2-year visa — from 750,000 AED investment. The visa covers spouse, children and parents. No mandatory residence required."
+      },
+      {
+        "q": "What is off-plan and what are the benefits?",
+        "a": "Off-plan is buying during construction with 40/60 or 60/40 interest-free payment plans. Benefits: price 20–35% below ready, capital growth of 25–40% until handover, exclusive layouts. Risk minimised: RERA escrow accounts protect buyer payments."
+      },
+      {
+        "q": "How do developer payment plans work?",
+        "a": "Standard 40/60: 40% during construction in equal tranches (5–10% every 6 months), 60% on handover. You can take a UAE bank mortgage at 4–6% per year for the final payment. No foreign credit history check."
+      },
+      {
+        "q": "Can a non-resident get a mortgage?",
+        "a": "Yes. UAE banks (Mashreq, Emirates NBD, FAB) issue mortgages to non-residents up to 50% of property value, rate 4.5–6.5%, term up to 25 years. Income proof required (from any country) from $5,000/month."
+      },
+      {
+        "q": "What is the real ROI and cash flow?",
+        "a": "Average ROI in Dubai in 2025 — 7.2%. Leaders: JVC and Dubailand 10–12%, Marina 8.4%, Downtown 7.2%, Palm 6.8%. Occupancy average 87–94%. On top of ROI there's annual capital growth of 5–7% (the 2024 market showed +18%)."
+      },
+      {
+        "q": "What if the developer fails to complete?",
+        "a": "All buyer payments go to a RERA escrow account — the developer has no access to them until each construction stage is completed. If deadlines slip by more than 12 months, the investor is entitled to a full refund + penalty. ShanGroup works only with Tier-1 developers (EMAAR, DAMAC, SOBHA, NAKHEEL, MERAAS)."
+      },
+      {
+        "q": "How does a remote deal work?",
+        "a": "Documents can be signed remotely via notarised power of attorney. Settlement — bank transfer to escrow. DLD registration takes 1 business day. ShanGroup fully assists: account opening, lawyer selection, tax consultation, key handover."
+      }
+    ]
+  },
+  "telegramChannel": {
+    "channelStatus": "Private channel · 1,248 investors",
+    "titleA": "Off-plan",
+    "titleB": "before public launch",
+    "subtitle": "Exclusive Tier-1 developer offers 2–4 weeks before release. Pricelist prices, best floor plans, flexible payment plans.",
+    "bullets": [
+      "3–5 exclusive listings per week",
+      "Market analytics and Q-reports from ShanGroup Research",
+      "Direct chat with a consultant · 15-min response",
+      "No spam — only real deals"
+    ],
+    "subscribe": "Subscribe to the channel",
+    "subscribing": "Opening Telegram…",
+    "footnote": "@shangroup_invest · free · unsubscribe in 1 click",
+    "phoneTitle": "ShanGroup · Off-plan",
+    "phoneSubscribers": "1,248 subscribers",
+    "weeklyBadge": "+47 this week",
+    "weeklyDesc": "new subscribers"
+  }
+}

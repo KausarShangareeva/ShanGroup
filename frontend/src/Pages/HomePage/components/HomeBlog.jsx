@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -7,32 +8,17 @@ const NEU_RAISED =
   "-8px -8px 20px var(--shadow-light), 8px 8px 24px var(--shadow-dark)";
 const LINE_STRONG = "oklch(0.78 0.005 75)";
 
-const BLOG = [
-  {
-    tag: "АНАЛИТИКА",
-    date: "12 апр 2026",
-    title: "Рынок Дубая Q1 2026: рост +6.2%, лидеры — JVC и Creek Harbour",
-    read: "8 мин",
-    img: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=900&q=80&auto=format&fit=crop",
-  },
-  {
-    tag: "GOLDEN VISA",
-    date: "5 апр 2026",
-    title: "Как получить ВНЖ на 10 лет: пошаговый гайд для инвестора",
-    read: "12 мин",
-    img: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8f5?w=900&q=80&auto=format&fit=crop",
-  },
-  {
-    tag: "OFF-PLAN",
-    date: "28 мар 2026",
-    title: "Топ-7 проектов off-plan со сдачей в 2027 году",
-    read: "10 мин",
-    img: "https://images.unsplash.com/photo-1546412414-e1885259563a?w=900&q=80&auto=format&fit=crop",
-  },
+// Изображения статичны (URLs), tag/date/title/read берутся из переводов.
+const BLOG_IMAGES = [
+  "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=900&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1582672060674-bc2bd808a8f5?w=900&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1546412414-e1885259563a?w=900&q=80&auto=format&fit=crop",
 ];
 
 export default function HomeBlog() {
   const isMobile = useIsMobile();
+  const t = useTranslations("HomePage.homeBlog");
+  const BLOG = t.raw("items").map((item, i) => ({ ...item, img: BLOG_IMAGES[i] }));
   return (
     <Container>
       <section style={{ paddingTop: isMobile ? 60 : 100, paddingBottom: isMobile ? 40 : 70 }}>
@@ -61,7 +47,7 @@ export default function HomeBlog() {
               }}
             >
               <span aria-hidden style={{ display: "inline-block", width: 32, height: 1, background: "var(--sand-deep)", opacity: 0.55 }} />
-              Блог · Аналитика
+              {t("kicker")}
             </div>
             <h2
               style={{
@@ -77,9 +63,9 @@ export default function HomeBlog() {
                 textWrap: "balance",
               }}
             >
-              Свежее{" "}
+              {t("titleA")}{" "}
               <span style={{ fontStyle: "italic", color: "var(--sand-deep)", fontWeight: 400 }}>
-                о&nbsp;рынке
+                {t("titleB")}
               </span>
             </h2>
           </div>
@@ -101,7 +87,7 @@ export default function HomeBlog() {
             onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(10,10,11,.04)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
-            Все статьи
+            {t("ctaAll")}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 7 H11 M7 3 L11 7 L7 11" />
             </svg>
@@ -170,7 +156,7 @@ export default function HomeBlog() {
                 >
                   <span>{p.date}</span>
                   <span>·</span>
-                  <span>{p.read}</span>
+                  <span>{p.read} {t("minutes")}</span>
                 </div>
                 <div
                   style={{
@@ -197,7 +183,7 @@ export default function HomeBlog() {
                     color: "var(--sand-deep)",
                   }}
                 >
-                  Читать
+                  {t("ctaRead")}
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 7 H11 M7 3 L11 7 L7 11" />
                   </svg>

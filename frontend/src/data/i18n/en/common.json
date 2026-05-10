@@ -1,0 +1,28 @@
+{
+  "actions": {
+    "find": "Search",
+    "apply": "Apply",
+    "reset": "Reset",
+    "close": "Close",
+    "back": "Back",
+    "send": "Send",
+    "more": "More",
+    "all": "All",
+    "expand": "Expand ↑",
+    "collapse": "Collapse",
+    "viewAll": "View all",
+    "leaveRequest": "Leave a request",
+    "contactAgent": "Contact agent",
+    "bookViewing": "Book a viewing",
+    "openObject": "Open property",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "Remove from favorites"
+  },
+  "common": {
+    "loading": "Loading…",
+    "online": "Online",
+    "objects": "listings",
+    "nothingFound": "Nothing found",
+    "responseWithin": "We'll respond within 15 minutes"
+  }
+}

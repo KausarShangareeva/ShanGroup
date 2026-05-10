@@ -3,27 +3,19 @@
 import { useState } from "react";
 import Container from "@/components/layout/Container";
 import ArticleCard from "./components/ArticleCard";
-import DATA from "@/data/articles.json";
-import AUTHORS from "@/data/authors.json";
+import DATA from "@/data/i18n/ru/content/articles.json";
+import AUTHORS from "@/data/i18n/ru/people/authors.json";
 import styles from "./ArticlesPage.module.css";
-import {
-  LayoutGrid,
-  BookOpen,
-  CreditCard,
-  Scale,
-  MapPin,
-  TrendingUp,
-  Heart,
-} from "lucide-react";
+import { getIconComponent } from "@/components/Icon/Icon";
 
 const CATEGORY_ICONS = {
-  "Все":                        LayoutGrid,
-  "Гайды":                      BookOpen,
-  "Золотая Виза":               CreditCard,
-  "Налоги и Законы":            Scale,
-  "Обзоры районов":             MapPin,
-  "Инвестиционные стратегии":   TrendingUp,
-  "Для жизни":                  Heart,
+  "Все":                        getIconComponent("layout-grid"),
+  "Гайды":                      getIconComponent("book-open"),
+  "Золотая Виза":               getIconComponent("credit-card"),
+  "Налоги и Законы":            getIconComponent("scale"),
+  "Обзоры районов":             getIconComponent("map-pin"),
+  "Инвестиционные стратегии":   getIconComponent("trending-up"),
+  "Для жизни":                  getIconComponent("heart"),
 };
 
 export default function ArticlesPage() {
@@ -56,14 +48,14 @@ export default function ArticlesPage() {
           <div className={styles.heroCatsWrap}>
             <div className={styles.heroCats}>
               {DATA.categories.map((label) => {
-                const Icon = CATEGORY_ICONS[label] ?? LayoutGrid;
+                const IconCmp = CATEGORY_ICONS[label] ?? CATEGORY_ICONS["Все"];
                 return (
                   <button
                     key={label}
                     className={`${styles.heroCatChip} ${active === label ? styles.heroCatChipActive : ""}`}
                     onClick={() => setActive(label)}
                   >
-                    <Icon size={16} />
+                    <IconCmp size={16} strokeWidth={1.6} />
                     {label}
                   </button>
                 );

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Heart } from "lucide-react";
 import { IcHeart } from "@/components/HeroIcons/HeroIcons";
 import styles from "./LikeButton.module.css";
 
+import Icon from "@/components/Icon/Icon";
 export default function LikeButton({
   isLiked: isLikedProp = false,
   onLike,
@@ -27,7 +27,7 @@ export default function LikeButton({
     ) : variant === "nav" ? (
       <IcHeart size={15} />
     ) : (
-      <Heart fill="none" size={20} strokeWidth={2} />
+      <Icon name="heart" fill="none" size={20}  />
     );
 
   if (href) {

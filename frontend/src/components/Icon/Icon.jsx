@@ -1,150 +1,484 @@
-import {
-  Phone,
-  PhoneCall,
-  Mail,
-  Globe,
-  Clock,
-  MessageCircle,
-  Send,
-  Linkedin,
-  MapPin,
-  Building,
-  Building2,
-  Home,
-  Briefcase,
-  Landmark,
-  FileText,
-  CreditCard,
-  Info,
-  Star,
-  BookOpen,
-  HelpCircle,
-  Shield,
-  Gem,
-  Flame,
-  Sparkles,
-  Plus,
-  ArrowRight,
-  ChevronDown,
-  PenLine,
-  TrendingUp,
-  Calendar,
-} from "lucide-react";
 import styles from "./Icon.module.css";
 
-/* ──────────── Фирменные SVG (собраны здесь, чтобы
-   все иконки жили в одном месте) ──────────── */
+// ─────────────────────────────────────────────────────────────
+// Единый набор иконок проекта.
+// Все паттерны рисованы в одном editorial-стиле: 1.6px stroke,
+// currentColor, square caps, viewBox 24×24 (если не указано иное).
+// HeroIcons.jsx и MMIcon.jsx — тонкие адаптеры, которые шлют сюда
+// ради обратной совместимости со старым API (IcSearch / kind="trend").
+// ─────────────────────────────────────────────────────────────
 
-function IconInstagram({ size = 18, strokeWidth = 1.75 }) {
-  return (
+const STROKE = {
+  fill: "none",
+  stroke: "currentColor",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+};
+
+function createSvgIcon(children, vb = 24) {
+  // eslint-disable-next-line react/display-name
+  return ({ size = 18, strokeWidth = 1.6, ...rest }) => (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
+      viewBox={`0 0 ${vb} ${vb}`}
       strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      {...STROKE}
+      {...rest}
     >
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-      <circle cx="12" cy="12" r="4.5" />
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      {children}
     </svg>
   );
 }
 
-function IconYoutube({ size = 18, strokeWidth = 1.75 }) {
+// ─── СОЦСЕТИ (filled — оставляем как есть, бренд) ───
+function IconInstagram({ size = 18, strokeWidth = 1.6 }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.57 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-      <polygon
-        points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
-        fill="currentColor"
-        stroke="none"
-      />
+    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} {...STROKE}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" />
     </svg>
   );
 }
-
-function IconTelegram({ size = 18 }) {
+function IconYoutube({ size = 18, strokeWidth = 1.6 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} {...STROKE}>
+      <rect x="2" y="6" width="20" height="12" rx="3" />
+      <path d="M10 9.5v5l4-2.5z" fill="currentColor" />
     </svg>
   );
 }
-
-function IconWhatsApp({ size = 18 }) {
+function IconTelegram({ size = 18, strokeWidth = 1.6 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} {...STROKE}>
+      <path d="M3 11l18-7-3 17-6-4-3 4-1-7 11-7-13 6z" />
     </svg>
   );
 }
-
-function IconViber({ size = 18 }) {
+function IconWhatsApp({ size = 18, strokeWidth = 1.6 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M11.398.002C8.865-.028 3.443.504 1.03 2.748-1.065 4.832-.998 7.754-.998 7.754s-.268 8.195 7.91 10.37v3.614s-.054.976.613.976c.808 0 1.302-.796 2.088-1.69.43-.474.998-1.14 1.4-1.61 3.85.323 6.81-.42 7.145-.53.777-.25 5.17-.815 5.883-6.646.736-5.993-.358-9.78-2.643-11.236zm.568 18.168l-.001.02v-.018zm5.25-3.207c-.636.82-1.8 1.48-1.8 1.48s-.21.11-.383-.147c-.173-.258-.668-.817-.668-.817C11.67 17.46 8.42 16.15 6.3 12.6c-.616-1.04-.95-2.017-1.15-2.986-.29-1.44-.192-2.694.183-3.56C5.838 4.7 7.11 3.8 8.43 3.692c.344-.027.615.037.785.272.547.766 2.082 3.228 2.205 3.498.167.362.114.653-.05.853-.458.55-.88.79-1.148 1.198-.205.315-.148.574.014.84.91 1.487 2.03 2.53 3.643 3.32.44.213.773.154 1.036-.128.37-.399.896-1.018 1.282-1.282.31-.21.604-.148.953.054.56.322 2.985 1.423 3.342 1.672.357.25.408.623.117 1.16-.05.093-.13.204-.243.354l-.113.14z" />
+    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} {...STROKE}>
+      <path d="M4 20l1.5-4.5A8 8 0 1 1 8.5 18.5L4 20z" />
+    </svg>
+  );
+}
+function IconLinkedin({ size = 18, strokeWidth = 1.6 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} {...STROKE}>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 17v-7" />
+    </svg>
+  );
+}
+function IconViber({ size = 18, strokeWidth = 1.6 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" strokeWidth={strokeWidth} {...STROKE}>
+      <ellipse cx="12" cy="11" rx="9" ry="8" />
+      <path d="M9 19l-1 3 4-3" />
+      <path d="M8 8c0 3 2 5 5 5" />
     </svg>
   );
 }
 
-/* ──────────── Реестр имён → компонент ──────────── */
-
+// ─── ИКОНКИ В EDITORIAL-СТИЛЕ ───
 const REGISTRY = {
   // Контакты
-  "phone": Phone,
-  "phone-call": PhoneCall,
-  "mail": Mail,
-  "message": MessageCircle,
-  // Мессенджеры и соцсети
-  "instagram": IconInstagram,
-  "youtube": IconYoutube,
-  "telegram": IconTelegram,
-  "whatsapp": IconWhatsApp,
-  "viber": IconViber,
-  "send": Send,
-  "linkedin": Linkedin,
+  phone: createSvgIcon(
+    <path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2z" />
+  ),
+  "phone-call": createSvgIcon(
+    <>
+      <path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2z" />
+      <path d="M15 5a4 4 0 0 1 4 4M15 9a1 1 0 0 1 0 0" />
+    </>
+  ),
+  mail: createSvgIcon(
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3 7l9 7 9-7" />
+    </>
+  ),
+  message: createSvgIcon(
+    <path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4A8 8 0 1 1 21 12z" />
+  ),
+  send: createSvgIcon(<path d="M3 11l18-7-3 17-6-4-3 4-1-7 11-7-13 6z" />),
+
   // Гео и время
-  "globe": Globe,
-  "clock": Clock,
-  "map-pin": MapPin,
+  globe: createSvgIcon(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </>
+  ),
+  clock: createSvgIcon(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </>
+  ),
+  pin: createSvgIcon(
+    <>
+      <path d="M12 22s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </>
+  ),
+  "map-pin": createSvgIcon(
+    <>
+      <path d="M12 22s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </>
+  ),
+
   // Недвижимость
-  "building": Building,
-  "building-2": Building2,
-  "home": Home,
-  "briefcase": Briefcase,
-  "landmark": Landmark,
+  home: createSvgIcon(<path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-6h-6v6H5a2 2 0 0 1-2-2v-9z" />),
+  building: createSvgIcon(
+    <>
+      <rect x="5" y="3" width="14" height="18" rx="1" />
+      <path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3" />
+    </>
+  ),
+  "building-2": createSvgIcon(
+    <>
+      <rect x="3" y="6" width="18" height="15" rx="1" />
+      <path d="M9 6V3h6v3M7 11h2M11 11h2M15 11h2M7 15h2M11 15h2M15 15h2" />
+    </>
+  ),
+  briefcase: createSvgIcon(
+    <>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" />
+    </>
+  ),
+  landmark: createSvgIcon(
+    <>
+      <path d="M12 3l9 5H3l9-5z" />
+      <path d="M5 11v7M9 11v7M15 11v7M19 11v7M3 21h18" />
+    </>
+  ),
+  bed: createSvgIcon(
+    <>
+      <path d="M3 18v-7M3 14h18v4M21 18V11a3 3 0 0 0-3-3h-7v6" />
+      <circle cx="7" cy="12" r="1.5" />
+    </>
+  ),
+  bath: createSvgIcon(
+    <>
+      <path d="M3 11h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3z" />
+      <path d="M6 11V6a2 2 0 0 1 4 0M5 18l-1 2M19 18l1 2" />
+    </>
+  ),
+  area: createSvgIcon(
+    <>
+      <path d="M5 5h6M5 5v6M19 19h-6M19 19v-6M5 19l14-14" />
+    </>
+  ),
+  maximize: createSvgIcon(<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />),
+
   // Услуги / документы
-  "file-text": FileText,
-  "pen-line": PenLine,
-  "credit-card": CreditCard,
-  "info": Info,
-  "star": Star,
-  "book-open": BookOpen,
-  "help-circle": HelpCircle,
-  // Категории девелоперов
-  "shield": Shield,
-  "gem": Gem,
-  "flame": Flame,
-  "sparkles": Sparkles,
-  // Разное
-  "plus": Plus,
-  "arrow-right": ArrowRight,
-  "chevron-down": ChevronDown,
-  "trending-up": TrendingUp,
-  "calendar": Calendar,
+  "file-text": createSvgIcon(
+    <>
+      <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z" />
+      <path d="M14 3v6h6M8 13h8M8 17h6" />
+    </>
+  ),
+  doc: createSvgIcon(
+    <>
+      <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z" />
+      <path d="M14 3v6h6M8 13h8M8 17h6" />
+    </>
+  ),
+  "credit-card": createSvgIcon(
+    <>
+      <rect x="3" y="6" width="18" height="13" rx="2" />
+      <path d="M3 10h18M7 15h3" />
+    </>
+  ),
+  "pen-line": createSvgIcon(<path d="M14 4l6 6-11 11H3v-6L14 4z" />),
+  pen: createSvgIcon(<path d="M14 4l6 6-11 11H3v-6L14 4z" />),
+  passport: createSvgIcon(
+    <>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <circle cx="12" cy="11" r="3" />
+      <path d="M9 17h6" />
+    </>
+  ),
+  biz: createSvgIcon(
+    <>
+      <rect x="3" y="7" width="18" height="14" rx="1.5" />
+      <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" />
+    </>
+  ),
+  bank: createSvgIcon(
+    <>
+      <path d="M3 9l9-5 9 5" />
+      <path d="M5 9v9M9 9v9M15 9v9M19 9v9M3 19h18" />
+    </>
+  ),
+
+  // Иконки контента / справки
+  info: createSvgIcon(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5M12 8v.01" />
+    </>
+  ),
+  star: createSvgIcon(
+    <path d="M12 3l2.6 6.3 6.4.5-4.9 4.2 1.5 6.5L12 17l-5.6 3.5 1.5-6.5L3 9.8l6.4-.5L12 3z" />
+  ),
+  book: createSvgIcon(
+    <>
+      <path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2V5z" />
+      <path d="M4 17h14" />
+    </>
+  ),
+  "book-open": createSvgIcon(
+    <>
+      <path d="M3 5h7a3 3 0 0 1 3 3v12M21 5h-7a3 3 0 0 0-3 3v12" />
+      <path d="M3 5v15h7M21 5v15h-7" />
+    </>
+  ),
+  help: createSvgIcon(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 16.5v.01" />
+    </>
+  ),
+  "help-circle": createSvgIcon(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 16.5v.01" />
+    </>
+  ),
+
+  // Инвестиционные стратегии (из MMIcon)
+  trend: createSvgIcon(
+    <>
+      <path d="M3 17l6-6 4 4 8-8" />
+      <path d="M14 7h7v7" />
+    </>
+  ),
+  "trending-up": createSvgIcon(
+    <>
+      <path d="M3 17l6-6 4 4 8-8" />
+      <path d="M14 7h7v7" />
+    </>
+  ),
+  key: createSvgIcon(
+    <>
+      <circle cx="8" cy="14" r="4" />
+      <path d="M11 12l9-9 2 2-2 2 2 2-2 2-2-2-2 2" />
+    </>
+  ),
+  calendar: createSvgIcon(
+    <>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M3 9h18M8 3v4M16 3v4" />
+    </>
+  ),
+  swap: createSvgIcon(
+    <path d="M7 4l-4 4 4 4M3 8h14M17 12l4 4-4 4M21 16H7" />
+  ),
+
+  // Программы / категории
+  shield: createSvgIcon(
+    <>
+      <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z" />
+      <path d="M9 12l2 2 4-4" />
+    </>
+  ),
+  percent: createSvgIcon(
+    <>
+      <path d="M5 19L19 5" />
+      <circle cx="7" cy="7" r="2.5" />
+      <circle cx="17" cy="17" r="2.5" />
+    </>
+  ),
+  gem: createSvgIcon(<path d="M12 3l5 5-5 13-5-13 5-5zM2 8h20M7 8l5-5M17 8l-5-5" />),
+  flame: createSvgIcon(
+    <path d="M12 3c2 4-1 6 1 9 1 1.5 1 3 0 5-2 4-8 3-8-3 0-3 2-5 3-7 1 1 0 4 4-4z" />
+  ),
+  sparkles: createSvgIcon(
+    <>
+      <path d="M12 4l1.5 4.5L18 10l-4.5 1.5L12 16l-1.5-4.5L6 10l4.5-1.5L12 4z" />
+      <path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8L16.5 19.5l1.8-.7L19 17z" />
+    </>
+  ),
+
+  // Инструменты
+  calc: createSvgIcon(
+    <>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01" />
+    </>
+  ),
+  compare: createSvgIcon(
+    <path d="M12 3v18M5 7l-2 2 2 2M19 17l2-2-2-2M3 9h7M14 15h7" />
+  ),
+  chart: createSvgIcon(
+    <path d="M3 21h18M5 17V9M10 17V5M15 17v-7M20 17V7" />
+  ),
+
+  // Действия
+  search: createSvgIcon(
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <path d="M20 20l-3.5-3.5" />
+    </>
+  ),
+  close: createSvgIcon(<path d="M6 6l12 12M18 6L6 18" />),
+  check: createSvgIcon(<path d="M5 12l5 5L20 7" />),
+  plus: createSvgIcon(<path d="M12 5v14M5 12h14" />),
+  arrow: createSvgIcon(<path d="M5 12h14M13 6l6 6-6 6" />),
+  "arrow-right": createSvgIcon(<path d="M5 12h14M13 6l6 6-6 6" />),
+  "arrow-up-right": createSvgIcon(<path d="M7 17L17 7M9 7h8v8" />),
+  chevron: createSvgIcon(<path d="M6 9l6 6 6-6" />),
+  "chevron-down": createSvgIcon(<path d="M6 9l6 6 6-6" />),
+  "chevron-up": createSvgIcon(<path d="M6 15l6-6 6 6" />),
+  "chevron-left": createSvgIcon(<path d="M15 18l-6-6 6-6" />),
+  "chevron-right": createSvgIcon(<path d="M9 6l6 6-6 6" />),
+
+  // Финансы / прочее
+  dollar: createSvgIcon(
+    <path d="M12 3v18M16 7c-1-2-3-2-4-2-2 0-4 1-4 3s2 3 4 3 4 1 4 3-2 3-4 3-3 0-4-2" />
+  ),
+  sliders: createSvgIcon(
+    <>
+      <path d="M4 6h16M4 12h16M4 18h16" />
+      <circle cx="9" cy="6" r="2" />
+      <circle cx="15" cy="12" r="2" />
+      <circle cx="7" cy="18" r="2" />
+    </>
+  ),
+  heart: createSvgIcon(
+    <path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z" />
+  ),
+  verified: createSvgIcon(
+    <>
+      <path d="M12 2l2.5 2 3-1 1 3 3 1-1 3 1 3-3 1-1 3-3-1L12 22l-2.5-2-3 1-1-3-3-1 1-3-1-3 3-1 1-3 3 1L12 2z" />
+      <path d="M9 12l2 2 4-4" />
+    </>
+  ),
+
+  // Эко / категории / разное
+  trees: createSvgIcon(
+    <>
+      <path d="M12 21v-9" />
+      <path d="M7 12c-2 0-3.5-1.5-3.5-3.5S5 5 7 5c0-2 2-3 4-3s4 1 4 3c2 0 3.5 1.5 3.5 3.5S17 12 15 12" />
+      <path d="M5 12l-1 4h6M19 12l1 4h-6" />
+    </>
+  ),
+  leaf: createSvgIcon(
+    <path d="M5 21c0-9 7-16 16-16 0 9-7 16-16 16zM5 21l8-8" />
+  ),
+  crown: createSvgIcon(
+    <>
+      <path d="M3 8l3 8h12l3-8-5 3-4-6-4 6-5-3z" />
+      <path d="M5 19h14" />
+    </>
+  ),
+  "layout-grid": createSvgIcon(
+    <>
+      <rect x="3" y="3" width="8" height="8" rx="1" />
+      <rect x="13" y="3" width="8" height="8" rx="1" />
+      <rect x="3" y="13" width="8" height="8" rx="1" />
+      <rect x="13" y="13" width="8" height="8" rx="1" />
+    </>
+  ),
+  layers: createSvgIcon(
+    <>
+      <path d="M12 3l9 5-9 5-9-5 9-5z" />
+      <path d="M3 13l9 5 9-5M3 17l9 5 9-5" />
+    </>
+  ),
+  "land-plot": createSvgIcon(
+    <>
+      <path d="M3 18l9-5 9 5-9 4-9-4z" />
+      <path d="M12 13V6M9 6h6" />
+    </>
+  ),
+  "file-down": createSvgIcon(
+    <>
+      <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z" />
+      <path d="M14 3v6h6M12 12v6M9 15l3 3 3-3" />
+    </>
+  ),
+  bot: createSvgIcon(
+    <>
+      <rect x="4" y="8" width="16" height="12" rx="2" />
+      <path d="M12 4v4M9 14h.01M15 14h.01M9 18h6" />
+      <path d="M2 14h2M20 14h2" />
+    </>
+  ),
+  maximize: createSvgIcon(<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />),
+  "maximize-2": createSvgIcon(<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />),
+  fence: createSvgIcon(
+    <path d="M4 7l3-3 3 3 3-3 3 3 3-3 3 3M4 7v13M10 7v13M16 7v13M22 7v13M4 12h18M4 17h18" />
+  ),
+  eye: createSvgIcon(
+    <>
+      <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+  ),
+  paintbrush: createSvgIcon(
+    <>
+      <path d="M9 11l8-8 4 4-8 8M3 21l3-3a3 3 0 1 1 3 3l-3 0z" />
+      <path d="M11 8l5 5" />
+    </>
+  ),
+  scale: createSvgIcon(
+    <>
+      <path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z" />
+    </>
+  ),
+  newspaper: createSvgIcon(
+    <>
+      <path d="M3 5h14v14H3z" />
+      <path d="M17 9h4v8a2 2 0 0 1-2 2H5M6 9h7M6 13h7M6 17h4" />
+    </>
+  ),
+  "bar-chart": createSvgIcon(
+    <path d="M4 21V11M10 21V3M16 21v-7M22 21H2" />
+  ),
+  rocket: createSvgIcon(
+    <>
+      <path d="M12 2c4 4 6 8 6 12-2 0-4-2-6-2s-4 2-6 2c0-4 2-8 6-12z" />
+      <path d="M9 14l-4 4 2 2 4-4M15 14l4 4-2 2-4-4" />
+      <circle cx="12" cy="9" r="1.5" />
+    </>
+  ),
+  "message-square": createSvgIcon(
+    <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-5 4V5z" />
+  ),
+  "check-circle": createSvgIcon(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8 12l3 3 5-6" />
+    </>
+  ),
+  "hard-hat": createSvgIcon(
+    <>
+      <path d="M3 18h18M5 18v-3a7 7 0 0 1 14 0v3" />
+      <path d="M9 11V8M15 11V8" />
+    </>
+  ),
+  waves: createSvgIcon(
+    <path d="M3 8c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2M3 14c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2M3 20c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2" />
+  ),
+
+  // Социальные (filled, бренд)
+  instagram: IconInstagram,
+  youtube: IconYoutube,
+  telegram: IconTelegram,
+  whatsapp: IconWhatsApp,
+  linkedin: IconLinkedin,
+  viber: IconViber,
+  // Алиасы из MMIcon (kind="ig"/"yt"/"tg"/"wa")
+  ig: IconInstagram,
+  yt: IconYoutube,
+  tg: IconTelegram,
+  wa: IconWhatsApp,
 };
 
 const SIZE_PX = { xs: 12, sm: 14, md: 18, lg: 22, xl: 28 };
@@ -153,16 +487,15 @@ const BOX_PX = { xs: 22, sm: 28, md: 38, lg: 48, xl: 56 };
 /**
  * Универсальная иконка проекта.
  *
- * @param {string}   [name]        — имя иконки из реестра (например, "phone", "telegram").
- * @param {Function} [component]   — альтернативно: сразу React-компонент (lucide или SVG).
- * @param {string}   [src]         — альтернативно: путь к файлу (например, "/social_media/call.svg").
- *                                   Рендерится через <img>, цвет SVG при этом не управляется.
- * @param {string}   [alt]         — alt-текст для src-иконок (для доступности).
- * @param {"gray"|"black"|"white"} [color="gray"] — цветовая схема (не влияет на src-иконки).
+ * @param {string}   [name]        — имя из реестра ("phone", "trend", ...). Полный
+ *                                   список — в REGISTRY ниже.
+ * @param {Function} [component]   — альтернатива: готовый React-компонент.
+ * @param {string}   [src]         — альтернатива: путь к файлу-картинке (рендерим <img>).
+ * @param {string}   [alt]         — alt-текст для src.
+ * @param {"gray"|"black"|"white"} [color="gray"] — цветовая схема.
  * @param {"xs"|"sm"|"md"|"lg"|"xl"|number} [size="md"] — размер иконки.
- * @param {boolean}  [boxed=false] — обернуть в квадратный бокс с рамкой (как в навигационном дропдауне).
- * @param {number}   [strokeWidth=1.75] — толщина обводки для lucide-иконок.
- * @param {string}   [className]   — дополнительный класс.
+ * @param {boolean}  [boxed=false] — обернуть в квадратный бокс.
+ * @param {number}   [strokeWidth=1.6] — толщина обводки.
  */
 export default function Icon({
   name,
@@ -172,7 +505,7 @@ export default function Icon({
   color = "gray",
   size = "md",
   boxed = false,
-  strokeWidth = 1.75,
+  strokeWidth = 1.6,
   className = "",
   style,
   ...rest
@@ -181,6 +514,7 @@ export default function Icon({
 
   if (!src && !Cmp) {
     if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
       console.warn(`<Icon /> — иконка "${name}" не найдена в реестре`);
     }
     return null;
@@ -223,4 +557,11 @@ export default function Icon({
       )}
     </span>
   );
+}
+
+// Низкоуровневый доступ к компоненту-иконке без обёртки <span>.
+// Полезен для адаптеров (HeroIcons.jsx, MMIcon.jsx) и кастомных рендеров,
+// где не нужны фоны/боксы и важна минимальная разметка.
+export function getIconComponent(name) {
+  return REGISTRY[name] ?? null;
 }

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X } from "lucide-react";
 import dynamic from 'next/dynamic';
 import AppButton from '../AppButton/AppButton';
 import styles from './PopupForm.module.css';
@@ -54,7 +54,7 @@ export default function PopupForm({ isOpen, onClose }) {
             onClick={(e) => e.stopPropagation()}
           >
             <button className={styles.close} onClick={handleClose}>
-              <X size={20} />
+              <X size={20} strokeWidth={1.6} />
             </button>
 
             {submitted ? (

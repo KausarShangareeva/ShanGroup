@@ -1,16 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
-const STATS = [
-  { v: "0%", l: "налог на доход и аренду", sub: "Личные доходы и rental income" },
-  { v: "+18.4%", l: "рост рынка 2024", sub: "Лидер мирового рейтинга" },
-  { v: "$545K", l: "Golden Visa от", sub: "ВНЖ на 10 лет, на семью" },
-];
-
 export default function StatsStrip() {
   const isMobile = useIsMobile();
+  const t = useTranslations("HomePage.statsStrip");
+  const STATS = t.raw("items");
   return (
     <Container>
       <section style={{ paddingTop: isMobile ? 50 : 80, paddingBottom: isMobile ? 50 : 80 }}>
@@ -54,7 +51,7 @@ export default function StatsStrip() {
             }}
           >
             <span aria-hidden style={{ display: "inline-block", width: 32, height: 1, background: "oklch(0.78 0.13 78)", opacity: 0.55 }} />
-            3 факта о рынке Дубая
+            {t("kicker")}
           </div>
           <div
             style={{

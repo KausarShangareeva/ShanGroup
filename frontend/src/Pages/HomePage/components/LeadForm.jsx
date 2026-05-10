@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -10,15 +11,11 @@ const NEU_FLAT =
   "-1px -1px 2px var(--shadow-light), 1px 1px 2px var(--shadow-dark)";
 const LINE_STRONG = "oklch(0.78 0.005 75)";
 
-const INTERESTS = [
-  { id: "buy", label: "Купить недвижимость", desc: "Под жильё или сдачу" },
-  { id: "invest", label: "Инвестировать в off-plan", desc: "Рассрочка от застройщика" },
-  { id: "visa", label: "Получить Golden Visa", desc: "ВНЖ на 10 лет" },
-  { id: "consult", label: "Получить консультацию", desc: "Без обязательств" },
-];
-
 export default function LeadForm() {
   const isMobile = useIsMobile();
+  const t = useTranslations("HomePage.leadForm");
+  const INTERESTS = t.raw("interests");
+  const PERKS = t.raw("perks");
   const [selected, setSelected] = useState(["buy"]);
   const [budget, setBudget] = useState(1_000_000);
   const [name, setName] = useState("");
@@ -43,8 +40,7 @@ export default function LeadForm() {
             borderRadius: 30,
             overflow: "hidden",
             position: "relative",
-            background:
-              "linear-gradient(135deg, oklch(0.96 0.018 80) 0%, oklch(0.92 0.025 78) 100%)",
+            background: "var(--surface-warm)",
             padding: isMobile ? "36px 24px" : "60px 64px",
             boxShadow: NEU_RAISED,
           }}
@@ -91,10 +87,10 @@ export default function LeadForm() {
                   letterSpacing: "-0.01em",
                 }}
               >
-                Заявка принята
+                {t("success.title")}
               </h3>
               <p style={{ margin: "12px auto 0", maxWidth: 420, fontSize: 14, color: "var(--ink-2)", lineHeight: 1.55 }}>
-                {name || "Спасибо"}, мы свяжемся с вами в течение 15 минут на номер {phone || "указанный вами"}.
+                {name || t("success.thanksFallback")}{t("success.callbackPrefix")} {phone || t("success.phoneFallback")}.
               </p>
             </div>
           ) : (
@@ -123,7 +119,7 @@ export default function LeadForm() {
                   }}
                 >
                   <span aria-hidden style={{ display: "inline-block", width: 32, height: 1, background: "var(--sand-deep)", opacity: 0.55 }} />
-                  Бесплатная консультация
+                  {t("kicker")}
                 </div>
                 <h2
                   style={{
@@ -139,21 +135,17 @@ export default function LeadForm() {
                     textWrap: "balance",
                   }}
                 >
-                  Подберём 3 объекта{" "}
+                  {t("titleA")}{" "}
                   <span style={{ fontStyle: "italic", color: "var(--sand-deep)", fontWeight: 400 }}>
-                    под ваш запрос
+                    {t("titleB")}
                   </span>
                 </h2>
                 <p style={{ margin: "20px 0 0", fontSize: 15, color: "var(--ink-2)", lineHeight: 1.55, maxWidth: 440 }}>
-                  Расскажите, что вас интересует — и наш консультант перезвонит в течение 15 минут с подборкой под ваш бюджет и цели.
+                  {t("subtitle")}
                 </p>
 
                 <div style={{ marginTop: 28, display: "flex", flexDirection: "column", gap: 12 }}>
-                  {[
-                    { v: "15 мин", l: "среднее время ответа" },
-                    { v: "0₽", l: "консультация без обязательств" },
-                    { v: "RU/EN/AR", l: "русскоязычный менеджер" },
-                  ].map((b, i) => (
+                  {PERKS.map((b, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 14 }}>
                       <span
                         style={{
@@ -206,7 +198,7 @@ export default function LeadForm() {
                     marginBottom: 8,
                   }}
                 >
-                  Что вас интересует?
+                  {t("form.interestQuestion")}
                 </div>
 
                 <div
@@ -289,8 +281,8 @@ export default function LeadForm() {
                     justifyContent: "space-between",
                   }}
                 >
-                  <span>Бюджет</span>
-                  <span style={{ color: "var(--ink)", fontWeight: 600 }}>до {fmt(budget)}</span>
+                  <span>{t("form.budget")}</span>
+                  <span style={{ color: "var(--ink)", fontWeight: 600 }}>{t("form.upTo")} {fmt(budget)}</span>
                 </div>
                 <input
                   type="range"
@@ -313,7 +305,7 @@ export default function LeadForm() {
                   <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Ваше имя"
+                    placeholder={t("form.namePlaceholder")}
                     style={{
                       all: "unset",
                       padding: "14px 16px",
@@ -328,7 +320,7 @@ export default function LeadForm() {
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+7 / +971"
+                    placeholder={t("form.phonePlaceholder")}
                     style={{
                       all: "unset",
                       padding: "14px 16px",
@@ -365,16 +357,16 @@ export default function LeadForm() {
                     gap: 10,
                   }}
                 >
-                  Получить подборку за 15 минут
+                  {t("form.submit")}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 7 H11 M7 3 L11 7 L7 11" />
                   </svg>
                 </button>
 
                 <div style={{ marginTop: 12, fontSize: 11, color: "var(--muted)", textAlign: "center", lineHeight: 1.5 }}>
-                  Нажимая кнопку, вы соглашаетесь с{" "}
+                  {t("form.policy")}{" "}
                   <a href="#" style={{ color: "var(--ink-2)", textDecoration: "underline" }}>
-                    политикой обработки данных
+                    {t("form.policyLink")}
                   </a>
                 </div>
               </div>

@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Landmark, Crown, TrendingUp, Gem, LayoutGrid } from "lucide-react";
 import Container from "@/components/layout/Container";
-import DEVELOPERS from "@/data/developers.json";
+import DEVELOPERS from "@/data/i18n/ru/people/developers.json";
 import { devSlug } from "@/utils/devSlug";
 import styles from "./DevelopersListPage.module.css";
+
+import { getIconComponent } from "@/components/Icon/Icon";
 
 const GROUP_LABELS = {
   giant: "Государственные гиганты",
@@ -19,11 +20,11 @@ const GROUP_LABELS = {
 const GROUP_ORDER = ["giant", "premium", "growth", "boutique", "other"];
 
 const TAB_LIST = [
-  { key: "all", label: "Все", icon: LayoutGrid },
-  { key: "giant", label: "Государственные гиганты", icon: Landmark },
-  { key: "premium", label: "Премиум и люкс", icon: Crown },
-  { key: "growth", label: "Инвестиционные", icon: TrendingUp },
-  { key: "boutique", label: "Бутик и новые звёзды", icon: Gem },
+  { key: "all", label: "Все", icon: getIconComponent("layout-grid") },
+  { key: "giant", label: "Государственные гиганты", icon: getIconComponent("landmark") },
+  { key: "premium", label: "Премиум и люкс", icon: getIconComponent("crown") },
+  { key: "growth", label: "Инвестиционные", icon: getIconComponent("trending-up") },
+  { key: "boutique", label: "Бутик и новые звёзды", icon: getIconComponent("gem") },
 ];
 
 // Pre-group developers

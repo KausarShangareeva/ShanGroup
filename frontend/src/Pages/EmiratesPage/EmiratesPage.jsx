@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ArrowUpRight, MapPin } from "lucide-react";
 import Container from "@/components/layout/Container";
 import { EMIRATES } from "@/utils/properties";
 import styles from "./EmiratesPage.module.css";
 
+import Icon from "@/components/Icon/Icon";
 export default function EmiratesPage() {
   return (
     <main className={styles.page}>
@@ -36,7 +36,7 @@ export default function EmiratesPage() {
                     />
                   ) : (
                     <div className={styles.cardImgFallback}>
-                      <MapPin size={32} />
+                      <Icon name="map-pin" size={32}  />
                     </div>
                   )}
                 </div>
@@ -52,7 +52,7 @@ export default function EmiratesPage() {
                   </div>
                   <p className={styles.cardDesc}>{emirate.description}</p>
                   <span className={styles.cardLink}>
-                    Смотреть объекты <ArrowUpRight size={14} />
+                    Смотреть объекты <Icon name="arrow-up-right" size={14}  />
                   </span>
                 </div>
               </Link>

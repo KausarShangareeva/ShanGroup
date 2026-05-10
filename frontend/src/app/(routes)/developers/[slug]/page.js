@@ -1,5 +1,5 @@
 import DeveloperDetailPage from "@/Pages/DevelopersPage/DeveloperDetailPage/DeveloperDetailPage";
-import DEVELOPERS from "@/data/developers.json";
+import DEVELOPERS from "@/data/i18n/ru/people/developers.json";
 import { devSlug, devKeyFromSlug } from "@/utils/devSlug";
 
 export function generateStaticParams() {

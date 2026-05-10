@@ -1,5 +1,5 @@
 import AuthorDetailPage from "@/Pages/AuthorsPage/AuthorDetailPage/AuthorDetailPage";
-import AUTHORS from "@/data/authors.json";
+import AUTHORS from "@/data/i18n/ru/people/authors.json";
 
 export function generateStaticParams() {
   return AUTHORS.map((a) => ({ slug: a.slug }));

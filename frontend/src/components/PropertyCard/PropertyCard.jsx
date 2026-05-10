@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { MapPin, Mail, Phone, BedDouble, Bath, Maximize2 } from "lucide-react";
 import DeveloperTag from "@/components/DeveloperTag/DeveloperTag";
 import LikeButton from "@/components/LikeButton/LikeButton";
-import AGENT from "@/data/agent.json";
+import AGENTS from "@/data/i18n/ru/people/agents.json";
+
+const AGENT = AGENTS["mustafa-amir"];
 import styles from "./PropertyCard.module.css";
 
+import Icon from "@/components/Icon/Icon";
 function WaIcon({ size = 14 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -91,7 +93,7 @@ export default function PropertyCard({
 
         <div className={styles.location}>
           <span className={styles.locationIcon}>
-            <MapPin size={14} strokeWidth={1.8} />
+            <Icon name="map-pin" size={14}  />
           </span>
           <span>{district}</span>
         </div>
@@ -102,7 +104,7 @@ export default function PropertyCard({
             {beds != null && (
               <span className={styles.stat}>
                 <span className={styles.statIcon}>
-                  <BedDouble size={14} strokeWidth={1.8} />
+                  <Icon name="bed" size={14}  />
                 </span>
                 <span>
                   {beds}
@@ -116,7 +118,7 @@ export default function PropertyCard({
             {baths != null && (
               <span className={styles.stat}>
                 <span className={styles.statIcon}>
-                  <Bath size={14} strokeWidth={1.8} />
+                  <Icon name="bath" size={14}  />
                 </span>
                 <span>
                   {baths}
@@ -130,7 +132,7 @@ export default function PropertyCard({
             {area && (
               <span className={styles.stat}>
                 <span className={styles.statIcon}>
-                  <Maximize2 size={14} strokeWidth={1.8} />
+                  <Icon name="maximize-2" size={14}  />
                 </span>
                 <span className={styles.statUnit}>{area}</span>
               </span>
@@ -155,11 +157,11 @@ export default function PropertyCard({
           </div>
           <div className={styles.contacts}>
             <a href="mailto:info@shangroup.ae" className={styles.contactBtn}>
-              <Mail size={13} />
+              <Icon name="mail" size={13}  />
               <span>Почта</span>
             </a>
             <a href={`tel:${agent.phone}`} className={styles.contactBtn}>
-              <Phone size={13} />
+              <Icon name="phone" size={13}  />
               <span>Звонок</span>
             </a>
             <a

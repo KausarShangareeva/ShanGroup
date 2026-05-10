@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { Phone, Mail } from 'lucide-react';
 import styles from './AgentCard.module.css';
 
+import Icon from "@/components/Icon/Icon";
 export default function AgentCard({ photo, name, role, phone, email }) {
   return (
     <div className={styles.card}>
@@ -14,12 +14,12 @@ export default function AgentCard({ photo, name, role, phone, email }) {
         <div className={styles.contacts}>
           {phone && (
             <a href={`tel:${phone}`} className={styles.contact}>
-              <Phone size={15} /> {phone}
+              <Icon name="phone" size={15}  /> {phone}
             </a>
           )}
           {email && (
             <a href={`mailto:${email}`} className={styles.contact}>
-              <Mail size={15} /> {email}
+              <Icon name="mail" size={15}  /> {email}
             </a>
           )}
         </div>

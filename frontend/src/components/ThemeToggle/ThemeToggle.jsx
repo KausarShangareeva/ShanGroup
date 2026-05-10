@@ -17,7 +17,11 @@ export default function ThemeToggle({ theme, onToggle }) {
         className={styles.iconWrap}
         style={{ transform: isDark ? "rotate(-30deg)" : "rotate(0)" }}
       >
-        {isDark ? <Sun size={16} /> : <Moon size={16} />}
+        {isDark ? (
+          <Sun size={16} strokeWidth={1.6} />
+        ) : (
+          <Moon size={16} strokeWidth={1.6} />
+        )}
       </span>
     </button>
   );

@@ -14,6 +14,7 @@ import Navigation from "@/components/layout/Navigation";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import FloatingActions from "@/components/FloatingActions/FloatingActions";
 import Footer from "@/components/layout/Footer";
+import I18nProvider from "@/context/I18nProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -247,11 +248,13 @@ export default async function RootLayout({ children }) {
       className={`${gtEesti.variable} ${montserrat.variable} ${cormorant.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} ${abrilFatface.variable} ${bodoniModa.variable} ${marckScript.variable} ${belarus.variable} ${gothic60.variable} ${kuzanyan.variable} ${leotaro.variable} ${mavoble.variable} ${preciosa.variable}`}
     >
       <body>
-        <Navigation />
-        <Breadcrumb />
-        <main>{children}</main>
-        <Footer />
-        <FloatingActions />
+        <I18nProvider>
+          <Navigation />
+          <Breadcrumb />
+          <main>{children}</main>
+          <Footer />
+          <FloatingActions />
+        </I18nProvider>
       </body>
     </html>
   );

@@ -1,6 +1,8 @@
 import Link from "next/link";
-import agent from "@/data/agent.json";
+import AGENTS from "@/data/i18n/ru/people/agents.json";
 import styles from "./AgentCTABanner.module.css";
+
+const agent = AGENTS["mustafa-amir"];
 
 export default function AgentCTABanner() {
   return (

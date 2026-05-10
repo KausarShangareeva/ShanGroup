@@ -5,6 +5,7 @@
 // (description / image / pricing). Mirrors the artifact's MonthlyOffer.
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   IcPin,
   IcDollar,
@@ -13,28 +14,13 @@ import {
   IcCheck,
   IcPhone,
 } from "@/components/HeroIcons/HeroIcons";
-import { Maximize2, Trees, Leaf } from "lucide-react";
+import Icon from "@/components/Icon/Icon";
 import Container from "@/components/layout/Container";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import Button from "@/components/Button/Button";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import PROPERTIES from "@/data/properties/objects.json";
+import PROPERTIES from "@/data/i18n/ru/properties/objects.json";
 import styles from "./OfferOfMonth.module.css";
-
-const FEATURES = [
-  "Бассейн",
-  "Тренажёрный зал",
-  "Консьерж",
-  "Умный дом",
-  "Парковка",
-  "SPA",
-];
-
-const PAYMENT_PLAN = [
-  { label: "При бронировании", percent: "20%" },
-  { label: "Во время строительства", percent: "50%" },
-  { label: "При получении ключей", percent: "30%" },
-];
 
 // Pick 3 daily-rotated offers from PROPERTIES so the home page rotates
 // every day but stays stable within a session.
@@ -51,6 +37,9 @@ function getRotatingOffers() {
 }
 
 export default function OfferOfMonth() {
+  const t = useTranslations("HomePage.offerOfMonth");
+  const FEATURES = t.raw("featureList");
+  const PAYMENT_PLAN = t.raw("paymentPlan");
   const offers = getRotatingOffers();
   const [idx, setIdx] = useState(0);
   const total = offers.length;
@@ -65,30 +54,32 @@ export default function OfferOfMonth() {
     <section className={styles.section}>
       <Container>
         <SectionTitle
-          tag="Предложение месяца"
-          title="Лучшие объекты от"
-          titleAccent="застройщиков ОАЭ"
-          subtitle="Эксклюзивные условия, рассрочка до 5 лет и сопровождение на каждом этапе сделки"
+          tag={t("tag")}
+          title={t("titleA")}
+          titleAccent={t("titleB")}
+          subtitle={t("subtitle")}
           align="center"
         />
 
         <div className={styles.layout}>
           {/* Левая колонка — описание */}
           <div className={styles.left}>
-            <p className={styles.descLabel}>Описание</p>
+            <p className={styles.descLabel}>{t("descLabel")}</p>
             <h2 className={styles.title}>
               {offer.name}
-              <span className={styles.titleAccent}>by {offer.developer}</span>
+              <span className={styles.titleAccent}>{t("by")} {offer.developer}</span>
             </h2>
 
             <PrimaryButton size="md" icon={<IcPhone />}>
-              Связаться с агентом
+              {t("ctaContact")}
             </PrimaryButton>
 
             <p className={styles.leftDesc}>
-              {offer.name} — премиальный объект в {offer.district}. Уникальное
-              сочетание современного дизайна, инфраструктуры и выгодных условий
-              рассрочки от застройщика {offer.developer}.
+              {t("description", {
+                name: offer.name,
+                district: offer.district,
+                developer: offer.developer,
+              })}
             </p>
           </div>
 
@@ -98,7 +89,7 @@ export default function OfferOfMonth() {
               <img src={offer.image} alt={offer.name} className={styles.mainImg} />
               <div className={styles.statusPill}>
                 <span className={styles.statusDot} />
-                Live · {offer.district}
+                {t("live", { district: offer.district })}
               </div>
 
               {/* Carousel arrows */}
@@ -135,7 +126,7 @@ export default function OfferOfMonth() {
 
               <button type="button" className={styles.mapBtn}>
                 <IcPin size={13} />
-                Посмотреть на карте
+                {t("viewMap")}
               </button>
             </div>
           </div>
@@ -145,24 +136,24 @@ export default function OfferOfMonth() {
             <div className={styles.priceCard}>
               <p className={styles.priceLabel}>
                 <IcDollar size={13} />
-                Минимальная цена
+                {t("minPrice")}
               </p>
               <p className={styles.price}>
-                <span className={styles.priceFromTag}>от</span>
+                <span className={styles.priceFromTag}>{t("from")}</span>
                 {offer.priceUsd}
               </p>
               <div className={styles.specRow}>
-                <Trees size={13} className={styles.specIcon} />
+                <Icon name="trees" size={13} className={styles.specIcon}  />
                 <span className={styles.spec}>{offer.type}</span>
                 <span className={styles.specDot} />
-                <Maximize2 size={13} className={styles.specIcon} />
+                <Icon name="maximize-2" size={13} className={styles.specIcon}  />
                 <span className={styles.spec}>{offer.area}</span>
                 <span className={styles.specDot} />
                 <IcCalendar size={13} />
-                <span className={styles.spec}>{offer.delivery || "Готово"}</span>
+                <span className={styles.spec}>{offer.delivery || t("ready")}</span>
               </div>
               <p className={styles.installment}>
-                Рассрочка от <strong>2 лет</strong>
+                {t("installmentFrom")} <strong>{t("installmentYears")}</strong>
               </p>
             </div>
 
@@ -176,7 +167,7 @@ export default function OfferOfMonth() {
             </div>
 
             <div>
-              <p className={styles.tagGroupLabel}>Особенности</p>
+              <p className={styles.tagGroupLabel}>{t("features")}</p>
               <div className={styles.tagGroup}>
                 {FEATURES.map((label) => (
                   <span key={label} className={styles.featureTag}>
@@ -187,11 +178,11 @@ export default function OfferOfMonth() {
             </div>
 
             <div>
-              <p className={styles.tagGroupLabel}>Стиль жизни</p>
+              <p className={styles.tagGroupLabel}>{t("lifestyle")}</p>
               <div className={styles.tagGroup}>
                 {lifestyle.map((l) => (
                   <span key={l} className={styles.lifestyleTag}>
-                    <Leaf size={12} />
+                    <Icon name="leaf" size={12}  />
                     {l}
                   </span>
                 ))}
@@ -206,7 +197,7 @@ export default function OfferOfMonth() {
 
             {/* "Подробнее" — visible on mobile only (CSS) */}
             <div className={styles.mobileDetailsCta}>
-              <Button label="Подробнее" href={`/${offer.id}`} icon="plus" />
+              <Button label={t("more")} href={`/${offer.id}`} icon="plus" />
             </div>
           </div>
         </div>

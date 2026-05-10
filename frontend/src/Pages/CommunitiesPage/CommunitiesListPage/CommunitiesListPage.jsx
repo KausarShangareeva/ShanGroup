@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
-import DEVELOPERS from "@/data/developers.json";
+import DEVELOPERS from "@/data/i18n/ru/people/developers.json";
 import { devSlug } from "@/utils/devSlug";
 import styles from "./CommunitiesListPage.module.css";
 

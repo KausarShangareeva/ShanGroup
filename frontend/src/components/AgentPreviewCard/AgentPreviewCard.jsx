@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Phone, Mail, Send, Instagram } from "lucide-react";
 import styles from "./AgentPreviewCard.module.css";
 
+import Icon from "@/components/Icon/Icon";
 /**
  * Карточка агента для сеток — используется в индексной странице /authors
  * и в секции «Наши агенты» на детальной странице профиля.
@@ -18,16 +18,16 @@ export default function AgentPreviewCard({ agent }) {
       <p className={styles.role}>{agent.role}</p>
       <div className={styles.socials}>
         <span className={styles.socialDot}>
-          <Phone size={12} />
+          <Icon name="phone" size={12}  />
         </span>
         <span className={styles.socialDot}>
-          <Mail size={12} />
+          <Icon name="mail" size={12}  />
         </span>
         <span className={styles.socialDot}>
-          <Send size={12} />
+          <Icon name="send" size={12}  />
         </span>
         <span className={styles.socialDot}>
-          <Instagram size={12} />
+          <Icon name="instagram" size={12}  />
         </span>
       </div>
     </Link>

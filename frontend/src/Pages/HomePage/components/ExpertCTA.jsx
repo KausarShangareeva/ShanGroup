@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, MessageCircle, Phone } from "lucide-react";
-
 import Container from "@/components/layout/Container";
 import styles from "./ExpertCTA.module.css";
 
+import Icon from "@/components/Icon/Icon";
 export default function ExpertCTA() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -75,7 +74,7 @@ export default function ExpertCTA() {
 
                 <button type="submit" className={styles.submitBtn}>
                   Получить консультацию
-                  <ArrowRight size={17} />
+                  <Icon name="arrow-right" size={17}  />
                 </button>
               </form>
             </div>
@@ -85,7 +84,7 @@ export default function ExpertCTA() {
                 href="tel:+971500000000"
                 className={styles.ctaBtn}
               >
-                <Phone size={16} />
+                <Icon name="phone" size={16}  />
                 Позвонить
               </a>
               <a
@@ -94,7 +93,7 @@ export default function ExpertCTA() {
                 rel="noopener noreferrer"
                 className={styles.ctaBtn}
               >
-                <MessageCircle size={16} />
+                <Icon name="message" size={16}  />
                 Написать в WhatsApp
               </a>
             </div>

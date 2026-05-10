@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Phone, X, FileDown, Bot, ChevronRight } from "lucide-react";
+import { X, ChevronRight } from "lucide-react";
 import styles from "./FloatingActions.module.css";
 
+import Icon from "@/components/Icon/Icon";
 function WhatsAppIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -74,7 +75,7 @@ export default function FloatingActions() {
                 onClick={() => setOpen(false)}
                 aria-label="Закрыть"
               >
-                <X size={15} strokeWidth={2} />
+                <X size={15} strokeWidth={1.6} />
               </button>
             </div>
 
@@ -100,7 +101,7 @@ export default function FloatingActions() {
                       <span className={styles.messengerName}>{name}</span>
                       <span className={styles.messengerSub}>{sub}</span>
                     </span>
-                    <ChevronRight size={15} className={styles.messengerArrow} />
+                    <ChevronRight size={15} className={styles.messengerArrow} strokeWidth={1.6} />
                   </a>
                 ))}
               </div>
@@ -109,7 +110,7 @@ export default function FloatingActions() {
 
               <div className={styles.actions}>
                 <a href="/pdf" className={styles.actionBtn}>
-                  <FileDown size={15} strokeWidth={1.8} />
+                  <Icon name="file-down" size={15}  />
                   <span>Скачать каталог PDF</span>
                 </a>
                 <a
@@ -118,7 +119,7 @@ export default function FloatingActions() {
                   rel="noopener noreferrer"
                   className={styles.actionBtn}
                 >
-                  <Bot size={15} strokeWidth={1.8} />
+                  <Icon name="bot" size={15}  />
                   <span>Написать боту</span>
                 </a>
               </div>
@@ -134,7 +135,7 @@ export default function FloatingActions() {
           aria-label={open ? "Закрыть" : "Связаться"}
         >
           <span className={styles.fabGrain} />
-          {open ? <X size={22} strokeWidth={2} /> : <Phone size={22} strokeWidth={2} />}
+          {open ? <X size={22} strokeWidth={1.6} /> : <Icon name="phone" size={22} />}
         </button>
       </div>
     </div>

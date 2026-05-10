@@ -2,15 +2,13 @@ import Link from "next/link";
 import Flag from "react-world-flags";
 import Container from "@/components/layout/Container";
 import Icon from "@/components/Icon/Icon";
-import ARTICLES from "@/data/articles.json";
-import AUTHORS from "@/data/authors.json";
+import ARTICLES from "@/data/i18n/ru/content/articles.json";
+import AUTHORS from "@/data/i18n/ru/people/authors.json";
 import AudioPlayer from "./AudioPlayer";
 import EndCta from "./EndCta";
 import GoldVerifiedIcon from "./GoldVerifiedIcon";
 import TopArticlesSidebar from "./TopArticlesSidebar";
 import styles from "./ArticleDetailPage.module.css";
-import { Clock, ArrowRight, Star } from "lucide-react";
-
 const TAG_COLORS = {
   Гайды: { bg: "#DBEAFE", color: "#1D4ED8" },
   "Золотая Виза": { bg: "#FEF9C3", color: "#A16207" },
@@ -125,7 +123,7 @@ export default function ArticleDetailPage({ slug }) {
                 Посмотреть профиль
               </Link>
               <div className={styles.rating}>
-                <Star size={14} fill="#FBBF24" color="#FBBF24" />
+                <Icon name="star" size={14} fill="#FBBF24" color="#FBBF24"  />
                 <span>{author.rating}</span>
                 <span className={styles.reviews}>({author.reviews})</span>
               </div>
@@ -191,7 +189,7 @@ export default function ArticleDetailPage({ slug }) {
                 <span className={styles.date}>{article.date}</span>
                 {article.readTime && (
                   <span className={styles.readTime}>
-                    <Clock size={13} />
+                    <Icon name="clock" size={13}  />
                     {article.readTime}
                   </span>
                 )}
@@ -224,7 +222,7 @@ export default function ArticleDetailPage({ slug }) {
                       className={`${styles.inlineCtaBtn} ${styles.inlineCtaBtnOutline}`}
                     >
                       Связаться с экспертом
-                      <ArrowRight size={15} />
+                      <Icon name="arrow-right" size={15}  />
                     </Link>
                   </div>
                 </div>

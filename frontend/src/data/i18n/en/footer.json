@@ -1,0 +1,52 @@
+{
+  "ctaCard": {
+    "kicker": "Ready to start?",
+    "titleA": "We'll match a property to your budget",
+    "titleB": "in 15 minutes",
+    "agentLabel": "Your consultant",
+    "agentName": "Aigerim Shan",
+    "agentResponse": "Responds within 15 minutes",
+    "online": "Online now"
+  },
+  "columns": {
+    "realEstate": "Property in the UAE",
+    "developers": "Tier-1 developers",
+    "districts": "UAE communities",
+    "info": "Information"
+  },
+  "districts": {
+    "topGroup": "Top",
+    "residentialGroup": "Residential",
+    "exclusiveGroup": "Exclusive"
+  },
+  "realEstate": [
+    "Find property in the UAE",
+    "Buy property in Dubai",
+    "Buy property in Abu Dhabi",
+    "Buy property in Ras Al Khaimah",
+    "Buy property in Sharjah",
+    "Buy apartments in Dubai",
+    "Buy a penthouse in Dubai",
+    "Buy villas in Dubai"
+  ],
+  "info": [
+    "About the company",
+    "Services",
+    "Client cases",
+    "Market analytics",
+    "Investor FAQ",
+    "Careers at ShanGroup",
+    "Contacts"
+  ],
+  "contact": {
+    "officeLabel": "Office",
+    "officeAddress": "Office 1403, Arenco Tower, Media City, Dubai",
+    "supportLabel": "Support · 24/7"
+  },
+  "bottom": {
+    "copyright": "© 2026 ShanGroup · DUBAI ·",
+    "ru": "we respond in Russian",
+    "policy": "Privacy",
+    "agreement": "Terms"
+  }
+}

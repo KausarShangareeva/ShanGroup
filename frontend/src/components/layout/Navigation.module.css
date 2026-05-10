@@ -54,6 +54,10 @@
   object-fit: contain;
 }
 
+[data-theme="dark"] .logoImg {
+  filter: invert(1) brightness(1.05);
+}
+
 /* Nav links */
 .links {
   display: flex;

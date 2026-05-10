@@ -1,20 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import {
-  ArrowUpRight,
-  Maximize2,
-  BedDouble,
-  CalendarCheck,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
 import GoldenTag from "@/components/GoldenTag/GoldenTag";
 import LikeButton from "@/components/LikeButton/LikeButton";
-import DEVELOPER_INFO from "@/data/developers.json";
+import DEVELOPER_INFO from "@/data/i18n/ru/people/developers.json";
 import styles from "./NewProperties.module.css";
 
+import Icon from "@/components/Icon/Icon";
 function WaIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -85,7 +77,7 @@ export default function NewPropertyCard({ p, agent, isLiked, onLike }) {
         <div className={styles.topRow}>
           <p className={styles.price}>{p.priceUsd}</p>
           <button className={styles.cardArrowBtn} aria-label="Подробнее">
-            <ArrowUpRight size={17} strokeWidth={2} />
+            <Icon name="arrow-up-right" size={17}  />
           </button>
         </div>
 
@@ -97,7 +89,7 @@ export default function NewPropertyCard({ p, agent, isLiked, onLike }) {
           {/* Location */}
           <div className={styles.location}>
             <span className={styles.locationIcon}>
-              <MapPin size={14} strokeWidth={1.8} />
+              <Icon name="map-pin" size={14}  />
             </span>
             <span>{p.district}</span>
           </div>
@@ -106,13 +98,13 @@ export default function NewPropertyCard({ p, agent, isLiked, onLike }) {
           <div className={styles.stats}>
             {p.area && (
               <span className={styles.stat}>
-                <span className={styles.statIcon}><Maximize2 size={14} strokeWidth={1.8} /></span>
+                <span className={styles.statIcon}><Icon name="maximize-2" size={14}  /></span>
                 <span className={styles.statUnit}>{p.area}</span>
               </span>
             )}
             {p.bedrooms && (
               <span className={styles.stat}>
-                <span className={styles.statIcon}><BedDouble size={14} strokeWidth={1.8} /></span>
+                <span className={styles.statIcon}><Icon name="bed" size={14}  /></span>
                 <span className={styles.statUnit}>{p.bedrooms}</span>
               </span>
             )}
@@ -136,10 +128,10 @@ export default function NewPropertyCard({ p, agent, isLiked, onLike }) {
           {/* Contacts */}
           <div className={styles.contacts}>
             <a href={`mailto:${agent.email}`} className={styles.contactBtn}>
-              <Mail size={13} /><span>Почта</span>
+              <Icon name="mail" size={13}  /><span>Почта</span>
             </a>
             <a href={`tel:${agent.phone}`} className={styles.contactBtn}>
-              <Phone size={13} /><span>Звонок</span>
+              <Icon name="phone" size={13}  /><span>Звонок</span>
             </a>
             <a
               href={`https://wa.me/${agent.phone.replace(/\D/g, "")}`}

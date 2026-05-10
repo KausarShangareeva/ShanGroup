@@ -1,0 +1,229 @@
+{
+  "hero": {
+    "badge": "22 million tourists a year — your audience",
+    "titleA": "Turn an apartment",
+    "titleB": "into a working",
+    "titleC": "boutique hotel",
+    "subtitle": "ADR $180–320, occupancy 85–94%, up to 12% NET yield in dollars. We launch the property turnkey — DTCM licence, photoshoot, listings on 12 platforms, dynamic pricing, 24/7 operations.",
+    "ctaPrimary": "Launch on Airbnb",
+    "ctaSecondary": "Calculate ADR/RevPAR",
+    "trust": [
+      { "v": "$230", "l": "median ADR in Marina" },
+      { "v": "88%", "l": "annual occupancy" },
+      { "v": "21 days", "l": "to first booking" }
+    ],
+    "chart": {
+      "kicker": "Occupancy 1BR Marina · last 12 months",
+      "subject": "RevPAR $202 / night",
+      "badge": "11.4% NET",
+      "monthsAbbr": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+      "daysAbbr": ["Mo","Tu","We","Th","Fr","Sa","Su"],
+      "legendLow": "low",
+      "legendHigh": "peak",
+      "labels": {
+        "adr": "ADR",
+        "occupancy": "Occupancy",
+        "yearNet": "Net year"
+      },
+      "values": {
+        "adr": "$230",
+        "occupancy": "88%",
+        "yearNet": "$58K"
+      }
+    }
+  },
+  "stats": {
+    "items": [
+      { "v": "22M", "l": "tourists in Dubai 2025", "source": "DET" },
+      { "v": "$230", "l": "median ADR on a 1BR", "source": "AirDNA" },
+      { "v": "88%", "l": "average occupancy in top districts", "source": "AirDNA" },
+      { "v": "12%", "l": "max NET yield in high season", "source": "ShanGroup" }
+    ],
+    "sourceLabel": "source"
+  },
+  "service": {
+    "kicker": "Full turnkey cycle",
+    "titleA": "What we",
+    "titleB": "handle for you",
+    "items": [
+      { "icon": "shield",         "t": "DTCM licence",            "d": "We secure the Department of Tourism holiday-home licence in 14 days." },
+      { "icon": "eye",            "t": "Interior + photoshoot",   "d": "We style the interior for the target audience and shoot 60+ professional photos." },
+      { "icon": "globe",          "t": "12 platforms",            "d": "Airbnb, Booking, VRBO, Expedia, Trip.com and local OTAs." },
+      { "icon": "sparkles",       "t": "Dynamic pricing",          "d": "An AI engine (PriceLabs) tunes prices every 3 hours based on demand." },
+      { "icon": "message",        "t": "24/7 hosts",               "d": "Russian/English/Arabic-speaking team. Chatbot + live managers." },
+      { "icon": "bed",            "t": "Cleaning and linen",       "d": "Hotel-grade. Turnaround within 2 hours after each guest. 5★ hotel supplier." },
+      { "icon": "hard-hat",       "t": "Minor repairs",            "d": "Electrician, plumber, AC engineer — fixed-price contractor rates." },
+      { "icon": "bar-chart",      "t": "Transparent reporting",    "d": "Owner dashboard: nights, ADR, RevPAR, net payout — live." }
+    ]
+  },
+  "economics": {
+    "kicker": "Unit economics",
+    "titleA": "What makes up",
+    "titleB": "your income",
+    "intro": "A real month for a 1BR in Marina — March 2025. All figures come from the client dashboard. No hidden fees, no fine print.",
+    "totalLabel": "Total net per month",
+    "totalNote": "Lands in the owner's account monthly",
+    "netRowLabel": "NET payout",
+    "lines": [
+      { "l": "Gross revenue (28 nights × $230)",   "v": 6440,  "pos": true },
+      { "l": "DTCM tax (3.5%)",                     "v": -226,  "pos": false },
+      { "l": "OTA commission (15% blended)",         "v": -965,  "pos": false },
+      { "l": "Cleaning and linen",                  "v": -380,  "pos": false },
+      { "l": "DEWA + internet + TV",                "v": -210,  "pos": false },
+      { "l": "Service charge (proportional)",       "v": -180,  "pos": false },
+      { "l": "Insurance + 5% reserve",              "v": -140,  "pos": false },
+      { "l": "ShanGroup management fee (18%)",      "v": -1159, "pos": false }
+    ]
+  },
+  "calc": {
+    "kicker": "ADR / Occupancy / RevPAR",
+    "titleA": "Hospitality-yield",
+    "titleB": "calculator",
+    "controls": {
+      "price": "Property price",
+      "adr": "ADR — average night",
+      "occupancy": "Occupancy — load factor"
+    },
+    "revparLabel": "RevPAR",
+    "revparUnit": "/night",
+    "result": {
+      "monthlyLabel": "Monthly cashflow (NET)",
+      "netYieldLabel": "NET yield",
+      "grossYearLabel": "Gross year",
+      "netYearLabel": "NET year",
+      "taxLabel": "Tax",
+      "cta": "Launch a unit at these numbers"
+    }
+  },
+  "areas": {
+    "kicker": "Top Airbnb districts",
+    "titleA": "Where the",
+    "titleB": "highest ADR lives",
+    "occupancyLabel": "OCCUPANCY",
+    "items": [
+      { "n": "Dubai Marina",   "adr": "$245", "occ": 91, "why": "Yacht views, beach 5 min away" },
+      { "n": "Downtown",       "adr": "$320", "occ": 89, "why": "Burj Khalifa, Dubai Mall" },
+      { "n": "Palm Jumeirah",  "adr": "$380", "occ": 84, "why": "Premium, beachfront villas" },
+      { "n": "JBR",            "adr": "$270", "occ": 92, "why": "Beach front, walking dist." },
+      { "n": "Business Bay",   "adr": "$195", "occ": 86, "why": "Canal, business towers" },
+      { "n": "JVC",            "adr": "$130", "occ": 88, "why": "Entry segment, volumes" }
+    ]
+  },
+  "compare": {
+    "kicker": "Comparison",
+    "titleA": "Airbnb format",
+    "titleB": "vs",
+    "titleC": "long-term rental",
+    "headers": {
+      "param": "Parameter",
+      "airbnb": "Airbnb",
+      "airbnbNote": "→ This strategy",
+      "long": "Long-term",
+      "longNote": "Annual contract"
+    },
+    "rows": [
+      { "l": "NET yield",                "a": "8–12%",                "aw": true,  "l2": "5–7%",                "lw": false },
+      { "l": "ADR per night",            "a": "$180–320",             "aw": true,  "l2": "—",                    "lw": false },
+      { "l": "Occupancy",                 "a": "85–94%",               "aw": true,  "l2": "100% (1 tenant)",      "lw": true },
+      { "l": "Time to first income",      "a": "21 days",               "aw": true,  "l2": "30–45 days",           "lw": false },
+      { "l": "Management",                "a": "Turnkey ShanGroup",     "aw": true,  "l2": "Turnkey ShanGroup",    "lw": true },
+      { "l": "Owner flexibility",         "a": "Live in low season",   "aw": true,  "l2": "Rented out only",      "lw": false },
+      { "l": "Wear and tear",             "a": "Higher",                "aw": false, "l2": "Lower",                "lw": true },
+      { "l": "Minimum budget",            "a": "$250K",                 "aw": false, "l2": "$150K",                "lw": true }
+    ]
+  },
+  "risks": {
+    "kicker": "Transparent about risks",
+    "titleA": "What can",
+    "titleB": "go wrong",
+    "intro": "An Airbnb business is operational work. We know every pitfall in Dubai and close them legally and financially before the property goes live.",
+    "items": [
+      { "r": "Unlicensed rental", "m": "We obtain a DTCM holiday-home licence for every property. Without it the fine is 50K AED." },
+      { "r": "Neighbour / HOA complaints", "m": "Before launch we verify the building's permission. We only pick short-term friendly complexes." },
+      { "r": "Low-season slump", "m": "Dynamic pricing + long stays (7+ nights with discount) keep occupancy at 75%+ even in August." },
+      { "r": "Bad guests / damage", "m": "Up to $1,000 deposit charged via Airbnb. Additional insurance covers damage up to $50K." }
+    ]
+  },
+  "cases": {
+    "kicker": "Client cases",
+    "titleA": "Real",
+    "titleB": "numbers",
+    "titleC": "with Airbnb",
+    "objectLabel": "Property",
+    "priceLabel": "Price",
+    "monthlyUnit": "/mo",
+    "items": [
+      {
+        "name": "Denis K.", "role": "Dubai, former cafe-chain owner",
+        "bought": "1BR · Marina Vista · 78 sqm", "spend": "$540K", "monthly": "$4,980", "yield": "11.1%",
+        "quote": "Bought it, launched in 19 days. January — ADR $310, occupancy 96%. PriceLabs really does the job."
+      },
+      {
+        "name": "Victor L.", "role": "Almaty, commercial real-estate developer",
+        "bought": "Studio · Address Beach · 56 sqm", "spend": "$680K", "monthly": "$6,240", "yield": "11.0%",
+        "quote": "Marina view, runs like a 5★ hotel. Guests happily pay $400 a night — bookings are non-stop."
+      },
+      {
+        "name": "Yulia T.", "role": "Moscow, family office",
+        "bought": "2 apartments in JBR", "spend": "$1.18M", "monthly": "$11,400", "yield": "11.6%",
+        "quote": "The family office puts 10% of the portfolio into Dubai. Cashflow in dollars and diversification from home-market risks."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Questions",
+    "titleA": "What",
+    "titleB": "investors ask",
+    "titleC": "most often",
+    "items": [
+      { "q": "How much does an Airbnb launch cost?", "a": "DTCM licence — 1,800 AED/year, photoshoot — $400, furniture/decor (if needed) — $4–8K. All of it pays back in 1–2 months of operations." },
+      { "q": "What is ShanGroup's fee?", "a": "18% of gross revenue — it covers 24/7 hosts, dynamic pricing, monitoring 12 platforms, monthly reports. No hidden charges." },
+      { "q": "Can I live there myself in low season?", "a": "Yes. Book your dates and we block the calendar. That flexibility is impossible with long-term rentals." },
+      { "q": "What if neighbours / HOA push back?", "a": "Before the deal we check the building NOC for short-term. We don't buy where it's banned. The list of Airbnb-friendly buildings is openly available." },
+      { "q": "What occupancy is realistically achievable?", "a": "Top districts (Marina, Downtown, JBR) — 88–94% per year. Low-tier (JVC, Sports City) — 78–85%. We pull the numbers from AirDNA, not thin air." },
+      { "q": "What budget should I start with for Airbnb?", "a": "Minimum $250K (studio in Marina/Business Bay). Sweet spot $400–600K (1BR with a prime view, ADR $230+). Premium $800K+ (2BR, ADR $350+)." },
+      { "q": "How many nights to break even?", "a": "At $230 ADR with average expenses, a $450K unit breaks even operationally at 14–16 nights per month. The normal 26–28 nights delivers 11% NET." }
+    ]
+  },
+  "leadForm": {
+    "badge": "Launch plan within 24 hours",
+    "titleA": "Get a launch plan",
+    "titleB": "with ADR forecast",
+    "subtitle": "A hospitality expert sends a PDF: your ADR, RevPAR, NET yield versus neighbours, launch costs and timeline. No fluff.",
+    "perks": [
+      "ADR / RevPAR forecast based on AirDNA",
+      "Turnkey launch checklist",
+      "List of your nearest competitors"
+    ],
+    "form": {
+      "statusLabel": "Your status",
+      "statuses": [
+        { "id": "have",   "l": "Already own a unit" },
+        { "id": "buy",    "l": "Want to buy" },
+        { "id": "advice", "l": "Need advice" },
+        { "id": "scale",  "l": "Scale up" }
+      ],
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "300",  "l": "$250–500K" },
+        { "id": "700",  "l": "$500K–1M" },
+        { "id": "1500", "l": "$1–2M" },
+        { "id": "3000", "l": "$2M+" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only the launch plan and a call from the expert.",
+      "submit": "Get the launch plan →"
+    },
+    "success": {
+      "title": "Thank you, {name}!",
+      "fallbackName": "investor",
+      "line1": "A ShanGroup hospitality expert is preparing the Airbnb launch plan for your property with ADR/RevPAR forecast.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "Short-term rentals in Dubai · Airbnb format, up to 12% — ShanGroup",
+    "description": "Buy an apartment in Dubai for Airbnb. ADR $230, 88% occupancy, up to 12% NET yield. Full turnkey management."
+  }
+}

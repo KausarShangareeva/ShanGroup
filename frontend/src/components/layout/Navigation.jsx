@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Flag from "@/components/Flag/Flag";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
@@ -11,222 +12,96 @@ import DistrictsMegaMenu from "@/components/DistrictsMegaMenu/DistrictsMegaMenu"
 import PropertiesMegaMenu from "@/components/PropertiesMegaMenu/PropertiesMegaMenu";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import { useTheme } from "@/hooks/useTheme";
+import { useLocale } from "@/context/I18nProvider";
 // Lucide kept for hamburger (Menu) and burger toggle X — purely utility,
 // not part of the editorial icon language. ChevronDown/Right also stay
 // lucide for now (used in many places with consistent visual weight).
 // Sun/Moon used in the BurgerDrawer theme SegPicker (HeroIcons doesn't ship them).
 import { ChevronDown, ChevronRight, Menu, X, Sun, Moon } from "lucide-react";
-import {
-  IcSearch,
-  IcClose,
-  IcPhone,
-} from "@/components/HeroIcons/HeroIcons";
+import { IcSearch, IcClose, IcPhone } from "@/components/HeroIcons/HeroIcons";
 import LikeButton from "@/components/LikeButton/LikeButton";
 import Icon from "@/components/Icon/Icon";
 import Container from "./Container";
 import PopupForm from "../PopupForm/PopupForm";
 import ContactButton from "@/components/ContactButton/ContactButton";
 import DropdownNavButton from "@/components/DropdownNavButton/DropdownNavButton";
-import PROPERTIES from "@/data/properties/objects.json";
-import DEVELOPERS from "@/data/developers.json";
+import PROPERTIES from "@/data/i18n/ru/properties/objects.json";
+import DEVELOPERS from "@/data/i18n/ru/people/developers.json";
 import { buildEmirateCounts } from "@/utils/properties";
 import styles from "./Navigation.module.css";
 
 const FEATURED = PROPERTIES[0];
 
-const SOCIALS = [
-  {
-    label: "Instagram",
-    href: "#",
-    iconName: "instagram",
-    desc: "@shangroup.ae",
-  },
-  {
-    label: "YouTube",
-    href: "#",
-    iconName: "youtube",
-    desc: "Видео о недвижимости",
-  },
-  { label: "Telegram", href: "#", iconName: "send", desc: "Новости и объекты" },
-  { label: "WhatsApp", href: "#", iconName: "message", desc: "Написать нам" },
-];
+function buildSocials(tNav) {
+  return [
+    { label: tNav("socials.instagram.label"), href: "#", iconName: "instagram", desc: tNav("socials.instagram.desc") },
+    { label: tNav("socials.youtube.label"),   href: "#", iconName: "youtube",   desc: tNav("socials.youtube.desc") },
+    { label: tNav("socials.telegram.label"),  href: "#", iconName: "send",      desc: tNav("socials.telegram.desc") },
+    { label: tNav("socials.whatsapp.label"),  href: "#", iconName: "message",   desc: tNav("socials.whatsapp.desc") },
+  ];
+}
 
-const navItems = [
-  {
-    label: "Новостройки ОАЭ",
-    type: "properties",
-    dropdown: [
-      {
-        label: "Квартиры в Дубае",
-        desc: "Апартаменты и студии",
-        href: "/apartments",
-        iconName: "building-2",
-      },
-      {
-        label: "Дома и виллы",
-        desc: "Частные дома и виллы",
-        href: "/villas",
-        iconName: "home",
-      },
-      {
-        label: "По локации",
-        desc: "Поиск по районам",
-        href: "/communities",
-        iconName: "map-pin",
-      },
-      {
-        label: "По застройщикам",
-        desc: "Ведущие застройщики ОАЭ",
-        href: "/developers",
-        iconName: "briefcase",
-      },
-      {
-        label: "Абу-Даби",
-        desc: "Недвижимость в столице",
-        href: "/abu-dhabi",
-        iconName: "building",
-      },
-      {
-        label: "Шарджа",
-        desc: "Недвижимость в Шардже",
-        href: "/sharjah",
-        iconName: "landmark",
-      },
-    ],
-  },
-  { label: "Районы", type: "communities", href: "/communities" },
-  { label: "Застройщики", type: "developers", href: "/developers" },
-  {
-    label: "Инвестиции",
-    type: "invest",
-    services: [
-      {
-        label: "Golden Visa $545K+",
-        desc: "10-летняя резидентская виза",
-        href: "/services/golden-visa",
-        iconName: "shield",
-      },
-      {
-        label: "Investor Visa $204K+",
-        desc: "2-летняя инвесторская виза",
-        href: "/services/investor-visa",
-        iconName: "file-text",
-      },
-      {
-        label: "Рассрочка 1% / месяц",
-        desc: "От застройщика, без банка",
-        href: "/services/installment",
-        iconName: "credit-card",
-      },
-      {
-        label: "Ипотека для нерезидентов",
-        desc: "От 25% первый взнос",
-        href: "/services/mortgage",
-        iconName: "briefcase",
-      },
-    ],
-    dropdown: [
-      {
-        label: "Off-plan стратегия",
-        desc: "Покупка до запуска · ROI 25–40%",
-        href: "/invest/offplan",
-        iconName: "trending-up",
-      },
-      {
-        label: "Готовая аренда",
-        desc: "Стабильный доход 6–9% годовых",
-        href: "/invest/rental",
-        iconName: "home",
-      },
-      {
-        label: "Краткосрочная аренда",
-        desc: "Airbnb-формат, доход до 12%",
-        href: "/invest/short-term",
-        iconName: "calendar",
-      },
-      {
-        label: "Flip-стратегия",
-        desc: "Перепродажа на handover",
-        href: "/invest/flip",
-        iconName: "info",
-      },
-      {
-        label: "ROI калькулятор",
-        desc: "Доходность за 3/5/10 лет",
-        href: "/invest/calculator",
-        iconName: "file-text",
-      },
-      {
-        label: "Налоговый гид ОАЭ",
-        desc: "0% налог на доход физлиц",
-        href: "/invest/tax",
-        iconName: "info",
-      },
-    ],
-  },
-  {
-    label: "О нас",
-    type: "about",
-    services: [
-      {
-        label: "Получение визы",
-        desc: "Резидентские и инвесторские визы",
-        href: "/services/visa",
-        iconName: "file-text",
-      },
-      {
-        label: "Регистрация компаний",
-        desc: "Фрихолд и фризона",
-        href: "/services/company",
-        iconName: "briefcase",
-      },
-      {
-        label: "Банковские счета",
-        desc: "Личные и корпоративные счета",
-        href: "/services/banking",
-        iconName: "credit-card",
-      },
-      {
-        label: "Доверенности",
-        desc: "Оформление и нотариальное заверение",
-        href: "/services/poa",
-        iconName: "pen-line",
-      },
-    ],
-    dropdown: [
-      {
-        label: "О компании",
-        desc: "Наша история и миссия",
-        href: "/about",
-        iconName: "info",
-      },
-      {
-        label: "Отзывы",
-        desc: "Опыт наших клиентов",
-        href: "/reviews",
-        iconName: "star",
-      },
-      {
-        label: "Статьи",
-        desc: "Полезные материалы",
-        href: "/articles",
-        iconName: "file-text",
-      },
-      {
-        label: "Блог",
-        desc: "Новости рынка",
-        href: "/blog",
-        iconName: "book-open",
-      },
-      {
-        label: "Вопросы и ответы",
-        desc: "Частые вопросы",
-        href: "/faq",
-        iconName: "help-circle",
-      },
-    ],
-  },
-];
+// Helper: builds a {label, desc} from translation keys with given href/icon.
+const tld = (tNav, key, href, iconName) => ({
+  label: tNav(`${key}.label`),
+  desc: tNav(`${key}.desc`),
+  href,
+  iconName,
+});
+
+function buildNavItems(tNav) {
+  return [
+    {
+      label: tNav("menu.newbuilds"),
+      type: "properties",
+      dropdown: [
+        tld(tNav, "newbuilds.apartments", "/apartments", "building-2"),
+        tld(tNav, "newbuilds.villas", "/villas", "home"),
+        tld(tNav, "newbuilds.byLocation", "/communities", "map-pin"),
+        tld(tNav, "newbuilds.byDeveloper", "/developers", "briefcase"),
+        tld(tNav, "newbuilds.abuDhabi", "/abu-dhabi", "building"),
+        tld(tNav, "newbuilds.sharjah", "/sharjah", "landmark"),
+      ],
+    },
+    { label: tNav("menu.communities"), type: "communities", href: "/communities" },
+    { label: tNav("menu.developers"), type: "developers", href: "/developers" },
+    {
+      label: tNav("menu.invest"),
+      type: "invest",
+      services: [
+        tld(tNav, "invest.goldenVisa", "/golden-visa", "shield"),
+        tld(tNav, "invest.investorVisa", "/services/investor-visa", "file-text"),
+        tld(tNav, "invest.installment", "/services/installment", "credit-card"),
+        tld(tNav, "invest.mortgage", "/services/mortgage", "briefcase"),
+      ],
+      dropdown: [
+        tld(tNav, "invest.offplan", "/off-plan", "trending-up"),
+        tld(tNav, "invest.rental", "/ready-rentals", "home"),
+        tld(tNav, "invest.shortTerm", "/airbnb", "calendar"),
+        tld(tNav, "invest.flip", "/flip", "info"),
+        tld(tNav, "invest.calculator", "/invest/calculator", "file-text"),
+        tld(tNav, "invest.tax", "/invest/tax", "info"),
+      ],
+    },
+    {
+      label: tNav("menu.about"),
+      type: "about",
+      services: [
+        tld(tNav, "services.visa", "/services/visa", "file-text"),
+        tld(tNav, "services.company", "/services/company", "briefcase"),
+        tld(tNav, "services.banking", "/services/banking", "credit-card"),
+        tld(tNav, "services.poa", "/services/poa", "pen-line"),
+      ],
+      dropdown: [
+        tld(tNav, "about.company", "/about", "info"),
+        tld(tNav, "about.reviews", "/reviews", "star"),
+        tld(tNav, "about.articles", "/articles", "file-text"),
+        tld(tNav, "about.blog", "/blog", "book-open"),
+        tld(tNav, "about.faq", "/faq", "help-circle"),
+      ],
+    },
+  ];
+}
 
 // Эмираты подтягиваем из единого реестра — счётчики и URL обновляются
 // автоматически при добавлении новых записей в JSON-файлы недвижимости.
@@ -237,70 +112,70 @@ const EMIRATES = buildEmirateCounts().map((e) => ({
   img: e.image,
 }));
 
-const PROPERTY_TYPES = [
-  // Ряд 1: типы объектов
-  {
-    label: "Виллы",
-    href: "/villas",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1774280298/ChatGPT_Image_Mar_23_2026_04_28_29_PM_trpvu5.png",
-  },
-  {
-    label: "Апартаменты",
-    href: "/apartments",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1774542871/Lumea_Residences_at_Dubai_Islands_aijk8j.webp",
-  },
-  {
-    label: "Таунхаусы",
-    href: "/townhouses",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318360/townhouse_hxob4w.png",
-  },
-  {
-    label: "Пентхаусы",
-    href: "/penthouses",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/v1774542913/Celesto_2_by_Tarrad_omfujw.webp",
-  },
-  {
-    label: "DAMAC Islands",
-    href: "/communities/damac-islands-2",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318463/damac_qa98eh.png",
-  },
-  // Ряд 2: популярные локации
-  {
-    label: "Набережная",
-    href: "/waterfront",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318663/waterfront_quk1ah.png",
-  },
-  {
-    label: "Palm Jebel Ali",
-    href: "/communities/palm-jebel-ali",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1771921144/palm_jumeirah_oksqfu.png",
-  },
-  {
-    label: "Sheikh Zayed Road",
-    href: "/communities/szr",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318914/road_nkvrkz.png",
-  },
-  {
-    label: "Dubai Expo City",
-    href: "/communities/expo-city",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318360/expo_mns7ub.png",
-  },
-  {
-    label: "Рас-эль-Хайма",
-    href: "/communities/al-marjan",
-    image:
-      "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775319180/ras_rylydn.png",
-  },
-];
+function buildPropertyTypes(tNav) {
+  return [
+    {
+      label: tNav("propTypes.villas"),
+      href: "/villas",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1774280298/ChatGPT_Image_Mar_23_2026_04_28_29_PM_trpvu5.png",
+    },
+    {
+      label: tNav("propTypes.apartments"),
+      href: "/apartments",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1774542871/Lumea_Residences_at_Dubai_Islands_aijk8j.webp",
+    },
+    {
+      label: tNav("propTypes.townhouses"),
+      href: "/townhouses",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318360/townhouse_hxob4w.png",
+    },
+    {
+      label: tNav("propTypes.penthouses"),
+      href: "/penthouses",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/v1774542913/Celesto_2_by_Tarrad_omfujw.webp",
+    },
+    {
+      label: "DAMAC Islands",
+      href: "/communities/damac-islands-2",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318463/damac_qa98eh.png",
+    },
+    {
+      label: tNav("propTypes.waterfront"),
+      href: "/waterfront",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318663/waterfront_quk1ah.png",
+    },
+    {
+      label: "Palm Jebel Ali",
+      href: "/communities/palm-jebel-ali",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1771921144/palm_jumeirah_oksqfu.png",
+    },
+    {
+      label: "Sheikh Zayed Road",
+      href: "/communities/szr",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318914/road_nkvrkz.png",
+    },
+    {
+      label: "Dubai Expo City",
+      href: "/communities/expo-city",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775318360/expo_mns7ub.png",
+    },
+    {
+      label: "Рас-эль-Хайма",
+      href: "/communities/al-marjan",
+      image:
+        "https://res.cloudinary.com/dxp7ppipg/image/upload/q_auto/f_auto/v1775319180/ras_rylydn.png",
+    },
+  ];
+}
 
 const DEV_DISPLAY_NAMES = {
   Emaar: "Emaar Properties",
@@ -362,70 +237,82 @@ const TOP_DEVS = [
   { label: "Binghatti", href: "/developers/binghatti" },
 ];
 
-// ── RichMegaMenu data (О нас + Инвестиции) ─────────────────────
-// 3 columns each, hand-drawn SVG icons via MMIcon kind names.
-const ABOUT_COLUMNS = [
-  {
-    title: "Мы в соцсетях",
-    items: [
-      { label: "Instagram", sub: "@shangroup.ae", icon: "ig", href: "#" },
-      { label: "YouTube", sub: "Видео о недвижимости", icon: "yt", href: "#" },
-      { label: "Telegram", sub: "Новости и объекты", icon: "tg", href: "#" },
-      { label: "WhatsApp", sub: "Написать нам", icon: "wa", href: "#" },
-    ],
-  },
-  {
-    title: "О нас",
-    items: [
-      { label: "О компании", sub: "Наша история и миссия", icon: "info", href: "/about" },
-      { label: "Отзывы", sub: "Опыт наших клиентов", icon: "star", href: "/reviews" },
-      { label: "Статьи", sub: "Полезные материалы", icon: "doc", href: "/articles" },
-      { label: "Блог", sub: "Новости рынка", icon: "book", href: "/blog" },
-      { label: "Вопросы и ответы", sub: "Частые вопросы", icon: "help", href: "/faq" },
-    ],
-  },
-  {
-    title: "Услуги",
-    items: [
-      { label: "Получение визы", sub: "Резидентские и инвесторские визы", icon: "passport", href: "/services/visa" },
-      { label: "Регистрация компаний", sub: "Фрихолд и фризона", icon: "biz", href: "/services/company" },
-      { label: "Банковские счета", sub: "Личные и корпоративные счета", icon: "bank", href: "/services/banking" },
-      { label: "Доверенности", sub: "Оформление и нотариальное заверение", icon: "pen", href: "/services/poa" },
-    ],
-  },
-];
+// Helper: builds a {label, sub, icon, href} from translation keys.
+const tls = (tNav, key, icon, href) => ({
+  label: tNav(`${key}.label`),
+  sub: tNav(`${key}.desc`),
+  icon,
+  href,
+});
 
-const INVEST_COLUMNS = [
-  {
-    title: "Стратегии",
-    items: [
-      { label: "Off-plan стратегия", sub: "Покупка до запуска · ROI 25–40%", icon: "trend", href: "/invest/offplan" },
-      { label: "Готовая аренда", sub: "Стабильный доход 6–9% годовых", icon: "key", href: "/invest/rental" },
-      { label: "Краткосрочная аренда", sub: "Airbnb-формат, доход до 12%", icon: "calendar", href: "/invest/short-term" },
-      { label: "Flip-стратегия", sub: "Перепродажа на handover", icon: "swap", href: "/invest/flip" },
-    ],
-  },
-  {
-    title: "Программы",
-    items: [
-      { label: "Golden Visa $545K+", sub: "10-летняя резидентская виза", icon: "shield", href: "/services/golden-visa" },
-      { label: "Investor Visa $204K+", sub: "2-летняя инвесторская виза", icon: "passport", href: "/services/investor-visa" },
-      { label: "Рассрочка 1% / месяц", sub: "От застройщика, без банка", icon: "percent", href: "/services/installment" },
-      { label: "Ипотека для нерезидентов", sub: "От 25% первый взнос", icon: "bank", href: "/services/mortgage" },
-    ],
-  },
-  {
-    title: "Инструменты",
-    items: [
-      { label: "ROI калькулятор", sub: "Доходность за 3/5/10 лет", icon: "calc", href: "/invest/calculator" },
-      { label: "Сравнение районов", sub: "Цены, аренда, рост капитала", icon: "compare", href: "/invest/compare" },
-      { label: "Налоговый гид ОАЭ", sub: "0% налог на доход физлиц", icon: "doc", href: "/invest/tax" },
-      { label: "Инвестиционный отчёт 2026", sub: "Прогнозы и тренды рынка", icon: "chart", href: "/invest/report" },
-    ],
-  },
-];
+function buildAboutColumns(tNav) {
+  return [
+    {
+      title: tNav("mega.ourSocials"),
+      items: [
+        tls(tNav, "socials.instagram", "ig", "#"),
+        tls(tNav, "socials.youtube", "yt", "#"),
+        tls(tNav, "socials.telegram", "tg", "#"),
+        tls(tNav, "socials.whatsapp", "wa", "#"),
+      ],
+    },
+    {
+      title: tNav("mega.ourCompany"),
+      items: [
+        tls(tNav, "about.company", "info", "/about"),
+        tls(tNav, "about.reviews", "star", "/reviews"),
+        tls(tNav, "about.articles", "doc", "/articles"),
+        tls(tNav, "about.blog", "book", "/blog"),
+        tls(tNav, "about.faq", "help", "/faq"),
+      ],
+    },
+    {
+      title: tNav("mega.services"),
+      items: [
+        tls(tNav, "services.visa", "passport", "/services/visa"),
+        tls(tNav, "services.company", "biz", "/services/company"),
+        tls(tNav, "services.banking", "bank", "/services/banking"),
+        tls(tNav, "services.poa", "pen", "/services/poa"),
+      ],
+    },
+  ];
+}
+
+function buildInvestColumns(tNav) {
+  return [
+    {
+      title: tNav("mega.investStrategies"),
+      items: [
+        tls(tNav, "invest.offplan", "trend", "/off-plan"),
+        tls(tNav, "invest.rental", "key", "/ready-rentals"),
+        tls(tNav, "invest.shortTerm", "calendar", "/airbnb"),
+        tls(tNav, "invest.flip", "swap", "/flip"),
+      ],
+    },
+    {
+      title: tNav("mega.investPrograms"),
+      items: [
+        tls(tNav, "invest.goldenVisa", "shield", "/golden-visa"),
+        tls(tNav, "invest.investorVisa", "passport", "/services/investor-visa"),
+        tls(tNav, "invest.installment", "percent", "/services/installment"),
+        tls(tNav, "invest.mortgage", "bank", "/services/mortgage"),
+      ],
+    },
+    {
+      title: tNav("mega.investTools"),
+      items: [
+        tls(tNav, "invest.calculator", "calc", "/invest/calculator"),
+        tls(tNav, "invest.compare", "compare", "/invest/compare"),
+        tls(tNav, "invest.tax", "doc", "/invest/tax"),
+        tls(tNav, "invest.report2026", "chart", "/invest/report"),
+      ],
+    },
+  ];
+}
 
 function PropertiesMegaDropdown({ timeoutRef, onClose }) {
+  const tNav = useTranslations("Navigation");
+  const PROPERTY_TYPES = buildPropertyTypes(tNav);
   const handleMouseEnter = () => clearTimeout(timeoutRef.current);
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(onClose, 150);
@@ -643,71 +530,38 @@ const COMMUNITIES_COLS = [
   },
 ];
 
-const DEV_CATEGORIES = [
-  {
-    key: "giant",
-    iconName: "shield",
-    label: "Государственные гиганты",
-    desc: "Крупнейшие девелоперы ОАЭ, определяющие облик страны. Гарантия надежности, государственная поддержка и проекты мирового масштаба",
-    devKeys: [
-      "Emaar",
-      "Nakheel",
-      "Meraas",
-      "Dubai Properties",
-      "Aldar",
-      "Wasl",
-      "Majid Al Futtaim",
-    ],
-  },
-  {
-    key: "premium",
-    iconName: "gem",
-    label: "Премиум и люкс",
-    desc: "Эксклюзивные резиденции с авторским дизайном и безупречным качеством отделки. Выбор тех, кто ценит стиль, эстетику и высокий уровень сервиса",
-    devKeys: [
-      "Sobha",
-      "Select Group",
-      "Omniyat",
-      "Ellington",
-      "DAMAC",
-      "London Gate",
-      "Taraf",
-      "LIV Developers",
-    ],
-  },
-  {
-    key: "growth",
-    iconName: "flame",
-    label: "Инвестиционные",
-    desc: "Застройщики с самыми гибкими планами платежей (от 1% в месяц) и высокой скоростью строительства. Идеально для максимизации арендной доходности",
-    devKeys: [
-      "Binghatti",
-      "Danube",
-      "Samana",
-      "Azizi Developments",
-      "Tiger Properties",
-      "Reportage Properties",
-      "MAG Property",
-      "Imtiaz",
-    ],
-  },
-  {
-    key: "boutique",
-    iconName: "sparkles",
-    label: "Бутик и новые звёзды",
-    desc: "Молодые и амбициозные компании с фокусом на технологии умного дома, современную архитектуру и перспективные локации для роста цены",
-    devKeys: [
-      "Object 1",
-      "Iman Developers",
-      "Arada",
-      "RAK Properties",
-      "BEYOND",
-      "TownX Development",
-      "Prestige One",
-      "Alef Group",
-    ],
-  },
-];
+function buildDevCategories(tNav) {
+  return [
+    {
+      key: "giant",
+      iconName: "shield",
+      label: tNav("devCategories.giant.label"),
+      desc: tNav("devCategories.giant.desc"),
+      devKeys: ["Emaar", "Nakheel", "Meraas", "Dubai Properties", "Aldar", "Wasl", "Majid Al Futtaim"],
+    },
+    {
+      key: "premium",
+      iconName: "gem",
+      label: tNav("devCategories.premium.label"),
+      desc: tNav("devCategories.premium.desc"),
+      devKeys: ["Sobha", "Select Group", "Omniyat", "Ellington", "DAMAC", "London Gate", "Taraf", "LIV Developers"],
+    },
+    {
+      key: "growth",
+      iconName: "flame",
+      label: tNav("devCategories.growth.label"),
+      desc: tNav("devCategories.growth.desc"),
+      devKeys: ["Binghatti", "Danube", "Samana", "Azizi Developments", "Tiger Properties", "Reportage Properties", "MAG Property", "Imtiaz"],
+    },
+    {
+      key: "boutique",
+      iconName: "sparkles",
+      label: tNav("devCategories.boutique.label"),
+      desc: tNav("devCategories.boutique.desc"),
+      devKeys: ["Object 1", "Iman Developers", "Arada", "RAK Properties", "BEYOND", "TownX Development", "Prestige One", "Alef Group"],
+    },
+  ];
+}
 
 function devHref(key) {
   return `/developers/${key.toLowerCase().replace(/[\s.&]+/g, "-")}`;
@@ -723,16 +577,18 @@ const DEV_ICON_MAP = {
 };
 
 // Adapter: turn DEV_CATEGORIES into CategoryMegaMenu's `categories` shape.
-const DEVELOPERS_MEGA_CATEGORIES = DEV_CATEGORIES.map((c) => ({
-  key: c.key,
-  icon: DEV_ICON_MAP[c.iconName] || "shield",
-  title: c.label,
-  desc: c.desc,
-  items: c.devKeys.map((k) => ({
-    label: DEV_DISPLAY_NAMES[k] || k,
-    href: devHref(k),
-  })),
-}));
+function buildDevelopersMegaCategories(tNav) {
+  return buildDevCategories(tNav).map((c) => ({
+    key: c.key,
+    icon: DEV_ICON_MAP[c.iconName] || "shield",
+    title: c.label,
+    desc: c.desc,
+    items: c.devKeys.map((k) => ({
+      label: DEV_DISPLAY_NAMES[k] || k,
+      href: devHref(k),
+    })),
+  }));
+}
 
 // ── DistrictsMegaMenu data ─────────────────────────────────
 const slugDistrict = (s) =>
@@ -823,14 +679,16 @@ const DISTRICTS_GROUPS = [
 // ── PropertiesMegaMenu data ────────────────────────────────
 // Uses existing FEATURED + TOP_DEVS + EMIRATES + PROPERTY_TYPES, plus
 // a small static list for "Объекты офф-план" with item counts.
-const PROPERTIES_OFFPLAN = [
-  { label: "Виллы на продажу", href: "/villas", count: "248" },
-  { label: "Апартаменты на продажу", href: "/apartments", count: "1,840" },
-  { label: "Таунхаусы на продажу", href: "/townhouses", count: "412" },
-  { label: "Пентхаусы на продажу", href: "/penthouses", count: "96" },
-  { label: "Набережная (Waterfront)", href: "/waterfront", count: "284" },
-  { label: "Все новостройки", href: "/new-builds", all: true },
-];
+function buildPropertiesOffplan(tNav) {
+  return [
+    { label: tNav("propTypes.villasForSale"), href: "/villas", count: "248" },
+    { label: tNav("propTypes.apartmentsForSale"), href: "/apartments", count: "1,840" },
+    { label: tNav("propTypes.townhousesForSale"), href: "/townhouses", count: "412" },
+    { label: tNav("propTypes.penthousesForSale"), href: "/penthouses", count: "96" },
+    { label: tNav("propTypes.waterfrontFull"), href: "/waterfront", count: "284" },
+    { label: tNav("propTypes.allNewbuilds"), href: "/new-builds", all: true },
+  ];
+}
 
 const DISTRICTS_POPULAR = [
   "Expo City Dubai",
@@ -852,6 +710,8 @@ const DISTRICTS_POPULAR = [
 ].map((label) => ({ label, href: slugDistrict(label) }));
 
 function DevelopersMegaDropdown({ timeoutRef, onClose }) {
+  const tNav = useTranslations("Navigation");
+  const categories = buildDevCategories(tNav);
   const handleMouseEnter = () => clearTimeout(timeoutRef.current);
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(onClose, 150);
@@ -865,7 +725,7 @@ function DevelopersMegaDropdown({ timeoutRef, onClose }) {
     >
       <Container>
         <div className={styles.communitiesGrid}>
-          {DEV_CATEGORIES.map((cat, ci) => (
+          {categories.map((cat, ci) => (
             <div key={cat.key} className={styles.communityCol}>
               <div className={styles.communityGroup}>
                 <p className={styles.communityGroupLabel}>
@@ -889,11 +749,11 @@ function DevelopersMegaDropdown({ timeoutRef, onClose }) {
                   ))}
                 </ul>
               </div>
-              {ci === DEV_CATEGORIES.length - 1 && (
+              {ci === categories.length - 1 && (
                 <div className={styles.communityGuidesBtnWrap}>
                   <DropdownNavButton
                     href="/developers"
-                    label="Все застройщики"
+                    label={tNav("mega.allDevelopers")}
                     onClick={onClose}
                   />
                 </div>
@@ -1023,6 +883,7 @@ function NavItem({ item, open, onOpen, onClose, timeoutRef }) {
         {item.label}
         <ChevronDown
           size={14}
+          strokeWidth={1.6}
           className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
         />
       </button>
@@ -1031,6 +892,8 @@ function NavItem({ item, open, onOpen, onClose, timeoutRef }) {
 }
 
 function MegaDropdown({ item, timeoutRef, onClose }) {
+  const tNav = useTranslations("Navigation");
+  const socials = buildSocials(tNav);
   const handleMouseEnter = () => clearTimeout(timeoutRef.current);
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(onClose, 150);
@@ -1048,9 +911,9 @@ function MegaDropdown({ item, timeoutRef, onClose }) {
         <div className={styles.megaInner}>
           {/* ── Левая колонка: соцсети ── */}
           <div className={styles.megaCol}>
-            <p className={styles.megaColLabel}>Мы в соцсетях</p>
+            <p className={styles.megaColLabel}>{tNav("mega.ourSocials")}</p>
             <ul className={styles.megaList}>
-              {SOCIALS.map((s) => (
+              {socials.map((s) => (
                 <li key={s.label}>
                   <Link
                     href={s.href}
@@ -1096,7 +959,7 @@ function MegaDropdown({ item, timeoutRef, onClose }) {
           <div className={styles.megaCol}>
             {item.services ? (
               <>
-                <p className={styles.megaColLabel}>Услуги</p>
+                <p className={styles.megaColLabel}>{tNav("mega.services")}</p>
                 <ul className={styles.megaList}>
                   {item.services.map((s) => (
                     <li key={s.href}>
@@ -1123,7 +986,7 @@ function MegaDropdown({ item, timeoutRef, onClose }) {
               </>
             ) : (
               <>
-                <p className={styles.megaColLabel}>Предложение дня</p>
+                <p className={styles.megaColLabel}>{tNav("mega.offerOfDay")}</p>
                 <Link
                   href={`/${FEATURED.id}`}
                   className={styles.featuredCard}
@@ -1165,15 +1028,57 @@ function MegaDropdown({ item, timeoutRef, onClose }) {
    primary  → big line in dropdown (Montserrat 500)
    secondary → small mono kicker beneath (12px JetBrains Mono) */
 const languages = [
-  { code: "RU", label: "Русский", countryCode: "RU", primary: "Русский", secondary: "RU" },
-  { code: "EN", label: "English", countryCode: "GB", primary: "English", secondary: "EN" },
-  { code: "AR", label: "العربية", countryCode: "AE", primary: "العربية", secondary: "AR" },
+  {
+    code: "RU",
+    label: "Русский",
+    countryCode: "RU",
+    primary: "Русский",
+    secondary: "RU",
+  },
+  {
+    code: "EN",
+    label: "English",
+    countryCode: "GB",
+    primary: "English",
+    secondary: "EN",
+  },
+  {
+    code: "AR",
+    label: "العربية",
+    countryCode: "AE",
+    primary: "العربية",
+    secondary: "AR",
+  },
 ];
 const currencies = [
-  { code: "USD", label: "Доллар США", countryCode: "US", primary: "USD", secondary: "Доллар США" },
-  { code: "EUR", label: "Евро", countryCode: "EU", primary: "EUR", secondary: "Евро" },
-  { code: "RUB", label: "Российский рубль", countryCode: "RU", primary: "RUB", secondary: "Российский рубль" },
-  { code: "AED", label: "Дирхам ОАЭ", countryCode: "AE", primary: "AED", secondary: "Дирхам ОАЭ" },
+  {
+    code: "USD",
+    label: "Доллар США",
+    countryCode: "US",
+    primary: "USD",
+    secondary: "Доллар США",
+  },
+  {
+    code: "EUR",
+    label: "Евро",
+    countryCode: "EU",
+    primary: "EUR",
+    secondary: "Евро",
+  },
+  {
+    code: "RUB",
+    label: "Российский рубль",
+    countryCode: "RU",
+    primary: "RUB",
+    secondary: "Российский рубль",
+  },
+  {
+    code: "AED",
+    label: "Дирхам ОАЭ",
+    countryCode: "AE",
+    primary: "AED",
+    secondary: "Дирхам ОАЭ",
+  },
 ];
 
 function PillDropdown({
@@ -1201,6 +1106,7 @@ function PillDropdown({
         {renderTrigger(current)}
         <ChevronDown
           size={13}
+          strokeWidth={1.6}
           className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
         />
       </button>
@@ -1274,8 +1180,7 @@ function CurrencySelector({
   value,
   onChange,
 }) {
-  const current =
-    currencies.find((c) => c.code === value) || currencies[0];
+  const current = currencies.find((c) => c.code === value) || currencies[0];
   return (
     <PillDropdown
       items={currencies}
@@ -1296,68 +1201,70 @@ function CurrencySelector({
    Currency / Theme as segmented controls), and footer CTA.
    Mirrors the artifact's BurgerMenu structure. */
 
-const BURGER_NAV = [
-  {
-    label: "Новостройки ОАЭ",
-    icon: "01",
-    items: [
-      { label: "Все объекты", href: "/new-builds", arrow: true },
-      { label: "Готовые", href: "/ready" },
-      { label: "Off-plan", href: "/off-plan" },
-      { label: "Апартаменты", href: "/apartments" },
-      { label: "Виллы", href: "/villas" },
-      { label: "Пентхаусы", href: "/penthouses" },
-      { label: "Таунхаусы", href: "/townhouses" },
-    ],
-  },
-  {
-    label: "Районы",
-    icon: "02",
-    items: [
-      { label: "Dubai Marina", href: "/communities/dubai-marina" },
-      { label: "Palm Jumeirah", href: "/communities/palm-jumeirah" },
-      { label: "Downtown Dubai", href: "/communities/downtown" },
-      { label: "Business Bay", href: "/communities/business-bay" },
-      { label: "JVC", href: "/communities/jvc" },
-      { label: "Все районы", href: "/communities", arrow: true },
-    ],
-  },
-  {
-    label: "Застройщики",
-    icon: "03",
-    items: [
-      { label: "EMAAR", href: "/developers/emaar" },
-      { label: "DAMAC", href: "/developers/damac" },
-      { label: "SOBHA", href: "/developers/sobha" },
-      { label: "NAKHEEL", href: "/developers/nakheel" },
-      { label: "MERAAS", href: "/developers/meraas" },
-      { label: "Все застройщики", href: "/developers", arrow: true },
-    ],
-  },
-  {
-    label: "Инвестиции",
-    icon: "04",
-    items: [
-      { label: "ROI калькулятор", href: "/invest/calculator" },
-      { label: "Golden Visa", href: "/services/golden-visa" },
-      { label: "Ипотека", href: "/services/mortgage" },
-      { label: "Налоги", href: "/invest/tax" },
-      { label: "Управление", href: "/services/management" },
-    ],
-  },
-  {
-    label: "О нас",
-    icon: "05",
-    items: [
-      { label: "О компании", href: "/about" },
-      { label: "Команда", href: "/team" },
-      { label: "Услуги", href: "/services" },
-      { label: "Отзывы", href: "/reviews" },
-      { label: "Блог", href: "/blog" },
-      { label: "Контакты", href: "/contacts" },
-    ],
-  },
-];
+function buildBurgerNav(tNav) {
+  return [
+    {
+      label: tNav("burgerSections.newbuilds"),
+      icon: "01",
+      items: [
+        { label: tNav("burgerSections.allObjects"), href: "/new-builds", arrow: true },
+        { label: tNav("burgerSections.ready"), href: "/ready" },
+        { label: tNav("burgerSections.offPlan"), href: "/off-plan" },
+        { label: tNav("propTypes.apartments"), href: "/apartments" },
+        { label: tNav("propTypes.villas"), href: "/villas" },
+        { label: tNav("propTypes.penthouses"), href: "/penthouses" },
+        { label: tNav("propTypes.townhouses"), href: "/townhouses" },
+      ],
+    },
+    {
+      label: tNav("burgerSections.communities"),
+      icon: "02",
+      items: [
+        { label: "Dubai Marina", href: "/communities/dubai-marina" },
+        { label: "Palm Jumeirah", href: "/communities/palm-jumeirah" },
+        { label: "Downtown Dubai", href: "/communities/downtown" },
+        { label: "Business Bay", href: "/communities/business-bay" },
+        { label: "JVC", href: "/communities/jvc" },
+        { label: tNav("burgerSections.allCommunities"), href: "/communities", arrow: true },
+      ],
+    },
+    {
+      label: tNav("burgerSections.developers"),
+      icon: "03",
+      items: [
+        { label: "EMAAR", href: "/developers/emaar" },
+        { label: "DAMAC", href: "/developers/damac" },
+        { label: "SOBHA", href: "/developers/sobha" },
+        { label: "NAKHEEL", href: "/developers/nakheel" },
+        { label: "MERAAS", href: "/developers/meraas" },
+        { label: tNav("mega.allDevelopers"), href: "/developers", arrow: true },
+      ],
+    },
+    {
+      label: tNav("burgerSections.invest"),
+      icon: "04",
+      items: [
+        { label: tNav("burgerSections.roiCalc"), href: "/invest/calculator" },
+        { label: tNav("burgerSections.goldenVisa"), href: "/golden-visa" },
+        { label: tNav("burgerSections.mortgage"), href: "/services/mortgage" },
+        { label: tNav("burgerSections.taxes"), href: "/invest/tax" },
+        { label: tNav("burgerSections.management"), href: "/services/management" },
+      ],
+    },
+    {
+      label: tNav("burgerSections.about"),
+      icon: "05",
+      items: [
+        { label: tNav("burgerSections.company"), href: "/about" },
+        { label: tNav("burgerSections.team"), href: "/team" },
+        { label: tNav("burgerSections.services"), href: "/services" },
+        { label: tNav("burgerSections.reviews"), href: "/reviews" },
+        { label: tNav("burgerSections.blog"), href: "/blog" },
+        { label: tNav("burgerSections.contacts"), href: "/contacts" },
+      ],
+    },
+  ];
+}
 
 function SegPicker({ options, value, onChange }) {
   return (
@@ -1391,6 +1298,9 @@ function BurgerDrawer({
   theme,
   setTheme,
 }) {
+  const tNav = useTranslations("Navigation");
+  const tCommon = useTranslations("Common");
+  const BURGER_NAV = buildBurgerNav(tNav);
   const [expanded, setExpanded] = useState(null);
   const [query, setQuery] = useState("");
 
@@ -1416,9 +1326,7 @@ function BurgerDrawer({
     ? BURGER_NAV.map((s) => ({
         ...s,
         items: s.items.filter((it) => it.label.toLowerCase().includes(q)),
-      })).filter(
-        (s) => s.items.length > 0 || s.label.toLowerCase().includes(q),
-      )
+      })).filter((s) => s.items.length > 0 || s.label.toLowerCase().includes(q))
     : BURGER_NAV;
 
   return (
@@ -1433,14 +1341,14 @@ function BurgerDrawer({
         {/* Header */}
         <div className={styles.burgerHeader}>
           <div>
-            <div className={styles.burgerTitle}>Меню</div>
-            <div className={styles.burgerSub}>ShanGroup · Dubai</div>
+            <div className={styles.burgerTitle}>{tNav("burger.title")}</div>
+            <div className={styles.burgerSub}>{tNav("burger.subtitle")}</div>
           </div>
           <button
             type="button"
             onClick={onClose}
             className={styles.burgerClose}
-            aria-label="Закрыть"
+            aria-label={tCommon("actions.close")}
           >
             <IcClose size={16} />
           </button>
@@ -1455,14 +1363,14 @@ function BurgerDrawer({
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Поиск по меню, районам, застройщикам…"
+              placeholder={tNav("burger.searchPlaceholder")}
             />
             {query && (
               <button
                 type="button"
                 onClick={() => setQuery("")}
                 className={styles.burgerSearchClear}
-                aria-label="Очистить"
+                aria-label={tCommon("actions.reset")}
               >
                 <IcClose size={13} />
               </button>
@@ -1473,7 +1381,7 @@ function BurgerDrawer({
         {/* Scrollable nav */}
         <div className={styles.burgerScroll}>
           {filteredNav.length === 0 ? (
-            <div className={styles.burgerEmpty}>Ничего не найдено</div>
+            <div className={styles.burgerEmpty}>{tCommon("common.nothingFound")}</div>
           ) : (
             filteredNav.map((s, idx) => {
               const isOpen = expanded === idx || !!q;
@@ -1481,20 +1389,15 @@ function BurgerDrawer({
                 <div key={s.label} className={styles.burgerSection}>
                   <button
                     type="button"
-                    onClick={() =>
-                      setExpanded(isOpen && !q ? null : idx)
-                    }
+                    onClick={() => setExpanded(isOpen && !q ? null : idx)}
                     className={`${styles.burgerSectionBtn} ${isOpen ? styles.burgerSectionBtnOpen : ""}`}
                   >
-                    <span className={styles.burgerSectionIcon}>
-                      {s.icon}
-                    </span>
-                    <span className={styles.burgerSectionLabel}>
-                      {s.label}
-                    </span>
+                    <span className={styles.burgerSectionIcon}>{s.icon}</span>
+                    <span className={styles.burgerSectionLabel}>{s.label}</span>
                     {!q && (
                       <ChevronDown
                         size={13}
+                        strokeWidth={1.6}
                         className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`}
                       />
                     )}
@@ -1521,9 +1424,9 @@ function BurgerDrawer({
 
           {/* Settings */}
           <div className={styles.burgerSettings}>
-            <div className={styles.burgerSettingsLabel}>Настройки</div>
+            <div className={styles.burgerSettingsLabel}>{tNav("burger.settings")}</div>
             <div className={styles.burgerSettingRow}>
-              <span className={styles.burgerSettingName}>Язык</span>
+              <span className={styles.burgerSettingName}>{tNav("burger.language")}</span>
               <SegPicker
                 value={language}
                 onChange={setLanguage}
@@ -1535,7 +1438,7 @@ function BurgerDrawer({
               />
             </div>
             <div className={styles.burgerSettingRow}>
-              <span className={styles.burgerSettingName}>Валюта</span>
+              <span className={styles.burgerSettingName}>{tNav("burger.currency")}</span>
               <SegPicker
                 value={currency}
                 onChange={setCurrency}
@@ -1547,20 +1450,20 @@ function BurgerDrawer({
               />
             </div>
             <div className={styles.burgerSettingRow}>
-              <span className={styles.burgerSettingName}>Тема</span>
+              <span className={styles.burgerSettingName}>{tNav("burger.theme")}</span>
               <SegPicker
                 value={theme}
                 onChange={setTheme}
                 options={[
                   {
                     value: "light",
-                    icon: <Sun size={13} />,
-                    label: "Светлая",
+                    icon: <Sun size={13} strokeWidth={1.6} />,
+                    label: tNav("burger.themeLight"),
                   },
                   {
                     value: "dark",
-                    icon: <Moon size={13} />,
-                    label: "Тёмная",
+                    icon: <Moon size={13} strokeWidth={1.6} />,
+                    label: tNav("burger.themeDark"),
                   },
                 ]}
               />
@@ -1576,7 +1479,7 @@ function BurgerDrawer({
             icon={<IcPhone />}
             onClick={onContact}
           >
-            Связаться с агентом
+            {tCommon("actions.contactAgent")}
           </PrimaryButton>
           <div className={styles.burgerFooterMeta}>
             <span>+971 4 261 8838</span>
@@ -1590,35 +1493,39 @@ function BurgerDrawer({
 
 /* ── Root Navigation ── */
 export default function Navigation() {
+  const tNav = useTranslations("Navigation");
+  const tCommon = useTranslations("Common");
+  const navItems = buildNavItems(tNav);
+  const aboutColumns = buildAboutColumns(tNav);
+  const investColumns = buildInvestColumns(tNav);
+  const developersMegaCategories = buildDevelopersMegaCategories(tNav);
+  const propertiesOffplan = buildPropertiesOffplan(tNav);
+  const propertyTypes = buildPropertyTypes(tNav);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [activeNav, setActiveNav] = useState(null);
   const [mobileSection, setMobileSection] = useState(null);
   const [theme, setTheme] = useTheme();
-  const [language, setLanguage] = useState("RU");
+  // Язык — глобальный (next-intl + I18nProvider). Гидрация из localStorage
+  // и запись обратно делаются в самом провайдере, тут только мост к UI.
+  const { locale, setLocale } = useLocale();
+  const language = locale.toUpperCase();
+  const setLanguage = setLocale;
   const [currency, setCurrency] = useState("USD");
   const navTimeoutRef = useRef(null);
   const closeNav = () => setActiveNav(null);
   const pathname = usePathname();
 
-  // Hydrate language/currency from localStorage on mount; persist on change.
+  // Currency пока живёт локально — отдельный switcher, не связанный с локалью.
   useEffect(() => {
     try {
-      const lang = localStorage.getItem("shan-lang");
       const curr = localStorage.getItem("shan-currency");
-      if (lang) setLanguage(lang);
       if (curr) setCurrency(curr);
     } catch {
       /* storage unavailable — ignore */
     }
   }, []);
-  useEffect(() => {
-    try {
-      localStorage.setItem("shan-lang", language);
-    } catch {
-      /* */
-    }
-  }, [language]);
   useEffect(() => {
     try {
       localStorage.setItem("shan-currency", currency);
@@ -1638,7 +1545,11 @@ export default function Navigation() {
         <Container>
           <nav className={styles.nav}>
             <Link href="/" className={styles.logo}>
-              <img src="/logo.png" alt="ShanGroup" className={styles.logoImg} />
+              <img
+                src="/Logo_01.svg"
+                alt="ShanGroup"
+                className={styles.logoImg}
+              />
             </Link>
 
             <ul className={styles.links}>
@@ -1682,7 +1593,7 @@ export default function Navigation() {
               />
               <ContactButton
                 href="tel:+97142618838"
-                label="Связаться"
+                label={tNav("actions.contact")}
                 icon="phone-call"
               />
               <button
@@ -1690,7 +1601,11 @@ export default function Navigation() {
                 className={styles.burger}
                 onClick={() => setMenuOpen(!menuOpen)}
               >
-                {menuOpen ? <X size={22} /> : <Menu size={22} />}
+                {menuOpen ? (
+                  <X size={22} strokeWidth={1.6} />
+                ) : (
+                  <Menu size={22} strokeWidth={1.6} />
+                )}
               </button>
             </div>
           </nav>
@@ -1712,7 +1627,7 @@ export default function Navigation() {
             onClose={closeNav}
             groups={DISTRICTS_GROUPS}
             popular={DISTRICTS_POPULAR}
-            ctaLabel="Гиды по районам"
+            ctaLabel={tNav("mega.communitiesGuides")}
             ctaHref="/communities"
             onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
             onMouseLeave={() => {
@@ -1724,9 +1639,9 @@ export default function Navigation() {
           <CategoryMegaMenu
             open
             onClose={closeNav}
-            label="Застройщики"
-            categories={DEVELOPERS_MEGA_CATEGORIES}
-            ctaLabel="Все застройщики"
+            label={tNav("menu.developers")}
+            categories={developersMegaCategories}
+            ctaLabel={tNav("mega.allDevelopers")}
             ctaHref="/developers"
             onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
             onMouseLeave={() => {
@@ -1739,29 +1654,32 @@ export default function Navigation() {
             open
             onClose={closeNav}
             data={{
-              offplan: PROPERTIES_OFFPLAN,
+              offplan: propertiesOffplan,
               developers: TOP_DEVS,
               ctaAllDevelopers: {
-                label: "Все застройщики",
+                label: tNav("mega.allDevelopers"),
                 href: "/developers",
               },
-              types: PROPERTY_TYPES.slice(0, 5).map((t) => ({
+              types: propertyTypes.slice(0, 5).map((t) => ({
                 label: t.label,
                 img: t.image,
                 href: t.href,
               })),
-              areas: PROPERTY_TYPES.slice(5, 10).map((t) => ({
+              areas: propertyTypes.slice(5, 10).map((t) => ({
                 label: t.label,
                 img: t.image,
                 href: t.href,
               })),
               emirates: EMIRATES.map((e) => ({
                 label: e.label,
-                count: `${e.count} объектов`,
+                count: tNav("propTypes.objectsCount", { count: e.count }),
                 img: e.img,
                 href: e.href,
               })),
-              ctaAllEmirates: { label: "Все эмираты", href: "/emirates" },
+              ctaAllEmirates: {
+                label: tNav("mega.allEmirates").replace(/ →$/, ""),
+                href: "/emirates",
+              },
               featured: {
                 brand: FEATURED.developer,
                 name: FEATURED.name,
@@ -1781,8 +1699,8 @@ export default function Navigation() {
           <RichMegaMenu
             open
             onClose={closeNav}
-            label="Инвестиции"
-            columns={INVEST_COLUMNS}
+            label={tNav("menu.invest")}
+            columns={investColumns}
             onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
             onMouseLeave={() => {
               navTimeoutRef.current = setTimeout(closeNav, 150);
@@ -1793,8 +1711,8 @@ export default function Navigation() {
           <RichMegaMenu
             open
             onClose={closeNav}
-            label="О нас"
-            columns={ABOUT_COLUMNS}
+            label={tNav("menu.about")}
+            columns={aboutColumns}
             onMouseEnter={() => clearTimeout(navTimeoutRef.current)}
             onMouseLeave={() => {
               navTimeoutRef.current = setTimeout(closeNav, 150);

@@ -1,0 +1,136 @@
+{
+  "menu": {
+    "newbuilds": "New developments",
+    "communities": "Communities",
+    "developers": "Developers",
+    "invest": "Investments",
+    "about": "About"
+  },
+  "actions": {
+    "contact": "Contact us",
+    "phone": "+971 4 261 8838",
+    "rera": "RERA #2087"
+  },
+  "burger": {
+    "title": "Menu",
+    "subtitle": "ShanGroup · Dubai",
+    "searchPlaceholder": "Search menu, communities, developers…",
+    "settings": "Settings",
+    "language": "Language",
+    "currency": "Currency",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "mega": {
+    "ourSocials": "Follow us",
+    "services": "Services",
+    "offerOfDay": "Offer of the day",
+    "topDevelopers": "Top developers",
+    "allDevelopers": "All developers",
+    "offplanItems": "Off-plan listings",
+    "emirates": "Emirates",
+    "allEmirates": "All emirates →",
+    "communitiesGuides": "Community guides",
+    "popularDistricts": "Popular districts",
+    "ourCompany": "About",
+    "investStrategies": "Strategies",
+    "investPrograms": "Programs",
+    "investTools": "Tools"
+  },
+  "newbuilds": {
+    "apartments": { "label": "Apartments in Dubai", "desc": "Apartments and studios" },
+    "villas": { "label": "Houses & villas", "desc": "Private homes and villas" },
+    "byLocation": { "label": "By location", "desc": "Search by community" },
+    "byDeveloper": { "label": "By developer", "desc": "Leading UAE developers" },
+    "abuDhabi": { "label": "Abu Dhabi", "desc": "Property in the capital" },
+    "sharjah": { "label": "Sharjah", "desc": "Property in Sharjah" }
+  },
+  "invest": {
+    "goldenVisa": { "label": "Golden Visa $545K+", "desc": "10-year residence visa" },
+    "investorVisa": { "label": "Investor Visa $204K+", "desc": "2-year investor visa" },
+    "installment": { "label": "1% / month plan", "desc": "From the developer, no bank" },
+    "mortgage": { "label": "Mortgage for non-residents", "desc": "From 25% down payment" },
+    "offplan": { "label": "Off-plan strategy", "desc": "Buy pre-launch · ROI 25–40%" },
+    "rental": { "label": "Ready rentals", "desc": "Stable 6–9% annual yield" },
+    "shortTerm": { "label": "Short-term rentals", "desc": "Airbnb format, up to 12% yield" },
+    "flip": { "label": "Flip strategy", "desc": "Resell at handover" },
+    "calculator": { "label": "ROI calculator", "desc": "3/5/10-year yield" },
+    "tax": { "label": "UAE tax guide", "desc": "0% personal income tax" },
+    "compare": { "label": "Compare districts", "desc": "Prices, rent, capital growth" },
+    "report2026": { "label": "Investment report 2026", "desc": "Forecasts and market trends" }
+  },
+  "about": {
+    "company": { "label": "About the company", "desc": "Our history and mission" },
+    "reviews": { "label": "Reviews", "desc": "Our clients' stories" },
+    "articles": { "label": "Articles", "desc": "Useful materials" },
+    "blog": { "label": "Blog", "desc": "Market news" },
+    "faq": { "label": "Q&A", "desc": "Frequently asked questions" }
+  },
+  "services": {
+    "visa": { "label": "Visa services", "desc": "Residence and investor visas" },
+    "company": { "label": "Company setup", "desc": "Freehold and free zone" },
+    "banking": { "label": "Bank accounts", "desc": "Personal and corporate" },
+    "poa": { "label": "Power of Attorney", "desc": "Drafting and notarisation" }
+  },
+  "socials": {
+    "instagram": { "label": "Instagram", "desc": "@shangroup.ae" },
+    "youtube": { "label": "YouTube", "desc": "Property videos" },
+    "telegram": { "label": "Telegram", "desc": "News and listings" },
+    "whatsapp": { "label": "WhatsApp", "desc": "Message us" }
+  },
+  "propTypes": {
+    "villas": "Villas",
+    "apartments": "Apartments",
+    "townhouses": "Townhouses",
+    "penthouses": "Penthouses",
+    "waterfront": "Waterfront",
+    "villasForSale": "Villas for sale",
+    "apartmentsForSale": "Apartments for sale",
+    "townhousesForSale": "Townhouses for sale",
+    "penthousesForSale": "Penthouses for sale",
+    "waterfrontFull": "Waterfront",
+    "allNewbuilds": "All new developments",
+    "objectsCount": "{count} listings"
+  },
+  "devCategories": {
+    "giant": {
+      "label": "State-backed giants",
+      "desc": "The largest UAE developers shaping the country. Reliability guarantee, government support and world-class projects"
+    },
+    "premium": {
+      "label": "Premium & luxury",
+      "desc": "Exclusive residences with signature design and impeccable finish quality. The choice of those who value style, aesthetics and top-tier service"
+    },
+    "growth": {
+      "label": "Investment-focused",
+      "desc": "Developers with the most flexible payment plans (from 1% per month) and high construction speed. Ideal for maximising rental yield"
+    },
+    "boutique": {
+      "label": "Boutique & rising stars",
+      "desc": "Young, ambitious companies focused on smart-home tech, modern architecture and high-growth locations"
+    }
+  },
+  "burgerSections": {
+    "newbuilds": "New developments",
+    "communities": "Communities",
+    "developers": "Developers",
+    "invest": "Investments",
+    "about": "About",
+    "allObjects": "All listings",
+    "ready": "Ready",
+    "offPlan": "Off-plan",
+    "allCommunities": "All communities",
+    "roiCalc": "ROI calculator",
+    "goldenVisa": "Golden Visa",
+    "mortgage": "Mortgage",
+    "taxes": "Taxes",
+    "management": "Management",
+    "company": "About the company",
+    "team": "Team",
+    "services": "Services",
+    "reviews": "Reviews",
+    "blog": "Blog",
+    "contacts": "Contacts"
+  }
+}

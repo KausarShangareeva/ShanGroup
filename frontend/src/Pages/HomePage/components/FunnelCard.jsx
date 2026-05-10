@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { formatPrice } from "@/data/properties/funnelProperties";
+import { useTranslations } from "next-intl";
+import { formatPrice } from "@/utils/funnel";
 
 const NEU_RAISED =
   "-8px -8px 20px var(--shadow-light), 8px 8px 24px var(--shadow-dark)";
@@ -125,6 +126,8 @@ function ActionBtn({ href, icon, label, tone, target }) {
 }
 
 export default function FunnelCard({ it, liked, onLike, isMobile }) {
+  const t = useTranslations("HomePage.newFeatures");
+  const tCommon = useTranslations("Common");
   const [hover, setHover] = useState(false);
   const expanded = hover;
 
@@ -137,7 +140,9 @@ export default function FunnelCard({ it, liked, onLike, isMobile }) {
       tabIndex={0}
       style={{
         position: "relative",
-        minHeight: isMobile ? 440 : 500,
+        // Фиксированная высота — синхронизирована с NewFeatures NFCard.
+        // 520 даёт удобный нижний отступ под action-кнопками в expanded.
+        height: 520,
         borderRadius: 26,
         overflow: "hidden",
         background: "var(--bg)",
@@ -156,7 +161,8 @@ export default function FunnelCard({ it, liked, onLike, isMobile }) {
         style={{
           position: "relative",
           width: "100%",
-          height: expanded ? (isMobile ? 220 : 240) : isMobile ? 300 : 340,
+          // Высота фото согласована с NewFeatures: 250 collapsed, 160 expanded.
+          height: expanded ? 160 : 250,
           transition: "height .5s cubic-bezier(.2,.7,.2,1)",
           overflow: "hidden",
           flexShrink: 0,
@@ -190,7 +196,7 @@ export default function FunnelCard({ it, liked, onLike, isMobile }) {
             e.stopPropagation();
             onLike();
           }}
-          aria-label={liked ? "Убрать из избранного" : "Добавить в избранное"}
+          aria-label={liked ? tCommon("actions.removeFromFavorites") : tCommon("actions.addToFavorites")}
           aria-pressed={liked}
           style={{
             position: "absolute",
@@ -241,6 +247,11 @@ export default function FunnelCard({ it, liked, onLike, isMobile }) {
             fontFamily: "'JetBrains Mono', monospace",
             textTransform: "uppercase",
             maxWidth: "65%",
+            // Синхронизировано с ROI-бейджем справа: оба плавно
+            // исчезают при hover, освобождая фото от плашек.
+            opacity: expanded ? 0 : 1,
+            transform: expanded ? "translateY(8px)" : "translateY(0)",
+            transition: "opacity .25s, transform .25s",
           }}
         >
           <span
@@ -296,6 +307,8 @@ export default function FunnelCard({ it, liked, onLike, isMobile }) {
           display: "flex",
           flexDirection: "column",
           flex: 1,
+          minHeight: 0,
+          overflow: "hidden",
         }}
       >
         <div
@@ -460,9 +473,9 @@ export default function FunnelCard({ it, liked, onLike, isMobile }) {
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
-            <ActionBtn href={`tel:${it.agent.phone.replace(/\s/g, "")}`} icon={<IcPhone />} label="Звонок" tone="dark" />
+            <ActionBtn href={`tel:${it.agent.phone.replace(/\s/g, "")}`} icon={<IcPhone />} label={t("actionCall")} tone="dark" />
             <ActionBtn href={`https://wa.me/${it.agent.whatsapp.replace(/\D/g, "")}`} icon={<IcWA />} label="WhatsApp" tone="green" target="_blank" />
-            <ActionBtn href={`mailto:${it.agent.email}`} icon={<IcMail />} label="Почта" tone="light" />
+            <ActionBtn href={`mailto:${it.agent.email}`} icon={<IcMail />} label={t("actionMail")} tone="light" />
           </div>
         </div>
       </div>

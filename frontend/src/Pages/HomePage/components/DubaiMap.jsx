@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -38,16 +39,12 @@ const DM_PINS = [
   { id: "dxb-villa",  district: "creek",    x: 62, y: 49, name: "Creek Villas",           dev: "EMAAR",            price: 3200000, roi: 7.6,  type: "villa" },
 ];
 
-const DM_TYPES = [
-  { id: "all",       label: "Все" },
-  { id: "studio",    label: "Студии" },
-  { id: "apt",       label: "Апарт." },
-  { id: "penthouse", label: "Пентхаусы" },
-  { id: "villa",     label: "Виллы" },
-];
+const DM_TYPE_KEYS = ["all", "studio", "apt", "penthouse", "villa"];
 
 export default function DubaiMap() {
   const isMobile = useIsMobile();
+  const t = useTranslations("HomePage.dubaiMap");
+  const DM_TYPES = DM_TYPE_KEYS.map((id) => ({ id, label: t(`types.${id}`) }));
   const [type, setType] = useState("all");
   const [budget, setBudget] = useState(10_000_000);
   const [active, setActive] = useState("marina-v");
@@ -82,7 +79,7 @@ export default function DubaiMap() {
             }}
           >
             <span aria-hidden style={{ display: "inline-block", width: 32, height: 1, background: "var(--sand-deep)", opacity: 0.55 }} />
-            Карта · {visible.length} объектов
+            {t("kicker", { count: visible.length })}
           </div>
           <h2
             style={{
@@ -98,9 +95,9 @@ export default function DubaiMap() {
               textWrap: "balance",
             }}
           >
-            Найдите объект{" "}
+            {t("titleA")}{" "}
             <span style={{ fontStyle: "italic", color: "var(--sand-deep)", fontWeight: 400 }}>
-              на&nbsp;карте
+              {t("titleB")}
             </span>
           </h2>
         </div>
@@ -162,7 +159,7 @@ export default function DubaiMap() {
                 whiteSpace: "nowrap",
               }}
             >
-              До
+              {t("budgetUpTo")}
             </span>
             <input
               type="range"
@@ -409,7 +406,8 @@ export default function DubaiMap() {
                 position: "absolute",
                 left: 14,
                 bottom: 14,
-                background: "rgba(255,255,255,.92)",
+                background: "var(--bg)",
+                color: "var(--ink)",
                 backdropFilter: "blur(10px)",
                 borderRadius: 12,
                 padding: "8px 12px",
@@ -422,8 +420,8 @@ export default function DubaiMap() {
               }}
             >
               <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-                <span style={{ width: 8, height: 8, borderRadius: 99, background: "#0A0A0B" }} />
-                Standard
+                <span style={{ width: 8, height: 8, borderRadius: 99, background: "var(--ink)" }} />
+                {t("legend.standard")}
               </span>
               <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
                 <span
@@ -434,7 +432,7 @@ export default function DubaiMap() {
                     background: "linear-gradient(180deg, oklch(0.86 0.13 88), oklch(0.74 0.14 78))",
                   }}
                 />
-                Golden Visa
+                {t("legend.gold")}
               </span>
             </div>
           </div>
@@ -461,7 +459,7 @@ export default function DubaiMap() {
                 textTransform: "uppercase",
               }}
             >
-              {visible.length} объектов в выборке
+              {t("selectionLabel", { count: visible.length })}
             </div>
             {visible.map((p) => {
               const isActive = active === p.id;
@@ -474,8 +472,8 @@ export default function DubaiMap() {
                     cursor: "pointer",
                     padding: "10px 12px",
                     borderRadius: 12,
-                    background: isActive ? "var(--ink)" : "transparent",
-                    color: isActive ? "var(--ink-inverse)" : "var(--ink)",
+                    background: isActive ? "#0A0A0B" : "transparent",
+                    color: isActive ? "#fafaf7" : "var(--ink)",
                     display: "grid",
                     gridTemplateColumns: "1fr auto",
                     gap: 8,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -10,32 +11,35 @@ const NEU_RAISED =
 const NEU_FLAT =
   "-1px -1px 2px var(--shadow-light), 1px 1px 2px var(--shadow-dark)";
 
-const GV_TIERS = [
-  {
-    min: 205_000,
-    max: 545_000,
-    visa: "none",
-    label: "Без визы",
-    years: 0,
-    desc: "Ниже порога — рассмотрите ипотеку или объект побольше",
-  },
-  {
-    min: 545_000,
-    max: 2_180_000,
-    visa: "2y",
-    label: "Виза резидента",
-    years: 2,
-    desc: "От $205K готовое + $545K в собственности — 2 года",
-  },
-  {
-    min: 2_180_000,
-    max: Infinity,
-    visa: "10y",
-    label: "Golden Visa 10 лет",
-    years: 10,
-    desc: "От $2M в собственности — ВНЖ для всей семьи на 10 лет",
-  },
-];
+// Скелет тиров — числовые границы и id; лейблы/описания подгружаются через t().
+function buildTiers(t) {
+  return [
+    {
+      min: 205_000,
+      max: 545_000,
+      visa: "none",
+      label: t("tiers.noneLabel"),
+      years: 0,
+      desc: t("tiers.noneDesc"),
+    },
+    {
+      min: 545_000,
+      max: 2_180_000,
+      visa: "2y",
+      label: t("tiers.twoYearLabel"),
+      years: 2,
+      desc: t("tiers.twoYearDesc"),
+    },
+    {
+      min: 2_180_000,
+      max: Infinity,
+      visa: "10y",
+      label: t("tiers.tenYearLabel"),
+      years: 10,
+      desc: t("tiers.tenYearDesc"),
+    },
+  ];
+}
 
 const GV_DISTRICTS = [
   { id: "marina",   name: "Dubai Marina",        roi: 8.4,  occupancy: 91, ppm: 4_200 },
@@ -51,13 +55,15 @@ const LOG_MIN = Math.log(BUDGET_MIN);
 const LOG_MAX = Math.log(BUDGET_MAX);
 const LOG_RES = 10_000;
 
-function pluralYears(n) {
+// Локально-зависимое склонение лет: для русского — три формы,
+// для остальных языков (en/ar) — единая форма из словаря.
+function pluralYears(n, units) {
   const mod10 = n % 10;
   const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 14) return "лет";
-  if (mod10 === 1) return "год";
-  if (mod10 >= 2 && mod10 <= 4) return "года";
-  return "лет";
+  if (mod100 >= 11 && mod100 <= 14) return units.many;
+  if (mod10 === 1) return units.one;
+  if (mod10 >= 2 && mod10 <= 4) return units.few;
+  return units.many;
 }
 
 function fmt(n) {
@@ -193,13 +199,16 @@ function GVShareBtn({ children, onClick, bg, label }) {
 }
 
 function GoldenVisaCalcInner({ isMobile }) {
+  const t = useTranslations("HomePage.goldenVisaCalc");
+  const yearsUnits = t.raw("yearsLong");
+  const tiers = buildTiers(t);
   const [budget, setBudget] = useState(1_200_000);
   const [districtId, setDistrictId] = useState("creek");
   const [horizon, setHorizon] = useState(5);
   const [shared, setShared] = useState(false);
 
   const district = GV_DISTRICTS.find((d) => d.id === districtId);
-  const tier = GV_TIERS.find((t) => budget >= t.min && budget < t.max);
+  const tier = tiers.find((tt) => budget >= tt.min && budget < tt.max);
   const sqm = Math.round(budget / district.ppm);
 
   const annualRent = budget * (district.roi / 100);
@@ -227,7 +236,7 @@ function GoldenVisaCalcInner({ isMobile }) {
 
   const handleShare = async (platform) => {
     const url = window.location.href;
-    const text = `Мой расчёт по недвижимости в Дубае: ${fmtK(budget)} — ROI ${roiTotal.toFixed(1)}% за ${horizon} ${pluralYears(horizon)}, Golden Visa ${tier.years} ${pluralYears(tier.years)}. Налоги — 0%.`;
+    const text = `Мой расчёт по недвижимости в Дубае: ${fmtK(budget)} — ROI ${roiTotal.toFixed(1)}% за ${horizon} ${pluralYears(horizon, yearsUnits)}, Golden Visa ${tier.years} ${pluralYears(tier.years, yearsUnits)}. Налоги — 0%.`;
     if (platform === "copy") {
       try {
         await navigator.clipboard.writeText(text + "\n" + url);
@@ -279,7 +288,7 @@ function GoldenVisaCalcInner({ isMobile }) {
             }}
           >
             <span aria-hidden style={{ display: "inline-block", width: 32, height: 1, background: "var(--sand-deep)", opacity: 0.55 }} />
-            Калькулятор · Golden Visa · ROI
+            {t("kicker")}
           </div>
           <h2
             style={{
@@ -295,9 +304,9 @@ function GoldenVisaCalcInner({ isMobile }) {
               textWrap: "balance",
             }}
           >
-            Сколько вы заработаете{" "}
+            {t("titleA")}{" "}
             <span style={{ fontStyle: "italic", color: "var(--sand-deep)", fontWeight: 400 }}>
-              в&nbsp;Дубае
+              {t("titleB")}
             </span>
           </h2>
           <p
@@ -309,7 +318,7 @@ function GoldenVisaCalcInner({ isMobile }) {
               color: "var(--muted)",
             }}
           >
-            Двигайте слайдер бюджета — увидите подходящие объекты, кэш-флоу, налоговую экономию и&nbsp;статус&nbsp;ВНЖ. Без формы регистрации.
+            {t("subtitle")}
           </p>
         </div>
       </div>
@@ -352,7 +361,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                     marginBottom: 4,
                   }}
                 >
-                  Бюджет инвестиции
+                  {t("budget")}
                 </div>
                 <div
                   style={{
@@ -519,7 +528,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                 marginBottom: 10,
               }}
             >
-              Район
+              {t("district")}
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {GV_DISTRICTS.map((d) => {
@@ -585,7 +594,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                   textTransform: "uppercase",
                 }}
               >
-                Срок инвестиции
+                {t("horizon")}
               </div>
               <div
                 style={{
@@ -595,7 +604,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                   color: "var(--ink)",
                 }}
               >
-                {horizon} {pluralYears(horizon)}
+                {horizon} {pluralYears(horizon, yearsUnits)}
               </div>
             </div>
             <div style={{ display: "flex", gap: 6 }}>
@@ -636,7 +645,7 @@ function GoldenVisaCalcInner({ isMobile }) {
               background:
                 tier.visa === "10y"
                   ? "linear-gradient(135deg, oklch(0.18 0.02 80) 0%, oklch(0.10 0.01 80) 100%)"
-                  : "var(--ink)",
+                  : "#0A0A0B",
               color: "#fff",
               position: "relative",
               overflow: "hidden",
@@ -669,7 +678,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                   marginBottom: 8,
                 }}
               >
-                Чистый доход за {horizon} {pluralYears(horizon)}
+                {t("result.netIncome", { n: horizon, unit: pluralYears(horizon, yearsUnits) })}
               </div>
               <div
                 style={{
@@ -684,7 +693,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                 {fmt(totalReturn)}
               </div>
               <div style={{ fontSize: 13, opacity: 0.7, marginTop: 8 }}>
-                {fmt(totalCashflow)} аренда + {fmt(appreciation)} рост капитала
+                {t("result.rentPlusGrowth", { rent: fmt(totalCashflow), growth: fmt(appreciation) })}
               </div>
 
               <div
@@ -697,9 +706,9 @@ function GoldenVisaCalcInner({ isMobile }) {
                   gap: 10,
                 }}
               >
-                <GVKpi label="ROI total" value={`${roiTotal.toFixed(1)}%`} tone="sand" />
-                <GVKpi label="В месяц" value={fmtK(monthlyRent)} divider />
-                <GVKpi label="Метраж" value={`${sqm} м²`} divider />
+                <GVKpi label={t("result.roiTotal")} value={`${roiTotal.toFixed(1)}%`} tone="sand" />
+                <GVKpi label={t("result.monthly")} value={fmtK(monthlyRent)} divider />
+                <GVKpi label={t("result.sqm")} value={`${sqm} м²`} divider />
               </div>
             </div>
           </div>
@@ -749,7 +758,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                   textTransform: "uppercase",
                 }}
               >
-                Налоги в ОАЭ
+                {t("result.taxesUae")}
               </div>
               <div
                 style={{
@@ -759,13 +768,13 @@ function GoldenVisaCalcInner({ isMobile }) {
                   marginTop: 3,
                 }}
               >
-                Экономия vs РФ:{" "}
+                {t("result.savedVs")}{" "}
                 <span style={{ color: "oklch(0.5 0.13 145)" }}>
                   {fmt(savedVsRu)}
                 </span>
               </div>
               <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 2 }}>
-                Нет налога на доход, аренду и&nbsp;прирост капитала
+                {t("result.noTaxNote")}
               </div>
             </div>
           </div>
@@ -794,7 +803,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                   textTransform: "uppercase",
                 }}
               >
-                Подходящие объекты · {district.name}
+                {t("result.matched", { district: district.name })}
               </div>
               <div
                 style={{
@@ -804,7 +813,7 @@ function GoldenVisaCalcInner({ isMobile }) {
                   fontWeight: 600,
                 }}
               >
-                {Math.round(12 + (budget / 100_000) * 0.4)} вариантов
+                {Math.round(12 + (budget / 100_000) * 0.4)} {t("result.options")}
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -933,7 +942,7 @@ function GoldenVisaCalcInner({ isMobile }) {
               <circle cx="12" cy="12" r="2" />
               <path d="M5.7 7 L10.3 4.7 M5.7 9 L10.3 11.3" />
             </svg>
-            Поделиться расчётом:
+            {t("result.shareLabel")}
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <GVShareBtn onClick={() => handleShare("tg")} bg="#229ED9" label="Telegram">
@@ -954,7 +963,7 @@ function GoldenVisaCalcInner({ isMobile }) {
             <GVShareBtn
               onClick={() => handleShare("copy")}
               bg="var(--ink-2)"
-              label={shared ? "Скопировано" : "Скопировать"}
+              label={shared ? t("result.copied") : t("result.copy")}
             >
               {shared ? (
                 <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -981,7 +990,7 @@ function GoldenVisaCalcInner({ isMobile }) {
             </svg>
           }
         >
-          Получить PDF-расчёт
+          {t("result.ctaPdf")}
         </PrimaryButton>
       </div>
 
@@ -994,7 +1003,7 @@ function GoldenVisaCalcInner({ isMobile }) {
           maxWidth: 720,
         }}
       >
-        Расчёт базируется на средних данных DLD за 2025 г. и не является финансовой рекомендацией. Приобретение недвижимости от $205 000 готовое + $545 000 в собственности даёт право на 2-летнюю визу инвестора; от $2 180 000 — на Golden Visa сроком 10 лет с возможностью продления.
+        {t("disclaimer")}
       </div>
     </section>
   );

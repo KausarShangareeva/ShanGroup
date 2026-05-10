@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, PhoneCall, Plus } from "lucide-react";
+import { getIconComponent } from "@/components/Icon/Icon";
 import styles from "./ContactButton.module.css";
 
 function WhatsAppIcon() {
@@ -11,11 +11,16 @@ function WhatsAppIcon() {
   );
 }
 
-const icons = { phone: Phone, "phone-call": PhoneCall, plus: Plus, whatsapp: WhatsAppIcon };
+const icons = {
+  phone: getIconComponent("phone"),
+  "phone-call": getIconComponent("phone-call"),
+  plus: getIconComponent("plus"),
+  whatsapp: WhatsAppIcon,
+};
 
 export default function ContactButton({ label, icon, href, onClick }) {
   const Tag = href ? "a" : "button";
-  const Icon = icons[icon];
+  const IconCmp = icons[icon];
 
   return (
     <Tag
@@ -24,9 +29,9 @@ export default function ContactButton({ label, icon, href, onClick }) {
       onClick={onClick}
       className={styles.btn}
     >
-      {Icon && (
+      {IconCmp && (
         <span className={styles.iconWrap}>
-          <Icon size={16} strokeWidth={1.8} />
+          <IconCmp size={16} strokeWidth={1.6} />
         </span>
       )}
       <span className={styles.label}>{label}</span>

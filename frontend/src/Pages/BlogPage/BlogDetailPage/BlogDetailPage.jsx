@@ -2,15 +2,13 @@ import Link from "next/link";
 import Flag from "react-world-flags";
 import Container from "@/components/layout/Container";
 import Icon from "@/components/Icon/Icon";
-import BLOG from "@/data/blog.json";
-import AUTHORS from "@/data/authors.json";
+import BLOG from "@/data/i18n/ru/content/blog.json";
+import AUTHORS from "@/data/i18n/ru/people/authors.json";
 import AudioPlayer from "@/Pages/ArticlesPage/ArticleDetailPage/AudioPlayer";
 import EndCta from "@/Pages/ArticlesPage/ArticleDetailPage/EndCta";
 import GoldVerifiedIcon from "@/Pages/ArticlesPage/ArticleDetailPage/GoldVerifiedIcon";
 import TopArticlesSidebar from "@/Pages/ArticlesPage/ArticleDetailPage/TopArticlesSidebar";
 import styles from "@/Pages/ArticlesPage/ArticleDetailPage/ArticleDetailPage.module.css";
-import { Clock, ArrowRight, Star } from "lucide-react";
-
 const TAG_COLORS = {
   "Новости ОАЭ": { bg: "#FEE2E2", color: "#B91C1C" },
   "Пульс рынка (DLD)": { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -121,7 +119,7 @@ export default function BlogDetailPage({ slug }) {
               )}
               {author.rating !== "—" && (
                 <div className={styles.rating}>
-                  <Star size={14} fill="#FBBF24" color="#FBBF24" />
+                  <Icon name="star" size={14} fill="#FBBF24" color="#FBBF24"  />
                   <span>{author.rating}</span>
                   <span className={styles.reviews}>({author.reviews})</span>
                 </div>
@@ -196,7 +194,7 @@ export default function BlogDetailPage({ slug }) {
                 <span className={styles.date}>{post.date}</span>
                 {post.readTime && (
                   <span className={styles.readTime}>
-                    <Clock size={13} />
+                    <Icon name="clock" size={13}  />
                     {post.readTime}
                   </span>
                 )}
@@ -229,7 +227,7 @@ export default function BlogDetailPage({ slug }) {
                       className={`${styles.inlineCtaBtn} ${styles.inlineCtaBtnOutline}`}
                     >
                       Связаться с экспертом
-                      <ArrowRight size={15} />
+                      <Icon name="arrow-right" size={15}  />
                     </Link>
                   </div>
                 </div>

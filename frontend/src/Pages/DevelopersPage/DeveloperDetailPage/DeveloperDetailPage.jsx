@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { Check, ArrowRight, Building2, Layers, MapPin } from "lucide-react";
 import Container from "@/components/layout/Container";
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
 import Button from "@/components/Button/Button";
-import DEVELOPERS from "@/data/developers.json";
-import VILLAS from "@/data/properties/villas.json";
-import TOWNHOUSES from "@/data/properties/townhouses.json";
-import OBJECTS from "@/data/properties/objects.json";
+import DEVELOPERS from "@/data/i18n/ru/people/developers.json";
+import VILLAS from "@/data/i18n/ru/properties/villas.json";
+import TOWNHOUSES from "@/data/i18n/ru/properties/townhouses.json";
+import OBJECTS from "@/data/i18n/ru/properties/objects.json";
 import { devKeyFromSlug, devSlug } from "@/utils/devSlug";
 import styles from "./DeveloperDetailPage.module.css";
 
+import Icon from "@/components/Icon/Icon";
 // Один общий список свойств всех типов, чтобы фильтровать по застройщику.
 const ALL_PROPERTIES = [...OBJECTS, ...VILLAS, ...TOWNHOUSES];
 
@@ -100,7 +100,7 @@ export default function DeveloperDetailPage({ slug }) {
 
               <div className={styles.brandStats}>
                 <div className={styles.statBox}>
-                  <Building2 size={18} />
+                  <Icon name="building-2" size={18}  />
                   <div>
                     <span className={styles.statValue}>{owned.length}</span>
                     <span className={styles.statLabel}>проектов</span>
@@ -108,7 +108,7 @@ export default function DeveloperDetailPage({ slug }) {
                 </div>
                 {dev.communities?.length > 0 && (
                   <div className={styles.statBox}>
-                    <Layers size={18} />
+                    <Icon name="layers" size={18}  />
                     <div>
                       <span className={styles.statValue}>
                         {dev.communities.length}
@@ -119,7 +119,7 @@ export default function DeveloperDetailPage({ slug }) {
                 )}
                 {dev.top && (
                   <div className={styles.statBox}>
-                    <MapPin size={18} />
+                    <Icon name="map-pin" size={18}  />
                     <div>
                       <span className={styles.statValue}>TOP</span>
                       <span className={styles.statLabel}>застройщик</span>
@@ -132,7 +132,7 @@ export default function DeveloperDetailPage({ slug }) {
                 <Button label="Подобрать объект" href="#projects" />
                 <Link href="/contact" className={styles.heroLink}>
                   Связаться с экспертом
-                  <ArrowRight size={16} />
+                  <Icon name="arrow-right" size={16}  />
                 </Link>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function DeveloperDetailPage({ slug }) {
                   className={styles.communityChip}
                 >
                   {c.label}
-                  <ArrowRight size={14} />
+                  <Icon name="arrow-right" size={14}  />
                 </Link>
               ))}
             </div>
@@ -261,7 +261,7 @@ export default function DeveloperDetailPage({ slug }) {
                 {DEFAULT_FEATURES.map((f) => (
                   <li key={f}>
                     <span className={styles.whyCheck}>
-                      <Check size={14} strokeWidth={3} />
+                      <Icon name="check" size={14}  />
                     </span>
                     {f}
                   </li>

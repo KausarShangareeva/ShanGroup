@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Flag from "react-world-flags";
-import { Search, ChevronDown } from "lucide-react";
-import COUNTRIES from "@/data/countries.json";
+import { ChevronDown } from "lucide-react";
+import COUNTRIES from "@/data/i18n/ru/references/countries.json";
 import styles from "./CountryCodeSelect.module.css";
 
+import Icon from "@/components/Icon/Icon";
 const DEFAULT_COUNTRY =
   COUNTRIES.find((c) => c.iso2 === "AE") ?? COUNTRIES[0];
 
@@ -80,16 +81,14 @@ export default function CountryCodeSelect({ value, onChange }) {
           <Flag code={selected.iso2} fallback={<span>🏳</span>} />
         </span>
         <span className={styles.code}>{selected.dialCode}</span>
-        <ChevronDown
-          size={14}
-          className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
-        />
+        <ChevronDown size={14}
+          className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`} strokeWidth={1.6} />
       </button>
 
       {open && (
         <div className={styles.popup} role="listbox">
           <div className={styles.searchRow}>
-            <Search size={16} className={styles.searchIcon} />
+            <Icon name="search" size={16} className={styles.searchIcon}  />
             <input
               ref={searchRef}
               type="text"

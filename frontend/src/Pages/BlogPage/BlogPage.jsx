@@ -3,26 +3,18 @@
 import { useState } from "react";
 import Container from "@/components/layout/Container";
 import BlogCard from "./components/BlogCard";
-import DATA from "@/data/blog.json";
+import DATA from "@/data/i18n/ru/content/blog.json";
 import styles from "./BlogPage.module.css";
-import {
-  LayoutGrid,
-  Newspaper,
-  BarChart2,
-  Rocket,
-  Building2,
-  MessageSquare,
-  Star,
-} from "lucide-react";
+import { getIconComponent } from "@/components/Icon/Icon";
 
 const CATEGORY_ICONS = {
-  "Все":                   LayoutGrid,
-  "Новости ОАЭ":           Newspaper,
-  "Пульс рынка (DLD)":     BarChart2,
-  "Новые запуски":          Rocket,
-  "Новости застройщиков":  Building2,
-  "Мнение эксперта":       MessageSquare,
-  "События ShanGroup":     Star,
+  "Все":                   getIconComponent("layout-grid"),
+  "Новости ОАЭ":           getIconComponent("newspaper"),
+  "Пульс рынка (DLD)":     getIconComponent("bar-chart"),
+  "Новые запуски":          getIconComponent("rocket"),
+  "Новости застройщиков":  getIconComponent("building-2"),
+  "Мнение эксперта":       getIconComponent("message-square"),
+  "События ShanGroup":     getIconComponent("star"),
 };
 
 export default function BlogPage() {
@@ -55,14 +47,14 @@ export default function BlogPage() {
           <div className={styles.heroCatsWrap}>
             <div className={styles.heroCats}>
               {DATA.categories.map((label) => {
-                const Icon = CATEGORY_ICONS[label] ?? LayoutGrid;
+                const IconCmp = CATEGORY_ICONS[label] ?? CATEGORY_ICONS["Все"];
                 return (
                   <button
                     key={label}
                     className={`${styles.heroCatChip} ${active === label ? styles.heroCatChipActive : ""}`}
                     onClick={() => setActive(label)}
                   >
-                    <Icon size={16} />
+                    <IconCmp size={16} strokeWidth={1.6} />
                     {label}
                   </button>
                 );

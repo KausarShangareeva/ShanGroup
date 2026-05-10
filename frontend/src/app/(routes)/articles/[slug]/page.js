@@ -1,5 +1,5 @@
 import ArticleDetailPage from "@/Pages/ArticlesPage/ArticleDetailPage/ArticleDetailPage";
-import ARTICLES from "@/data/articles.json";
+import ARTICLES from "@/data/i18n/ru/content/articles.json";
 
 export function generateStaticParams() {
   return ARTICLES.items.map((a) => ({ slug: a.slug }));

@@ -1,12 +1,12 @@
 "use client";
 
-import { ArrowUpRight, Plus, Phone } from "lucide-react";
+import { getIconComponent } from "@/components/Icon/Icon";
 import styles from "./Button.module.css";
 
 const icons = {
-  arrow: ArrowUpRight,
-  plus: Plus,
-  phone: Phone,
+  arrow: getIconComponent("arrow-up-right"),
+  plus: getIconComponent("plus"),
+  phone: getIconComponent("phone"),
 };
 
 export default function Button({
@@ -20,7 +20,7 @@ export default function Button({
   border,
 }) {
   const Tag = href ? "a" : "button";
-  const Icon = icons[icon];
+  const IconCmp = icons[icon];
 
   const borderStyle =
     border === false
@@ -39,9 +39,9 @@ export default function Button({
       style={borderStyle}
     >
       <span className={styles.label}>{label}</span>
-      {Icon && (
+      {IconCmp && (
         <span className={styles.dot}>
-          <Icon size={20} strokeWidth={1.8} />
+          <IconCmp size={20} strokeWidth={1.6} />
         </span>
       )}
     </Tag>

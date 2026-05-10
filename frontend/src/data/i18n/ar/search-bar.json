@@ -1,0 +1,73 @@
+{
+  "fields": {
+    "location": "Локация",
+    "type": "Тип недвижимости",
+    "price": "Цена",
+    "beds": "Спальни",
+    "extras": "Ещё"
+  },
+  "placeholders": {
+    "locationSearch": "Введите район или город…",
+    "locationSearchMobile": "Район, город…"
+  },
+  "panels": {
+    "locationTitle": "Локация",
+    "typeTitle": "Тип недвижимости",
+    "priceTitle": "Цена",
+    "bedsTitle": "Количество спален",
+    "extrasTitle": "Дополнительные фильтры"
+  },
+  "values": {
+    "any": "Любая",
+    "anyBeds": "Любые",
+    "fromLabel": "От",
+    "toLabel": "До",
+    "noLimit": "без огр.",
+    "studio": "Студия",
+    "filtersBadge": "{count} фильтра",
+    "filtersDefault": "Фильтры",
+    "anyBedsLowercase": "любые",
+    "bedsAbbr": "{n} спал.",
+    "findCount": "Найти {count} объектов",
+    "filtersExtraLabel": "Дополнительно",
+    "currencySymbol": "$"
+  },
+  "extras": {
+    "offplan": "Off-plan / новостройки",
+    "ready": "Готовое жильё",
+    "resale": "Перепродажа",
+    "golden": "Под Golden Visa",
+    "roi8": "ROI 8%+",
+    "yield": "Sea / Marina view",
+    "branded": "Branded residences",
+    "instal": "Рассрочка от застройщика"
+  },
+  "types": {
+    "apt": "Апартаменты",
+    "villa": "Виллы",
+    "th": "Таунхаусы",
+    "ph": "Пентхаусы",
+    "off": "Офисы",
+    "land": "Земля"
+  },
+  "locations": {
+    "dxb": { "label": "Дубай, ОАЭ", "sub": "Все районы" },
+    "dm": { "label": "Dubai Marina", "sub": "Премиум-район" },
+    "dt": { "label": "Downtown Dubai", "sub": "Burj Khalifa" },
+    "pj": { "label": "Palm Jumeirah", "sub": "Островная застройка" },
+    "bh": { "label": "Business Bay", "sub": "Бизнес-центр" },
+    "jvc": { "label": "JVC", "sub": "Семейный район" },
+    "ah": { "label": "Arabian Ranches", "sub": "Виллы" },
+    "dh": { "label": "Dubai Hills Estate", "sub": "Гольф-комьюнити" },
+    "auh": { "label": "Абу-Даби", "sub": "Saadiyat / Yas" },
+    "rak": { "label": "Рас-эль-Хайма", "sub": "Al Marjan Island" }
+  },
+  "mobile": {
+    "title": "Поиск объекта",
+    "secLocation": "Локация",
+    "secType": "Тип недвижимости",
+    "secPrice": "Цена",
+    "secBeds": "Спальни",
+    "secExtras": "Дополнительно"
+  }
+}

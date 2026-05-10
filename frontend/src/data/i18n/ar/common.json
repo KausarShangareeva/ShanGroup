@@ -1,0 +1,28 @@
+{
+  "actions": {
+    "find": "Найти",
+    "apply": "Применить",
+    "reset": "Сбросить",
+    "close": "Закрыть",
+    "back": "Назад",
+    "send": "Отправить",
+    "more": "Ещё",
+    "all": "Все",
+    "expand": "Развернуть ↑",
+    "collapse": "Свернуть",
+    "viewAll": "Смотреть все",
+    "leaveRequest": "Оставить заявку",
+    "contactAgent": "Связаться с агентом",
+    "bookViewing": "Записаться на просмотр",
+    "openObject": "Открыть объект",
+    "addToFavorites": "Добавить в избранное",
+    "removeFromFavorites": "Убрать из избранного"
+  },
+  "common": {
+    "loading": "Загрузка…",
+    "online": "Онлайн",
+    "objects": "объектов",
+    "nothingFound": "Ничего не найдено",
+    "responseWithin": "Ответим в течение 15 минут"
+  }
+}

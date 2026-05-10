@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -240,7 +241,7 @@ function CCMetricIcon({ kind, size = 14 }) {
   return null;
 }
 
-function CCFlagHeader({ country, hero }) {
+function CCFlagHeader({ country, hero, leaderLabel }) {
   return (
     <div
       style={{
@@ -287,7 +288,7 @@ function CCFlagHeader({ country, hero }) {
               fontWeight: 600,
             }}
           >
-            ★ Лидер
+            {leaderLabel || "★ Лидер"}
           </div>
         )}
       </div>
@@ -296,10 +297,20 @@ function CCFlagHeader({ country, hero }) {
 }
 
 function CCValueCell({ value, unit, wins, hero }) {
+  const t = useTranslations("HomePage.countryCompare.visaValues");
+  // Локализованная подмена для строковых значений визы. Семантические
+  // ключи остаются на русском в данных — это и есть source of truth для
+  // логики «лучше / хуже»; для пользователя выводим переводы.
+  const localizedString = (raw) => {
+    if (raw === "нет") return t("none");
+    if (raw === "10 лет") return t("tenYears");
+    if (raw === "2 года") return t("twoYears");
+    return raw;
+  };
   const display =
     typeof value === "number"
       ? (value % 1 === 0 ? value : value.toFixed(1)) + unit
-      : value;
+      : localizedString(value);
   const isNo = value === "нет";
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -434,11 +445,18 @@ function CCInsight({ icon, title, body }) {
 }
 
 function CountryCompareInner({ isMobile }) {
+  const t = useTranslations("HomePage.countryCompare");
+  // Локализованная карта названий — id остаётся стабильным, отображаем
+  // через справочник переводов.
+  const localCountry = (id) => ({
+    ...CC_COUNTRIES[id],
+    name: t(`countries.${id}`, { default: CC_COUNTRIES[id].name }),
+  });
   const [opponentId, setOpponentId] = useState("russia");
   const [pickerOpen, setPickerOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const opponent = CC_COUNTRIES[opponentId];
-  const dubai = CC_COUNTRIES.uae;
+  const opponent = localCountry(opponentId);
+  const dubai = localCountry("uae");
   const pickerRef = useRef(null);
 
   useEffect(() => {
@@ -462,9 +480,13 @@ function CountryCompareInner({ isMobile }) {
     return false;
   }).length;
 
-  const filtered = CC_PICKER_KEYS.filter((k) =>
-    CC_COUNTRIES[k].name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filtered = CC_PICKER_KEYS.filter((k) => {
+    const q = search.toLowerCase();
+    return (
+      CC_COUNTRIES[k].name.toLowerCase().includes(q) ||
+      localCountry(k).name.toLowerCase().includes(q)
+    );
+  });
   const quickPicks = ["russia", "kazakhstan", "uk"];
 
   return (
@@ -509,7 +531,7 @@ function CountryCompareInner({ isMobile }) {
                 opacity: 0.55,
               }}
             />
-            Сравнить с вашей страной
+            {t("kicker")}
           </div>
           <h2
             style={{
@@ -525,7 +547,7 @@ function CountryCompareInner({ isMobile }) {
               textWrap: "balance",
             }}
           >
-            ОАЭ{" "}
+            {t("titleA")}{" "}
             <span
               style={{
                 fontStyle: "italic",
@@ -533,9 +555,9 @@ function CountryCompareInner({ isMobile }) {
                 fontWeight: 400,
               }}
             >
-              vs
+              {t("titleVs")}
             </span>{" "}
-            ваша страна
+            {t("titleB")}
           </h2>
           <p
             style={{
@@ -546,8 +568,7 @@ function CountryCompareInner({ isMobile }) {
               color: "var(--muted)",
             }}
           >
-            7 ключевых метрик для инвестора. Выберите свою страну из списка —
-            сравним напрямую.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -589,7 +610,7 @@ function CountryCompareInner({ isMobile }) {
                     transition: "all .25s",
                   }}
                 >
-                  {CC_COUNTRIES[id].name}
+                  {localCountry(id).name}
                 </button>
               );
             })}
@@ -638,7 +659,7 @@ function CountryCompareInner({ isMobile }) {
                   {opponent.name}
                 </>
               ) : (
-                "Другая страна"
+                t("otherCountry")
               )}
               <svg
                 width="11"
@@ -678,7 +699,7 @@ function CountryCompareInner({ isMobile }) {
                     autoFocus
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Поиск страны…"
+                    placeholder={t("searchPlaceholder")}
                     style={{
                       all: "unset",
                       width: "100%",
@@ -711,11 +732,11 @@ function CountryCompareInner({ isMobile }) {
                         textAlign: "center",
                       }}
                     >
-                      Не найдено
+                      {t("notFound")}
                     </div>
                   )}
                   {filtered.map((k) => {
-                    const c = CC_COUNTRIES[k];
+                    const c = localCountry(k);
                     const sel = k === opponentId;
                     return (
                       <button
@@ -835,7 +856,7 @@ function CountryCompareInner({ isMobile }) {
                 textTransform: "uppercase",
               }}
             >
-              ОАЭ выигрывает
+              {t("winsKicker")}
             </div>
             <div
               style={{
@@ -845,12 +866,12 @@ function CountryCompareInner({ isMobile }) {
                 marginTop: 3,
               }}
             >
-              из {CC_METRICS.length} метрик vs <strong>{opponent.name}</strong>
+              {t("winsLabel", { total: CC_METRICS.length })} <strong>{opponent.name}</strong>
             </div>
           </div>
         </div>
         <PrimaryButton size="md" trailingArrow>
-          Получить детальный анализ
+          {t("ctaAnalyze")}
         </PrimaryButton>
       </div>
 
@@ -883,9 +904,9 @@ function CountryCompareInner({ isMobile }) {
               textTransform: "uppercase",
             }}
           >
-            Метрика
+            {t("metricLabel")}
           </div>
-          <CCFlagHeader country={dubai} hero />
+          <CCFlagHeader country={dubai} hero leaderLabel={t("leader")} />
           <CCFlagHeader country={opponent} />
         </div>
 
@@ -951,7 +972,7 @@ function CountryCompareInner({ isMobile }) {
                     lineHeight: 1.25,
                   }}
                 >
-                  {m.label}
+                  {t(`metrics.${m.id}`, { default: m.label })}
                 </span>
               </div>
               <CCValueCell value={d} unit={m.unit} wins={dWins} hero />
@@ -971,20 +992,22 @@ function CountryCompareInner({ isMobile }) {
       >
         <CCInsight
           icon="tax"
-          title="0% налогов на аренду и прирост"
+          title={t("insights.tax.title")}
           body={(() => {
             const taxLost = opponent.values.tax_rent;
             if (taxLost === 0)
-              return `В ${opponent.name} тоже 0% налог — но рынок Дубая растёт быстрее.`;
-            return `В ${opponent.name} ${taxLost}% налог. На $1M портфеле теряете ~$${Math.round(
-              taxLost * 12
-            )}K за 5 лет.`;
+              return t("insights.tax.matchSame", { country: opponent.name });
+            return t("insights.tax.withTax", {
+              country: opponent.name,
+              pct: taxLost,
+              loss: Math.round(taxLost * 12),
+            });
           })()}
         />
         <CCInsight
           icon="visa"
-          title="Golden Visa на 10 лет"
-          body="Виза для всей семьи + право работать. Без обязательного проживания."
+          title={t("insights.visa.title")}
+          body={t("insights.visa.body")}
         />
       </div>
     </section>

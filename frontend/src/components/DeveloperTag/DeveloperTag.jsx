@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Info } from "lucide-react";
-import DEVELOPER_INFO from "@/data/developers.json";
+import DEVELOPER_INFO from "@/data/i18n/ru/people/developers.json";
 import { devSlug } from "@/utils/devSlug";
 import styles from "./DeveloperTag.module.css";
 
+import Icon from "@/components/Icon/Icon";
 export default function DeveloperTag({ name }) {
   const dev = DEVELOPER_INFO[name];
   const href = `/developers/${devSlug(name)}`;
@@ -30,7 +30,7 @@ export default function DeveloperTag({ name }) {
         <span className={styles.name}>{name}</span>
         {dev && (
           <span className={styles.infoIcon}>
-            <Info size={10} strokeWidth={2.5} />
+            <Icon name="info" size={10}  />
           </span>
         )}
       </Link>

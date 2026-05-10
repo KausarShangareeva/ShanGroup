@@ -6,10 +6,12 @@ import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Button from "@/components/Button/Button";
 import NewPropertyCard from "./NewPropertyCard";
-import ALL_PROPERTIES from "@/data/properties/objects.json";
+import ALL_PROPERTIES from "@/data/i18n/ru/properties/objects.json";
 
 const PROPERTIES = ALL_PROPERTIES.filter((p) => p.video);
-import AGENT from "@/data/agent.json";
+import AGENTS from "@/data/i18n/ru/people/agents.json";
+
+const AGENT = AGENTS["mustafa-amir"];
 import { useLikes } from "@/components/LikeButton/useLikes";
 import styles from "./NewProperties.module.css";
 
