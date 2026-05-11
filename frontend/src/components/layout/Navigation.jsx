@@ -80,7 +80,7 @@ function buildNavItems(tNav) {
         tld(tNav, "invest.shortTerm", "/airbnb", "calendar"),
         tld(tNav, "invest.flip", "/flip", "info"),
         tld(tNav, "invest.calculator", "/roi-calculator", "file-text"),
-        tld(tNav, "invest.tax", "/invest/tax", "info"),
+        tld(tNav, "invest.tax", "/uae-tax-guide", "info"),
       ],
     },
     {
@@ -302,9 +302,9 @@ function buildInvestColumns(tNav) {
       title: tNav("mega.investTools"),
       items: [
         tls(tNav, "invest.calculator", "calc", "/roi-calculator"),
-        tls(tNav, "invest.compare", "compare", "/invest/compare"),
-        tls(tNav, "invest.tax", "doc", "/invest/tax"),
-        tls(tNav, "invest.report2026", "chart", "/invest/report"),
+        tls(tNav, "invest.compare", "compare", "/districts-compare"),
+        tls(tNav, "invest.tax", "doc", "/uae-tax-guide"),
+        tls(tNav, "invest.report2026", "chart", "/investment-report-2026"),
       ],
     },
   ];

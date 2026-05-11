@@ -21,6 +21,9 @@ const VIRTUAL_PARENTS = {
   installment: ["investments"],
   mortgage: ["investments"],
   "roi-calculator": ["investments"],
+  "districts-compare": ["investments"],
+  "uae-tax-guide": ["investments"],
+  "investment-report-2026": ["investments"],
 };
 
 const NON_CLICKABLE = new Set(["investments"]);

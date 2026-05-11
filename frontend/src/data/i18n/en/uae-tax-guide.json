@@ -1,0 +1,351 @@
+{
+  "metadata": {
+    "title": "UAE Tax Guide 2026 · 0% Personal Income Tax · ShanGroup",
+    "description": "How investors and business owners legally pay 0% personal income tax in the UAE. Residency paths, corporate structures, double-tax treaties and a savings calculator."
+  },
+  "hero": {
+    "badge": "UAE tax residence · 2026 framework",
+    "titleA": "0% tax on income.",
+    "titleB": "100% legal.",
+    "titleC": "Welcome to the UAE.",
+    "subtitle": "A practical guide for entrepreneurs and investors moving tax residency to the UAE. What you keep, what you pay, what you sign — backed by the 2023 Corporate Tax Law and the UAE's 137 double-taxation treaties.",
+    "ctaPrimary": "Get a personal tax plan",
+    "ctaSecondary": "See savings calculator",
+    "trust": [
+      { "v": "137",     "l": "Double-tax treaties" },
+      { "v": "183 days","l": "To tax residency" },
+      { "v": "$0",      "l": "Personal income tax" },
+      { "v": "9%",      "l": "Corporate (only > $102K)" }
+    ],
+    "card": {
+      "country": "United Arab Emirates",
+      "title": "Tax Residency",
+      "subtitle": "Certificate of fiscal residence",
+      "holderLabel": "Holder",
+      "holderPlaceholder": "Your name",
+      "rateLabel": "Personal income tax",
+      "rateValue": "0%",
+      "validLabel": "Valid",
+      "validValue": "1 year",
+      "trcLabel": "TRC ref.",
+      "trcValue": "AE-2026-####",
+      "chipTrc": "Issued by FTA",
+      "chipDta": "DTA: 137 countries"
+    }
+  },
+  "headlineStats": {
+    "kicker": "Headline numbers",
+    "titleA": "What the UAE",
+    "titleB": "actually taxes",
+    "items": [
+      { "v": "0%",  "l": "Personal income tax",       "n": "Salary, freelance, rental, capital gains — all 0%." },
+      { "v": "0%",  "l": "Capital gains (individual)", "n": "Stocks, crypto, real estate held personally." },
+      { "v": "0%",  "l": "Inheritance & wealth tax",   "n": "No estate duty, no annual wealth tax." },
+      { "v": "0%",  "l": "Dividends (qualifying)",     "n": "Between UAE entities and treaty jurisdictions." },
+      { "v": "9%",  "l": "Corporate tax",              "n": "Profits above AED 375,000 (~$102K). Below — 0%." },
+      { "v": "5%",  "l": "VAT",                         "n": "Standard rate. Many sectors zero-rated or exempt." }
+    ]
+  },
+  "comparison": {
+    "kicker": "Side by side",
+    "titleA": "What residents",
+    "titleB": "actually keep",
+    "subtitle": "Combined personal tax burden on a $500,000 annual income — income tax, social contributions and surcharges. Sources: PwC Tax Summaries 2025, OECD Tax Database.",
+    "uaeLabel": "United Arab Emirates",
+    "uaeNote": "Personal income tax: 0% · Capital gains: 0% · No social tax for individuals.",
+    "countries": [
+      { "id": "uae",     "country": "UAE",                "burden": 0,    "kept": 100, "note": "0% income · 0% CGT" },
+      { "id": "ru",      "country": "Russia",             "burden": 22,   "kept": 78,  "note": "13–22% income + 30% social on employer" },
+      { "id": "uk",      "country": "United Kingdom",     "burden": 47,   "kept": 53,  "note": "45% income + 2% NI above £125K" },
+      { "id": "de",      "country": "Germany",            "burden": 47.5, "kept": 52.5,"note": "45% + Solidaritätszuschlag + 14.6% health" },
+      { "id": "fr",      "country": "France",             "burden": 49,   "kept": 51,  "note": "45% income + 9.7% CSG-CRDS" },
+      { "id": "us",      "country": "United States",      "burden": 42,   "kept": 58,  "note": "37% federal + state (varies)" },
+      { "id": "ca",      "country": "Canada",             "burden": 50,   "kept": 50,  "note": "33% federal + provincial up to 21%" }
+    ],
+    "footnote": "* Marginal rates on the top bracket, simplified for comparison. Personal circumstances vary — book a session for your jurisdictions."
+  },
+  "calculator": {
+    "kicker": "Savings calculator",
+    "titleA": "How much",
+    "titleB": "you would keep",
+    "subtitle": "Move the slider, pick your current jurisdiction. The figure is an estimate of annual tax cash you'd no longer pay after becoming a UAE tax resident.",
+    "incomeLabel": "Annual taxable income",
+    "fromLabel": "Currently resident in",
+    "savingsLabel": "You would save per year",
+    "fiveYearLabel": "Over 5 years",
+    "vsUaeLabel": "vs UAE",
+    "ratesLabel": "Effective rate",
+    "ctaText": "Get a personalised analysis →",
+    "notice": "Estimates only. Real planning accounts for CFC rules, exit tax, double-tax treaties and substance — all covered in your consultation."
+  },
+  "breakdown": {
+    "kicker": "Tax by category",
+    "titleA": "Every UAE tax,",
+    "titleB": "in one place",
+    "items": [
+      {
+        "icon": "dollar",
+        "title": "Personal income tax",
+        "rate": "0%",
+        "body": "No income tax on salaries, rental income, freelance fees or pensions. Applies to UAE tax residents regardless of source country (subject to treaty rules)."
+      },
+      {
+        "icon": "trend",
+        "title": "Capital gains",
+        "rate": "0%",
+        "body": "Sale of stocks, bonds, crypto and personally-held real estate by individuals is not taxable. Corporate-held assets fall under the 9% regime."
+      },
+      {
+        "icon": "percent",
+        "title": "Dividends",
+        "rate": "0%",
+        "body": "Dividends received by UAE individuals are tax-free. Dividends paid by UAE entities are typically exempt under participation relief."
+      },
+      {
+        "icon": "shield",
+        "title": "Inheritance & wealth",
+        "rate": "0%",
+        "body": "No estate duty, no annual wealth tax, no gift tax. Sharia rules apply unless a DIFC/ADGM will overrides — we set those up routinely."
+      },
+      {
+        "icon": "biz",
+        "title": "Corporate tax",
+        "rate": "9%",
+        "body": "Introduced June 2023. Applies to net profits above AED 375,000 (≈ $102K). Below threshold → 0%. Free Zone Qualifying Income still 0%."
+      },
+      {
+        "icon": "doc",
+        "title": "VAT",
+        "rate": "5%",
+        "body": "Standard rate on most goods/services. Healthcare, education, residential rentals and exports are zero-rated or exempt. Mandatory registration at AED 375K turnover."
+      }
+    ]
+  },
+  "structures": {
+    "kicker": "Choose your vehicle",
+    "titleA": "Mainland · Free Zone",
+    "titleB": "Offshore",
+    "subtitle": "Three legal structures, three tax outcomes. Pick by where your clients are, whether you need physical presence, and how much corporate tax you're willing to pay.",
+    "items": [
+      {
+        "id": "freezone",
+        "label": "Free Zone",
+        "tagline": "Most popular for entrepreneurs",
+        "corp": "0% on qualifying income",
+        "ownership": "100% foreign",
+        "audit": "Required",
+        "physical": "Flexi-desk acceptable",
+        "best": "Software, consulting, e-commerce, holding companies — clients abroad",
+        "pros": ["0% corporate tax if qualifying", "100% capital repatriation", "Fast setup (5–10 days)"],
+        "cons": ["Cannot invoice UAE mainland directly", "Activity restricted to license"]
+      },
+      {
+        "id": "mainland",
+        "label": "Mainland (DED)",
+        "tagline": "For UAE-market operations",
+        "corp": "9% above AED 375K",
+        "ownership": "100% foreign (most activities)",
+        "audit": "Required",
+        "physical": "Physical office required",
+        "best": "Retail, restaurants, services to UAE clients, government contracts",
+        "pros": ["Full UAE market access", "No territorial restrictions", "Eligible for Investor Visa"],
+        "cons": ["9% corporate tax above threshold", "Higher setup & rent costs"]
+      },
+      {
+        "id": "offshore",
+        "label": "Offshore (IBC)",
+        "tagline": "Holding & asset protection",
+        "corp": "0%",
+        "ownership": "100% foreign",
+        "audit": "Not required",
+        "physical": "Registered agent only",
+        "best": "Asset holding, IP licensing, international trade — not for UAE operations",
+        "pros": ["Cheapest setup", "Maximum privacy", "No corporate tax"],
+        "cons": ["Cannot operate in UAE", "No residence visa", "Banking is harder"]
+      }
+    ]
+  },
+  "residency": {
+    "kicker": "Routes to tax residency",
+    "titleA": "Four legal paths",
+    "titleB": "to UAE residency",
+    "subtitle": "Tax residency requires a residence visa plus 183 days in-country (or 90 days with stronger ties). Pick the route that matches your situation.",
+    "items": [
+      {
+        "id": "golden",
+        "name": "Golden Visa",
+        "duration": "10 years",
+        "investment": "$545K+",
+        "best": "Property investors, founders, top talent",
+        "body": "10-year renewable residence on $545K+ Dubai real estate, an active business with $545K+ capital, or recognised talent in science/arts/sports."
+      },
+      {
+        "id": "investor",
+        "name": "Investor Visa",
+        "duration": "2–3 years",
+        "investment": "$204K+",
+        "best": "Property buyers below Golden threshold",
+        "body": "2–3 year renewable residence on $204K+ property purchase or company ownership. Sponsors immediate family. Upgradeable to Golden."
+      },
+      {
+        "id": "employment",
+        "name": "Employment visa",
+        "duration": "2 years",
+        "investment": "Salary $5K+/mo",
+        "best": "Senior employees, remote workers",
+        "body": "Sponsored by a UAE employer (mainland or free zone). Includes a labour card. Many free zones offer self-sponsorship of your own salary."
+      },
+      {
+        "id": "freelance",
+        "name": "Freelance permit",
+        "duration": "1–2 years",
+        "investment": "From $2,500/yr",
+        "best": "Solo professionals, creators",
+        "body": "Free-zone freelance permit + visa for consultants, designers, developers. Lowest entry cost — pairs well with foreign client base."
+      }
+    ]
+  },
+  "process": {
+    "kicker": "How it works",
+    "titleA": "From your call",
+    "titleB": "to TRC certificate",
+    "subtitle": "We handle the whole route — structuring, company setup, visa, Emirates ID, bank account, and finally your Tax Residence Certificate.",
+    "steps": [
+      {
+        "n": "01",
+        "t": "Discovery call",
+        "d": "60-minute strategy session: your jurisdiction, your business model, your family. We map your optimal structure and visa route."
+      },
+      {
+        "n": "02",
+        "t": "Structure & company",
+        "d": "License application in the chosen free zone or mainland. 5–10 working days from documents to incorporation certificate."
+      },
+      {
+        "n": "03",
+        "t": "Residence visa & Emirates ID",
+        "d": "Visa stamping, medical, biometrics. 7–14 days. After this you can open a personal and corporate bank account."
+      },
+      {
+        "n": "04",
+        "t": "Substance & 183 days",
+        "d": "Lease, utility bills, real economic activity. We track your day-count and prepare the audit trail the FTA expects."
+      },
+      {
+        "n": "05",
+        "t": "Tax Residence Certificate",
+        "d": "After 183 days (or 90 with stronger ties), the Federal Tax Authority issues your TRC — the document that activates DTA protection."
+      }
+    ]
+  },
+  "personas": {
+    "kicker": "Who this is for",
+    "titleA": "Built for three",
+    "titleB": "kinds of clients",
+    "items": [
+      {
+        "id": "founder",
+        "icon": "rocket",
+        "title": "Founders & operators",
+        "body": "You run a business with global clients. Move the operating company to a Free Zone, become tax resident, keep 91–100% of profit."
+      },
+      {
+        "id": "investor",
+        "icon": "trend",
+        "title": "Investors & traders",
+        "body": "Stocks, crypto, real-estate portfolio. Personal capital gains are 0%. Combine with Golden Visa to lock in residency for 10 years."
+      },
+      {
+        "id": "remote",
+        "icon": "globe",
+        "title": "Remote professionals",
+        "body": "High-earning consultants and engineers. Freelance permit + 183 days = 0% personal tax on global earnings, fully legal."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "titleA": "The hard",
+    "titleB": "questions",
+    "items": [
+      {
+        "q": "Is it actually legal to pay 0% income tax?",
+        "a": "Yes. The UAE simply does not levy a personal income tax. The legality issue is on the *other* side — you need to genuinely exit tax residency in your home country (CFC rules, centre of vital interests, day-count). That's the real work, and it's what we plan with you."
+      },
+      {
+        "q": "What about CFC rules in my home country?",
+        "a": "Most developed countries have Controlled Foreign Company rules that attribute the income of foreign companies back to the resident shareholder. The UAE structure must therefore have real substance: an office, employees or director presence, real decision-making in the UAE. We build the substance, not just paperwork."
+      },
+      {
+        "q": "How do I exit tax residency in my country?",
+        "a": "Each country has its own rules: physical absence (Russia 183 days), centre of vital interests (Germany, France), domicile (UK). Some have exit taxes on unrealised gains (US, France, Germany). We sequence the move with your home-country tax advisor."
+      },
+      {
+        "q": "Will the UAE share my financial data?",
+        "a": "Yes — under CRS (Common Reporting Standard) the UAE exchanges account information with 100+ countries. The UAE structure is not about hiding; it's about legally relocating where the tax is paid (or not paid)."
+      },
+      {
+        "q": "Does the 9% corporate tax kill the model?",
+        "a": "Rarely. For a Free Zone entity with Qualifying Income (most B2B services to non-UAE clients), the rate is still 0%. Even on mainland with 9%, the comparison vs 25–40% corporate tax in Europe + dividend tax is overwhelming."
+      },
+      {
+        "q": "What's the realistic total cost?",
+        "a": "Free Zone company + visa + Emirates ID + first-year compliance: $7K–15K depending on activity. Add property for Golden Visa from $545K. We give you an exact number after the discovery call — no fixed quote here would be honest."
+      },
+      {
+        "q": "Can my family come with me?",
+        "a": "Yes. The primary resident sponsors spouse, children (under 18, or under 25 for students), and parents (with proof of dependence). School fees in Dubai start at $5K/yr, top international schools $25–40K."
+      },
+      {
+        "q": "How long until I have the TRC in hand?",
+        "a": "Realistic timeline: company + visa in 30 days, then 183 days physical presence, then 2–6 weeks for the FTA to issue the TRC. Plan for 8–10 months from kick-off to certificate."
+      }
+    ]
+  },
+  "leadForm": {
+    "badge": "Free 60-minute strategy call",
+    "titleA": "Plan your",
+    "titleB": "UAE tax residency",
+    "titleC": "this quarter",
+    "subtitle": "Tell us about your situation — country, income, business model. We come back with a concrete structure, visa route, timeline and total cost. No fees for the planning call.",
+    "perks": [
+      "Personal tax savings estimate vs your current country",
+      "Recommended legal structure (Free Zone / Mainland / Offshore)",
+      "Visa route with timeline and budget",
+      "Introduction to our partner tax lawyers in your home country"
+    ],
+    "stats": [
+      ["320+", "tax residents helped"],
+      ["8 mo", "avg. to TRC"],
+      ["≤ 24h", "response time"]
+    ],
+    "form": {
+      "profileLabel": "Your profile",
+      "profiles": [
+        { "id": "founder", "l": "Founder" },
+        { "id": "investor","l": "Investor" },
+        { "id": "remote",  "l": "Remote pro" }
+      ],
+      "incomeLabel": "Annual income",
+      "incomes": [
+        { "id": "100", "l": "< $250K" },
+        { "id": "500", "l": "$250K–$1M" },
+        { "id": "2000","l": "$1M+" }
+      ],
+      "fromLabel": "Currently resident in",
+      "fromPlaceholder": "e.g. United Kingdom, Russia, USA",
+      "namePlaceholder": "Your name",
+      "phonePlaceholder": "+1 / +971 / +44 / +7",
+      "consent": "I agree to data processing. Confidential — only used to prepare your plan.",
+      "submit": "Book my strategy call →",
+      "responseNote": "We reply within 24h · Strategy call is free"
+    },
+    "success": {
+      "title": "Plan request received, {name}.",
+      "fallbackName": "investor",
+      "line1": "A senior advisor will review your situation and prepare a draft plan before the call.",
+      "line2": "Expect a WhatsApp message within 24 hours to schedule.",
+      "callNote": "We'll contact you on {phone}"
+    }
+  }
+}

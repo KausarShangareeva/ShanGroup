@@ -1,0 +1,62 @@
+/* Page-scoped tokens — bronze / dark-gold palette signals "wealth retention".
+   Override on either theme by editing these; every component reads --tx-* so
+   the page can be retheme without touching shared variables.css. */
+.page {
+  --tx-accent: oklch(0.62 0.13 75);
+  --tx-accent-deep: oklch(0.45 0.13 70);
+  --tx-accent-glow: oklch(0.45 0.13 70 / 0.28);
+  --tx-accent-soft: color-mix(in oklab, var(--tx-accent-deep) 12%, transparent);
+  --tx-savings: oklch(0.45 0.16 145);
+  --tx-savings-deep: oklch(0.38 0.16 145);
+  --tx-warn: oklch(0.55 0.18 25);
+
+  position: relative;
+}
+
+:global([data-theme="dark"]) .page {
+  --tx-accent: oklch(0.82 0.11 80);
+  --tx-accent-deep: oklch(0.86 0.13 80);
+  --tx-accent-glow: oklch(0.55 0.14 75 / 0.4);
+  --tx-accent-soft: color-mix(in oklab, var(--tx-accent-deep) 14%, transparent);
+  --tx-savings: oklch(0.78 0.14 145);
+  --tx-savings-deep: oklch(0.82 0.14 145);
+  --tx-warn: oklch(0.72 0.16 25);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, var(--grain-1), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, var(--grain-2), transparent 60%);
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes txPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.pulseDot {
+  animation: txPulseDot 1.6s ease-in-out infinite;
+}
+
+@keyframes txShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 215, 120, 0.16) 50%, transparent 70%);
+  animation: txShimmer 5s ease-in-out infinite;
+  pointer-events: none;
+}

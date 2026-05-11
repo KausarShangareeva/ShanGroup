@@ -1,0 +1,373 @@
+{
+  "metadata": {
+    "title": "Dubai Real Estate Investment Report 2026 · Forecasts & Trends · ShanGroup",
+    "description": "112-page institutional research report on Dubai property market 2026: price forecasts, segment breakdown, top districts, macro drivers, risks. Free PDF on request."
+  },
+  "hero": {
+    "badge": "Annual research · Edition 04 · Q2 2026",
+    "titleA": "Dubai real estate",
+    "titleB": "2026 outlook",
+    "titleC": "from people who buy it.",
+    "subtitle": "112 pages of forecasts, segment data and district-level analysis — distilled from $2.4B of transactions and 38 institutional sources. Built for investors, family offices and senior bankers.",
+    "ctaPrimary": "Request the report",
+    "ctaSecondary": "See what's inside",
+    "trust": [
+      { "v": "112",  "l": "Pages of analysis" },
+      { "v": "38",   "l": "Institutional sources" },
+      { "v": "$2.4B","l": "Transactions referenced" },
+      { "v": "Q2 26","l": "Data cut-off" }
+    ],
+    "report": {
+      "label": "Investment Report",
+      "year": "2026 Edition",
+      "title": "Dubai Real Estate",
+      "subtitle": "Forecasts · Districts · Risk",
+      "publishLabel": "Published",
+      "publishValue": "March 2026",
+      "isbnLabel": "ISSN",
+      "isbnValue": "2789-4214",
+      "stamp": "Confidential — Institutional"
+    }
+  },
+  "highlights": {
+    "kicker": "Executive summary",
+    "titleA": "The six findings",
+    "titleB": "that matter",
+    "subtitle": "What we'd tell a board in 60 seconds. Each conclusion has 8–14 pages of supporting evidence in the full report.",
+    "items": [
+      {
+        "k": "Price",
+        "v": "+8.4%",
+        "l": "Base-case price growth 2026",
+        "n": "Range: +5.8% (bear) to +12.1% (bull). Driven by population + Golden Visa demand."
+      },
+      {
+        "k": "Volume",
+        "v": "112K",
+        "l": "Forecast transactions 2026",
+        "n": "Up from 98K in 2025. Off-plan retains ~58% share. Secondary recovers H2."
+      },
+      {
+        "k": "Foreign",
+        "v": "67%",
+        "l": "Share of foreign buyers",
+        "n": "Russian, Indian and British buyers still top-3. UK share rising on tax pressure."
+      },
+      {
+        "k": "Yield",
+        "v": "6.4%",
+        "l": "Average net yield 2026",
+        "n": "Mid-market apartments. Premium villas: 4.2%. Short-let / Airbnb: 8–10%."
+      },
+      {
+        "k": "Supply",
+        "v": "47K",
+        "l": "New units handed over",
+        "n": "5-year peak. Mid-market absorbed in ≤ 9 months. Watch oversupply in JVT, DSO."
+      },
+      {
+        "k": "Visa",
+        "v": "138K",
+        "l": "Golden Visas issued 2025",
+        "n": "Property-backed +42% YoY. We forecast 180K+ in 2026 as thresholds stabilise."
+      }
+    ]
+  },
+  "marketSize": {
+    "kicker": "Macro context",
+    "titleA": "Dubai property",
+    "titleB": "in 2026 numbers",
+    "subtitle": "The total addressable market — sized for comparison against London, Singapore and Miami in the full report.",
+    "items": [
+      { "v": "$235B", "l": "Total stock value",        "n": "All freehold property, EOY 2025." },
+      { "v": "$94B",  "l": "Annual transaction value", "n": "2025 actuals · forecast +18% in 2026." },
+      { "v": "+5.2%", "l": "Population growth",       "n": "Dubai 2025 — 4× UAE national rate." },
+      { "v": "20M",   "l": "Tourist arrivals target",  "n": "Government roadmap 2026 — drives short-let demand." }
+    ]
+  },
+  "segments": {
+    "kicker": "Segment breakdown",
+    "titleA": "Where capital",
+    "titleB": "is flowing",
+    "subtitle": "Market share of transaction value by asset type — and our 2026 outlook for each. Premium villas continue to lead growth; mid-apartments lead volume.",
+    "items": [
+      {
+        "id": "apartments",
+        "label": "Apartments",
+        "share": 58,
+        "growth": "+7.8%",
+        "yield": "6.4%",
+        "outlook": "Volume engine. Off-plan + ready balance. Mid-segment ($300–800K) absorbed fastest."
+      },
+      {
+        "id": "villas",
+        "label": "Villas & townhouses",
+        "share": 27,
+        "growth": "+11.2%",
+        "yield": "4.6%",
+        "outlook": "Premium villas lead capital growth. Family-led demand from Golden Visa relocations."
+      },
+      {
+        "id": "penthouses",
+        "label": "Penthouses",
+        "share": 7,
+        "growth": "+9.0%",
+        "yield": "4.8%",
+        "outlook": "Limited supply on Palm, Downtown, Bluewaters. Resale liquidity strongest at $5M+."
+      },
+      {
+        "id": "waterfront",
+        "label": "Waterfront / branded",
+        "share": 8,
+        "growth": "+13.5%",
+        "yield": "4.0%",
+        "outlook": "Branded residences (Ritz-Carlton, Bulgari, Armani) outperforming standard luxury by ~3%."
+      }
+    ],
+    "footnote": "* Transaction value share, DLD 2025 actuals. Growth and yield are 2026 base-case forecasts. Branded residence sample is judgement-weighted."
+  },
+  "forecast": {
+    "kicker": "Price trajectory",
+    "titleA": "Five-year",
+    "titleB": "price forecast",
+    "subtitle": "Indexed price growth 2024 = 100. Three scenarios. The bear path assumes a 2027 oversupply correction; the bull path assumes Golden Visa volumes hold above 200K/year.",
+    "scenarios": [
+      { "id": "bull", "label": "Bull",  "values": [100, 109, 122, 138, 152, 168], "tag": "+10–14%/yr",  "note": "Golden Visa >200K · Tourism > 20M" },
+      { "id": "base", "label": "Base",  "values": [100, 107, 116, 125, 134, 143], "tag": "+7–8%/yr",    "note": "Current trends continue" },
+      { "id": "bear", "label": "Bear",  "values": [100, 105, 111, 109, 113, 119], "tag": "+3–5%/yr",    "note": "Oversupply 2027 · global recession" }
+    ],
+    "years": ["2024","2025","2026","2027","2028","2029"],
+    "footnote": "* Index method — Property Monitor citywide weighted by transaction volume. ShanGroup base case 60%, bull 25%, bear 15% probability weighting."
+  },
+  "hotDistricts": {
+    "kicker": "Districts to watch",
+    "titleA": "Five districts",
+    "titleB": "for 2026 capital",
+    "subtitle": "Where the Q2 2026 fundamentals diverge most from current pricing. Detailed write-ups (12–18 pages each) are in the full report.",
+    "items": [
+      {
+        "name": "Dubai Creek Harbour",
+        "thesis": "New CBD around the Burj-class tower. Off-plan deliveries 2026–2028 line up with infrastructure unlocking.",
+        "growth": "+10.5%",
+        "yield": "5.5%",
+        "ticket": "from $690K",
+        "tag": "Off-plan"
+      },
+      {
+        "name": "Sobha Hartland II",
+        "thesis": "Premium waterfront with the city's highest forecast capital growth. Sobha brand carries resale premium.",
+        "growth": "+11.0%",
+        "yield": "4.5%",
+        "ticket": "from $950K",
+        "tag": "Luxury"
+      },
+      {
+        "name": "Jumeirah Village Circle",
+        "thesis": "Anomalously high net yield (7.2%) at $320K entry. Volume-rental thesis for cashflow investors.",
+        "growth": "+9.0%",
+        "yield": "7.2%",
+        "ticket": "from $320K",
+        "tag": "Yield"
+      },
+      {
+        "name": "MBR City",
+        "thesis": "EMAAR / Sobha / MAG master-plan maturing. Green infrastructure and metro extensions are the catalyst.",
+        "growth": "+9.0%",
+        "yield": "5.2%",
+        "ticket": "from $720K",
+        "tag": "Master-plan"
+      },
+      {
+        "name": "Palm Jebel Ali",
+        "thesis": "Sister-Palm relaunch. Long-dated thesis (delivery 2028+) for capital-growth investors. Supply discipline strong.",
+        "growth": "+12.0%",
+        "yield": "4.0%",
+        "ticket": "from $1.6M",
+        "tag": "Long-term"
+      }
+    ]
+  },
+  "macroDrivers": {
+    "kicker": "What drives the market",
+    "titleA": "Six structural",
+    "titleB": "drivers",
+    "items": [
+      {
+        "icon": "rocket",
+        "title": "Population +5.2%/year",
+        "body": "Dubai population now 3.85M. Inbound is professional and family, not transient — sustains end-user housing demand."
+      },
+      {
+        "icon": "passport",
+        "title": "Golden Visa programme",
+        "body": "Property threshold stabilised at AED 2M ($545K). 138K visas issued 2025 — half property-backed. Demand floor is policy-set."
+      },
+      {
+        "icon": "globe",
+        "title": "Tourism 20M target",
+        "body": "Government Tourism Strategy 2031: 25M arrivals. Short-let yields 8–10% in tourist districts (Marina, Downtown, JBR)."
+      },
+      {
+        "icon": "shield",
+        "title": "Zero personal tax",
+        "body": "0% personal income tax, 0% capital gains, 0% inheritance. Combined with 137 DTAs — UAE remains uniquely tax-efficient."
+      },
+      {
+        "icon": "biz",
+        "title": "Corporate diversification",
+        "body": "Non-oil GDP 73% in 2025. DIFC + ADGM moving up FT financial-centre rankings. Financial services demand drives premium rentals."
+      },
+      {
+        "icon": "scale",
+        "title": "Regulator credibility",
+        "body": "DLD, RERA and FTA reforms 2023–2025 strengthened transparency. Buyer protections rival London / Singapore."
+      }
+    ]
+  },
+  "risks": {
+    "kicker": "What could break the thesis",
+    "titleA": "Three honest",
+    "titleB": "risks",
+    "subtitle": "Every report says 'risks exist'. We rate, size and stress-test them. Here are the top three from our risk register.",
+    "items": [
+      {
+        "id": "supply",
+        "rating": "Medium",
+        "title": "Oversupply 2027–2028",
+        "body": "47K units in 2026, 52K projected 2027. Mid-market absorption is fine; risk concentrates in commodity off-plan (JVT, DSO). Premium and prime segments insulated.",
+        "stress": "Bear-case forecast prices in a 6–8% correction in commodity segments. Premium remains positive."
+      },
+      {
+        "id": "macro",
+        "rating": "Medium",
+        "title": "Global recession & rates",
+        "body": "GCC pegged to USD — UAE rates follow Fed. If higher-for-longer extends into late 2026, mortgage volumes soften, cash share rises further.",
+        "stress": "Historical: cash share 73% in 2024. Demand floor holds; transaction mix shifts towards end-user / family-office cash."
+      },
+      {
+        "id": "geo",
+        "rating": "Low–Medium",
+        "title": "Regional geopolitics",
+        "body": "Regional escalations historically *increase* Dubai inflows (safe-haven trade). Tail risk: direct UAE involvement — low base rate, but cannot be priced out.",
+        "stress": "Stress event 2024 saw inflows accelerate, not fall. We monitor and disclose positioning quarterly."
+      }
+    ]
+  },
+  "toc": {
+    "kicker": "Inside the report",
+    "titleA": "What 112 pages",
+    "titleB": "actually cover",
+    "items": [
+      { "n": "01", "t": "Executive summary",                    "p": "pp. 4–9" },
+      { "n": "02", "t": "Macro context & population dynamics",  "p": "pp. 10–19" },
+      { "n": "03", "t": "Segment deep-dives (Apt / Villa / Penthouse / Waterfront)", "p": "pp. 20–47" },
+      { "n": "04", "t": "Price forecasts — bull / base / bear", "p": "pp. 48–61" },
+      { "n": "05", "t": "Top 12 districts (12–18 pp each)",      "p": "pp. 62–88" },
+      { "n": "06", "t": "Yield analysis & rental dynamics",     "p": "pp. 89–96" },
+      { "n": "07", "t": "Risk register & stress tests",         "p": "pp. 97–104" },
+      { "n": "08", "t": "Allocation framework & client portfolios", "p": "pp. 105–110" },
+      { "n": "09", "t": "Methodology & data appendix",          "p": "pp. 111–112" }
+    ]
+  },
+  "methodology": {
+    "kicker": "How we built this",
+    "titleA": "Method",
+    "titleB": "and sources",
+    "subtitle": "Same rigour you'd expect from an institutional research desk — peer-reviewed before publication. We disclose the model assumptions so you can dispute them.",
+    "items": [
+      { "t": "Primary sources",     "d": "DLD transactions (full year), Property Monitor, Bayut, FTA, Dubai Statistics Centre, Knight Frank, JLL, CBRE, Savills." },
+      { "t": "Sample",              "d": "$2.4B of transaction data referenced. 38 institutional sources cited. 312 ShanGroup client transactions cross-checked." },
+      { "t": "Forecast model",      "d": "Three-scenario Monte Carlo with weighted probability. Index price by transaction volume, not asking. Service charges modelled separately." },
+      { "t": "Peer review",         "d": "Reviewed pre-publication by two independent UAE-licensed valuers and one academic economist. Notes on dissent included in appendix." },
+      { "t": "Update cadence",      "d": "Quarterly mini-updates (12–16 pp) free to report recipients. Next update: end Q3 2026." },
+      { "t": "Conflicts disclosed", "d": "ShanGroup transacts in this market. We disclose our positioning by segment in the appendix. No paid placements." }
+    ]
+  },
+  "authors": {
+    "kicker": "Who wrote it",
+    "titleA": "Three senior",
+    "titleB": "voices",
+    "items": [
+      {
+        "id": "lead",
+        "name": "Salim Shangareev",
+        "role": "Lead author · Managing Partner",
+        "bio": "15 years in MENA real estate, ex-Investment Banking. Closed $310M of client transactions in Dubai 2018–2025.",
+        "credentials": "RERA #2087 · CFA"
+      },
+      {
+        "id": "data",
+        "name": "Aisha Al Marri",
+        "role": "Head of research",
+        "bio": "Former JLL MENA research. Built the data model. Specialises in segment-level yield forecasting and oversupply analysis.",
+        "credentials": "MSc Real Estate Economics · LSE"
+      },
+      {
+        "id": "macro",
+        "name": "Muhammad Mansour",
+        "role": "Macro strategist",
+        "bio": "Covers GCC rates, FX and population dynamics. Writes the macro chapter and stress-test framework.",
+        "credentials": "CFA · CAIA"
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "titleA": "About",
+    "titleB": "the report",
+    "items": [
+      { "q": "Is the report really free?", "a": "Yes. We send the full PDF after a quick verification email (we filter out competitors and bots). No payment, no upsell required — though you'll naturally be in our quarterly update list." },
+      { "q": "Who is this written for?",   "a": "Investors deploying $500K–$25M, family offices, private bankers and senior brokers who want a single document they can hand to a principal. Not for first-time retail buyers — for that we have the ROI calculator and the district comparison tools." },
+      { "q": "How current is the data?",   "a": "Data cut-off is Q2 2026 (March 31). Quarterly updates follow. The PDF you receive will always be the most recent annual edition; mini-updates are sent by email." },
+      { "q": "Can I cite it?",             "a": "Yes, with attribution: 'ShanGroup, Dubai Real Estate Investment Report 2026, Edition 04'. Email us for the higher-resolution chart pack." },
+      { "q": "Why three scenarios, not one?", "a": "Forecasts are wrong individually. Scenarios force the reader to think in distributions and pre-commit to actions on each path — that's what institutional research is supposed to enable." },
+      { "q": "Do you sell the report?",    "a": "No. It's our marketing — we sell brokerage and investment advisory. The honest version of that exchange is: we give you world-class data, you remember us when you're ready to transact." }
+    ]
+  },
+  "leadForm": {
+    "badge": "Free · institutional edition",
+    "titleA": "Request the",
+    "titleB": "112-page report",
+    "titleC": "in your inbox",
+    "subtitle": "We send the PDF within 24 hours after a brief verification. By default you're added to the quarterly mini-update list — easy to unsubscribe.",
+    "perks": [
+      "Full 112-page PDF · Edition 04 · Q2 2026",
+      "High-resolution chart pack for citation",
+      "Quarterly 12–16 page mini-updates",
+      "Optional 30-min Q&A with the lead author"
+    ],
+    "stats": [
+      ["112",  "pages"],
+      ["38",   "sources"],
+      ["24h",  "delivery"]
+    ],
+    "form": {
+      "profileLabel": "You are",
+      "profiles": [
+        { "id": "investor", "l": "Investor" },
+        { "id": "office",   "l": "Family office" },
+        { "id": "banker",   "l": "Banker / Advisor" }
+      ],
+      "interestLabel": "Most relevant chapter",
+      "interests": [
+        { "id": "forecast",  "l": "Forecasts" },
+        { "id": "districts", "l": "Districts" },
+        { "id": "risk",      "l": "Risk & stress" }
+      ],
+      "emailPlaceholder": "Work email",
+      "namePlaceholder": "Full name",
+      "phonePlaceholder": "+1 / +971 / +44",
+      "qaToggleLabel": "Add a 30-min Q&A with the lead author",
+      "consent": "I agree to data processing. Confidential — work email only.",
+      "submit": "Send me the report →",
+      "responseNote": "PDF arrives within 24h · No payment · No call required"
+    },
+    "success": {
+      "title": "PDF on its way, {name}.",
+      "fallbackName": "investor",
+      "line1": "Check your inbox in the next few minutes for the verification link.",
+      "line2": "The 112-page report arrives within 24 hours of verification.",
+      "callNote": "We may follow up on {phone} for the optional Q&A only"
+    }
+  }
+}

@@ -267,25 +267,20 @@ export default function Footer() {
               boxShadow: NEU_FLAT,
             }}
           >
-            <div
+            <img
+              src="/agent_muhammad.png"
+              alt={tFooter("ctaCard.agentName")}
+              width={60}
+              height={60}
               style={{
                 width: 60,
                 height: 60,
                 borderRadius: 999,
                 flexShrink: 0,
-                background:
-                  "linear-gradient(180deg, oklch(0.86 0.13 88) 0%, oklch(0.64 0.13 60) 100%)",
-                display: "grid",
-                placeItems: "center",
-                fontSize: 24,
-                fontWeight: 600,
-                color: "#3a2d10",
-                fontFamily: "'Cormorant Garamond', serif",
+                objectFit: "cover",
                 boxShadow: "inset 0 1px 0 rgba(255,255,255,.4)",
               }}
-            >
-              А
-            </div>
+            />
             <div style={{ minWidth: 0, flex: 1 }}>
               <div
                 style={{

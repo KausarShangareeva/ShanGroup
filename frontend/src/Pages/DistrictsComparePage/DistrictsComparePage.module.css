@@ -1,0 +1,51 @@
+/* Page-scoped variables so this landing has its own accent palette without
+   touching the global tokens. Switch the indigo/slate look on either theme
+   by editing these — every component reads --dc-accent / --dc-accent-deep /
+   --dc-accent-glow. */
+.page {
+  --dc-accent: oklch(0.60 0.16 255);
+  --dc-accent-deep: oklch(0.42 0.18 258);
+  --dc-accent-glow: oklch(0.42 0.18 258 / 0.25);
+  --dc-accent-soft: color-mix(in oklab, var(--dc-accent-deep) 10%, transparent);
+  --dc-green: oklch(0.45 0.16 145);
+  --dc-green-deep: oklch(0.38 0.16 145);
+  --dc-gold: oklch(0.62 0.12 75);
+
+  position: relative;
+}
+
+:global([data-theme="dark"]) .page {
+  --dc-accent: oklch(0.72 0.16 258);
+  --dc-accent-deep: oklch(0.78 0.16 258);
+  --dc-accent-glow: oklch(0.55 0.18 258 / 0.35);
+  --dc-accent-soft: color-mix(in oklab, var(--dc-accent-deep) 14%, transparent);
+  --dc-green: oklch(0.78 0.14 145);
+  --dc-green-deep: oklch(0.82 0.14 145);
+  --dc-gold: oklch(0.82 0.10 80);
+}
+
+/* Soft editorial grain — mirrors the prototype HTML body::before. */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, var(--grain-1), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, var(--grain-2), transparent 60%);
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes dcPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.pulseDot {
+  animation: dcPulseDot 1.6s ease-in-out infinite;
+}

@@ -1,0 +1,49 @@
+/* Page-scoped tokens — petrol/deep-teal palette reads as "research / serious
+   finance" and stays clear of the other landings' accents. Retheme by editing
+   here; every component reads --ir-* tokens. */
+.page {
+  --ir-accent: oklch(0.55 0.13 200);
+  --ir-accent-deep: oklch(0.36 0.10 205);
+  --ir-accent-glow: oklch(0.36 0.10 205 / 0.28);
+  --ir-accent-soft: color-mix(in oklab, var(--ir-accent-deep) 12%, transparent);
+  --ir-bull: oklch(0.48 0.16 145);
+  --ir-bear: oklch(0.55 0.18 25);
+  --ir-gold: oklch(0.62 0.12 75);
+
+  position: relative;
+}
+
+:global([data-theme="dark"]) .page {
+  --ir-accent: oklch(0.78 0.11 200);
+  --ir-accent-deep: oklch(0.82 0.12 205);
+  --ir-accent-glow: oklch(0.55 0.13 205 / 0.4);
+  --ir-accent-soft: color-mix(in oklab, var(--ir-accent-deep) 14%, transparent);
+  --ir-bull: oklch(0.78 0.14 145);
+  --ir-bear: oklch(0.72 0.16 25);
+  --ir-gold: oklch(0.82 0.10 80);
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, var(--grain-1), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, var(--grain-2), transparent 60%);
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes irPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.pulseDot {
+  animation: irPulseDot 1.6s ease-in-out infinite;
+}

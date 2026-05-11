@@ -1,0 +1,303 @@
+{
+  "metadata": {
+    "title": "Compare Dubai districts · Prices, rental yield, capital growth | ShanGroup",
+    "description": "Compare 10 Dubai districts side-by-side — real prices, net rental yield, capital growth and 5-year ROI from Property Monitor Q2 2026."
+  },
+  "hero": {
+    "badge": "10 districts · Live data · Q2 2026",
+    "titleA": "Compare Dubai",
+    "titleB": "districts",
+    "titleC": "— 2026 data",
+    "subtitle": "Real prices, rental yields and capital growth across 10 districts. Find the right neighbourhood for your budget and strategy — in under 2 minutes.",
+    "stats": {
+      "topYield": "Top net yield",
+      "topGrowth": "Top growth / year",
+      "avgRoi": "Average 5-year ROI",
+      "avgRoiSub": "across all 10 districts"
+    }
+  },
+  "ranking": {
+    "kicker": "Visual ranking",
+    "titleA": "All 10 districts",
+    "titleB": "at a glance",
+    "metrics": [
+      { "id": "netYield", "l": "Net yield" },
+      { "id": "growth",   "l": "Growth / year" },
+      { "id": "roi5y",    "l": "ROI 5 years" },
+      { "id": "score",    "l": "SG score" }
+    ]
+  },
+  "table": {
+    "kicker": "Full data table",
+    "titleA": "10 districts —",
+    "titleB": "every metric",
+    "hint": "Tap a header to sort\nTap a row for details",
+    "cols": {
+      "district": "District",
+      "score":    "Score",
+      "netYield": "Net yield",
+      "growth":   "Growth / yr",
+      "roi5y":    "ROI 5 yrs",
+      "price1br": "1BR price"
+    },
+    "expanded": {
+      "about": "About the district",
+      "keyMetrics": "Key metrics",
+      "whyInvest": "Why invest here",
+      "grossYield": "Gross yield",
+      "netYield": "Net yield",
+      "occupancy": "Occupancy",
+      "pricePerSqm": "Price / sqm",
+      "roi5y": "5-year ROI",
+      "score": "SG score",
+      "cta": "Find a property in {name} →"
+    },
+    "footnote": "* Property Monitor Q1 2026 · DLD. Net yield = gross − service charge − opex. ROI = rent + growth − 6% DLD/agent/exit."
+  },
+  "leaders": {
+    "kicker": "Category leaders",
+    "titleA": "Three strategies —",
+    "titleB": "one decision",
+    "items": [
+      {
+        "id": "yield",
+        "title": "Maximum cashflow",
+        "sub": "Best net yield",
+        "desc": "Ideal for investors targeting monthly income. Beats most European rental markets on raw yield."
+      },
+      {
+        "id": "growth",
+        "title": "Capital growth leader",
+        "sub": "Highest appreciation",
+        "desc": "Hold-and-sell strategy. Buy now, exit significantly higher in 5–7 years."
+      },
+      {
+        "id": "entry",
+        "title": "Best entry to market",
+        "sub": "Minimum ticket",
+        "desc": "Start investing in Dubai with a modest budget while keeping yield healthy."
+      }
+    ],
+    "labels": {
+      "netYield": "Net yield",
+      "growth":   "Growth / yr",
+      "roi5y":    "ROI 5 yrs",
+      "entry":    "Entry from"
+    }
+  },
+  "quiz": {
+    "kicker": "Personal match",
+    "intro": {
+      "titleA": "Which district",
+      "titleB": "suits you?",
+      "subtitle": "3 quick questions — and we'll show the top 3 districts for your budget and strategy.",
+      "cta": "Start matching"
+    },
+    "progress": "Question {step} of 3",
+    "questions": [
+      {
+        "id": "budget",
+        "q": "What's your investment budget?",
+        "opts": [
+          { "v": "entry",  "l": "Up to $400K",  "s": "Entry ticket" },
+          { "v": "mid",    "l": "$400K – $800K", "s": "Mid segment" },
+          { "v": "upper",  "l": "$800K – $1.5M", "s": "Premium +" },
+          { "v": "luxury", "l": "$1.5M+",        "s": "Ultra luxury" }
+        ]
+      },
+      {
+        "id": "priority",
+        "q": "Your main priority?",
+        "opts": [
+          { "v": "cashflow", "l": "Maximum income",  "s": "Monthly cashflow" },
+          { "v": "capital",  "l": "Capital growth",  "s": "Sell higher later" },
+          { "v": "balanced", "l": "Balanced",        "s": "Yield + growth" },
+          { "v": "visa",     "l": "Visa + asset",    "s": "UAE residence" }
+        ]
+      },
+      {
+        "id": "horizon",
+        "q": "Investment horizon?",
+        "opts": [
+          { "v": "short", "l": "1–2 years",  "s": "Flip / quick exit" },
+          { "v": "mid",   "l": "3–5 years",  "s": "Mid-term hold" },
+          { "v": "long",  "l": "5–10 years", "s": "Long-term capital" }
+        ]
+      }
+    ],
+    "results": {
+      "kicker": "Your results",
+      "titleA": "Top 3 districts",
+      "titleB": "for your profile",
+      "subtitle": "Based on your budget, priorities and investment horizon.",
+      "topBadge": "#1 MATCH",
+      "score": "Score: {value}/100",
+      "labels": {
+        "netYield": "Net yield",
+        "growth":   "Growth / yr",
+        "roi5y":    "ROI 5 yrs",
+        "entry":    "Entry from"
+      },
+      "ctaPrimary": "Get the full analysis",
+      "ctaSecondary": "Start over"
+    }
+  },
+  "insights": {
+    "kicker": "ShanGroup analytics",
+    "titleA": "What the data says",
+    "titleB": "Q2 2026",
+    "items": [
+      {
+        "icon": "yield",
+        "title": "JVC — anomalous yield",
+        "body": "At an average $320K, net yield of 7.2% beats most European markets. The driver: expats relocating from over-priced districts. Ideal for cashflow investors with budgets up to $500K."
+      },
+      {
+        "icon": "rocket",
+        "title": "Creek Harbour — the next CBD",
+        "body": "A tower taller than Burj Khalifa is rising here. A new business cluster. Growth of +10.5%/year at $690K is a record for the mid segment. Off-plan buyers from 2024–2026 will see the strongest ROI."
+      },
+      {
+        "icon": "balance",
+        "title": "Business Bay — first-time buyer pick",
+        "body": "Affordable entry ($540K) plus central location — steady corporate demand, 6%+ yield, 8%/year growth. The best risk/return balance for those entering the market for the first time."
+      }
+    ]
+  },
+  "leadForm": {
+    "badge": "Personal analysis · free",
+    "titleA": "Get an analysis on",
+    "titleB": "3 properties",
+    "titleC": "for your budget",
+    "subtitle": "A ShanGroup analyst hand-picks specific apartments in your chosen districts with real rental rates and transaction history.",
+    "perks": [
+      "3 properties from your shortlisted districts — with photos and breakdown",
+      "PDF report with 3 / 5 / 10-year ROI",
+      "No buyer-side commission — we are paid by the developer"
+    ],
+    "stats": [
+      ["312", "clients"],
+      ["8.3%", "avg yield"],
+      ["≤ 15 min", "response"]
+    ],
+    "form": {
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "entry",  "l": "Up to $400K" },
+        { "id": "mid",    "l": "$400K–$800K" },
+        { "id": "upper",  "l": "$800K–1.5M" },
+        { "id": "luxury", "l": "$1.5M+" }
+      ],
+      "priorityLabel": "Priority",
+      "priorities": [
+        { "id": "cashflow", "l": "Cashflow" },
+        { "id": "capital",  "l": "Growth" },
+        { "id": "balanced", "l": "Balanced" }
+      ],
+      "namePlaceholder": "Your name",
+      "phonePlaceholder": "+1 / +971 / +44",
+      "consent": "I agree to data processing. No spam — only relevant information.",
+      "submit": "Get personal analysis →",
+      "responseNote": "Reply within 15 minutes · Completely free"
+    },
+    "success": {
+      "title": "All set, {name}!",
+      "fallbackName": "investor",
+      "line1": "An analyst will prepare a comparison of 3 properties from your chosen districts.",
+      "line2": "We'll send the PDF report to WhatsApp within 30 minutes.",
+      "callNote": "Call on {phone} · we'll be in touch in 15 minutes"
+    }
+  },
+  "districts": [
+    {
+      "id": "jvc",
+      "name": "JVC",
+      "full": "Jumeirah Village Circle",
+      "tag": "Top yield",
+      "tagHue": 145,
+      "desc": "Affordable entry ticket. Highest net yield in Dubai at 7.2%. Active development, mass expat relocation from pricier districts.",
+      "pros": ["Net yield 7.2% — market record", "Entry from $320K", "High 89% occupancy"]
+    },
+    {
+      "id": "jlt",
+      "name": "JLT",
+      "full": "Jumeirah Lake Towers",
+      "tag": "Cashflow",
+      "tagHue": 145,
+      "desc": "Business cluster next to the Marina. DMCC Free Zone delivers stable corporate rental demand.",
+      "pros": ["Net yield 6.3%", "Next to DMCC / Metro", "Steady corporate demand"]
+    },
+    {
+      "id": "bay",
+      "name": "Business Bay",
+      "full": "Business Bay",
+      "tag": "Balanced",
+      "tagHue": 255,
+      "desc": "Central CBD with canal views. The best balance of price, yield and location — ideal for a first investment.",
+      "pros": ["Central location", "Canal-view premium", "Corporate tenants"]
+    },
+    {
+      "id": "marina",
+      "name": "Dubai Marina",
+      "full": "Dubai Marina",
+      "tag": "Liquidity",
+      "tagHue": 175,
+      "desc": "Waterfront, tourists and expats. City-best 91% occupancy. Strong Airbnb potential.",
+      "pros": ["91% occupancy — top in Dubai", "Tourists + Airbnb", "Highest liquidity"]
+    },
+    {
+      "id": "creek",
+      "name": "Creek Harbour",
+      "full": "Dubai Creek Harbour",
+      "tag": "Hot 2026",
+      "tagHue": 20,
+      "desc": "A tower taller than Burj Khalifa is rising here. A new CBD. Strong off-plan growth in the mid segment.",
+      "pros": ["+10.5% / year growth", "Tower > Burj Khalifa", "Off-plan upside"]
+    },
+    {
+      "id": "mbr",
+      "name": "MBR City",
+      "full": "Mohammed Bin Rashid City",
+      "tag": "Master plan",
+      "tagHue": 255,
+      "desc": "Dubai's largest master plan: EMAAR, Sobha, MAG. Maturing infrastructure, green district.",
+      "pros": ["Top developers", "Green master plan", "Maturing infrastructure"]
+    },
+    {
+      "id": "hills",
+      "name": "Dubai Hills",
+      "full": "Dubai Hills Estate",
+      "tag": "Family",
+      "tagHue": 155,
+      "desc": "EMAAR master plan with golf course and parks. Family segment with high tenant retention.",
+      "pros": ["EMAAR developer", "Golf / parks", "90% occupancy"]
+    },
+    {
+      "id": "downtown",
+      "name": "Downtown",
+      "full": "Downtown Dubai",
+      "tag": "Prestige",
+      "tagHue": 50,
+      "desc": "Burj Khalifa, Dubai Mall. Maximum liquidity. A prestige rental address with strong corporate and tourist demand.",
+      "pros": ["Maximum liquidity", "Burj Khalifa / Dubai Mall", "Stable rental rates"]
+    },
+    {
+      "id": "sobha",
+      "name": "Sobha Hartland",
+      "full": "Sobha Hartland II",
+      "tag": "Capital growth",
+      "tagHue": 50,
+      "desc": "Highest capital appreciation at 11%/year. Waterfront premium development by Sobha. Best for hold-and-sell strategies.",
+      "pros": ["11%/year growth — luxury record", "Sobha waterfront", "Long-term ROI"]
+    },
+    {
+      "id": "palm",
+      "name": "Palm Jumeirah",
+      "full": "Palm Jumeirah",
+      "tag": "Ultra luxury",
+      "tagHue": 65,
+      "desc": "The iconic archipelago. Villas and apartments with sea views. Long-term capital growth and a status address.",
+      "pros": ["Status address", "+10% / year growth", "Ultra luxury segment"]
+    }
+  ]
+}

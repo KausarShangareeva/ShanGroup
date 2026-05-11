@@ -43,6 +43,15 @@ import arMortgage from "@/data/i18n/ar/mortgage.json";
 import ruRoi from "@/data/i18n/ru/roi.json";
 import enRoi from "@/data/i18n/en/roi.json";
 import arRoi from "@/data/i18n/ar/roi.json";
+import ruDistrictsCompare from "@/data/i18n/ru/districts-compare.json";
+import enDistrictsCompare from "@/data/i18n/en/districts-compare.json";
+import arDistrictsCompare from "@/data/i18n/ar/districts-compare.json";
+import ruUaeTaxGuide from "@/data/i18n/ru/uae-tax-guide.json";
+import enUaeTaxGuide from "@/data/i18n/en/uae-tax-guide.json";
+import arUaeTaxGuide from "@/data/i18n/ar/uae-tax-guide.json";
+import ruInvestmentReport from "@/data/i18n/ru/investment-report.json";
+import enInvestmentReport from "@/data/i18n/en/investment-report.json";
+import arInvestmentReport from "@/data/i18n/ar/investment-report.json";
 import ruNavigation from "@/data/i18n/ru/navigation.json";
 import enNavigation from "@/data/i18n/en/navigation.json";
 import arNavigation from "@/data/i18n/ar/navigation.json";
@@ -68,6 +77,9 @@ const MESSAGES = {
     InstallmentPage: ruInstallment,
     MortgagePage: ruMortgage,
     RoiPage: ruRoi,
+    DistrictsComparePage: ruDistrictsCompare,
+    UaeTaxGuidePage: ruUaeTaxGuide,
+    InvestmentReportPage: ruInvestmentReport,
     Navigation: ruNavigation,
     SearchBar: ruSearchBar,
     Footer: ruFooter,
@@ -84,6 +96,9 @@ const MESSAGES = {
     InstallmentPage: enInstallment,
     MortgagePage: enMortgage,
     RoiPage: enRoi,
+    DistrictsComparePage: enDistrictsCompare,
+    UaeTaxGuidePage: enUaeTaxGuide,
+    InvestmentReportPage: enInvestmentReport,
     Navigation: enNavigation,
     SearchBar: enSearchBar,
     Footer: enFooter,
@@ -100,6 +115,9 @@ const MESSAGES = {
     InstallmentPage: arInstallment,
     MortgagePage: arMortgage,
     RoiPage: arRoi,
+    DistrictsComparePage: arDistrictsCompare,
+    UaeTaxGuidePage: arUaeTaxGuide,
+    InvestmentReportPage: arInvestmentReport,
     Navigation: arNavigation,
     SearchBar: arSearchBar,
     Footer: arFooter,
