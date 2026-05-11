@@ -21,3 +21,15 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 1.6rem; /* базовый размер 16px */
 }
+
+/* Diagonal shimmer for premium card visuals (Investor/Golden Visa hero).
+   Translates a light highlight across the parent — the parent must clip
+   overflow. The light gradient itself is set inline on the overlay span. */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

@@ -21,6 +21,22 @@
   --sand: oklch(0.72 0.06 55);
   --sand-deep: oklch(0.55 0.08 50);
   --gold-warm: oklch(0.78 0.08 80);
+  /* Cool blue-silver — для Investor Visa и других стартовых инвест-страниц,
+     контрастирует с тёплым sand/gold премиум-Golden Visa. */
+  --silver: oklch(0.78 0.015 240);
+  --silver-deep: oklch(0.55 0.02 240);
+  /* Teal accent — финансовые/калькулятор-страницы (Installment).
+     Сигнализирует "финтех/деньги" контрастно с золотым премиум-визы. */
+  --accent: oklch(0.62 0.13 165);
+  --accent-deep: oklch(0.45 0.13 165);
+  /* Blue accent — Mortgage. Тон 265 даёт "банк / финансовый институт"-ощущение,
+     отделяет страницу от teal-рассрочки и gold-визы. Парный к --accent. */
+  --accent-blue: oklch(0.62 0.12 265);
+  --accent-blue-deep: oklch(0.42 0.14 265);
+  /* Green accent — ROI Calculator. Тон 155 = "доходность / рост" (биржевая
+     зелёная). Соседствует с teal-Installment и blue-Mortgage без конфликта. */
+  --accent-green: oklch(0.66 0.16 155);
+  --accent-green-deep: oklch(0.45 0.16 155);
   --shadow-light: rgba(255, 255, 255, 0.92);
   --shadow-dark: rgba(160, 155, 145, 0.28);
   --hover-bg: rgba(0, 0, 0, 0.05);
@@ -136,6 +152,14 @@
   --sand: oklch(0.78 0.07 60);
   --sand-deep: oklch(0.82 0.08 65);
   --gold-warm: oklch(0.82 0.1 82);
+  --silver: oklch(0.78 0.02 240);
+  --silver-deep: oklch(0.82 0.025 240);
+  --accent: oklch(0.72 0.13 165);
+  --accent-deep: oklch(0.82 0.13 165);
+  --accent-blue: oklch(0.72 0.12 265);
+  --accent-blue-deep: oklch(0.82 0.12 265);
+  --accent-green: oklch(0.78 0.14 155);
+  --accent-green-deep: oklch(0.82 0.16 155);
   --shadow-light: rgba(255, 255, 255, 0.04);
   --shadow-dark: rgba(0, 0, 0, 0.55);
   --hover-bg: rgba(255, 255, 255, 0.07);

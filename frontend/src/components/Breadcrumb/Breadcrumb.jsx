@@ -2,84 +2,60 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/layout/Container";
 import Icon from "@/components/Icon/Icon";
 import styles from "./Breadcrumb.module.css";
 
-const LABELS = {
-  catalog: "Каталог",
-  communities: "Районы",
-  developers: "Застройщики",
-  blog: "Блог",
-  about: "О нас",
-  services: "Услуги",
-  visa: "Получение визы",
-  company: "Регистрация компаний",
-  banking: "Банковские счета",
-  villas: "Виллы",
-  apartments: "Апартаменты",
-  townhouses: "Таунхаусы",
-  penthouses: "Пентхаусы",
-  waterfront: "Набережная",
-  reviews: "Отзывы",
-  "new-builds": "Новостройки",
-  emirates: "Эмираты",
-  articles: "Статьи",
-  faq: "Вопросы и ответы",
-  team: "Команда",
-  "investment-trends-2026": "Инвестиции в 2026",
-  "golden-visa-strategy": "Золотая виза ОАЭ",
-  investments: "Инвестиции",
-  "off-plan": "Off-plan стратегия",
-  "ready-rentals": "Готовая аренда",
-  airbnb: "Краткосрочная аренда",
-  flip: "Flip-стратегия",
-  "golden-visa": "Golden Visa",
-};
-
-// Виртуальные родители для роутов, которые физически плоские (например /airbnb),
-// но логически принадлежат категории Investments. Ключ — slug последнего сегмента;
-// значение — массив виртуальных слугов, которые надо вставить перед ним. Слуг
-// "investments" мы рендерим как текст, а не как ссылку, потому что страницы
-// /investments не существует.
+// Виртуальные родители для роутов, физически плоских (например /airbnb), но
+// логически принадлежащих категории Investments. Ключ — slug последнего сегмента;
+// значение — массив слугов, которые надо вставить перед ним. "investments"
+// рендерится как текст, а не ссылка, потому что страницы /investments не существует.
 const VIRTUAL_PARENTS = {
   "off-plan": ["investments"],
   "ready-rentals": ["investments"],
   airbnb: ["investments"],
   flip: ["investments"],
   "golden-visa": ["investments"],
+  "investor-visa": ["investments"],
+  installment: ["investments"],
+  mortgage: ["investments"],
+  "roi-calculator": ["investments"],
 };
 
 const NON_CLICKABLE = new Set(["investments"]);
 
-function toLabel(segment) {
-  return (
-    LABELS[segment] ||
-    segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
-  );
+function titleCase(slug) {
+  return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 export default function Breadcrumb() {
   const pathname = usePathname();
+  const t = useTranslations("Common.breadcrumb");
+  const slugLabels = t.raw("slugs");
 
   if (pathname === "/") return null;
 
   const rawSegments = pathname.split("/").filter(Boolean);
   const parents = VIRTUAL_PARENTS[rawSegments[0]] || [];
-  // Виртуальные родители идут только когда роут одноуровневый — иначе путь и так
-  // несёт реальную иерархию и подмешивать ничего не нужно.
+  // Виртуальные родители подмешиваются только при одноуровневом роуте.
   const segments =
     rawSegments.length === 1 && parents.length
-      ? [...parents.map((p) => ({ slug: p, virtual: true })), { slug: rawSegments[0], virtual: false }]
+      ? [
+          ...parents.map((p) => ({ slug: p, virtual: true })),
+          { slug: rawSegments[0], virtual: false },
+        ]
       : rawSegments.map((s) => ({ slug: s, virtual: false }));
+
+  const labelFor = (slug) => slugLabels?.[slug] || titleCase(slug);
 
   return (
     <nav className={styles.bar} aria-label="breadcrumb">
       <Container className={styles.inner}>
-        <Link href="/" className={styles.home} aria-label="Главная">
+        <Link href="/" className={styles.home} aria-label={t("home")}>
           <Icon name="home" size={14} />
         </Link>
+
         {segments.map((seg, i) => {
           const isLast = i === segments.length - 1;
           // Только не-виртуальные слуги собирают href из real-сегментов.
@@ -89,14 +65,35 @@ export default function Breadcrumb() {
             .map((s) => s.slug);
           const href = "/" + realSlice.join("/");
           const nonClickable = seg.virtual || NON_CLICKABLE.has(seg.slug);
+          const label = labelFor(seg.slug);
+
           return (
             <span key={`${seg.slug}-${i}`} className={styles.segment}>
-              <ChevronRight size={13} className={styles.sep} strokeWidth={1.6} />
+              <span aria-hidden className={styles.sep}>
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 3 L10 7 L5 11" />
+                </svg>
+              </span>
               {isLast || nonClickable ? (
-                <span className={styles.current}>{toLabel(seg.slug)}</span>
+                <span
+                  className={isLast ? styles.current : styles.virtual}
+                  aria-current={isLast ? "page" : undefined}
+                  title={label}
+                >
+                  {label}
+                </span>
               ) : (
-                <Link href={href} className={styles.link}>
-                  {toLabel(seg.slug)}
+                <Link href={href} className={styles.link} title={label}>
+                  {label}
                 </Link>
               )}
             </span>

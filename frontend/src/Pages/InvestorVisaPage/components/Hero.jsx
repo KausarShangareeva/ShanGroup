@@ -6,17 +6,34 @@ import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
 import Icon from "@/components/Icon/Icon";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
-// Визуал visa-карты — всегда тёмный (UAE black-card aesthetic), не реагирует
-// на тему. Внутри добавлены floating chips, которые ходят через var(--bg) — они
-// уже корректно адаптируются под dark.
+// Premium dark visa card — silver/blue palette (vs gold-accented Golden Visa).
+// Внутри карты — `shimmerOverlay` div, который запускает анимацию shimmer из
+// globals.css. Анимация проигрывается перманентно, lights переезжают слева
+// направо за 4 секунды, parent клипует overflow.
 const CARD_BG =
-  "linear-gradient(135deg, #1a1a1c 0%, #2a2520 50%, #1a1a1c 100%)";
+  "linear-gradient(135deg, #1a1a1c 0%, #1f2126 50%, #1a1a1c 100%)";
 const CARD_SHADOW =
-  "0 30px 60px rgba(10,10,11,.4), 0 8px 20px rgba(180,140,40,.15)";
+  "0 30px 60px rgba(10,10,11,.4), 0 8px 20px rgba(150,160,180,.15)";
+
+// Стиль заголовка скопирован 1:1 из прототипа: Montserrat 700 с очень тугим
+// трекингом (-0.035em) и line-height 0.92 даёт "толстый" display-вид. Italic
+// акцент — Instrument Serif 400.
+const DISPLAY_FONT = {
+  fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif",
+  fontWeight: 700,
+  letterSpacing: "-0.035em",
+  lineHeight: 0.92,
+};
+const ITALIC_FONT = {
+  fontFamily: "'Instrument Serif', 'Cormorant Garamond', serif",
+  fontStyle: "italic",
+  fontWeight: 400,
+  letterSpacing: "-0.005em",
+};
 
 export default function Hero() {
   const isMobile = useIsMobile();
-  const t = useTranslations("GoldenVisaPage.hero");
+  const t = useTranslations("InvestorVisaPage.hero");
   const trust = t.raw("trust");
   const card = t.raw("card");
 
@@ -63,7 +80,7 @@ export default function Hero() {
                   width: 7,
                   height: 7,
                   borderRadius: 999,
-                  background: "oklch(0.78 0.13 80)",
+                  background: "var(--silver-deep)",
                 }}
               />
               {t("badge")}
@@ -72,30 +89,25 @@ export default function Hero() {
             <h1
               style={{
                 margin: 0,
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 500,
                 fontSize: isMobile
                   ? "clamp(38px, 11vw, 54px)"
                   : "clamp(56px, 6.4vw, 88px)",
-                lineHeight: 1.02,
-                letterSpacing: "-0.012em",
                 color: "var(--ink)",
                 textWrap: "balance",
+                ...DISPLAY_FONT,
               }}
             >
               {t("titleA")}
               <br />
               <span
                 style={{
-                  fontStyle: "italic",
-                  color: "var(--sand-deep)",
-                  fontWeight: 400,
+                  ...ITALIC_FONT,
+                  color: "var(--silver-deep)",
                   fontSize: "0.95em",
                 }}
               >
                 {t("titleB")}
-              </span>
-              <br />
+              </span>{" "}
               {t("titleC")}
             </h1>
 
@@ -123,7 +135,7 @@ export default function Hero() {
                 {t("ctaPrimary")}
               </PrimaryButton>
               <a
-                href="#eligibility"
+                href="/golden-visa"
                 style={{
                   all: "unset",
                   cursor: "pointer",
@@ -140,7 +152,7 @@ export default function Hero() {
                   gap: 8,
                 }}
               >
-                <Icon name="clock" size={16} />
+                <Icon name="arrow-right" size={16} />
                 {t("ctaSecondary")}
               </a>
             </div>
@@ -159,10 +171,8 @@ export default function Hero() {
                 <div key={i}>
                   <div
                     style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontWeight: 600,
+                      ...DISPLAY_FONT,
                       fontSize: 22,
-                      letterSpacing: "-0.02em",
                       color: "var(--ink)",
                     }}
                   >
@@ -207,7 +217,7 @@ export default function Hero() {
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(110deg, transparent 30%, rgba(255,215,120,.18) 50%, transparent 70%)",
+                      "linear-gradient(110deg, transparent 30%, rgba(180,200,230,.16) 50%, transparent 70%)",
                     animation: "shimmer 4s ease-in-out infinite",
                     pointerEvents: "none",
                   }}
@@ -221,7 +231,7 @@ export default function Hero() {
                     width: 200,
                     height: 200,
                     background:
-                      "radial-gradient(circle, oklch(0.78 0.13 80 / .35), transparent 65%)",
+                      "radial-gradient(circle, oklch(0.78 0.05 240 / .3), transparent 65%)",
                     pointerEvents: "none",
                   }}
                 />
@@ -260,7 +270,7 @@ export default function Hero() {
                           fontWeight: 500,
                           fontSize: 28,
                           marginTop: 4,
-                          color: "oklch(0.86 0.13 88)",
+                          color: "rgba(200,215,235,.95)",
                           lineHeight: 1,
                           letterSpacing: "-0.012em",
                         }}
@@ -284,14 +294,12 @@ export default function Hero() {
                         cx="24"
                         cy="24"
                         r="22"
-                        stroke="oklch(0.86 0.13 88)"
-                        strokeOpacity=".6"
+                        stroke="rgba(180,200,230,.6)"
                         strokeWidth="1"
                       />
                       <path
                         d="M24 8 L26 18 L34 16 L28 22 L36 26 L26 26 L28 36 L24 28 L20 36 L22 26 L12 26 L20 22 L14 16 L22 18 Z"
-                        fill="oklch(0.86 0.13 88)"
-                        fillOpacity=".85"
+                        fill="rgba(200,215,235,.85)"
                       />
                     </svg>
                   </div>
@@ -331,9 +339,9 @@ export default function Hero() {
                       <CardCell
                         label={card.categoryLabel}
                         value={card.categoryValue}
-                        gold
+                        silver
                       />
-                      <CardCell label={card.validLabel} value={card.validValue} />
+                      <CardCell label={card.validLabel} value={card.validValue} mono />
                       <CardCell label={card.familyLabel} value={card.familyValue} />
                     </div>
                   </div>
@@ -358,15 +366,8 @@ export default function Hero() {
                     "-4px -4px 10px var(--shadow-light), 4px 4px 12px var(--shadow-dark)",
                 }}
               >
-                <span
-                  style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: 999,
-                    background: "oklch(0.55 0.13 145)",
-                  }}
-                />
-                {card.chipTax}
+                <Icon name="check" size={14} strokeWidth={2} />
+                {card.chipBank}
               </div>
               <div
                 style={{
@@ -386,8 +387,15 @@ export default function Hero() {
                     "-4px -4px 10px var(--shadow-light), 4px 4px 12px var(--shadow-dark)",
                 }}
               >
-                <Icon name="check" size={14} strokeWidth={2} />
-                {card.chipResidence}
+                <span
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: 999,
+                    background: "oklch(0.55 0.13 145)",
+                  }}
+                />
+                {card.chipSchools}
               </div>
             </div>
           )}
@@ -397,7 +405,7 @@ export default function Hero() {
   );
 }
 
-function CardCell({ label, value, gold }) {
+function CardCell({ label, value, silver, mono }) {
   return (
     <div>
       <div
@@ -413,10 +421,10 @@ function CardCell({ label, value, gold }) {
       <div
         style={{
           fontSize: 11,
-          color: gold ? "oklch(0.86 0.13 88)" : "#fff",
+          color: silver ? "rgba(200,215,235,.95)" : "#fff",
           marginTop: 2,
-          fontWeight: gold ? 600 : 400,
-          fontFamily: gold ? "inherit" : "'JetBrains Mono', monospace",
+          fontWeight: silver ? 600 : 400,
+          fontFamily: mono ? "'JetBrains Mono', monospace" : "inherit",
         }}
       >
         {value}

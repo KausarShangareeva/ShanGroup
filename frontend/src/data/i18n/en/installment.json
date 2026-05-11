@@ -1,0 +1,173 @@
+{
+  "hero": {
+    "badge": "Developer Payment Plan · No bank",
+    "titleA": "1% a month.",
+    "titleB": "No bank.",
+    "titleC": "No interest.",
+    "subtitle": "Buy UAE property directly from the developer. 10–20% as a down payment, the rest spread over 8 years. No interest, no hidden fees, no bank approvals.",
+    "ctaPrimary": "Calculate the payment",
+    "ctaSecondary": "How it works",
+    "trust": [
+      { "v": "0%",      "l": "annual interest" },
+      { "v": "8 years", "l": "instalment term" },
+      { "v": "10–20%",  "l": "down payment" }
+    ],
+    "card": {
+      "kicker": "Apartment example",
+      "price": "$408,000",
+      "subtitle": "1.5M AED · 1BR Apartment",
+      "badge": "1% / MONTH",
+      "rows": [
+        { "l": "Down payment (20%)",             "v": "$81,600",                          "pct": 20 },
+        { "l": "Construction (30% / 30 mo)",     "v": "$122,400 / $4,080 per month",       "pct": 30 },
+        { "l": "Handover (10%)",                  "v": "$40,800",                          "pct": 10 },
+        { "l": "Post-handover (40% / 5 yr)",     "v": "$163,200 / $2,720 per month",       "pct": 40 }
+      ],
+      "overpayLabel": "Overpayment",
+      "overpayValue": "$0",
+      "vsLabel": "vs. mortgage ~5.5%",
+      "vsValue": "~$118K saved"
+    }
+  },
+  "vsMortgage": {
+    "kicker": "Comparison",
+    "titleA": "Developer instalment",
+    "titleB": "vs mortgage",
+    "headers": {
+      "param": "Parameter",
+      "installment": "Instalment 1%",
+      "installmentNote": "Developer plan",
+      "mortgage": "Mortgage",
+      "mortgageNote": "Bank mortgage"
+    },
+    "rows": [
+      { "l": "Who funds it",          "i": "Developer directly",       "m": "UAE bank" },
+      { "l": "Interest rate",          "i": "0%",                        "m": "4.5–6.5% per year" },
+      { "l": "Down payment",           "i": "10–20%",                    "m": "20–25% (residents), 35% (non-residents)" },
+      { "l": "Term",                    "i": "5–8 years",                  "m": "Up to 25 years" },
+      { "l": "Approval",                "i": "1–2 days",                   "m": "2–6 weeks + audit" },
+      { "l": "Documents",               "i": "Passport + contract",        "m": "Bank statements, salary, NOC, reports" },
+      { "l": "Credit history",          "i": "Not required",              "m": "AECB check, FICO equivalent" },
+      { "l": "Off-plan / Ready",        "i": "Off-plan only",              "m": "Both off-plan and ready" },
+      { "l": "Early-repayment penalty","i": "None",                      "m": "1–3% of balance" },
+      { "l": "Overpayment on $400K",   "i": "$0",                         "m": "$70–130K over 25 years" }
+    ]
+  },
+  "how": {
+    "kicker": "How it works",
+    "titleA": "4 phases",
+    "titleB": "of payment",
+    "phases": [
+      { "n": "01", "t": "Down payment",       "k": "10–20%", "d": "Immediately on signing the SPA. Card or wire. DLD registration (4% of price)." },
+      { "n": "02", "t": "Construction stage", "k": "30–50%", "d": "1% per month + project milestones (10/20/30% built). 2.5–3.5 years." },
+      { "n": "03", "t": "Handover",           "k": "10–20%", "d": "Final payment on handover. You receive keys and the title deed. Renting can start immediately." },
+      { "n": "04", "t": "Post-handover",      "k": "20–50%", "d": "The sweetest portion. 5–7 years at 1% per month. The unit is already let — rent covers the payment." }
+    ]
+  },
+  "calc": {
+    "kicker": "Calculator",
+    "titleA": "How much",
+    "titleB": "you'll pay per month",
+    "controls": {
+      "price": "Property price",
+      "down": "Down payment",
+      "years": "Instalment term"
+    },
+    "yearLabels": { "one": "year", "few": "years", "many": "years" },
+    "result": {
+      "monthlyLabel": "Monthly payment",
+      "monthsHint": "over {months} months, interest-free",
+      "downLabel": "Down payment",
+      "totalLabel": "Total price",
+      "overpayLabel": "Overpayment",
+      "overpayValue": "$0",
+      "vsLabel": "vs. mortgage",
+      "cta": "Find a property within this payment"
+    }
+  },
+  "benefits": {
+    "kicker": "Advantages",
+    "titleA": "Why",
+    "titleB": "it pays off",
+    "items": [
+      { "t": "0% interest",              "d": "No interest at all. The SPA price equals the total payout. No hidden fees." },
+      { "t": "No bank",                   "d": "No bank statements, salary certificate, employer NOC or AECB check required." },
+      { "t": "Investor Visa eligible",    "d": "With 750K AED equity you automatically receive the 2-year Investor Visa." },
+      { "t": "Rent covers the payment",   "d": "After handover the unit rents at 6–9% NET. The 1%/month payment is lower than rental income." },
+      { "t": "Resell at handover",        "d": "You can flip the unit on handover to another buyer — earn +25–40% on the price." },
+      { "t": "Flexibility",               "d": "Early repayment without penalty. Possible to swap to another project from the same developer." }
+    ]
+  },
+  "developers": {
+    "kicker": "Partners",
+    "titleA": "8 developers",
+    "titleB": "with 1% instalments",
+    "projectsLabel": "projects",
+    "items": [
+      { "n": "EMAAR",     "l": "UAE market leader",         "plans": "10/40/50 · 60/40",                       "projects": 12 },
+      { "n": "DAMAC",     "l": "Premium segment",            "plans": "20/40/40 · 1%/mo over 8 years",          "projects": 18 },
+      { "n": "Sobha",      "l": "British quality",            "plans": "20/40/40 · post-handover 5 years",        "projects": 8 },
+      { "n": "Nakheel",    "l": "Island projects",            "plans": "15/45/40 · 1%/mo over 6 years",          "projects": 6 },
+      { "n": "Meraas",     "l": "Lifestyle projects",         "plans": "20/50/30 · 1%/mo over 5 years",          "projects": 5 },
+      { "n": "Azizi",      "l": "Affordable segment",         "plans": "10/40/50 · 1%/mo over 7 years",          "projects": 14 },
+      { "n": "Binghatti",  "l": "Designer towers",            "plans": "20/50/30 · 1%/mo over 8 years",          "projects": 9 },
+      { "n": "Ellington",  "l": "Boutique projects",          "plans": "20/40/40 · 1%/mo over 5 years",          "projects": 4 }
+    ]
+  },
+  "faq": {
+    "kicker": "Questions",
+    "titleA": "What",
+    "titleB": "you should know",
+    "items": [
+      { "q": "Is it really 0% per year?", "a": "Yes. The SPA contract price is the final amount you pay. No interest, no bank fees, no insurance charges. The developer wants to sell during construction, so the instalments are interest-free." },
+      { "q": "What if I stop paying?", "a": "Industry practice: 30-day delay — reminder. 60 days — 2–5% penalty on the missed instalment. 90+ days — the developer may terminate the SPA and retain 30–40% of what's been paid. The key is to negotiate a restructuring upfront." },
+      { "q": "Can I sell the unit before handover?", "a": "Yes, once 30–40% of the price is paid. This is called an assignment / re-sale. Buy at 20%, wait 1.5–2 years for growth, then sell to another buyer at +25–40%. It's a flip strategy." },
+      { "q": "Can I combine it with a mortgage after handover?", "a": "Yes. Once the property is handed over you can refinance the balance through a UAE bank. Especially attractive once you've built large equity (the property has appreciated)." },
+      { "q": "What fees apply at purchase?", "a": "DLD registration — 4% of the price (mandatory). Oqood — 0.25% (for off-plan). Developer NOC — ~500 AED. ShanGroup service — 0% (we're paid commission by the developer)." },
+      { "q": "Do non-residents qualify for the instalments?", "a": "Yes. Citizens of Russia, Belarus, Kazakhstan, Uzbekistan and the rest of the CIS — every programme is available. No UAE visa, business or bank account is needed to sign the SPA. The visa appears automatically once equity reaches 750K AED." },
+      { "q": "What does the 10–20% down payment include?", "a": "The down payment itself + 4% DLD + 0.25% Oqood + ~1% developer admin fee. For a $400K unit: $80K (20%) + $16K DLD + $1K Oqood + $4K admin = ~$101K upfront." },
+      { "q": "Can the payment schedule be adjusted?", "a": "Standard programmes are fixed. But on larger deals ($1M+) it's negotiable — milestone payments can be shifted, post-handover extended, or a discount agreed for a single lump-sum payment." }
+    ]
+  },
+  "leadForm": {
+    "badge": "Personal payment plan",
+    "titleA": "Get",
+    "titleB": "3 properties",
+    "titleC": "in your budget",
+    "subtitle": "An expert picks 3 projects on the 1%/month plan matching your first payment and sends the full schedules, ROI and handover dates.",
+    "perks": [
+      "3 properties in your budget",
+      "Full payment schedules",
+      "ROI and handover dates"
+    ],
+    "form": {
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "200",  "l": "$200–400K" },
+        { "id": "400",  "l": "$400–700K" },
+        { "id": "700",  "l": "$700K–1.5M" },
+        { "id": "1500", "l": "$1.5M+" }
+      ],
+      "downLabel": "Down payment",
+      "downs": [
+        { "id": "10", "l": "10%" },
+        { "id": "20", "l": "20%" },
+        { "id": "30", "l": "30%+" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only an expert call and the property shortlist.",
+      "submit": "Get the payment plan →"
+    },
+    "success": {
+      "title": "Done, {name}!",
+      "fallbackName": "investor",
+      "line1": "Our instalment expert is picking 3 properties to match your budget and schedule.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "1% per month instalment from the developer — no bank · ShanGroup",
+    "description": "Buy UAE property on a 1% / month developer instalment. No bank, no mortgage, no interest. Payment plan over 8 years."
+  }
+}

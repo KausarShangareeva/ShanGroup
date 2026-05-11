@@ -1,0 +1,170 @@
+{
+  "hero": {
+    "badge": "UAE Mortgage · For Non-Residents",
+    "titleA": "UAE Mortgage.",
+    "titleB": "No visa",
+    "titleC": "or business required.",
+    "subtitle": "Pre-approval in 7 days. Rates from 4.49% APR. Terms up to 25 years. For citizens of Russia, Belarus, Kazakhstan, Uzbekistan and CIS — no UAE residency visa, no local bank account needed.",
+    "ctaPrimary": "Calculate rate",
+    "ctaSecondary": "Non-resident conditions",
+    "trust": [
+      { "v": "4.49%", "l": "rate from" },
+      { "v": "25 yrs", "l": "mortgage term" },
+      { "v": "25%", "l": "down payment" }
+    ],
+    "card": {
+      "kicker": "Pre-approval · Example",
+      "price": "$680,000",
+      "subtitle": "2.5M AED · 2BR · Dubai Marina",
+      "badge": "APPROVED",
+      "rows": [
+        { "l": "Down payment (25%)", "v": "$170,000" },
+        { "l": "Mortgage amount (75%)", "v": "$510,000 over 25 yrs" },
+        { "l": "Monthly payment", "v": "$2,832 · rate 4.49%" },
+        { "l": "Rent covers", "v": "$4,250 / mo (NET)" }
+      ],
+      "cashflowLabel": "Cashflow",
+      "cashflowValue": "+$1,418 / mo",
+      "approvalLabel": "Approval",
+      "approvalValue": "7 days"
+    }
+  },
+  "eligibility": {
+    "kicker": "Eligibility",
+    "titleA": "Who qualifies",
+    "titleB": "for a mortgage",
+    "titleC": "in the UAE",
+    "items": [
+      { "icon": "globe", "t": "Citizenship", "d": "Russia, Belarus, Kazakhstan, Uzbekistan, Georgia, Armenia, EU countries — all accepted. No UAE residency visa or local bank account required." },
+      { "icon": "clock", "t": "Age", "d": "21–65 at application. Mortgage term is calculated so repayment ends by age 70. Self-employed — up to age 65." },
+      { "icon": "dollar", "t": "Income", "d": "From $4,000 / mo net (15K AED). Confirmed by 6 months of statements. Sources: salary, business, IP, dividends, rental. Crypto income not accepted." },
+      { "icon": "chart", "t": "Credit history", "d": "Clean. AECB check in UAE (if previously resident) + check in country of residence. 90+ day delinquencies in the last 2 years — rejection." },
+      { "icon": "file-text", "t": "Documents", "d": "International passport, residence permit / income certificate, 6 months of bank statements, tax return. Apostille + English translation." },
+      { "icon": "building", "t": "Property", "d": "Ready property from $400K (1.5M AED). Off-plan — only with bank-approved developers (EMAAR, DAMAC, Sobha). Freehold zones." }
+    ]
+  },
+  "calc": {
+    "kicker": "Calculator",
+    "titleA": "Estimate",
+    "titleB": "your payment",
+    "controls": {
+      "price": "Property value",
+      "down": "Down payment",
+      "rate": "Rate",
+      "years": "Mortgage term"
+    },
+    "yearLabels": { "one": "year", "few": "years", "many": "years" },
+    "result": {
+      "monthlyLabel": "Monthly payment",
+      "monthsHint": "{months} payments at {rate}%",
+      "loanLabel": "Loan amount",
+      "downLabel": "Down payment",
+      "totalLabel": "Total payout",
+      "overpayLabel": "Interest overpay",
+      "rentLabel": "Rent covers (~6.5%)",
+      "cashflowLabel": "Cashflow / mo",
+      "cta": "Get pre-approval"
+    }
+  },
+  "process": {
+    "kicker": "Process",
+    "titleA": "6 steps",
+    "titleB": "to closing",
+    "steps": [
+      { "n": "01", "t": "Pre-qualification", "k": "1 day", "d": "Application + income verification. Receive preliminary approval and an understanding of your maximum loan amount. No obligations." },
+      { "n": "02", "t": "Document collection", "k": "5–7 days", "d": "6 months of bank statements, income certificate, apostilled passport copy, tax return. English translation required." },
+      { "n": "03", "t": "Submit to 3 banks", "k": "3 days", "d": "We submit applications simultaneously to Mashreq, Emirates NBD, ADCB. Compare offers by rate and terms. You choose the best." },
+      { "n": "04", "t": "Property selection", "k": "1–2 weeks", "d": "We find a property within the approved limit. Must be in a freehold zone, with a bank-approved developer. SPA signing." },
+      { "n": "05", "t": "Valuation + Final Offer", "k": "5 days", "d": "Bank conducts independent valuation (~3,000 AED). Confirms final rate and amount. You sign the Loan Agreement." },
+      { "n": "06", "t": "Closing + Registration", "k": "7 days", "d": "Mortgage registration with DLD (0.25%). Key handover. Title deed in your name with Mortgage notation. Rent immediately." }
+    ]
+  },
+  "banks": {
+    "kicker": "Banks",
+    "titleA": "6 banks",
+    "titleB": "working",
+    "titleC": "with non-residents",
+    "subtitle": "We submit applications in parallel — you pick the best offer by rate, amount and terms.",
+    "rateLabel": "Rate from",
+    "items": [
+      { "n": "Mashreq Bank", "k": "MB", "rate": "4.49%", "l": "Mortgage leader for non-residents · up to $1.5M · 25 yrs" },
+      { "n": "Emirates NBD", "k": "EN", "rate": "4.69%", "l": "Largest UAE bank · up to $2M · fast approval 7 days" },
+      { "n": "ADCB", "k": "AD", "rate": "4.79%", "l": "Friendly to Russian passports · up to $1.2M · 20 yrs" },
+      { "n": "FAB", "k": "FA", "rate": "4.99%", "l": "First Abu Dhabi Bank · large amounts $1.5M+ · premium segment" },
+      { "n": "RAK Bank", "k": "RB", "rate": "5.25%", "l": "Flexible income terms · from $3K / mo · fast disbursement" },
+      { "n": "HSBC UAE", "k": "HS", "rate": "5.49%", "l": "International bank · convenient for HSBC clients in RU / Europe" }
+    ]
+  },
+  "costs": {
+    "kicker": "Costs",
+    "titleA": "How much",
+    "titleB": "it costs",
+    "subtitle": "Full cost of buying a $680K property with a 75% mortgage. All mandatory payments and fees.",
+    "items": [
+      { "t": "Down payment", "v": "25–35%", "d": "Residents — from 20%, non-residents — from 25%. Properties $1M+ — 35%." },
+      { "t": "DLD registration", "v": "4%", "d": "Dubai Land Department — mandatory transaction fee. Based on property value." },
+      { "t": "Mortgage registration", "v": "0.25%", "d": "Mortgage registration with DLD. Based on loan amount, not property value." },
+      { "t": "Bank arrangement fee", "v": "1%", "d": "Bank fee for arranging the mortgage. Based on loan amount. Can be added to the loan." },
+      { "t": "Property valuation", "v": "~1,200 AED", "d": "Independent property valuation. Done by a bank-appointed valuer. Fixed fee." },
+      { "t": "Life insurance", "v": "~0.4% / yr", "d": "Mandatory life insurance for the borrower for the loan amount. Depends on age and health." },
+      { "t": "Property insurance", "v": "~0.05% / yr", "d": "Insurance against fire, flood, theft. Minimum — structural coverage." },
+      { "t": "Agent commission", "v": "2%", "d": "Standard agent commission on the secondary market. On off-plan — 0% (paid by developer)." }
+    ]
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "titleA": "What",
+    "titleB": "matters",
+    "items": [
+      { "q": "Can I get a mortgage remotely?", "a": "Yes. Pre-qualification and document collection are done remotely. For the final Loan Agreement signing and DLD closing, one trip to the UAE for 3–5 days is required. Signing can be delegated via PoA." },
+      { "q": "Is the 4.49% rate real?", "a": "Yes, it's Mashreq's basic Initial Rate for year one. After that the rate switches to a Variable Rate (3M EIBOR + 2.5–3.5% spread) — typically 5.5–6.5%. You can also choose a Fixed Rate for 3–5 years (5.99–6.49%)." },
+      { "q": "Will banks lend to a Russian / Belarusian citizen?", "a": "Yes. Mashreq, Emirates NBD, ADCB, RAK Bank openly work with Russian and Belarusian passports. HSBC requires history with a non-Russian bank. FAB — case-by-case. Sanctions screening is mandatory." },
+      { "q": "What is DBR and why does it matter?", "a": "Debt Burden Ratio — UAE Central Bank limit: all monthly debt payments ≤ 50% of monthly income. With $7K income — max $3,500 / mo on mortgage. This sets the loan size ceiling." },
+      { "q": "Can I get a mortgage on off-plan?", "a": "Yes, but not on all projects. Banks only finance approved developers (EMAAR, DAMAC, Sobha, Nakheel, Meraas, Azizi). Disbursement is by milestones. Ready property is simpler and gets a lower rate." },
+      { "q": "What if I stop paying?", "a": "30 days late — 1% penalty on the payment. 60 days — the bank demands clearance. 90+ days — foreclosure: bank sells the property at auction. Proceeds cover the debt; the rest is refunded to you. Better — renegotiate the schedule in advance." },
+      { "q": "Can I prepay early?", "a": "Yes, anytime. Early repayment penalty — 1% of outstanding balance (capped at 10,000 AED). After the 5-year fixed period — no penalty. Often it's cheaper to pay off in 10 years instead of 25 — saves 40–60% of interest." },
+      { "q": "What matters more — rate or amount?", "a": "Depends on strategy. For 3–5 year flip — low down payment and flexible rate. For long-term hold — low fixed rate. For rental income — cashflow > payment (positive cash flow)." }
+    ]
+  },
+  "leadForm": {
+    "badge": "Pre-Approval Request",
+    "titleA": "Get",
+    "titleB": "pre-approval",
+    "titleC": "in 7 days",
+    "subtitle": "A mortgage expert will assess your profile, submit applications to 3 banks in parallel and return the best offers by rate and amount.",
+    "perks": [
+      "Pre-approval in 7 days",
+      "3 banks in parallel",
+      "Rate and cashflow calculation"
+    ],
+    "form": {
+      "citizenshipLabel": "Citizenship",
+      "citizenships": [
+        { "id": "ru", "l": "RU" },
+        { "id": "kz", "l": "KZ / BY" },
+        { "id": "eu", "l": "EU" },
+        { "id": "other", "l": "Other" }
+      ],
+      "incomeLabel": "Income / mo (net)",
+      "incomes": [
+        { "id": "4", "l": "$4–7K" },
+        { "id": "7", "l": "$7–15K" },
+        { "id": "15", "l": "$15K+" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only a mortgage expert's call and pre-approval review.",
+      "submit": "Get pre-approval →"
+    },
+    "success": {
+      "title": "Done, {name}!",
+      "fallbackName": "client",
+      "line1": "A mortgage expert will assess your profile and submit applications to 3 banks in parallel.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "UAE Mortgage for non-residents — from 4.49% APR · ShanGroup",
+    "description": "UAE Mortgage for citizens of Russia, Belarus, Kazakhstan and CIS. No residency visa required. Pre-approval in 7 days. Rate from 4.49%. Term up to 25 years."
+  }
+}

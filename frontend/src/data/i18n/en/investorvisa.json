@@ -1,0 +1,279 @@
+{
+  "hero": {
+    "badge": "UAE Investor Visa · Property route",
+    "titleA": "Starter investor",
+    "titleB": "visa",
+    "titleC": "to the UAE.",
+    "subtitle": "2-year residency through real-estate investment from $204K (750K AED). Family, bank account, schools, 0% tax. The ideal entry route for those who want to try the UAE before going for the Golden Visa.",
+    "ctaPrimary": "Book a consultation",
+    "ctaSecondary": "Path to Golden Visa",
+    "trust": [
+      { "v": "2 years",   "l": "term, renewable" },
+      { "v": "20–35 d",   "l": "processing" },
+      { "v": "from $204K","l": "property entry" }
+    ],
+    "card": {
+      "country": "United Arab Emirates",
+      "title": "Investor Visa",
+      "subtitle": "2-Year Residency",
+      "holderLabel": "HOLDER",
+      "holderPlaceholder": "<YOUR NAME>",
+      "categoryLabel": "CATEGORY",
+      "categoryValue": "Investor",
+      "validLabel": "VALID",
+      "validValue": "2026–2028",
+      "familyLabel": "FAMILY",
+      "familyValue": "Sponsored",
+      "chipBank": "UAE bank account",
+      "chipSchools": "Schools for kids"
+    }
+  },
+  "stats": {
+    "items": [
+      { "v": "$204K",     "l": "minimum in real estate (750K AED)", "source": "ICA · UAE Investor Visa" },
+      { "v": "2 years",    "l": "term, unlimited renewals",          "source": "UAE Federal Decree" },
+      { "v": "0%",         "l": "personal income tax",                "source": "UAE Tax Procedures Law" },
+      { "v": "20–35 d",    "l": "from shortlist to Emirates ID",      "source": "GDRFA average" }
+    ]
+  },
+  "whoFor": {
+    "kicker": "Who it suits",
+    "titleA": "4 entry",
+    "titleB": "routes",
+    "titleC": "via the investor visa",
+    "items": [
+      {
+        "n": "01", "t": "Testing the UAE",
+        "d": "Not ready to commit $545K to a Golden Visa straight away. Start with a $204K apartment — get 2 years of residency. If you like it, upgrade to Golden.",
+        "tags": ["Budget $200–500K", "Want to test the market"]
+      },
+      {
+        "n": "02", "t": "Family relocation",
+        "d": "Bringing the family across: spouse + kids. The visa includes a spouse and children under 18. Access to schools (GEMS, Repton) and UAE health insurance.",
+        "tags": ["School-age kids", "Relocation 2+ years"]
+      },
+      {
+        "n": "03", "t": "Tax residency",
+        "d": "You want to become a UAE tax resident (183+ days or a Tax Residency Certificate). The Investor Visa unlocks the bank, accounting and TRC within 12 months.",
+        "tags": ["Tax residency", "Capital protection"]
+      },
+      {
+        "n": "04", "t": "Cashflow + visa",
+        "d": "Buy a rental apartment yielding 6–9% NET and get the visa automatically. The unit pays for itself, the visa is effectively 'free' from a cashflow standpoint.",
+        "tags": ["ROI + residency", "Income property"]
+      }
+    ]
+  },
+  "benefits": {
+    "kicker": "What's included",
+    "titleA": "The visa is",
+    "titleB": "infrastructure",
+    "titleC": "for living in the UAE",
+    "items": [
+      { "icon": "briefcase",   "t": "Family included",     "d": "Spouse + children under 18 receive visas under your sponsorship. Each gets a separate resident ID." },
+      { "icon": "bank",        "t": "UAE bank account",     "d": "Access to Emirates NBD, Mashreq, ADCB. Personal + business. Multi-currency accounts. SWIFT transfers." },
+      { "icon": "percent",     "t": "0% income tax",        "d": "Salary, dividends, rent, capital gains — all exempt. You can become a UAE tax resident." },
+      { "icon": "book-open",   "t": "Schools for kids",     "d": "Access to British and American schools in Dubai. Residents get enrolment priority and a reduced fee." },
+      { "icon": "calendar",    "t": "UAE driving licence",  "d": "License swap without exam for citizens of RU, BY, KZ, EU, US. Rent a car the day you receive the ID." },
+      { "icon": "trending-up", "t": "Path to Golden Visa",  "d": "If your portfolio grows over the 2 years, top up to $545K and upgrade to a 10-year Golden Visa." }
+    ]
+  },
+  "vsGolden": {
+    "kicker": "Visa comparison",
+    "titleA": "Investor 2 years",
+    "titleB": "vs",
+    "titleC": "Golden 10 years",
+    "intro": "Compare the parameters and pick the optimal entry route to the UAE. Many start with Investor and upgrade to Golden after 1–2 years.",
+    "headers": {
+      "param": "Parameter",
+      "investor": "Investor Visa",
+      "investorNote": "UAE · 2 years",
+      "golden": "Golden Visa",
+      "goldenNote": "UAE · 10 years"
+    },
+    "rows": [
+      { "l": "Minimum investment",       "i": "$204K (750K AED)",        "g": "$545K (2M AED)" },
+      { "l": "Residency term",            "i": "2 years",                  "g": "10 years" },
+      { "l": "Processing time",           "i": "20–35 days",              "g": "30–60 days" },
+      { "l": "Government fee (1 pp)",     "i": "~$1,100",                 "g": "~$1,825" },
+      { "l": "Family included",           "i": "Spouse + kids under 18",  "g": "All, no age limit" },
+      { "l": "Parents",                    "i": "No",                       "g": "Yes (separate sponsor)" },
+      { "l": "Off-plan eligible",          "i": "Yes, 50% paid",           "g": "Yes, 50% paid" },
+      { "l": "Mortgage allowed",           "i": "Equity 750K AED+",        "g": "Equity 2M AED+" },
+      { "l": "Renewal",                    "i": "Every 2 years",            "g": "Every 10 years" }
+    ],
+    "bridge": {
+      "title": "Start with Investor — upgrade to Golden later",
+      "desc": "Buy at 750K AED today. Over 1–2 years, top up to 2M AED with extra purchases and switch to the 10-year Golden Visa.",
+      "cta": "Learn about Golden Visa →"
+    }
+  },
+  "check": {
+    "kicker": "Eligibility checker",
+    "titleA": "Do you qualify",
+    "titleB": "for an Investor Visa",
+    "controls": {
+      "budget": "Your budget",
+      "planType": "Property type",
+      "family": "Family size"
+    },
+    "planOptions": [
+      { "id": "ready",   "l": "Ready",         "d": "20–30 days" },
+      { "id": "offplan", "l": "Off-plan 50%+", "d": "30–35 days" }
+    ],
+    "familyUnit": "ppl",
+    "eligible": "You qualify for an Investor Visa",
+    "surplus": "Surplus: ${amount}K",
+    "notEligible": "${amount}K short",
+    "minHint": "Minimum — $204K (750K AED)",
+    "labels": {
+      "duration": "Processing time",
+      "durationUnit": "d",
+      "visaTerm": "Visa term",
+      "visaTermValue": "2 years",
+      "fee": "Government fees (family)",
+      "monthlyRent": "Rent / mo."
+    },
+    "ctaEligible": "Find a visa-ready property →",
+    "ctaNotEligible": "Find properties for my budget →"
+  },
+  "process": {
+    "kicker": "Process",
+    "titleA": "From enquiry",
+    "titleB": "to visa in 20–35 days",
+    "steps": [
+      { "n": 1, "t": "Free consultation",           "d": "A visa expert validates your profile, goals and picks the optimal route.", "k": "1 day" },
+      { "n": 2, "t": "Property shortlist",           "d": "3–5 properties from $204K. Online tour or on-site visit to Dubai.",       "k": "3–7 days" },
+      { "n": 3, "t": "Deal + registration",          "d": "SPA, developer NOC, DLD registration. Title deed in your name.",          "k": "7–10 days" },
+      { "n": 4, "t": "Filing documents",              "d": "We prepare the GDRFA pack: title deed, passports, photo, medical test.",  "k": "3–5 days" },
+      { "n": 5, "t": "Biometrics + Emirates ID",    "d": "Fly in for 1–2 days. Fingerprints, photo, medical blood test.",             "k": "1–2 days" },
+      { "n": 6, "t": "Visa stamp + bank account",   "d": "The visa is stamped. In parallel we open the bank account and Ejari.",     "k": "5–10 days" }
+    ]
+  },
+  "listings": {
+    "kicker": "Visa-eligible inventory",
+    "titleA": "Ready",
+    "titleB": "from $204K+",
+    "priceLabel": "Price",
+    "yieldLabel": "Yield (NET)",
+    "visaReadyBadge": "VISA-READY",
+    "visaBonus": "+2-year visa",
+    "items": [
+      { "name": "DAMAC Lagoons 1BR",          "area": "Lagoons",      "rooms": "1BR · 65 sqm",    "price": "$215K", "yield": "7.4%", "developer": "DAMAC", "status": "Off-plan 60%" },
+      { "name": "EMAAR Town Square Studio",    "area": "Town Square",  "rooms": "Studio · 48 sqm", "price": "$245K", "yield": "7.9%", "developer": "EMAAR", "status": "Ready" },
+      { "name": "Sobha Reserve 1BR",           "area": "Wadi Al Safa", "rooms": "1BR · 72 sqm",    "price": "$310K", "yield": "7.6%", "developer": "Sobha", "status": "Off-plan 70%" }
+    ]
+  },
+  "docs": {
+    "kicker": "Documents",
+    "titleA": "Document",
+    "titleB": "package checklist",
+    "items": [
+      { "t": "Passport",                "d": "Valid for 6+ months. All pages scanned." },
+      { "t": "Title deed",               "d": "Proof of ownership for 750K AED+." },
+      { "t": "Photo 35×45 mm",           "d": "White background, UAE standard. 2 copies." },
+      { "t": "UAE medical test",         "d": "In Dubai, 1 day. ~$80. Blood + chest x-ray." },
+      { "t": "Marriage certificate",     "d": "If sponsoring a spouse. Apostille + translation." },
+      { "t": "Birth certificates",        "d": "If sponsoring children. Apostille + translation." },
+      { "t": "Ejari / address",          "d": "Tenancy or property contract in Dubai." },
+      { "t": "Bank statement",           "d": "3-month account statement (optional)." }
+    ]
+  },
+  "fees": {
+    "kicker": "Costs",
+    "titleA": "Transparent",
+    "titleB": "fee breakdown",
+    "items": [
+      { "l": "Visa fee (main applicant)",   "aed": "4,100 AED", "usd": "$1,115", "d": "Federal Authority for Identity & Citizenship" },
+      { "l": "Visa fee (family member)",     "aed": "2,800 AED", "usd": "$760",   "d": "Each spouse/child" },
+      { "l": "Emirates ID",                   "aed": "370 AED",   "usd": "$100",   "d": "For 2 years" },
+      { "l": "Medical test",                  "aed": "300 AED",   "usd": "$80",    "d": "1 day in Dubai" },
+      { "l": "DLD registration (4%)",         "aed": "from 30K AED","usd": "from $8,200","d": "4% of the property price" },
+      { "l": "ShanGroup service",             "aed": "0 AED",      "usd": "$0",    "d": "Visa support is free when you buy with us" }
+    ]
+  },
+  "cases": {
+    "kicker": "Client stories",
+    "titleA": "Those who",
+    "titleB": "started small",
+    "objectLabel": "Property",
+    "visaReceivedBadge": "✓ Visa received",
+    "items": [
+      {
+        "name": "Artem S.", "role": "St. Petersburg · digital agency",
+        "story": "Bought a Studio in Town Square for $245K. Got the visa in 25 days — relocated wife and 5-year-old son. The son is in a GEMS school.",
+        "bought": "EMAAR Town Square · $245K",
+        "stat": "25 days", "statL": "to visa issued"
+      },
+      {
+        "name": "Maria T.", "role": "Moscow · freelance design",
+        "story": "Wanted UAE tax residency. Bought a 1BR in DAMAC Lagoons. After 8 months received the TRC — now her income tax is 0%.",
+        "bought": "DAMAC Lagoons 1BR · $215K",
+        "stat": "0%", "statL": "income tax"
+      },
+      {
+        "name": "The K. family", "role": "Almaty · family with 2 kids",
+        "story": "Relocated the family. Bought a 2BR in Town Square for $385K. Kids in Repton School. Planning to upgrade to Golden in 1.5 years.",
+        "bought": "EMAAR Town Square 2BR · $385K",
+        "stat": "4 ppl", "statL": "whole family"
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Questions",
+    "titleA": "What",
+    "titleB": "people most often",
+    "titleC": "ask",
+    "items": [
+      { "q": "How is the Investor Visa different from the Golden Visa?", "a": "Investor is a starter visa for 2 years from $204K. Golden is the premium 10-year visa from $545K. Many start with Investor and upgrade to Golden later. Investor is simpler, cheaper and faster, but renews every 2 years." },
+      { "q": "Can I obtain the visa without coming to Dubai?", "a": "Up to 80% of the process is remote: shortlist, deal via power of attorney, document collection. You only need to fly in once for 1–2 days for biometrics, medical test and Emirates ID." },
+      { "q": "What if I sell the property within 2 years?", "a": "The visa is cancelled. You need to buy another 750K AED+ property to renew. If you're already in the process of upgrading to Golden, you can switch directly to the 10-year version." },
+      { "q": "Can I work for a foreign company?", "a": "Yes, a UAE resident can work remotely for any country. You can also open a UAE company (free zone or mainland) and keep operating. Foreign-company salaries are not taxed." },
+      { "q": "Does the visa include children over 18?", "a": "Sons under 18 are included automatically. Daughters — any age while unmarried. Sons 18–25 may be included with proof of studies in Dubai. Parents require a separate visa." },
+      { "q": "How much does renewal cost after 2 years?", "a": "The government fee is the same ~4,100 AED ($1,115). The condition is that the property is still in your name (750K AED+). If the property has appreciated, you can upgrade directly to the Golden Visa." },
+      { "q": "Can I use a mortgage?", "a": "Yes. Your equity must be 750K AED+. The mortgage portion does not count towards the visa amount. A bank NOC is required." },
+      { "q": "What if I want to switch to Golden before the 2 years are up?", "a": "Any time. Top up to 2M AED equity (a second purchase works), file for Golden and close the Investor Visa. The switch fee is about $1,825." }
+    ]
+  },
+  "leadForm": {
+    "badge": "30 minutes to a call",
+    "titleA": "Get an",
+    "titleB": "Investor Visa roadmap",
+    "titleC": "matched to your budget",
+    "subtitle": "A visa expert will pick 3 properties within your budget, calculate the full visa cost and provide a step-by-step 20–35 day plan.",
+    "perks": [
+      "3 properties at $204K+ with ROI breakdown",
+      "Visa roadmap over 20–35 days",
+      "Document checklist for the whole family"
+    ],
+    "form": {
+      "goalLabel": "Goal",
+      "goals": [
+        { "id": "family",  "l": "Visa for the family" },
+        { "id": "self",    "l": "Just for me" },
+        { "id": "tax",     "l": "Tax residency" },
+        { "id": "upgrade", "l": "Trial before Golden" }
+      ],
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "204", "l": "$204–300K" },
+        { "id": "300", "l": "$300–500K" },
+        { "id": "500", "l": "$500K+" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. No spam — only the roadmap and a call from the visa expert.",
+      "submit": "Get the Visa Roadmap →"
+    },
+    "success": {
+      "title": "Thank you, {name}!",
+      "fallbackName": "investor",
+      "line1": "A visa expert is preparing an individual roadmap for your Investor Visa application.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "Investor Visa UAE from $204K — 2-year investor visa · ShanGroup",
+    "description": "Obtain the 2-year UAE Investor Visa via real-estate investment from $204K (750K AED). Family, bank accounts, 0% taxes. Processing 20–35 days."
+  }
+}

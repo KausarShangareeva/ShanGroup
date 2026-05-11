@@ -1,0 +1,139 @@
+{
+  "hero": {
+    "badge": "Investment yield calculator · UAE 2025",
+    "titleA": "ROI",
+    "titleB": "calculator",
+    "titleC": "for 3 / 5 / 10 years",
+    "subtitle": "Professional model with real-market Dubai district data: rent, capital growth, costs, taxes and management fees."
+  },
+  "calc": {
+    "kicker": "Parameters",
+    "titleA": "Enter the",
+    "titleB": "property data",
+    "districtLabel": "District (preset)",
+    "strategyLabel": "Rental strategy",
+    "strategies": [
+      { "id": "longterm", "l": "Long-term", "n": "+0%" },
+      { "id": "mixed", "l": "Mixed", "n": "+20%" },
+      { "id": "airbnb", "l": "Airbnb", "n": "+55%" }
+    ],
+    "controls": {
+      "price": "Property value",
+      "yield": "Base rental yield",
+      "growth": "Capital growth / year",
+      "occupancy": "Occupancy"
+    },
+    "summary": {
+      "initialCost": "Initial outlay",
+      "netIncome": "Net income / year",
+      "netYield": "Net yield"
+    },
+    "horizons": {
+      "label": "In {years} years",
+      "totalRoi": "Total ROI",
+      "cagr": "CAGR",
+      "cumRent": "Cumulative rent",
+      "capGain": "Capital growth",
+      "exitCost": "Less exit (6%)",
+      "finalValue": "Final value",
+      "inPocket": "In pocket"
+    },
+    "footnote": "* No income tax (0% in UAE). Includes: DLD 4%, agent 2%, service charge ~0.8%, opex {fee}%, exit 6%. Rent +3%/year.",
+    "cta": "Get a personal calculation on a specific property →"
+  },
+  "districts": {
+    "kicker": "Benchmark",
+    "titleA": "Top districts",
+    "titleB": "by 5-year ROI",
+    "yieldLabel": "yield",
+    "growthLabel": "growth"
+  },
+  "scenarios": {
+    "kicker": "Scenarios",
+    "titleA": "What happens",
+    "titleB": "in each case",
+    "items": [
+      {
+        "id": "pessimistic",
+        "l": "Pessimistic",
+        "desc": "Crisis, price drop",
+        "r3": "+12%",
+        "r5": "+24%",
+        "r10": "+58%",
+        "note": "Even in a bad scenario — beats a bank deposit"
+      },
+      {
+        "id": "base",
+        "l": "Base",
+        "desc": "Current trends: +7–8%/year, yield 6.5%",
+        "r3": "+30%",
+        "r5": "+58%",
+        "r10": "+135%",
+        "note": "Most likely path per Property Monitor data"
+      },
+      {
+        "id": "optimistic",
+        "l": "Optimistic",
+        "desc": "High demand, tourism growth",
+        "r3": "+45%",
+        "r5": "+90%",
+        "r10": "+220%",
+        "note": "Realistic for Palm, Downtown, JVC"
+      }
+    ],
+    "horizonLabels": ["3 years", "5 years", "10 years"]
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "titleA": "About the model",
+    "titleB": "and the numbers",
+    "items": [
+      { "q": "Where do the numbers come from?", "a": "Property Monitor 2024 (quarterly reports), Bayut.com (public listings), Dubai Land Department (official transactions). Not 'promised yield' from developers." },
+      { "q": "Why is ROI higher than in Europe?", "a": "0% income tax in the UAE vs 25–45% in Europe, gross yield 6–9% vs 2–4% in London/Berlin, market growth +7–10%/year post-COVID." },
+      { "q": "What risks aren't accounted for?", "a": "Global recession (pessimistic scenario is built in), geopolitics, regulatory changes. We discuss these in the personal calculation." },
+      { "q": "Can I get a calc on a specific property?", "a": "Yes. An expert runs the numbers on a real property with actual rental rates and service charges. Free, 1–2 business days." },
+      { "q": "What matters more: yield or growth?", "a": "Cashflow — yield. Accumulation — growth. Over 10 years, growth drives 60–70% of total ROI, rent 30–40%." },
+      { "q": "What is CAGR?", "a": "Annualized equivalent return. ROI +135% over 10 years = CAGR ~8.9%/year. Useful for comparing with bank deposits." }
+    ]
+  },
+  "leadForm": {
+    "badge": "Personal calculation in 1–2 days",
+    "titleA": "ROI",
+    "titleB": "for your",
+    "titleC": "specific property",
+    "subtitle": "An analyst picks 3 properties for your budget and goal, runs the numbers on real rental rates and sends a PDF.",
+    "perks": [
+      "3 real properties with calculation",
+      "10-year cashflow as PDF",
+      "Stress-test across 3 scenarios"
+    ],
+    "form": {
+      "budgetLabel": "Budget",
+      "budgets": [
+        { "id": "300", "l": "$200–500K" },
+        { "id": "500", "l": "$500K–1M" },
+        { "id": "1500", "l": "$1M+" }
+      ],
+      "goalLabel": "Goal",
+      "goals": [
+        { "id": "cashflow", "l": "Cashflow" },
+        { "id": "capital", "l": "Capital growth" },
+        { "id": "visa", "l": "Visa + asset" }
+      ],
+      "namePlaceholder": "Name",
+      "phonePlaceholder": "+1 ___ ___ ____",
+      "consent": "I agree to data processing. Free, no spam.",
+      "submit": "Get personal calculation →"
+    },
+    "success": {
+      "title": "Done, {name}!",
+      "fallbackName": "investor",
+      "line1": "An analyst will prepare a calc on 3 properties and send a PDF.",
+      "line2": "Expect a call within 30 minutes on {phone}."
+    }
+  },
+  "metadata": {
+    "title": "Dubai Real Estate ROI Calculator · 3/5/10-year yields · ShanGroup",
+    "description": "Professional ROI calculator for UAE real estate. Yield over 3, 5 and 10 years accounting for rent, capital growth, taxes and commissions."
+  }
+}

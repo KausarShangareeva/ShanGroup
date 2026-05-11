@@ -31,6 +31,18 @@ import arFlip from "@/data/i18n/ar/flip.json";
 import ruGoldenVisa from "@/data/i18n/ru/goldenvisa.json";
 import enGoldenVisa from "@/data/i18n/en/goldenvisa.json";
 import arGoldenVisa from "@/data/i18n/ar/goldenvisa.json";
+import ruInvestorVisa from "@/data/i18n/ru/investorvisa.json";
+import enInvestorVisa from "@/data/i18n/en/investorvisa.json";
+import arInvestorVisa from "@/data/i18n/ar/investorvisa.json";
+import ruInstallment from "@/data/i18n/ru/installment.json";
+import enInstallment from "@/data/i18n/en/installment.json";
+import arInstallment from "@/data/i18n/ar/installment.json";
+import ruMortgage from "@/data/i18n/ru/mortgage.json";
+import enMortgage from "@/data/i18n/en/mortgage.json";
+import arMortgage from "@/data/i18n/ar/mortgage.json";
+import ruRoi from "@/data/i18n/ru/roi.json";
+import enRoi from "@/data/i18n/en/roi.json";
+import arRoi from "@/data/i18n/ar/roi.json";
 import ruNavigation from "@/data/i18n/ru/navigation.json";
 import enNavigation from "@/data/i18n/en/navigation.json";
 import arNavigation from "@/data/i18n/ar/navigation.json";
@@ -52,6 +64,10 @@ const MESSAGES = {
     AirbnbPage: ruAirbnb,
     FlipPage: ruFlip,
     GoldenVisaPage: ruGoldenVisa,
+    InvestorVisaPage: ruInvestorVisa,
+    InstallmentPage: ruInstallment,
+    MortgagePage: ruMortgage,
+    RoiPage: ruRoi,
     Navigation: ruNavigation,
     SearchBar: ruSearchBar,
     Footer: ruFooter,
@@ -64,6 +80,10 @@ const MESSAGES = {
     AirbnbPage: enAirbnb,
     FlipPage: enFlip,
     GoldenVisaPage: enGoldenVisa,
+    InvestorVisaPage: enInvestorVisa,
+    InstallmentPage: enInstallment,
+    MortgagePage: enMortgage,
+    RoiPage: enRoi,
     Navigation: enNavigation,
     SearchBar: enSearchBar,
     Footer: enFooter,
@@ -76,6 +96,10 @@ const MESSAGES = {
     AirbnbPage: arAirbnb,
     FlipPage: arFlip,
     GoldenVisaPage: arGoldenVisa,
+    InvestorVisaPage: arInvestorVisa,
+    InstallmentPage: arInstallment,
+    MortgagePage: arMortgage,
+    RoiPage: arRoi,
     Navigation: arNavigation,
     SearchBar: arSearchBar,
     Footer: arFooter,
